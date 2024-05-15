@@ -1,0 +1,17 @@
+
+
+#   _    _        __ _   _____ _         _
+#  | |  | |      / _(_) /  ___| |       | |
+#  | |  | | ___ | |_ _  \ `--.| |_ _   _| | ___
+#  | |/\| |/ _ \|  _| |  `--. \ __| | | | |/ _ \
+#  \  /\  / (_) | | | | /\__/ / |_| |_| | |  __/
+#   \/  \/ \___/|_| |_| \____/ \__|\__, |_|\___|
+#                                   __/ |
+#                                  |___/
+# https://man.archlinux.org/man/wofi.5.en
+
+show=drun
+insensitive=true
+matching=contains
+allow_images=true
+allow_markup=true
