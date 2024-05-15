@@ -1,6 +1,6 @@
 #!/bin/bash
 
-backupDir="/mnt/OneDrive_IZO/Backup/WSIZ00"
+backupDir="/mnt/OneDrive_IZO/Backup/WSIZ00/"
 runBackup(){
     if [ -z "$1" ]; then
         return 1
