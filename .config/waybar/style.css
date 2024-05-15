@@ -19,11 +19,6 @@
 /*   box-shadow: inset 0 -3px #ffffff; */
 /* } */
 
-/* you can set a style on hover for any module like this */
-/* #pulseaudio:hover { */
-/*   background-color: #a37800; */
-/* } */
-
 tooltip {
   background: #1e1e2e;
 }
@@ -145,16 +140,16 @@ window#waybar.solo {
 #mpris,
 #memory,
 #network,
-#tray,
-#temperature,
+#privacy,
 #pulseaudio,
+#temperature,
+#tray,
 #wireplumber,
 #custom-arch,
 #custom-power,
 #custom-quit,
 #custom-lock,
-#custom-reboot,
-#custom-playerctl {
+#custom-reboot {
   background: rgba(38, 44, 57, 0.7);
   /* background: rgba(255, 255, 255, 0.7); */
   padding: 0 12px;
@@ -232,6 +227,48 @@ window#waybar.solo {
   color: #f53c3c;
 }
 
+/* #privacy { */
+/*   padding: 0; */
+/* } */
+
+#privacy-item {
+  /* padding: 0 5px; */
+  color: white;
+}
+
+#privacy-item.screenshare {
+  color: #cf5700;
+}
+
+#privacy-item.audio-in {
+  color: #1ca000;
+}
+
+#privacy-item.audio-out {
+  color: #0069d4;
+}
+
+#pulseaudio {
+  border-radius: 12px 0 0 12px;
+  color: #bad5f0;
+}
+
+#pulseaudio:hover {
+  background-color: #a37800;
+}
+
+#pulseaudio.muted {
+  color: #90b1b1;
+}
+
+#temperature {
+  color: #f0932b;
+}
+
+#temperature.critical {
+  color: #eb4d4b;
+}
+
 /* --------------------------------------------------- */
 
 #tray {
@@ -247,18 +284,6 @@ window#waybar.solo {
   background-color: #eb4d4b;
 }
 
-#pulseaudio {
-  border-radius: 12px 0 0 12px;
-  color: #bad5f0;
-  /* background-color: #f1c40f; */
-  /* color: #000000; */
-}
-
-/* #pulseaudio.muted { */
-/*   background-color: #90b1b1; */
-/*   color: #2a5c45; */
-/* } */
-
 /* label:focus { */
 /*   background-color: #000000; */
 /* } */
@@ -270,35 +295,6 @@ window#waybar.solo {
 
 /* #wireplumber.muted { */
 /*   background-color: #f53c3c; */
-/* } */
-
-/* #temperature { */
-/*   background-color: #f0932b; */
-/* } */
-
-/* #temperature.critical { */
-/*   background-color: #eb4d4b; */
-/* } */
-
-/* #privacy { */
-/*   padding: 0; */
-/* } */
-
-/* #privacy-item { */
-/*   padding: 0 5px; */
-/*   color: white; */
-/* } */
-
-/* #privacy-item.screenshare { */
-/*   background-color: #cf5700; */
-/* } */
-
-/* #privacy-item.audio-in { */
-/*   background-color: #1ca000; */
-/* } */
-
-/* #privacy-item.audio-out { */
-/*   background-color: #0069d4; */
 /* } */
 
 /***
