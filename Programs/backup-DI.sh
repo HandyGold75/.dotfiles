@@ -16,7 +16,7 @@ rm -fv "${backupDir}home.tar.gz"
 find ./ -maxdepth 1 -type f,l | tar -czhvf "${backupDir}home.tar.gz" -T -
 
 for d in $(find ./ -maxdepth 1 -type d -printf "%f\n"); do
-    if [[ "./|./.cache" == *"$d"* ]]; then
+    if [[ "./|./.cache|./.wine" == *"$d"* ]]; then
         continue
     fi
 

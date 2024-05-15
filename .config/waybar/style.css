@@ -1,114 +1,40 @@
+/***
+ *     _____                           _ 
+ *    |  __ \                         | |
+ *    | |  \/ ___ _ __   ___ _ __ __ _| |
+ *    | | __ / _ \ '_ \ / _ \ '__/ _` | |
+ *    | |_\ \  __/ | | |  __/ | | (_| | |
+ *     \____/\___|_| |_|\___|_|  \__,_|_|
+ *                                       
+ *                                       
+ */
+
 * {
-  /* `otf-font-awesome` is required to be installed for icons */
-  font-family: "OpenDyslexic", FontAwesome;
+  font-family: "OpenDyslexic", "FontAwesome";
   font-weight: 900;
   font-size: 14px;
-  color: #c0caf5;
+  color: #aaf;
+  background: rgba(0, 0, 0, 0);
 }
 
-/* button { */
-/*   /1* Use box-shadow instead of border so the text isn't offset *1/ */
-/*   box-shadow: inset 0 -3px transparent; */
-/*   /1* Avoid rounded borders under each button name *1/ */
-/*   border: none; */
-/*   border-radius: 0; */
-/* } */
-
-/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
-/*   background: inherit; */
-/*   box-shadow: inset 0 -3px #ffffff; */
-/* } */
-
 tooltip {
+  border-radius: 12px;
   background: #1e1e2e;
 }
 
-/***
- *     _    _ _           _                 _                
- *    | |  | (_)         | |               | |               
- *    | |  | |_ _ __   __| | _____      __ | |__   __ _ _ __ 
- *    | |/\| | | '_ \ / _` |/ _ \ \ /\ / / | '_ \ / _` | '__|
- *    \  /\  / | | | | (_| | (_) \ V  V /  | |_) | (_| | |   
- *     \/  \/|_|_| |_|\__,_|\___/ \_/\_/   |_.__/ \__,_|_|   
- *                                                           
- *
- * https://github.com/Alexays/Waybar/wiki/Module:-Hyprland#window */
-
-#window {
+#tray menu {
   border-radius: 12px;
-  margin: 0 4px;
+  background: #1e1e2e;
 }
 
-window#waybar {
-  background: rgba(21, 22, 80, 0);
-  /* background-color: rgba(43, 48, 59, 0.5); */
-  /* border-bottom: 3px solid rgba(100, 114, 125, 0.5); */
-  /* color: #ffffff; */
-  /* transition-property: background-color; */
-  /* transition-duration: 0.5s; */
+#tray > .passive {
+  -gtk-icon-effect: dim;
 }
 
-/* window#waybar.hidden { */
-/*   opacity: 0.2; */
-/* } */
-
-/*
-window#waybar.empty {
-    background-color: transparent;
+#tray > .needs-attention {
+  -gtk-icon-effect: highlight;
+  background-color: #eb4d4b;
 }
-window#waybar.solo {
-    background-color: #FFFFFF;
-}
-*/
-
-/* window#waybar.termite { */
-/* background-color: #3f3f3f; */
-/* } */
-
-/* window#waybar.chromium { */
-/* background-color: #000000; */
-/* border: none; */
-/* } */
-
-/***
- *     _    _            _                                  
- *    | |  | |          | |                                 
- *    | |  | | ___  _ __| | _____ _ __   __ _  ___ ___  ___ 
- *    | |/\| |/ _ \| '__| |/ / __| '_ \ / _` |/ __/ _ \/ __|
- *    \  /\  / (_) | |  |   <\__ \ |_) | (_| | (_|  __/\__ \
- *     \/  \/ \___/|_|  |_|\_\___/ .__/ \__,_|\___\___||___/
- *                               | |                        
- *                               |_|                        
- * https://github.com/Alexays/Waybar/wiki/Module:-Hyprland#workspaces */
-
-#workspaces {
-  border-radius: 12px;
-  margin-right: 4px;
-}
-
-#workspaces button {
-  padding: 0 10px;
-  border-bottom: 2px solid #000000;
-  margin-bottom: 2px;
-  /* background-color: transparent; */
-  /* color: #ffffff; */
-}
-
-/* #workspaces button:hover { */
-/*   background: rgba(0, 0, 0, 0.2); */
-/* } */
-
-#workspaces button.active {
-  /* background-color: #64727d; */
-  /* box-shadow: inset 0 -3px #ffffff; */
-  border-bottom: 2px solid #7aa2f7;
-  border-radius: 0;
-  margin-bottom: 2px;
-}
-
-/* #workspaces button.urgent { */
-/*   background-color: #eb4d4b; */
-/* } */
 
 /***
  *    ___  ___          _       _           
@@ -121,26 +47,14 @@ window#waybar.solo {
  *                                          
  */
 
-/* /1* If workspaces is the leftmost module, omit left margin *1/ */
-/* .modules-left > widget:first-child > #workspaces { */
-/*   margin-left: 0; */
-/* } */
-
-/* /1* If workspaces is the rightmost module, omit right margin *1/ */
-/* .modules-right > widget:last-child > #workspaces { */
-/*   margin-right: 0; */
-/* } */
-
+#workspaces button,
 #backlight,
 #battery,
-#cpu,
 #clock,
-#disk,
 #keyboard-state,
 #mpris,
-#memory,
 #network,
-#privacy,
+#privacy-item,
 #pulseaudio,
 #temperature,
 #tray,
@@ -150,20 +64,118 @@ window#waybar.solo {
 #custom-quit,
 #custom-lock,
 #custom-reboot {
-  background: rgba(38, 44, 57, 0.7);
-  /* background: rgba(255, 255, 255, 0.7); */
-  padding: 0 12px;
+  background: rgba(34, 34, 34, 0.75);
+  padding: 0 10px;
   border: 0;
 }
 
-#backlight {
-  color: #f8efe6;
+#workspaces button:hover,
+#backlight:hover,
+#battery:hover,
+#clock:hover,
+#keyboard-state:hover,
+#mpris:hover,
+#network:hover,
+#privacy-item:hover,
+#pulseaudio:hover,
+#temperature:hover,
+#wireplumber:hover,
+#custom-arch:hover,
+#custom-power:hover,
+#custom-quit:hover,
+#custom-lock:hover,
+#custom-reboot:hover {
+  background: rgba(68, 74, 87, 1);
 }
 
-#battery {
-  color: #c2d5a8;
+/***
+ *    ___  ___          _       _             _           __ _   
+ *    |  \/  |         | |     | |           | |         / _| |  
+ *    | .  . | ___   __| |_   _| | ___  ___  | |     ___| |_| |_ 
+ *    | |\/| |/ _ \ / _` | | | | |/ _ \/ __| | |    / _ \  _| __|
+ *    | |  | | (_) | (_| | |_| | |  __/\__ \ | |___|  __/ | | |_ 
+ *    \_|  |_/\___/ \__,_|\__,_|_|\___||___/ \_____/\___|_|  \__|
+ *                                                               
+ *                                                               
+ */
+
+#custom-arch {
+  border-radius: 12px;
+}
+
+#custom-power {
+  border-radius: 12px 0 0 12px;
+  margin-left: 5px;
+}
+
+#custom-reboot {
   border-radius: 0 12px 12px 0;
 }
+
+#privacy-item {
+  border-radius: 12px;
+}
+
+#workspaces {
+  margin: 0 5px;
+}
+
+#workspaces button {
+  background: rgba(0, 0, 0, 0);
+  border-radius: 12px;
+}
+
+#workspaces button.urgent {
+  background-color: #eb4d4b;
+}
+
+#mpris {
+  border-radius: 12px;
+  margin-right: 5px;
+}
+
+/***
+ *     _____                         _____ _        _       
+ *    |  __ \                       /  ___| |      | |      
+ *    | |  \/_ __ ___  _   _ _ __   \ `--.| |_ __ _| |_ ___ 
+ *    | | __| '__/ _ \| | | | '_ \   `--. \ __/ _` | __/ __|
+ *    | |_\ \ | | (_) | |_| | |_) | /\__/ / || (_| | |_\__ \
+ *     \____/_|  \___/ \__,_| .__/  \____/ \__\__,_|\__|___/
+ *                          | |                             
+ *                          |_|                             
+ */
+
+#disk,
+#cpu,
+#memory {
+  background: rgba(0, 0, 0, 0);
+  padding: 0 10px;
+  border: 0;
+}
+
+#stats {
+  background: rgba(34, 34, 34, 0.75);
+  border-radius: 12px;
+}
+
+#stats:hover {
+  background: rgba(68, 74, 87, 1);
+}
+
+#cpu,
+#memorys {
+  border-left: 2px solid rgba(0, 0, 0, 1);
+}
+
+/* -------- */
+
+/* #backlight { */
+/*   color: #f8efe6; */
+/* } */
+
+/* #battery { */
+/*   color: #c2d5a8; */
+/* } */
 
 #battery.critical {
   color: white;
@@ -187,102 +199,48 @@ window#waybar.solo {
   animation-direction: alternate;
 }
 
-/* #cpu { */
-/*   color: #e3a7c0; */
-/* } */
-
 #clock {
   border-radius: 12px;
 }
 
-/* #disk { */
-/*   color: #964b00; */
+/* #keyboard-state { */
+/*   color: #000000; */
 /* } */
 
-#keyboard-state {
-  /* background: #97e1ad; */
-  color: #000000;
-  /* padding: 0 0px; */
-  /* margin: 0 5px; */
-  /* min-width: 16px; */
-}
-
-#keyboard-state > label {
-  padding: 0 5px;
-}
-
-#keyboard-state > label.locked {
-  background: rgba(0, 0, 0, 0.2);
-}
-
-/* #memory { */
-/*   color: #9b59b6; */
+/* #keyboard-state > label { */
+/*   padding: 0 5px; */
 /* } */
 
-#network {
-  color: #f0d5ba;
-}
-
-#network.disconnected {
-  color: #f53c3c;
-}
-
-/* #privacy { */
-/*   padding: 0; */
+/* #keyboard-state > label.locked { */
+/*   background: rgba(0, 0, 0, 0.2); */
 /* } */
 
-#privacy-item {
-  /* padding: 0 5px; */
-  color: white;
-}
+/* #network { */
+/*   color: #f0d5ba; */
+/* } */
 
-#privacy-item.screenshare {
-  color: #cf5700;
-}
-
-#privacy-item.audio-in {
-  color: #1ca000;
-}
-
-#privacy-item.audio-out {
-  color: #0069d4;
-}
+/* #network.disconnected { */
+/*   color: #f53c3c; */
+/* } */
 
 #pulseaudio {
   border-radius: 12px 0 0 12px;
-  color: #bad5f0;
+  /* color: #bad5f0; */
 }
 
-#pulseaudio:hover {
-  background-color: #a37800;
-}
+/* #pulseaudio.muted { */
+/*   color: #90b1b1; */
+/* } */
 
-#pulseaudio.muted {
-  color: #90b1b1;
-}
+/* #temperature { */
+/*   color: #f0932b; */
+/* } */
 
-#temperature {
-  color: #f0932b;
-}
-
-#temperature.critical {
-  color: #eb4d4b;
-}
+/* #temperature.critical { */
+/*   color: #eb4d4b; */
+/* } */
 
 /* --------------------------------------------------- */
-
-#tray {
-  border-radius: 12px;
-}
-
-#tray > .passive {
-  -gtk-icon-effect: dim;
-}
-
-#tray > .needs-attention {
-  -gtk-icon-effect: highlight;
-  background-color: #eb4d4b;
-}
 
 /* label:focus { */
 /*   background-color: #000000; */
@@ -296,40 +254,3 @@ window#waybar.solo {
 /* #wireplumber.muted { */
 /*   background-color: #f53c3c; */
 /* } */
-
-/***
- *     _____           _                  
- *    /  __ \         | |                 
- *    | /  \/_   _ ___| |_ ___  _ __ ___  
- *    | |   | | | / __| __/ _ \| '_ ` _ \ 
- *    | \__/\ |_| \__ \ || (_) | | | | | |
- *     \____/\__,_|___/\__\___/|_| |_| |_|
- *                                        
- *                                        
- */
-
-#custom-arch {
-  border-radius: 12px;
-}
-
-#custom-power {
-  margin-left: 5px;
-  border-radius: 12px 0 0 12px;
-}
-
-#custom-reboot {
-  border-radius: 0 12px 12px 0;
-}
-
-#custom-power:hover {
-  background: rgba(68, 74, 87, 1);
-}
-#custom-quit:hover {
-  background: rgba(68, 74, 87, 1);
-}
-#custom-lock:hover {
-  background: rgba(68, 74, 87, 1);
-}
-#custom-reboot:hover {
-  background: rgba(68, 74, 87, 1);
-}
