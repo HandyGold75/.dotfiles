@@ -1,0 +1,13 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<!-- Created using Krita: https://krita.org -->
+<svg xmlns="http://www.w3.org/2000/svg" 
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    xmlns:krita="http://krita.org/namespaces/svg/krita"
+    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+    width="20.16pt"
+    height="20.16pt"
+    viewBox="0 0 20.16 20.16">
+<defs/>
+<path id="shape0" transform="matrix(1.00000005341244 0 0 1.00000005341244 4.50725028194621 3.4909095320956)" fill="none" stroke="#ffffff" stroke-width="0.999876746748237" stroke-linecap="round" stroke-linejoin="round" d="M0 0L10.9908 0.0399054L11.0065 14.9912L0.00781838 14.9912Z" sodipodi:nodetypes="ccccc"/><rect id="shape1" transform="matrix(1.00000005341244 0 0 1.00000005341244 6.99913760107866 0.999876800154095)" fill="#ffffff" fill-rule="evenodd" stroke-opacity="0" stroke="#000000" stroke-width="0" stroke-linecap="square" stroke-linejoin="bevel" width="5.99926048048942" height="2.99963024024471"/><rect id="shape2" transform="matrix(1.00000005341244 0 0 1.00000005341244 5.99926080092456 9.99876800154094)" fill="#ffffff" fill-rule="evenodd" stroke-opacity="0" stroke="#000000" stroke-width="0" stroke-linecap="square" stroke-linejoin="bevel" width="7.9990139739859" height="6.99913722723765"/><path id="shape01" transform="matrix(0.999999903361723 0 0 0.999999903361723 5.98948701804389 5.04)" fill="#ffea00" stroke="#000000" stroke-width="0.72" stroke-linecap="round" stroke-linejoin="round" d="M6.50828 0.0513393C6.65819 0.138965 6.72818 0.319368 6.67711 0.486312L5.33769 4.87502L7.80901 4.87502C7.95747 4.87497 8.09171 4.96393 8.15055 5.10135C8.2094 5.23877 8.18155 5.39832 8.07973 5.50725L2.13011 11.8819C2.01158 12.009 1.82175 12.0369 1.6722 11.9491C1.52264 11.8613 1.45289 11.6811 1.50391 11.5144L2.84333 7.12488L0.372008 7.12488C0.223569 7.12495 0.0893167 7.03597 0.0304737 6.89854C-0.0283691 6.76112 -0.000527926 6.60158 0.1013 6.49268L6.05089 0.118085C6.16929 -0.00884531 6.35881 -0.0368098 6.50828 0.0505893Z" sodipodi:nodetypes="cccccccccccccccc"/>
+</svg>

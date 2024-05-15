@@ -1,0 +1,141 @@
+#  ______                 _
+#  |  _  \               | |
+#  | | | |_   _ _ __  ___| |_
+#  | | | | | | | '_ \/ __| __|
+#  | |/ /| |_| | | | \__ \ |_
+#  |___/  \__,_|_| |_|___/\__|
+#
+# https://github.com/dunst-project/dunst/blob/master/docs/dunst.5.pod
+
+[global]
+    follow = mouse
+
+    geometry = "300x150-1130+25"
+    width = (100, 300)
+    height = (50, 150)
+    origin = top-center
+    offset = (0, 25)
+
+    notification_limit = 10
+
+    progress_bar_corner_radius = 10
+    progress_bar_min_width = 100
+    progress_bar_max_width = 300
+
+    icon_corner_radius = 10
+
+    gap_size = 20
+    padding = 10
+    text_icon_padding = 10
+
+    frame_width = 3
+    frame_color = "#000000"
+    separator_color = frame
+    idle_threshold = 180
+
+    font = OpenDyslexic 14
+    markup = full
+    format = "<b>%s</b> - <i>%a %p</i>\n%b"
+    alignment = center
+    vertical_alignment = center
+    show_age_threshold = 180
+    ellipsize = middle
+
+    icon_position = left
+    min_icon_size = 0
+    max_icon_size = 128
+    icon_theme = breeze-dark
+    icon_path = "~/.config/dunst/icons/:/usr/share/icons/breeze-dark/status/:/usr/share/icons/breeze-dark/devices/"
+    enable_recursive_icon_lookup = true
+
+    sticky_history = no
+    history_length = 10
+
+    dmenu = /usr/bin/dmenu -p dunst:
+    browser = /usr/bin/firefox
+    always_run_script = true
+    title = Dunst
+    class = Dunst
+    corner_radius = 10
+    ignore_dbusclose = false
+    force_xwayland = false
+    force_xinerama = false
+
+    mouse_left_click = open_url, do_action, close_current
+    mouse_middle_click = close_all
+    mouse_right_click = close_current
+
+    startup_notification = false
+    # Can be one of the following values:
+    #  crit: Critical features. Dunst aborts
+    #  warn: Only non-fatal warnings
+    #  mesg: Important Messages
+    #  info: all unimportant stuff
+    # debug: all less than unimportant stuff
+    verbosity = mesg
+
+
+[experimental]
+    per_monitor_dpi = false
+
+[urgency_low]
+    background = "#222222"
+    foreground = "#888888"
+    timeout = 10
+    icon = ~/.config/dunst/icons/low.svg
+
+[urgency_normal]
+    background = "#285577"
+    foreground = "#ffffff"
+    timeout = 10
+    icon = ~/.config/dunst/icons/normal.svg
+
+[urgency_critical]
+    background = "#FF0000"
+    foreground = "#ffffff"
+    # frame_color = "#ff0000"
+    timeout = 0
+    icon = ~/.config/dunst/icons/urgent.svg
+
+[transient_disable]
+    match_transient = yes
+	set_transient = no
+
+[transient_history_ignore]
+    match_transient = yes
+	history_ignore = yes
+
+[fullscreen_delay_everything]
+	fullscreen = show
+
+[dl]
+	appname = "dl"
+	background = "#ad8ebc"
+	foreground = "#ffffff"
+
+[dock]
+	appname = "dock"
+	background = "#f1f1f1"
+	foreground = "#2d2d2d"
+	timeout = 0
+
+[info]
+	appname = "info"
+	background = "#9dbc8e"
+	foreground = "#ffffff"
+
+[info2]
+	appname = "info2"
+	background = "#5cacee"
+	foreground = "#ffffff"
+
+[mpv]
+	appname = "mpv"
+	background = "#2d2d2d"
+	foreground = "#ffffff"
+
+[volume]
+    appname = "volume"
+    progress_bar = true
+    progress_bar_frame_width = 0
+    set_stack_tag = "volume"
