@@ -26,4 +26,3 @@ done
 for job in $(jobs -p); do
     wait "$job"
 done
-
