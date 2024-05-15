@@ -1,0 +1,23 @@
+return {
+	{
+		"ThePrimeagen/harpoon",
+		branch = "harpoon2",
+		commit = "e76cb03", -- https://github.com/ThePrimeagen/harpoon/issues/577
+		dependencies = { "nvim-lua/plenary.nvim", { "nvim-telescope/telescope.nvim", name = "telescope" } },
+		config = function()
+			require("harpoon").setup({
+				settings = {
+					sync_on_ui_close = true,
+				},
+			})
+		end,
+		keys = {
+			{ "<leader>a", ":lua require('harpoon'):list():add()<CR>", { mode = "n", desc = "Open harpoon window" } },
+			{
+				"<leader>fm",
+				":lua local file_paths = {} for _, item in ipairs(require('harpoon'):list().items) do table.insert(file_paths, item.value) end require('telescope.pickers').new({}, { prompt_title = 'Harpoon', finder = require('telescope.finders').new_table({ results = file_paths, }), previewer = require('telescope.config').values.file_previewer({}), sorter = require('telescope.config').values.generic_sorter({}), }):find()<CR>",
+				{ mode = "n", desc = "Open harpoon window" },
+			},
+		},
+	},
+}

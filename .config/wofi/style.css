@@ -1,0 +1,32 @@
+/***
+ *     _    _        __ _   _____ _         _      
+ *    | |  | |      / _(_) /  ___| |       | |     
+ *    | |  | | ___ | |_ _  \ `--.| |_ _   _| | ___ 
+ *    | |/\| |/ _ \|  _| |  `--. \ __| | | | |/ _ \
+ *    \  /\  / (_) | | | | /\__/ / |_| |_| | |  __/
+ *     \/  \/ \___/|_| |_| \____/ \__|\__, |_|\___|
+ *                                     __/ |       
+ *                                    |___/        
+ * https://cloudninja.pw/docs/wofi.html 
+ * https://man.archlinux.org/man/wofi.7.en */
+
+#window {
+  border-radius: 25px;
+}
+
+#outer-box {
+  border-radius: 25px;
+}
+
+#input {
+  border-radius: 25px;
+}
+
+#scroll {
+  border-radius: 25px;
+}
+
+#inner-box {
+  border-radius: 25px;
+  padding: 0px 15px 15px 15px;
+}
