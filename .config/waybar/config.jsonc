@@ -15,10 +15,6 @@
     "network",
     "keyboard-state",
     "group/stats",
-    // "cpu",
-    // "group/memorys",
-    // "group/disks",
-    "temperature",
     "battery",
     "backlight",
     "tray",
@@ -56,27 +52,32 @@
   "custom/arch": {
     // "format": "󰣇",
     "format": "",
+    "tooltip": true,
+    "tooltip-format": "",
     "on-click": "wofi --show drun",
-    "tooltip": false,
   },
   "custom/power": {
     "format": "",
-    "tooltip": false,
+    "tooltip": true,
+    "tooltip-format": "power",
     "on-click": "shutdown now",
   },
   "custom/quit": {
     "format": "",
-    "tooltip": false,
+    "tooltip": true,
+    "tooltip-format": "quit",
     "on-click": "hyprctl dispatch exit",
   },
   "custom/lock": {
     "format": "󰍁",
-    "tooltip": false,
+    "tooltip": true,
+    "tooltip-format": "lock",
     "on-click": "pidof hyprlock || hyprlock",
   },
   "custom/reboot": {
     "format": "",
-    "tooltip": false,
+    "tooltip": true,
+    "tooltip-format": "reboot",
     "on-click": "reboot",
   },
 
@@ -86,9 +87,7 @@
   },
 
   "systemd-failed-units": {
-    "hide-on-ok": true,
     "format": "✗ {nr_failed}",
-    "format-ok": "✓",
   },
 
   "hyprland/workspaces": {
@@ -234,14 +233,6 @@
     "format-icons": ["", "", "", "", ""],
   },
 
-  "temperature": {
-    "thermal-zone": 0,
-    "critical-threshold": 80,
-    "format": "{temperatureC}°C {icon}",
-    "format-critical": "{temperatureC}°C ",
-    "format-icons": ["", "", "", "", ""],
-  },
-
   "group/stats": {
     "orientation": "inherit",
     "modules": ["cpu", "group/disks", "group/memorys"],
@@ -347,7 +338,16 @@
   },
 
   "tray": {
+    "show-passive-items": true,
     "icon-size": 16,
     "spacing": 10,
+  },
+
+  "upower": {
+    "icon-size": 16,
+    "hide-if-empty": true,
+    "format": "{percentage}",
+    "tooltip": true,
+    "tooltip-spacing": 16,
   },
 }

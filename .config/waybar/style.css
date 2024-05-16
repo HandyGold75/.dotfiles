@@ -22,20 +22,6 @@ tooltip {
   background: #1e1e2e;
 }
 
-#tray menu {
-  border-radius: 12px;
-  background: #1e1e2e;
-}
-
-#tray > .passive {
-  -gtk-icon-effect: dim;
-}
-
-#tray > .needs-attention {
-  -gtk-icon-effect: highlight;
-  background-color: #eb4d4b;
-}
-
 /***
  *    ___  ___          _       _           
  *    |  \/  |         | |     | |          
@@ -56,7 +42,6 @@ tooltip {
 #network,
 #privacy-item,
 #pulseaudio,
-#temperature,
 #tray,
 #wireplumber,
 #custom-arch,
@@ -78,7 +63,6 @@ tooltip {
 #network:hover,
 #privacy-item:hover,
 #pulseaudio:hover,
-#temperature:hover,
 #wireplumber:hover,
 #custom-arch:hover,
 #custom-power:hover,
@@ -135,14 +119,29 @@ tooltip {
 }
 
 /***
- *     _____                         _____ _        _       
- *    |  __ \                       /  ___| |      | |      
- *    | |  \/_ __ ___  _   _ _ __   \ `--.| |_ __ _| |_ ___ 
- *    | | __| '__/ _ \| | | | '_ \   `--. \ __/ _` | __/ __|
- *    | |_\ \ | | (_) | |_| | |_) | /\__/ / || (_| | |_\__ \
- *     \____/_|  \___/ \__,_| .__/  \____/ \__\__,_|\__|___/
- *                          | |                             
- *                          |_|                             
+ *    ___  ___          _       _             _____            _            
+ *    |  \/  |         | |     | |           /  __ \          | |           
+ *    | .  . | ___   __| |_   _| | ___  ___  | /  \/ ___ _ __ | |_ ___ _ __ 
+ *    | |\/| |/ _ \ / _` | | | | |/ _ \/ __| | |    / _ \ '_ \| __/ _ \ '__|
+ *    | |  | | (_) | (_| | |_| | |  __/\__ \ | \__/\  __/ | | | ||  __/ |   
+ *    \_|  |_/\___/ \__,_|\__,_|_|\___||___/  \____/\___|_| |_|\__\___|_|   
+ *                                                                          
+ *                                                                          
+ */
+
+#clock {
+  border-radius: 12px;
+}
+
+/***
+ *    ___  ___          _       _            ______ _       _     _   
+ *    |  \/  |         | |     | |           | ___ (_)     | |   | |  
+ *    | .  . | ___   __| |_   _| | ___  ___  | |_/ /_  __ _| |__ | |_ 
+ *    | |\/| |/ _ \ / _` | | | | |/ _ \/ __| |    /| |/ _` | '_ \| __|
+ *    | |  | | (_) | (_| | |_| | |  __/\__ \ | |\ \| | (_| | | | | |_ 
+ *    \_|  |_/\___/ \__,_|\__,_|_|\___||___/ \_| \_|_|\__, |_| |_|\__|
+ *                                                     __/ |          
+ *                                                    |___/           
  */
 
 #disk,
@@ -167,16 +166,6 @@ tooltip {
   border-left: 2px solid rgba(0, 0, 0, 1);
 }
 
-/* -------- */
-
-/* #backlight { */
-/*   color: #f8efe6; */
-/* } */
-
-/* #battery { */
-/*   color: #c2d5a8; */
-/* } */
-
 #battery.critical {
   color: white;
   background: #f7768e;
@@ -199,10 +188,6 @@ tooltip {
   animation-direction: alternate;
 }
 
-#clock {
-  border-radius: 12px;
-}
-
 /* #keyboard-state { */
 /*   color: #000000; */
 /* } */
@@ -215,42 +200,33 @@ tooltip {
 /*   background: rgba(0, 0, 0, 0.2); */
 /* } */
 
-/* #network { */
-/*   color: #f0d5ba; */
-/* } */
-
-/* #network.disconnected { */
-/*   color: #f53c3c; */
-/* } */
+#network.disconnected {
+  color: #eb4d4b;
+}
 
 #pulseaudio {
   border-radius: 12px 0 0 12px;
-  /* color: #bad5f0; */
 }
 
-/* #pulseaudio.muted { */
-/*   color: #90b1b1; */
-/* } */
+#pulseaudio.muted {
+  color: #eb4d4b;
+}
 
-/* #temperature { */
-/*   color: #f0932b; */
-/* } */
+#tray menu {
+  border-radius: 12px;
+  background: rgba(34, 34, 34, 0.75);
+}
 
-/* #temperature.critical { */
-/*   color: #eb4d4b; */
-/* } */
+#tray > .passive {
+  border-radius: 12px;
+  color: #aaa;
+}
 
-/* --------------------------------------------------- */
+#tray > .needs-attention {
+  border-radius: 12px;
+  color: #eb4d4b;
+}
 
-/* label:focus { */
-/*   background-color: #000000; */
-/* } */
-
-/* #wireplumber { */
-/*   background-color: #fff0f5; */
-/*   color: #000000; */
-/* } */
-
-/* #wireplumber.muted { */
-/*   background-color: #f53c3c; */
-/* } */
+#wireplumber.muted {
+  color: #eb4d4b;
+}
