@@ -2,7 +2,6 @@ local awful = require("awful")
 local wibox = require("wibox")
 local beautiful = require("beautiful")
 local vicious = require("vicious")
-local naughty = require("naughty")
 local watch = require("awful.widget.watch")
 local gears = require("gears")
 local spawn = require("awful.spawn")
@@ -134,21 +133,7 @@ performancett:add_to_object(performance_widget)
 
 local function update(widget)
 	local pers = tonumber(run("cat /sys/class/power_supply/BAT0/capacity"))
-
-	if pers <= 20 then
-		naughty.notify({
-			icon = beautiful.widget_spaceman,
-			icon_size = 100,
-			text = "Battery is dying",
-			title = "Houston, we have a problem",
-			timeout = 25, -- show the warning for a longer time
-			hover_timeout = 0.5,
-			position = "bottom_right",
-			bg = "#F06060",
-			fg = "#EEE9EF",
-			width = 350,
-		})
-	end
+	if pers <= 20 then awful.spawn.with_shell("dunstify -a battery 'Houston, we have a problem' 'Battery is dying'") end
 
 	cap = (pers / 100) * 12
 	if cap - math.floor(cap) >= 0.5 then
@@ -195,7 +180,6 @@ awful.widget.calendar_popup.month():attach(calendar_widget, "tr")
 
 local function storage_bar_widget_worker(user_args)
 	local args = user_args or {}
-
 	local config = {}
 
 	config.mounts = { "/" }
@@ -388,11 +372,7 @@ local function apt_widget_worker(user_args)
 	local function rebuild_widget(containers, errors, _, _)
 		local to_update = {}
 		if errors ~= "" then
-			naughty.notify({
-				preset = naughty.config.presets.critical,
-				title = "APT Widget",
-				text = errors,
-			})
+			awful.spawn.with_shell("dunstify -u critical 'APT Widget' '" .. tostring(errors) .. "'")
 			return
 		end
 
@@ -608,11 +588,7 @@ local function apt_widget_worker(user_args)
 			bg = beautiful.bg_normal,
 			widget = wibox.container.background,
 		})
-		wibox_popup:setup({
-			header_row,
-			rows,
-			layout = wibox.layout.fixed.vertical,
-		})
+		wibox_popup:setup({ header_row, rows, layout = wibox.layout.fixed.vertical })
 	end
 
 	apt_widget_widget:buttons(gears.table.join(awful.button({}, 1, function()
@@ -672,9 +648,7 @@ local popup = awful.popup({
 
 local function logout_menu_widget_worker(user_args)
 	local rows = { layout = wibox.layout.fixed.vertical }
-
 	local args = user_args or {}
-
 	local font = args.font or beautiful.font
 
 	local onlogout = args.onlogout or function() awesome.quit() end

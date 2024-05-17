@@ -130,7 +130,11 @@ tooltip {
  */
 
 #clock {
-  border-radius: 12px;
+  border-radius: 12px 0 0 12px;
+}
+
+#user {
+  border-radius: 0 12px 12px 0;
 }
 
 /***
@@ -144,26 +148,24 @@ tooltip {
  *                                                    |___/           
  */
 
-#disk,
-#cpu,
-#memory {
-  background: rgba(0, 0, 0, 0);
-  padding: 0 10px;
-  border: 0;
+#pulseaudio {
+  border-radius: 12px 0 0 12px;
 }
 
-#stats {
-  background: rgba(34, 34, 34, 0.75);
-  border-radius: 12px;
+#pulseaudio.muted {
+  color: #eb4d4b;
 }
 
-#stats:hover {
-  background: rgba(68, 74, 87, 1);
+#network.disconnected {
+  color: #eb4d4b;
 }
 
-#cpu,
-#memorys {
-  border-left: 2px solid rgba(0, 0, 0, 1);
+#keyboard-state > label {
+  padding: 0 5px;
+}
+
+#keyboard-state > label.locked {
+  background: rgba(0, 0, 0, 0.2);
 }
 
 #battery.critical {
@@ -188,28 +190,26 @@ tooltip {
   animation-direction: alternate;
 }
 
-/* #keyboard-state { */
-/*   color: #000000; */
-/* } */
-
-/* #keyboard-state > label { */
-/*   padding: 0 5px; */
-/* } */
-
-/* #keyboard-state > label.locked { */
-/*   background: rgba(0, 0, 0, 0.2); */
-/* } */
-
-#network.disconnected {
-  color: #eb4d4b;
+#stats {
+  background: rgba(34, 34, 34, 0.75);
+  border-radius: 12px;
 }
 
-#pulseaudio {
-  border-radius: 12px 0 0 12px;
+#stats:hover {
+  background: rgba(68, 74, 87, 1);
 }
 
-#pulseaudio.muted {
-  color: #eb4d4b;
+#disk,
+#cpu,
+#memory {
+  background: rgba(0, 0, 0, 0);
+  padding: 0 10px;
+  border: 0;
+}
+
+#cpu,
+#memorys {
+  border-left: 2px solid rgba(0, 0, 0, 1);
 }
 
 #tray menu {
@@ -224,9 +224,5 @@ tooltip {
 
 #tray > .needs-attention {
   border-radius: 12px;
-  color: #eb4d4b;
-}
-
-#wireplumber.muted {
   color: #eb4d4b;
 }

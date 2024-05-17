@@ -18,6 +18,7 @@ local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup")
 require("awful.hotkeys_popup.keys")
 require("wi")
+package.loaded["naughty.dbus"] = {}
 
 --   _____                      _   _                 _ _ _
 --  |  ___|                    | | | |               | | (_)
@@ -450,16 +451,15 @@ client.connect_signal("unfocus", function(c)
 	c.opacity = 0.5
 end)
 
---   _____ _
---  |_   _(_)
---    | |  _ _ __ ___   ___ _ __ ___
---    | | | | '_ ` _ \ / _ \ '__/ __|
---    | | | | | | | | |  __/ |  \__ \
---    \_/ |_|_| |_| |_|\___|_|  |___/
---
---
+--   _    _       _ _
+--  | |  | |     | | |
+--  | |  | | __ _| | |_ __   __ _ _ __   ___ _ __
+--  | |/\| |/ _` | | | '_ \ / _` | '_ \ / _ \ '__|
+--  \  /\  / (_| | | | |_) | (_| | |_) |  __/ |
+--   \/  \/ \__,_|_|_| .__/ \__,_| .__/ \___|_|
+--                   | |         | |
+--                   |_|         |_|
 
--- Wallpaper
 local function scandir(directory, filter)
 	local i, t, popen = 0, {}, io.popen
 	if not filter then filter = function(s) return true end end
@@ -497,22 +497,6 @@ end
 
 wp_timer:start()
 
--- Battery
-local function trim(s) return s:find("^%s*$") and "" or s:match("^%s*(.*%S)") end
-
-local function bat_notification()
-	local f_capacity = assert(io.open("/sys/class/power_supply/BAT0/capacity", "r"))
-	local f_status = assert(io.open("/sys/class/power_supply/BAT0/status", "r"))
-	local bat_capacity = tonumber(f_capacity:read("*all"))
-	local bat_status = trim(f_status:read("*all"))
-
-	if bat_capacity <= 20 and bat_status == "Discharging" then naughty.notify({ title = "Battery Warning", text = "Battery low! " .. bat_capacity .. "%" .. " left!", fg = "#ff0000", bg = "#deb887", timeout = 15, position = "bottom_left" }) end
-end
-
-local battimer = gears.timer({ timeout = 120 })
-battimer:connect_signal("timeout", bat_notification)
-battimer:start()
-
 --   _____            _
 --  |  __ \          | |
 --  | |  \/ __ _ _ __| |__   __ _  __ _  ___
@@ -537,6 +521,4 @@ gears.timer({
 --
 --
 
-awful.util.spawn("start-pulseaudio-x11")
-awful.util.spawn("nm-applet")
 awful.spawn.with_shell(os.getenv("HOME") .. "/.config/awesome/scripts/startup.sh")

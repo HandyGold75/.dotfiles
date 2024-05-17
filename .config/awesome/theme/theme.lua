@@ -56,11 +56,6 @@ theme.border_widget = "#3F3F3F"
 --
 --
 
--- [taglist|tasklist]_[bg|fg]_[focus|urgent]
--- titlebar_[bg|fg]_[normal|focus]
--- tooltip_[font|opacity|fg_color|bg_color|border_width|border_color]
--- mouse_finder_[color|timeout|animate_timeout|radius|factor]
-
 theme.taglist_squares_sel = theme_path .. "menus/linef.svg"
 theme.taglist_squares_unsel = theme_path .. "menus/line.svg"
 
@@ -126,8 +121,6 @@ theme.layout_dwindle = theme_path .. "layouts/dwindle.svg"
 --   \/  \/|_|\__,_|\__, |\___|\__|___/
 --                   __/ |
 --                  |___/
-
-theme.widget_spaceman = theme_path .. "widgets/spaceman.jpg"
 
 theme.widget_dirbattery = theme_path .. "widgets/battery"
 theme.widget_dirapt = theme_path .. "widgets/apt"
