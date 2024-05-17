@@ -9,21 +9,17 @@
     "hyprland/workspaces",
     "mpris",
   ],
-  "modules-center": ["clock"],
+  "modules-center": ["clock", "user"],
   "modules-right": [
     "pulseaudio",
     "network",
     "keyboard-state",
-    "group/stats",
-    "battery",
     "backlight",
+    "battery",
+    "upower",
+    "group/stats",
     "tray",
   ],
-
-  // "hyprland/window": {
-  //   "max-length": 200,
-  //   "separate-outputs": true,
-  // },
 
   //  ___  ___          _       _             _           __ _
   //  |  \/  |         | |     | |           | |         / _| |
@@ -155,6 +151,13 @@
     },
   },
 
+  "user": {
+    "format": "{user} {work_H}:{work_M} ",
+    "height": 16,
+    "width": 16,
+    "icon": true,
+  },
+
   //  ___  ___          _       _            ______ _       _     _
   //  |  \/  |         | |     | |           | ___ (_)     | |   | |
   //  | .  . | ___   __| |_   _| | ___  ___  | |_/ /_  __ _| |__ | |_
@@ -163,29 +166,6 @@
   //  \_|  |_/\___/ \__,_|\__,_|_|\___||___/ \_| \_|_|\__, |_| |_|\__|
   //                                                   __/ |
   //                                                  |___/
-
-  "keyboard-state": {
-    "numlock": true,
-    "capslock": true,
-    "format": "{name} {icon}",
-    "format-icons": {
-      "locked": "",
-      "unlocked": "",
-    },
-  },
-
-  "network": {
-    "format": "{bandwidthUpBytes}  {bandwidthDownBytes}  ",
-    "format-wifi": "{bandwidthUpBytes}  {bandwidthDownBytes}  ",
-    "format-ethernet": "{bandwidthUpBytes}  {bandwidthDownBytes}  ",
-    "format-linked": "{bandwidthUpBytes}  {bandwidthDownBytes}  ",
-    "format-disconnected": "{bandwidthUpBytes}  {bandwidthDownBytes}  ⚠",
-
-    "tooltip-format": "{ifname} via {gwaddr} ",
-    "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
-    "tooltip-format-ethernet": "{ipaddr}/{cidr} ",
-    "tooltip-format-disconnected": "{ifname} (No IP) ",
-  },
 
   "pulseaudio": {
     "format": "{volume}% {icon} {format_source}",
@@ -211,8 +191,30 @@
     "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%-",
   },
 
+  "network": {
+    "format": "{bandwidthUpBytes}  {bandwidthDownBytes}  ",
+    "format-wifi": "{bandwidthUpBytes}  {bandwidthDownBytes}  ",
+    "format-ethernet": "{bandwidthUpBytes}  {bandwidthDownBytes}  ",
+    "format-linked": "{bandwidthUpBytes}  {bandwidthDownBytes}  ",
+    "format-disconnected": "{bandwidthUpBytes}  {bandwidthDownBytes}  ⚠",
+    "tooltip-format": "{ifname} via {gwaddr} ",
+    "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
+    "tooltip-format-ethernet": "{ipaddr}/{cidr} ",
+    "tooltip-format-disconnected": "{ifname} (No IP) ",
+  },
+
+  "keyboard-state": {
+    "numlock": true,
+    "capslock": true,
+    "format": "{name} {icon}",
+    "format-icons": {
+      "locked": "",
+      "unlocked": "",
+    },
+  },
+
   "backlight": {
-    // "device": "intel_backlight",
+    "device": "intel_backlight",
     "format": "{percent}% {icon}",
     "format-icons": ["", "", "", "", "", "", "", "", ""],
   },
@@ -231,6 +233,14 @@
     "format-charging": "{capacity}% ",
     "format-plugged": "{capacity}% ",
     "format-icons": ["", "", "", "", ""],
+  },
+
+  "upower": {
+    "icon-size": 16,
+    "hide-if-empty": true,
+    "format": "{percentage}",
+    "tooltip": true,
+    "tooltip-spacing": 16,
   },
 
   "group/stats": {
@@ -280,7 +290,6 @@
     "tooltip": true,
     "tooltip-format": "{swapUsed:0.1f}G/{swapTotal:0.1f}G ",
   },
-
   "group/disks": {
     "orientation": "inherit",
     "modules": [
@@ -341,13 +350,5 @@
     "show-passive-items": true,
     "icon-size": 16,
     "spacing": 10,
-  },
-
-  "upower": {
-    "icon-size": 16,
-    "hide-if-empty": true,
-    "format": "{percentage}",
-    "tooltip": true,
-    "tooltip-spacing": 16,
   },
 }
