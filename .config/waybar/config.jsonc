@@ -13,10 +13,11 @@
   "modules-right": [
     "pulseaudio",
     "network",
+
     "keyboard-state",
     "backlight",
     "battery",
-    "upower",
+
     "group/stats",
     "tray",
   ],
@@ -156,6 +157,7 @@
     "height": 16,
     "width": 16,
     "icon": true,
+    "open-on-click": true,
   },
 
   //  ___  ___          _       _            ______ _       _     _
@@ -201,6 +203,7 @@
     "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
     "tooltip-format-ethernet": "{ipaddr}/{cidr} ",
     "tooltip-format-disconnected": "{ifname} (No IP) ",
+    "on-click": "terminator -e 'ip a; read -sn 1 -p \"Press any key to quit.\"'",
   },
 
   "keyboard-state": {
@@ -233,14 +236,6 @@
     "format-charging": "{capacity}% ",
     "format-plugged": "{capacity}% ",
     "format-icons": ["", "", "", "", ""],
-  },
-
-  "upower": {
-    "icon-size": 16,
-    "hide-if-empty": true,
-    "format": "{percentage}",
-    "tooltip": true,
-    "tooltip-spacing": 16,
   },
 
   "group/stats": {

@@ -33,42 +33,48 @@ tooltip {
  *                                          
  */
 
-#workspaces button,
-#backlight,
-#battery,
-#clock,
-#keyboard-state,
-#mpris,
-#network,
-#privacy-item,
-#pulseaudio,
-#tray,
-#wireplumber,
 #custom-arch,
 #custom-power,
 #custom-quit,
 #custom-lock,
-#custom-reboot {
+#custom-reboot,
+#privacy-item,
+#systemd-failed-units,
+#workspaces button,
+#mpris,
+#clock,
+#user,
+#pulseaudio,
+#network,
+#keyboard-state,
+#backlight,
+#battery,
+#disk,
+#cpu,
+#memory,
+#tray {
   background: rgba(34, 34, 34, 0.75);
   padding: 0 10px;
   border: 0;
 }
 
-#workspaces button:hover,
-#backlight:hover,
-#battery:hover,
-#clock:hover,
-#keyboard-state:hover,
-#mpris:hover,
-#network:hover,
-#privacy-item:hover,
-#pulseaudio:hover,
-#wireplumber:hover,
 #custom-arch:hover,
 #custom-power:hover,
 #custom-quit:hover,
 #custom-lock:hover,
-#custom-reboot:hover {
+#custom-reboot:hover,
+#privacy-item:hover,
+#systemd-failed-units,
+#workspaces button:hover,
+#mpris:hover,
+#clock:hover,
+#user:hover,
+#pulseaudio:hover,
+#network:hover,
+#keyboard-state:hover,
+#backlight:hover,
+#battery:hover,
+#tray menu > *:hover {
   background: rgba(68, 74, 87, 1);
 }
 
@@ -160,12 +166,24 @@ tooltip {
   color: #eb4d4b;
 }
 
+#network {
+  border-radius: 0 12px 12px 0;
+}
+
+#keyboard-state {
+  border-radius: 0 12px 12px 0;
+}
+
 #keyboard-state > label {
   padding: 0 5px;
 }
 
 #keyboard-state > label.locked {
   background: rgba(0, 0, 0, 0.2);
+}
+
+#battery {
+  border-radius: 12px 0 0 12px;
 }
 
 #battery.critical {
@@ -203,18 +221,25 @@ tooltip {
 #cpu,
 #memory {
   background: rgba(0, 0, 0, 0);
-  padding: 0 10px;
-  border: 0;
 }
 
-#cpu,
+#stats:hover #cpu,
 #memorys {
   border-left: 2px solid rgba(0, 0, 0, 1);
+}
+
+#tray {
+  border-radius: 12px;
 }
 
 #tray menu {
   border-radius: 12px;
   background: rgba(34, 34, 34, 0.75);
+  padding: 0;
+}
+
+#tray menu > * {
+  border-radius: 12px;
 }
 
 #tray > .passive {
