@@ -153,7 +153,7 @@
   },
 
   "user": {
-    "format": "{user} {work_H}:{work_M} ",
+    "format": " {user} {work_H}:{work_M} ",
     "height": 16,
     "width": 16,
     "icon": true,
