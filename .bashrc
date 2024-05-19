@@ -65,6 +65,9 @@ alias py='~/venv/bin/python3'
 alias clr='clear && echo && /usr/bin/neofetch --colors 1 7 7 1 7 7 --color_blocks off'
 alias wgup='sudo wg-quick up Kubu-IZO'
 alias wgdown='sudo wg-quick down Kubu-IZO'
+alias gitfs='git fetch && git status'
+alias gitfp='git fetch && git pull'
+alias gitac='git add . && git commit -m $(date +%d-%b-%y)'
 
 PS1='[\u@\h ${PWD/$HOME/\~}]\$ '
 
