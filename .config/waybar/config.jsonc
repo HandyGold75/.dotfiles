@@ -9,7 +9,7 @@
     "hyprland/workspaces",
     "mpris",
   ],
-  "modules-center": ["clock", "user"],
+  "modules-center": ["clock", "hyprland/window", "user"],
   "modules-right": [
     "pulseaudio",
     "network",
@@ -150,6 +150,15 @@
       "on-scroll-up": "shift_up",
       "on-scroll-down": "shift_down",
     },
+  },
+
+  "hyprland/window": {
+    // "format": "{initialTitle}",
+    "format": "",
+    "max-length": 64,
+    "separate-outputs": true,
+    "icon": true,
+    "icon-size": 16,
   },
 
   "user": {
