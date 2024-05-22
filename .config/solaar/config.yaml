@@ -20,7 +20,7 @@
   reprogrammable-keys: {80: 80, 81: 81, 82: 82, 83: 83, 86: 86, 195: 195, 196: 196}
   scroll-ratchet: 2
   smart-shift: 10
-  thumb-scroll-invert: true
+  thumb-scroll-invert: false
   thumb-scroll-mode: false
 - _NAME: G733 Gaming Headset
   _absent: [hi-res-scroll, lowres-scroll-mode, hires-smooth-invert, hires-smooth-resolution, hires-scroll-mode, scroll-ratchet, smart-shift, thumb-scroll-invert,
