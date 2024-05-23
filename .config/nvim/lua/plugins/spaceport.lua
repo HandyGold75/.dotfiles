@@ -3,6 +3,7 @@ return {
 		"CWood-sdf/spaceport.nvim",
 		name = "spaceport",
 		lazy = false,
+		dependencies = { { "nvim-telescope/telescope.nvim", name = "telescope" } },
 		config = function()
 			require("spaceport").setup({
 				projectEntry = "NvimTreeOpen",
