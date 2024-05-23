@@ -35,7 +35,7 @@
 
     font = OpenDyslexic 14
     markup = full
-    format = "<b>%s</b> - <i>%a %p</i>\n%b"
+    format = "<b>%s</b>\n%b\n<i>%a %p</i>"
     alignment = center
     vertical_alignment = center
     show_age_threshold = 180
