@@ -34,7 +34,7 @@ vim.opt.foldmethod = "indent"
 
 -- Keymapping
 vim.keymap.set("n", "<Esc>", ":nohlsearch<CR>")
-vim.keymap.set("n", "<leader>tw", ":set wrap!")
+vim.keymap.set("n", "<leader>tw", ":set wrap!<CR>")
 vim.keymap.set("i", "jj", "<Esc>")
 vim.keymap.set("i", "kk", "<Esc>")
 
