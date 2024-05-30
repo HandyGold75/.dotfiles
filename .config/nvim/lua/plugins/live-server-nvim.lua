@@ -10,6 +10,7 @@ return {
 					"--host=10.69.2.58",
 					"--port=5500",
 					"--no-browser",
+					"--ignorePattern='.*\\.go'",
 				},
 			})
 		end,
