@@ -78,9 +78,17 @@ export LC_ALL="en_US.utf8"
 # export LC_CTYPE="en_US.utf8"
 export PATH="$PATH:$HOME/.local/bin:/usr/local/go/bin"
 
-echo && /usr/bin/neofetch --colors 1 7 7 1 7 7 --color_blocks off
+function set-title() {
+    if [[ -z "$ORIG" ]]; then
+        ORIG=$PS1
+    fi
+    TITLE="\[\e]2;$*\a\]"
+    PS1=${ORIG}${TITLE}
+}
 
 # nvm (For node installation)
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+echo && /usr/bin/neofetch --colors 1 7 7 1 7 7 --color_blocks off
