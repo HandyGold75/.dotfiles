@@ -56,6 +56,15 @@ return {
 			lsp.tsserver.setup(coq.lsp_ensure_capabilities({}))
 
 			lsp.marksman.setup(coq.lsp_ensure_capabilities({}))
+
+			lsp.ltex.setup(coq.lsp_ensure_capabilities({
+				settings = {
+					ltex = {
+						language = "en-US",
+					},
+				},
+			}))
+
 			lsp.jsonls.setup(coq.lsp_ensure_capabilities({}))
 			lsp.taplo.setup(coq.lsp_ensure_capabilities({}))
 			lsp.yamlls.setup(coq.lsp_ensure_capabilities({}))
