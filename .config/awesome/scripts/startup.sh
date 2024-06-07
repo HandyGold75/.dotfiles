@@ -11,6 +11,8 @@
 
 headsetcontrol -l 0
 
+setxkbmap -option caps:swapescape
+
 xinput set-prop "Logitech MX Master 3S" "libinput Accel Profile Enabled" 0 1
 sleep 5 && xinput set-prop "Logitech MX Master 3S" "libinput Accel Profile Enabled" 0 1 &
 xinput set-prop "Logitech MX Master 3S" "libinput Accel Speed" -0.30
