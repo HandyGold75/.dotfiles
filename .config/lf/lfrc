@@ -30,8 +30,8 @@ map <enter> shell
 map ` !true
 
 # execute current file (must be executable)
-map x $$f
-map X !$f
+map e $$f
+map E !$f
 
 # dedicated keys for file opener actions
 map o &gio open $f
@@ -65,14 +65,17 @@ cmd trash %set -f; mv $fx ~/.trash
 # define a custom 'delete' command
 cmd delete ${{
     set -f
-    printf "delete \"$fx\"? (y/n)"
+    clear
+    printf "Delete (y/n)?"
+    for f in $fx ; do printf "\n  $f" ; done
+    printf "\n> "
     read ans
     [ "$ans" = "y" ] && rm -rf $fx
 }}
 
 # use 'd' key for either 'trash' or 'delete' command
-map d trash
-map D delete
+map x trash
+map X delete
 
 # extract the current file with the right command
 # (xkcd link: https://xkcd.com/1168/)
