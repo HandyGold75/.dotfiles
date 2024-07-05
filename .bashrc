@@ -57,9 +57,9 @@ fi
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
-alias ll='ls -alF'
-alias la='ls -A'
-alias du='du --max-depth=1'
+alias ll='ls -halF'
+alias la='ls -hA'
+alias du='du -h --max-depth=1'
 alias shutdown='shutdown now'
 alias py='~/venv/bin/python3'
 alias clr='clear && echo && /usr/bin/neofetch --colors 1 7 7 1 7 7 --color_blocks off'
@@ -68,7 +68,8 @@ alias wgdown='sudo wg-quick down Kubu-IZO'
 alias gitfs='git fetch && git status'
 alias gitfp='git fetch && git pull'
 alias gitac='git add . && git commit -m $(date +%d-%b-%y)'
-alias gitp='git push'
+alias gitps='git push'
+alias gitpl='git pull'
 
 PS1='[\u@\h ${PWD/$HOME/\~}]\$ '
 
