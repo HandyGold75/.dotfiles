@@ -472,7 +472,7 @@ local function scandir(directory, filter)
 end
 
 local wp_timeout = 30
-local wp_path = os.getenv("HOME") .. "/.config/awesome/wallpapers/"
+local wp_path = os.getenv("HOME") .. "/.config/awesome/theme/wallpapers/"
 local wp_files = scandir(wp_path, function(s) return string.match(s, "%.png$") or string.match(s, "%.jpg$") end)
 
 math.randomseed(os.time())
