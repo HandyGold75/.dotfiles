@@ -65,7 +65,7 @@ fi
 
 if ! pgrep -f "xautolock" ;
 then
-    xautolock -time 5 -notify 60 -detectsleep -locker "i3lock -c 000000 -i ~/.config/awesome/theme/lockscreen.png -feLk" -notifier "notify-send -a xautolock -u critical -t 10000 xautolock 'Locking in 60 seconds'" &
+    xautolock -time 5 -notify 60 -detectsleep -locker "i3lock -c 000000 -i ~/.config/awesome/theme/lockscreen.png -fet" -notifier "notify-send -a xautolock -u critical -t 10000 xautolock 'Locking in 60 seconds'" &
 fi
 
 if ! pgrep -f "xbindkeys" ;
