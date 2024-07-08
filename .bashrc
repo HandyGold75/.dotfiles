@@ -77,7 +77,7 @@ export LANG="en_US.utf8"
 export LANGUAGE="en_US.utf8"
 export LC_ALL="en_US.utf8"
 # export LC_CTYPE="en_US.utf8"
-export PATH="$PATH:$HOME/.local/bin:/usr/local/go/bin:$(go env GOPATH)/bin"
+export PATH="$PATH:$HOME/.local/bin:$HOME/.local/bin/nvim-linux64/bin:/usr/local/go/bin:$(go env GOPATH)/bin"
 
 function set-title() {
     if [[ -z "$ORIG" ]]; then
