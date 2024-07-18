@@ -5,6 +5,7 @@ return {
 		config = function() require("mason").setup() end,
 		-- Formaters: stylua, goimports, isort, black, beautysh, prettierd, prettier, taplo, xmlformat
 		-- Linters: pylint, shellcheck, htmlhint, stylelint, quick-lint-js, markdownlint, jsonlint, yamllint
+		-- Etc: gdtoolkit
 	},
 	{
 		"williamboman/mason-lspconfig.nvim",
@@ -54,6 +55,8 @@ return {
 			lsp.html.setup(coq.lsp_ensure_capabilities({}))
 			lsp.cssls.setup(coq.lsp_ensure_capabilities({}))
 			lsp.tsserver.setup(coq.lsp_ensure_capabilities({}))
+
+			lsp.gdscript.setup(coq.lsp_ensure_capabilities({}))
 
 			lsp.marksman.setup(coq.lsp_ensure_capabilities({}))
 
