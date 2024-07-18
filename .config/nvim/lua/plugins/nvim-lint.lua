@@ -17,6 +17,8 @@ return {
 				javascript = { "quick-lint-js" },
 				typescript = { "quick-lint-js" },
 
+				gdscript = { "gdlint" },
+
 				markdown = { "markdownlint" },
 				json = { "jsonlint" },
 				jsonc = { "jsonlint" },
