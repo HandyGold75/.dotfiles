@@ -40,7 +40,7 @@ return {
 					stylua = { args = { "--verify", "--column-width", "256", "--collapse-simple-statement", "Always", "--search-parent-directories", "--stdin-filepath", "$FILENAME", "-" } },
 					isort = { args = { "--profile", "black", "--combine-as", "--line-length", "256", "--stdout", "--filename", "$FILENAME", "-" } },
 					black = { args = { "--line-length", "256", "--stdin-filename", "$FILENAME", "--quiet", "-" } },
-					gdscript = { args = { "--line-length=256", "$FILENAME", "-" } },
+					gdformat = { args = { "-l", "256", "-" } },
 				},
 			})
 		end,
