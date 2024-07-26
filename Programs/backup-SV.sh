@@ -64,6 +64,7 @@ runBackup "10.69.2.54" "SV04" "[!upload]" &
 runBackup "10.69.2.56" "SV06" "" "disk1" &
 runBackup "10.69.2.57" "SV07" "" "disk1" &
 runBackup "10.69.2.58" "SV08" "[!go]" &
+runBackup "10.69.2.60" "SV10" "" "disk1" &
 
 # Wait until complete
 for job in $(jobs -p); do
