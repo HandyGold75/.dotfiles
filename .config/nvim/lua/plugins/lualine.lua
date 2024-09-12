@@ -7,9 +7,9 @@ return {
 		config = function()
 			require("lualine").setup({
 				theme = "codedark",
-				extenstions = { "nvim-tree" },
+				extenstions = { "lazy", "mason", "nvim-tree", "trouble" },
 				sections = {
-					lualine_c = { "buffers" },
+					lualine_c = { "filename" },
 					lualine_x = { "encoding", "fileformat", "filesize" },
 					lualine_y = { "filetype", "progress" },
 				},
