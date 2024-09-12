@@ -13,7 +13,7 @@ return {
 				bash = { "shellcheck" },
 
 				html = { "htmlhint" },
-				-- css = { "stylelint" },
+				css = { "stylelint" },
 				javascript = { "quick-lint-js" },
 				typescript = { "quick-lint-js" },
 

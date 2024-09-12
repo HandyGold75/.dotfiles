@@ -54,7 +54,7 @@ return {
 
 			lsp.html.setup(coq.lsp_ensure_capabilities({}))
 			lsp.cssls.setup(coq.lsp_ensure_capabilities({}))
-			lsp.tsserver.setup(coq.lsp_ensure_capabilities({}))
+			lsp.ts_ls.setup(coq.lsp_ensure_capabilities({}))
 
 			lsp.gdscript.setup(coq.lsp_ensure_capabilities({}))
 
