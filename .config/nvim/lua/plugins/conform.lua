@@ -6,8 +6,9 @@ return {
 		config = function()
 			require("conform").setup({
 				notify_on_error = true,
+				notify_no_formatters = true,
 				format_on_save = {
-					timeout_ms = 500,
+					timeout_ms = 1000,
 					lsp_fallback = true,
 				},
 
@@ -19,19 +20,19 @@ return {
 					sh = { "beautysh" },
 					bash = { "beautysh" },
 
-					html = { { "prettierd", "prettier" } },
-					css = { { "prettierd", "prettier" } },
-					javascript = { { "prettierd", "prettier" } },
-					typescript = { { "prettierd", "prettier" } },
+					html = { "prettierd", "prettier", stop_after_first = true },
+					css = { "prettierd", "prettier", stop_after_first = true },
+					javascript = { "prettierd", "prettier", stop_after_first = true },
+					typescript = { "prettierd", "prettier", stop_after_first = true },
 
 					gdscript = { "gdformat" },
 
-					markdown = { { "prettierd", "prettier" } },
-					json = { { "prettierd", "prettier" } },
-					jsonc = { { "prettierd", "prettier" } },
+					markdown = { "prettierd", "prettier", stop_after_first = true },
+					json = { "prettierd", "prettier", stop_after_first = true },
+					jsonc = { "prettierd", "prettier", stop_after_first = true },
 
 					toml = { "taplo" },
-					yaml = { { "prettierd", "prettier" } },
+					yaml = { "prettierd", "prettier", stop_after_first = true },
 					xml = { "xmlformat" },
 					["_"] = { "trim_whitespace", "trim_newlines" },
 				},
