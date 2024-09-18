@@ -29,12 +29,12 @@ return {
 		cmd = "Trouble",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		keys = {
-			{ "<leader>td", "<cmd>Trouble diagnostics toggle<cr>", desc = "Diagnostics (Trouble)" },
-			-- { "<leader>tD", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", desc = "Buffer Diagnostics (Trouble)" },
-			{ "<leader>ts", "<cmd>Trouble symbols toggle focus=true<cr>", desc = "Symbols (Trouble)" },
-			{ "<leader>tr", "<cmd>Trouble lsp toggle win.position=right<cr>", desc = "LSP Definitions / references / ... (Trouble)" },
-			-- { "<leader>to", "<cmd>Trouble loclist toggle<cr>", desc = "Location List (Trouble)" },
-			-- { "<leader>tq", "<cmd>Trouble qflist toggle<cr>", desc = "Quickfix List (Trouble)" },
+			{ "<leader>td", ":Trouble diagnostics toggle<CR>", desc = "Diagnostics (Trouble)" },
+			-- { "<leader>tD", ":Trouble diagnostics toggle filter.buf=0<CR>", desc = "Buffer Diagnostics (Trouble)" },
+			{ "<leader>ts", ":Trouble symbols toggle focus=true<CR>", desc = "Symbols (Trouble)" },
+			{ "<leader>tr", ":Trouble lsp toggle win.position=right<CR>", desc = "LSP Definitions / references / ... (Trouble)" },
+			-- { "<leader>to", ":Trouble loclist toggle<CR>", desc = "Location List (Trouble)" },
+			-- { "<leader>tq", ":Trouble qflist toggle<CR>", desc = "Quickfix List (Trouble)" },
 		},
 	},
 }
