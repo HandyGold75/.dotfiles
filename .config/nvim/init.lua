@@ -2,9 +2,6 @@
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
--- Workaround for Gitsigns (https://github.com/neovim/neovim/pull/22846)
-vim.uv = vim.loop
-
 -- Load configs
 require("config")
 require("autocmds")
