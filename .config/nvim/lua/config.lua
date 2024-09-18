@@ -14,10 +14,6 @@ vim.opt.splitbelow = true
 
 vim.opt.list = true
 vim.opt.listchars = { tab = "» ", nbsp = "⎵" }
-
-vim.opt.scrolloff = 10
-vim.opt.scroll = 1
-
 vim.opt.number = true
 vim.opt.relativenumber = true
 
