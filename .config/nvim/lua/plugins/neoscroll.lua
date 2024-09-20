@@ -3,8 +3,9 @@ return {
 		"karb94/neoscroll.nvim",
 		name = "neoscroll",
 		config = function()
-			neoscroll = require("neoscroll")
+			local neoscroll = require("neoscroll")
 			neoscroll.setup({
+				hide_cursor = false,
 				post_hook = function(info)
 					if info == "center" then vim.defer_fn(function() neoscroll.zz({ half_win_duration = 100 }) end, 10) end
 				end,
