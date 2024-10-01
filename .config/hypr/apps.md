@@ -70,4 +70,4 @@ Applications
 - solaar
 - opentabletdriver
 - discover-overlay (AUR)
-- webcord (AUR)
+- obs-studio
