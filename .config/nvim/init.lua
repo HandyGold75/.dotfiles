@@ -1,9 +1,14 @@
+-- Globals
+vim.g.mapleader = ";"
+vim.g.coq_settings = { ["auto_start"] = "shut-up" }
+
 -- Disable netrw for nvim-tree
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
 -- Load configs
-require("config")
+require("options")
+require("keybinds")
 require("autocmds")
 
 -- Load Lazy plugin manager
