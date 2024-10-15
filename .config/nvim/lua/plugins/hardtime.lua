@@ -6,9 +6,9 @@ return {
 		dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
 		config = function()
 			require("hardtime").setup({
-				disable_mouse = true,
+				disable_mouse = false,
 				max_count = 6,
-				disabled_filetypes = { "spaceport", "trouble", "netrw", "NvimTree", "undotree", "undotreeDiff", "qf", "TelescopePrompt", "spectre_panel", "better_term", "tsplayground", "lazy", "mason", "oil" },
+				disabled_filetypes = { "better_term" },
 				disabled_keys = {
 					["<Up>"] = { "n", "x" },
 					["<Down>"] = { "n", "x" },
