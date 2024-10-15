@@ -3,9 +3,6 @@ return {
 		"williamboman/mason.nvim",
 		name = "mason",
 		config = function() require("mason").setup() end,
-		-- Formaters: stylua, goimports, isort, black, beautysh, prettierd, prettier, taplo, xmlformat
-		-- Linters: pylint, shellcheck, htmlhint, stylelint, quick-lint-js, markdownlint, jsonlint, yamllint
-		-- Etc: gdtoolkit
 	},
 	{
 		"williamboman/mason-lspconfig.nvim",

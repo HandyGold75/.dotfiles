@@ -5,6 +5,12 @@ return {
 		event = { "VeryLazy" },
 		dependencies = { "kevinhwang91/promise-async", { "neovim/nvim-lspconfig", name = "lspconfig" } },
 		config = function()
+			vim.opt.foldcolumn = "0"
+			vim.opt.foldlevel = 99
+			vim.opt.foldlevelstart = 99
+			vim.opt.foldenable = true
+			vim.opt.foldmethod = "indent"
+
 			local capabilities = vim.lsp.protocol.make_client_capabilities()
 			capabilities.textDocument.foldingRange = { dynamicRegistration = false, lineFoldingOnly = true }
 			local language_servers = require("lspconfig").util.available_servers()
