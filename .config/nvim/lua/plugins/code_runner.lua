@@ -2,23 +2,28 @@ return {
 	{
 		"CRAG666/code_runner.nvim",
 		name = "code_runner",
+		dependencies = { { "CRAG666/betterTerm.nvim", name = "betterTerm" } },
 		config = function()
 			require("code_runner").setup({
 				mode = "better_term",
+				better_term = {
+					clean = true,
+					number = 1,
+				},
 				filetype = {
 					python = "python3 -u",
-					go = "cd $dir && go run .",
+					go = "go run .",
 				},
 			})
 		end,
 		keys = {
-			{ "<leader>rr", ":RunCode<CR>", mode = { "n" } },
-			{ "<leader>rf", ":RunFile<CR>", mode = { "n" } },
-			-- { "<leader>rft", ":RunFile tab<CR>", mode = { "n" } },
-			{ "<leader>rp", ":RunProject<CR>", mode = { "n" } },
-			{ "<leader>rc", ":RunClose<CR>", mode = { "n" } },
-			-- { "<leader>crf", ":CRFiletype<CR>", mode = { "n" } },
-			-- { "<leader>crp", ":CRProjects<CR>", mode = { "n" } },
+			{
+				"<leader>r",
+				":wa<CR>" .. ":lua require('betterTerm').send(require('code_runner.commands').get_filetype_command(), 1, { clean = true, interrupt = true } )<CR>" .. ":lua require('betterTerm').open(1)<CR>",
+				{ "n" },
+				silent = true,
+				desc = "Code Runner [r]un",
+			},
 		},
 	},
 }

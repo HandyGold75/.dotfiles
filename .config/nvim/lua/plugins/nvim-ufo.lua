@@ -2,7 +2,6 @@ return {
 	{
 		"kevinhwang91/nvim-ufo",
 		name = "nvim-ufo",
-		event = { "VeryLazy" },
 		dependencies = { "kevinhwang91/promise-async", { "neovim/nvim-lspconfig", name = "lspconfig" } },
 		config = function()
 			vim.opt.foldcolumn = "0"
@@ -49,13 +48,13 @@ return {
 			})
 		end,
 		keys = {
-			{ "zR", ":lua require('ufo').openAllFolds()<CR>", mode = { "n" } },
-			{ "zM", ":lua require('ufo').closeAllFolds()<CR>", mode = { "n" } },
-			{ "zr", ":lua require('ufo').openFoldsExceptKinds()<CR>", mode = { "n" } },
-			{ "zm", ":lua require('ufo').closeFoldsWith()<CR>", mode = { "n" } },
-			{ "zp", ":lua if not require('ufo').peekFoldedLinesUnderCursor() then vim.lsp.buf.hover() end<CR>", mode = { "n" } },
-			{ "]z", ":lua require('ufo').goNextClosedFold() require('ufo').peekFoldedLinesUnderCursor()<CR>", mode = { "n" } },
-			{ "[z", ":lua require('ufo').goPreviousClosedFold() require('ufo').peekFoldedLinesUnderCursor()<CR>", mode = { "n" } },
+			{ "zR", ":lua require('ufo').openAllFolds()<CR>", { "n" }, silent = true, desc = "Ufo open all folds" },
+			{ "zM", ":lua require('ufo').closeAllFolds()<CR>", { "n" }, silent = true, desc = "Ufo close all folds" },
+			{ "zr", ":lua require('ufo').openFoldsExceptKinds()<CR>", { "n" }, silent = true, desc = "Ufo open all folds" },
+			{ "zm", ":lua require('ufo').closeFoldsWith()<CR>", { "n" }, silent = true, desc = "Ufo close all folds ([int]zm for specific fold level)" },
+			{ "zp", ":lua if not require('ufo').peekFoldedLinesUnderCursor() then vim.lsp.buf.hover() end<CR>", { "n" }, silent = true, desc = "Ufo peek fold" },
+			{ "]z", ":lua require('ufo').goNextClosedFold() require('ufo').peekFoldedLinesUnderCursor()<CR>", { "n" }, silent = true, desc = "Ufo next fold" },
+			{ "[z", ":lua require('ufo').goPreviousClosedFold() require('ufo').peekFoldedLinesUnderCursor()<CR>", { "n" }, silent = true, desc = "Ufo previous fold" },
 		},
 	},
 }
