@@ -29,12 +29,12 @@ return {
 		cmd = "Trouble",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		keys = {
-			{ "<leader>td", ":Trouble diagnostics toggle<CR>", desc = "Diagnostics (Trouble)" },
-			-- { "<leader>tD", ":Trouble diagnostics toggle filter.buf=0<CR>", desc = "Buffer Diagnostics (Trouble)" },
-			{ "<leader>ts", ":Trouble symbols toggle focus=true<CR>", desc = "Symbols (Trouble)" },
-			{ "<leader>tr", ":Trouble lsp toggle win.position=right<CR>", desc = "LSP Definitions / references / ... (Trouble)" },
-			-- { "<leader>to", ":Trouble loclist toggle<CR>", desc = "Location List (Trouble)" },
-			-- { "<leader>tq", ":Trouble qflist toggle<CR>", desc = "Quickfix List (Trouble)" },
+			{ "<leader>td", ":Trouble diagnostics toggle<CR>", { "n" }, silent = true, desc = "Trouble [t]oggle [d]iagnostics" },
+			{ "<leader>tD", ":Trouble diagnostics toggle filter.buf=0<CR>", { "n" }, silent = true, desc = "Trouble [t]oggle buffer [D]iagnostics" },
+			{ "<leader>ts", ":Trouble symbols toggle focus=true<CR>", { "n" }, silent = true, desc = "Trouble [t]oggle [s]ymbols" },
+			{ "<leader>tr", ":Trouble lsp toggle win.position=right<CR>", { "n" }, silent = true, desc = "Trouble [t]oggle LSP [r]eferences" },
+			{ "<leader>to", ":Trouble loclist toggle<CR>", { "n" }, silent = true, desc = "Trouble [t]oggle l[o]cation list" },
+			{ "<leader>tq", ":Trouble qflist toggle<CR>", { "n" }, silent = true, desc = "Trouble [t]oggle [q]uickfix list" },
 		},
 	},
 }

@@ -36,7 +36,6 @@ return {
 					xml = { "xmlformat" },
 					["_"] = { "trim_whitespace", "trim_newlines" },
 				},
-
 				formatters = {
 					stylua = { args = { "--verify", "--column-width", "256", "--collapse-simple-statement", "Always", "--search-parent-directories", "--stdin-filepath", "$FILENAME", "-" } },
 					isort = { args = { "--profile", "black", "--combine-as", "--line-length", "256", "--stdout", "--filename", "$FILENAME", "-" } },

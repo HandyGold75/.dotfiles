@@ -45,7 +45,10 @@ return {
 					lint.try_lint()
 				end
 			end
-			vim.keymap.set({ "n" }, "<leader>tl", toggle_lint, { noremap = true, desc = "Lint" })
+			vim.keymap.set({ "n" }, "<leader>tl", toggle_lint, { noremap = true, desc = "Lint [t]oggle [l]int" })
 		end,
+		keys = {
+			{ "<leader>tl", ":lua require('lint').try_lint()<CR>", { "n" }, silent = true, desc = "Lint [t]oggle [l]int" },
+		},
 	},
 }

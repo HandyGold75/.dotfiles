@@ -11,8 +11,8 @@ return {
 			})
 		end,
 		keys = {
-			{ "<leader>sp", ":Spaceport<CR>", mode = { "n" } },
-			{ "<leader>fd", ":lua require('telescope').extensions.spaceport.find()<CR>", mode = { "n" } },
+			{ "<leader>sp", ":Spaceport<CR>", { "n" }, silent = true, desc = "[s]pace[p]ort" },
+			{ "<leader>fd", ":lua require('telescope').extensions.spaceport.find()<CR>", { "n" }, silent = true, desc = "Telescope [f]ind spaceport [d]irectory" },
 		},
 	},
 }
