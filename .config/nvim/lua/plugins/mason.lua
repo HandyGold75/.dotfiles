@@ -2,11 +2,17 @@ return {
 	{
 		"williamboman/mason.nvim",
 		name = "mason",
-		config = function() require("mason").setup() end,
+		event = { "VeryLazy" },
+		config = function()
+			require("mason").setup({
+				ui = { border = "single" },
+			})
+		end,
 	},
 	{
 		"williamboman/mason-lspconfig.nvim",
 		name = "mason-lspconfig",
+		event = { "VeryLazy" },
 		config = function()
 			require("mason-lspconfig").setup({
 				automatic_installation = true,
@@ -18,6 +24,7 @@ return {
 		"neovim/nvim-lspconfig",
 		name = "lspconfig",
 		dependencies = { { "ms-jpq/coq_nvim", name = "coq" } },
+		event = { "VeryLazy" },
 		config = function()
 			local lsp = require("lspconfig")
 			local coq = require("coq")
