@@ -15,7 +15,7 @@ vim.api.nvim_create_autocmd("BufEnter", {
 
 -- Mason Install All
 vim.api.nvim_create_user_command("MasonInstallAll", function()
-	vim.cmd("MasonInstall stylua goimports isort black beautysh prettierd prettier taplo xmlformat")
+	vim.cmd("MasonInstall stylua goimports isort black beautysh prettierd prettier taplo xmlformatter")
 	vim.cmd("MasonInstall pylint shellcheck htmlhint stylelint quick-lint-js markdownlint jsonlint yamllint")
 	vim.cmd("MasonInstall gdtoolkit")
 end, {})
