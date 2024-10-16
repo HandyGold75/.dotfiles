@@ -6,8 +6,8 @@ vim.keymap.set({ "n" }, "<C-j>", "ddp", { silent = true, desc = "Swap line with 
 
 -- Yank, Cut, Paste
 vim.keymap.set({ "n" }, "<C-c>", ":%y+<CR>", { silent = true, desc = "Yank buffer to clipboard" })
-vim.keymap.set({ "v" }, "<C-c>", ":y+<CR>", { silent = true, desc = "Yank selection to clipboard" })
-vim.keymap.set({ "v" }, "<C-x>", ":d+<CR>", { silent = true, desc = "Cut selection to clipboard" })
+vim.keymap.set({ "v" }, "<C-c>", '"+y', { silent = true, desc = "Yank selection to clipboard" })
+vim.keymap.set({ "v" }, "<C-x>", '"+d', { silent = true, desc = "Cut selection to clipboard" })
 
 -- Debug
 vim.keymap.set({ "n" }, "[d", vim.diagnostic.goto_prev, { silent = true, desc = "Go to previous [d]iagnostic message" })
