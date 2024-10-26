@@ -1,10 +1,18 @@
 /* enable toolkit.legacyUserProfileCustomizations.stylesheets on about:config
  * Windows:		%APPDATA%/Mozilla/Firefox/Profiles/<Profile>/chrome/userChrome.css
+ * Linux:		~/.mozilla/firefox/<Profile>/chrome/userChrome.css
  * Linux (snap):	~/snap/firefox/common/.mozilla/firefox/<Profile>/chrome/userChrome.css
- */ 
+ */
 
-#TabsToolbar { display: none; }
-#main-menubar { display: none; }
-#toolbar-menubar { height: 28px; }
-#sidebar-header { display: none; }
-
+#TabsToolbar {
+  display: none;
+}
+#main-menubar {
+  display: none;
+}
+#toolbar-menubar {
+  display: none;
+}
+#sidebar-header {
+  display: none;
+}
