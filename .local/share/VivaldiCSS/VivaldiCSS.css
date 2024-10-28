@@ -1,4 +1,6 @@
-/* Font for Vivaldi UI */
+/* enable toolkit.legacyUserProfileCustomizations.stylesheets on about:config
+ * Linux:		~/.local/share/VivaldiCSS/VivaldiCSS.css
+ */
 * {
   font-family: "OpenDyslexic" !important;
 }
