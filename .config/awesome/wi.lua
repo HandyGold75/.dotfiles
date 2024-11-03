@@ -133,7 +133,7 @@ performancett:add_to_object(performance_widget)
 
 local function update(widget)
 	local pers = tonumber(run("cat /sys/class/power_supply/BAT0/capacity"))
-	if pers <= 20 then awful.spawn.with_shell("dunstify -a battery 'Houston, we have a problem' 'Battery is dying'") end
+	if pers <= 20 then awful.spawn.with_shell("notify-send -a battery 'Houston, we have a problem' 'Battery is dying'") end
 
 	cap = (pers / 100) * 12
 	if cap - math.floor(cap) >= 0.5 then

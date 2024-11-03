@@ -66,8 +66,6 @@
     mouse_middle_click = close_all
     mouse_right_click = close_current
 
-
-
 [urgency_low]
     background = "#222222"
     foreground = "#888888"
@@ -96,3 +94,11 @@
 [volume]
     appname = "volume"
     set_stack_tag = "volume"
+
+[HyperIdle]
+    appname = "HyperIdle"
+    set_stack_tag = "HyperIdle"
+
+[XAutoLock]
+    appname = "XAutoLock"
+    set_stack_tag = "XAutoLock"
