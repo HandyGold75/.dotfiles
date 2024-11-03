@@ -29,7 +29,7 @@ package.loaded["naughty.dbus"] = {}
 --                                                                 __/ |
 --                                                                |___/
 
-if awesome.startup_errors then awful.spawn.with_shell("dunstify -u critical 'Oops, there were errors during startup!' '" .. awesome.startup_errors .. "'") end
+if awesome.startup_errors then awful.spawn.with_shell("notify-send -u critical 'Oops, there were errors during startup!' '" .. awesome.startup_errors .. "'") end
 
 do
 	local in_error = false
@@ -37,7 +37,7 @@ do
 		if in_error then return end
 		in_error = true
 
-		awful.spawn.with_shell("dunstify -u critical 'Oops, an error happend!' '" .. tostring(err) .. "'")
+		awful.spawn.with_shell("notify-send -u critical 'Oops, an error happend!' '" .. tostring(err) .. "'")
 		in_error = false
 	end)
 end
