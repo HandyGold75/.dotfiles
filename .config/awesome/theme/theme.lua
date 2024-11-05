@@ -16,10 +16,12 @@ theme.awesome_icon = theme_path .. "awesome.svg"
 theme.font = "OpenDyslexic 10"
 
 theme.gap_single_client = false
-theme.useless_gap = 0
+theme.useless_gap = 2
+
+theme.color_awesome_blue = "#535d6c"
 
 theme.bg_normal = "#222222"
-theme.bg_focus = "#535d6c"
+theme.bg_focus = "#777777"
 theme.bg_urgent = "#ff0000"
 theme.bg_minimize = "#444444"
 theme.bg_tooltip = "#d6d6d6"
@@ -72,6 +74,7 @@ theme.menu_width = "100"
 --
 --
 
+theme.titlebar_height = 30
 theme.titlebar_close_button_normal = theme_path .. "titlebar/close_normal.png"
 theme.titlebar_close_button_focus = theme_path .. "titlebar/close_focus.png"
 

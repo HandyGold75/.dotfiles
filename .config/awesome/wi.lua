@@ -80,7 +80,7 @@ watch("amixer -D pulse sget Master", 1, update_graphic, volumearc)
 --  | | |  __/ |  | || (_) | |  | | | | | | (_| | | | | (_|  __/
 --  \_|  \___|_|  |_| \___/|_|  |_| |_| |_|\__,_|_| |_|\___\___|
 --
--- performancegraph_widget
+-- performance_widget
 
 local performancegraph_widget = wibox.widget({
 	max_value = 100,
@@ -164,10 +164,22 @@ update(battery_widget)
 --  | \__/\ (_| | |  __/ | | | (_| | (_| | |
 --   \____/\__,_|_|\___|_| |_|\__,_|\__,_|_|
 --
--- calendar_widget
+-- calendar_widget()
 
-calendar_widget = wibox.widget.textclock("%d-%b-%y %k:%M")
-awful.widget.calendar_popup.month():attach(calendar_widget, "tr")
+function calendar_widget(s)
+	calender = wibox.widget.textclock("%d-%b-%y %k:%M")
+	awful.widget.calendar_popup
+		.year({
+			screen = s,
+			spacing = 0,
+			week_numbers = true,
+			style_month = { padding = 8, border_width = 2, border_color = beautiful.color_awesome_blue },
+			style_weekday = { border_width = 1, border_color = beautiful.color_awesome_blue },
+			style_weeknumber = { border_width = 1, border_color = beautiful.color_awesome_blue },
+		})
+		:attach(calender, "tr")
+	return calender
+end
 
 --  ______ _ _                     _
 --  |  ___(_) |                   | |
