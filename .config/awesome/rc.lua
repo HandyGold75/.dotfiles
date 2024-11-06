@@ -171,7 +171,7 @@ awful.screen.connect_for_each_screen(function(s)
 			spacing = 5,
 			wibox.widget.systray(),
 			volumearc_widget,
-			logout_widget,
+			logout_widget(),
 			performance_widget,
 			storage_bar_widget,
 			battery_widget,

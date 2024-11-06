@@ -1,7 +1,6 @@
 local awful = require("awful")
 local wibox = require("wibox")
 local beautiful = require("beautiful")
-local vicious = require("vicious")
 local watch = require("awful.widget.watch")
 local gears = require("gears")
 local spawn = require("awful.spawn")
@@ -36,7 +35,7 @@ end
 --
 -- volumearc_widget
 
-volumearc = wibox.widget({
+local volumearc = wibox.widget({
 	max_value = 1,
 	thickness = 2,
 	start_angle = 4.71238898, -- 2pi*3/4
@@ -48,7 +47,7 @@ volumearc = wibox.widget({
 })
 volumearc_widget = wibox.container.mirror(volumearc, { horizontal = true })
 
-update_graphic = function(widget, stdout, _, _, _)
+local update_graphic = function(widget, stdout, _, _, _)
 	widget.value = tonumber(string.format("% 3d", string.match(stdout, "(%d?%d?%d)%%"))) / 100
 	if string.match(stdout, "%[(o%D%D?)%]") == "off" then
 		widget.colors = { beautiful.fg_widget_value_red }
@@ -129,13 +128,14 @@ performancett:add_to_object(performance_widget)
 --  | |_/ / (_| | |_| ||  __/ |  | |_| |
 --  \____/ \__,_|\__|\__\___|_|   \__, |
 --                                 __/ |
--- battery_widget                 |___/
+--                                |___/
+-- battery_widget
 
 local function update(widget)
 	local pers = tonumber(run("cat /sys/class/power_supply/BAT0/capacity"))
 	if pers <= 20 then awful.spawn.with_shell("notify-send -a battery 'Houston, we have a problem' 'Battery is dying'") end
 
-	cap = (pers / 100) * 12
+	local cap = (pers / 100) * 12
 	if cap - math.floor(cap) >= 0.5 then
 		cap = math.floor(cap) + 1
 	else
@@ -188,7 +188,8 @@ end
 --  | |   | | |  __/\__ \ |_| \__ \ ||  __/ | | | | |
 --  \_|   |_|_|\___||___/\__, |___/\__\___|_| |_| |_|
 --                        __/ |
--- storage_bar_widget    |___/
+--                       |___/
+-- storage_bar_widget
 
 local function storage_bar_widget_worker(user_args)
 	local args = user_args or {}
@@ -349,7 +350,8 @@ storage_bar_widget = storage_bar_widget_worker({ mounts = { "/", "/mnt/OneDrive_
 --  | |___| (_) | (_| | (_) | |_| | |_
 --  \_____/\___/ \__, |\___/ \__,_|\__|
 --                __/ |
--- logout_widget |___/
+--               |___/
+-- logout_widget()
 
 local logout_menu_widget = wibox.widget({
 	{
@@ -376,39 +378,22 @@ local popup = awful.popup({
 	widget = {},
 })
 
-local function logout_menu_widget_worker(user_args)
+function logout_widget()
 	local rows = { layout = wibox.layout.fixed.vertical }
-	local args = user_args or {}
-	local font = args.font or beautiful.font
-
-	local onlogout = args.onlogout or function() awesome.quit() end
-	local onlock = args.onlock or function() awful.spawn.with_shell("xautolock -locknow") end
-	local onreboot = args.onreboot or function() awful.spawn.with_shell("reboot") end
-	local onsuspend = args.onsuspend or function() awful.spawn.with_shell("systemctl suspend") end
-	local onpoweroff = args.onpoweroff or function() awful.spawn.with_shell("shutdown now") end
-
 	local menu_items = {
-		{ name = "Log out", icon_name = "log-out.svg", command = onlogout },
-		{ name = "Lock", icon_name = "lock.svg", command = onlock },
-		{ name = "Reboot", icon_name = "refresh-cw.svg", command = onreboot },
-		{ name = "Suspend", icon_name = "moon.svg", command = onsuspend },
-		{ name = "Power off", icon_name = "power.svg", command = onpoweroff },
+		{ name = "Log out", icon_name = "log-out.svg", command = function() awesome.quit() end },
+		{ name = "Lock", icon_name = "lock.svg", command = function() awful.spawn.with_shell("xautolock -locknow") end },
+		{ name = "Reboot", icon_name = "refresh-cw.svg", command = function() awful.spawn.with_shell("reboot") end },
+		{ name = "Suspend", icon_name = "moon.svg", command = function() awful.spawn.with_shell("systemctl suspend") end },
+		{ name = "Power off", icon_name = "power.svg", command = function() awful.spawn.with_shell("shutdown now") end },
 	}
 
 	for _, item in ipairs(menu_items) do
 		local row = wibox.widget({
 			{
 				{
-					{
-						image = beautiful.widget_dirlogout .. "/" .. item.icon_name,
-						resize = false,
-						widget = wibox.widget.imagebox,
-					},
-					{
-						text = item.name,
-						font = font,
-						widget = wibox.widget.textbox,
-					},
+					{ image = beautiful.widget_dirlogout .. "/" .. item.icon_name, resize = false, widget = wibox.widget.imagebox },
+					{ text = item.name, font = beautiful.font, widget = wibox.widget.textbox },
 					spacing = 12,
 					layout = wibox.layout.fixed.horizontal,
 				},
@@ -456,5 +441,3 @@ local function logout_menu_widget_worker(user_args)
 
 	return logout_menu_widget
 end
-
-logout_widget = logout_menu_widget_worker()
