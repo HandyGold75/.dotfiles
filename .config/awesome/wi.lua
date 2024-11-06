@@ -196,7 +196,7 @@ local function storage_bar_widget_worker(user_args)
 	local config = {}
 
 	config.mounts = { "/" }
-	config.refresh_rate = 60
+	config.refresh_rate = 300
 
 	config.widget_width = 40
 	config.widget_bar_color = "#aaaaaa"
