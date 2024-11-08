@@ -48,8 +48,7 @@ return {
 			})
 		end,
 		keys = {
-			{ "za", "za", { "n" }, remap = false, silent = true, desc = "Ufo open all folds" },
-			{ "zA", "zA", { "n" }, remap = false, silent = true, desc = "Ufo open all folds" },
+			{ "za", "za", { "n" }, remap = false, silent = true, desc = "Ufo toggle current fold" },
 			{ "zR", ":lua require('ufo').openAllFolds()<CR>", { "n" }, silent = true, desc = "Ufo open all folds" },
 			{ "zM", ":lua require('ufo').closeAllFolds()<CR>", { "n" }, silent = true, desc = "Ufo close all folds" },
 			{ "zr", ":lua require('ufo').openFoldsExceptKinds()<CR>", { "n" }, silent = true, desc = "Ufo open all folds" },
