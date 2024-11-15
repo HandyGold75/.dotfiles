@@ -21,7 +21,7 @@ return {
 			{ "<leader>gt", ":lua require('gitsigns').diffthis()<CR>", { "n" }, desc = "Gitsigns [g]it diff [t]his" },
 			{ "<leader>gb", ":lua require('gitsigns').blame_line({ full = true })<CR>", { "n" }, desc = "Gitsigns [g]it [b]lame" },
 			{ "<leader>gl", ":lua require('gitsigns').toggle_current_line_blame()<CR>", { "n" }, desc = "Gitsigns toggle [g]it [l]ine blame" },
-			{ "<leader>gd", ":lua require('gitsigns').toggle_deleted()<CR>", { "n" }, desc = "Gitsigns toggle [g]it deleted" },
+			{ "<leader>gd", ":lua require('gitsigns').toggle_deleted()<CR>", { "n" }, desc = "Gitsigns toggle [g]it [d]eleted" },
 		},
 	},
 }
