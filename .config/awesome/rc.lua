@@ -288,14 +288,19 @@ end
 root.keys(globalkeys)
 
 local clientkeys = gears.table.join(
-	awful.key({ modkey }, "f", awful.client.floating.toggle, { description = "toggle floating", group = "client" }),
+	awful.key({ modkey }, "f", function(c) c.floating = not c.floating and not (c.maximized or c.fullscreen) end, { description = "toggle floating", group = "client" }),
 	awful.key({ modkey }, "o", function(c) c:move_to_screen() end, { description = "move to screen", group = "client" }),
-	awful.key({ modkey }, "t", function(c) c.ontop = not c.ontop end, { description = "toggle keep on top", group = "client" }),
+	awful.key({ modkey }, "t", function(c) c.ontop = not c.ontop and not (c.maximized or c.fullscreen) end, { description = "toggle keep on top", group = "client" }),
 	awful.key({ modkey }, "n", function(c) c.minimized = true end, { description = "minimize", group = "client" }),
 	awful.key({ modkey, "Shift" }, "c", function(c) c:kill() end, { description = "close", group = "client" }),
 	awful.key({ modkey, "Control" }, "Return", function(c) c:swap(awful.client.getmaster()) end, { description = "move to master", group = "client" }),
 	awful.key({ modkey }, "m", function(c)
 		c.maximized = not c.maximized
+		if c.maximized then
+			c.fullscreen = false
+			c.floating = false
+			c.ontop = false
+		end
 		c:raise()
 	end, { description = "toggle maximize", group = "client" }),
 	awful.key({ modkey, "Control" }, "m", function(c)
@@ -346,7 +351,7 @@ awful.rules.rules = {
 			name = { "Event Tester" },
 			role = { "AlarmWindow", "ConfigManager", "pop-up" },
 		},
-		properties = { floating = true },
+		properties = { floating = true, ontop = true },
 	},
 	{ rule_any = { type = { "dialog" } }, properties = { titlebars_enabled = true } },
 	{
@@ -397,7 +402,7 @@ client.connect_signal("request::titlebars", function(c)
 end)
 
 client.connect_signal("mouse::enter", function(c) c:emit_signal("request::activate", "mouse_enter", { raise = false }) end)
-client.connect_signal("property::floating", function(c) c.ontop = c.floating end)
+client.connect_signal("property::floating", function(c) c.ontop = c.floating and not (c.maximized or c.fullscreen) end)
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 
