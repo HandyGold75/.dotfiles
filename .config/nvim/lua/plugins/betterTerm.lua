@@ -16,9 +16,9 @@ return {
 			vim.keymap.set({ "n", "t" }, "<C-o>", require("betterTerm").open)
 		end,
 		keys = {
-			{ "<C-o>", ":lua require('betterTerm').open()<CR>", { "n", "t" }, silent = true, desc = "BetterTerm toggle terminal" },
-			{ "<leader>st", ":lua require('betterTerm').select()<CR>", { "n" }, silent = true, desc = "BetterTerm [s]elect [t]erminal" },
-			{ "<leader>sn", ":lua require('betterTerm').open(1)<CR>", { "n" }, silent = true, desc = "BetterTerm [s]elect [n]ew terminal" },
+			{ "<C-o>", ":lua require('betterTerm').open()<CR>", { "n", "t" }, desc = "BetterTerm toggle terminal" },
+			{ "<leader>st", ":lua require('betterTerm').select()<CR>", { "n" }, desc = "BetterTerm [s]elect [t]erminal" },
+			{ "<leader>sn", ":lua require('betterTerm').open(1)<CR>", { "n" }, desc = "BetterTerm [s]elect [n]ew terminal" },
 		},
 	},
 }
