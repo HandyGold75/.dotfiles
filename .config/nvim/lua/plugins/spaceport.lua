@@ -10,7 +10,7 @@ return {
 			})
 		end,
 		keys = {
-			{ "<leader>sp", ":Spaceport<CR>", { "n" }, silent = true, desc = "[s]pace[p]ort" },
+			{ "<leader>sp", ":Spaceport<CR>", { "n" }, desc = "[s]pace[p]ort" },
 		},
 	},
 }

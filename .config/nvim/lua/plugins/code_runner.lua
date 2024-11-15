@@ -21,7 +21,6 @@ return {
 				"<leader>r",
 				":wa<CR>" .. ":lua require('betterTerm').send(require('code_runner.commands').get_filetype_command(), 1, { clean = true, interrupt = true } )<CR>" .. ":lua require('betterTerm').open(1)<CR>",
 				{ "n" },
-				silent = true,
 				desc = "Code Runner [r]un",
 			},
 		},

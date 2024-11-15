@@ -39,6 +39,7 @@ theme.border_width = 0
 theme.border_normal = "#000000"
 theme.border_focus = "#535d6c"
 theme.border_marked = "#91231c"
+theme.border_widget = "#3F3F3F"
 theme.fg_widget_value = "#aaaaaa"
 theme.fg_widget_clock = "#aaaaaa"
 theme.fg_widget_value_important = "#aaaaaa"
@@ -47,7 +48,6 @@ theme.fg_widget = "#908884"
 theme.fg_center_widget = "#636363"
 theme.fg_end_widget = "#1a1a1a"
 theme.bg_widget = "#2a2a2a"
-theme.border_widget = "#3F3F3F"
 
 --   _     _     _
 --  | |   (_)   | |
