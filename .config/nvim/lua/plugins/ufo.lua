@@ -1,7 +1,7 @@
 return {
 	{
 		"kevinhwang91/nvim-ufo",
-		name = "nvim-ufo",
+		name = "ufo",
 		dependencies = { "kevinhwang91/promise-async", { "neovim/nvim-lspconfig", name = "lspconfig" } },
 		config = function()
 			vim.opt.foldcolumn = "0"

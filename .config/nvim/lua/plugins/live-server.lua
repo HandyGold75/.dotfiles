@@ -1,7 +1,7 @@
 return {
 	{
 		"ngtuonghy/live-server-nvim",
-		name = "live-server-nvim",
+		name = "live-server",
 		cmd = { "LiveServerStart", "LiveServerStop", "LiveServerToggle" },
 		build = ":LiveServerInstall",
 		config = function()
