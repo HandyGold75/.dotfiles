@@ -1,0 +1,48 @@
+return {
+	{
+		"nvimdev/dashboard-nvim",
+		name = "dashboard",
+		event = "VimEnter",
+		dependencies = { { "nvim-tree/nvim-web-devicons" }, { "nvim-telescope/telescope.nvim", name = "telescope" } },
+		config = function()
+			require("dashboard").setup({
+				theme = "hyper",
+				shortcut_type = "number",
+				shuffle_letter = false,
+				change_to_vcs_root = true,
+				config = {
+					week_header = {
+						enable = true,
+					},
+					shortcut = {
+						{ desc = "󰊳 Lazy", action = "Lazy", key = "l" },
+
+						{
+							icon = " ",
+							icon_hl = "@variable",
+							desc = "Files",
+							group = "Label",
+							action = "Telescope find_files",
+							key = "f",
+						},
+						{
+							desc = " Apps",
+							group = "DiagnosticHint",
+							action = "Telescope app",
+							key = "a",
+						},
+						{
+							desc = " .dotfiles",
+							group = "Number",
+							action = "Telescope .dotfiles",
+							key = "d",
+						},
+					},
+				},
+			})
+		end,
+		keys = {
+			{ "<leader>db", ":Dashboard<CR>", { "n" }, desc = "[d]ash[b]oard" },
+		},
+	},
+}
