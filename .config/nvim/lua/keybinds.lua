@@ -16,7 +16,7 @@ vim.keymap.set({ "n" }, "<leader>de", vim.diagnostic.open_float, { desc = "Show 
 vim.keymap.set({ "n" }, "<leader>dq", vim.diagnostic.setloclist, { desc = "Open [d]iagnostic [q]uickfix list" })
 
 -- Behavioral
-vim.keymap.set({ "c" }, "<Esc>", "<Esc>:nohlsearch<CR>", { silent = true, desc = "Disable highlight on escape" })
+vim.keymap.set({ "i", "c" }, "<Esc>", "<Esc>:nohlsearch<CR>", { silent = true, desc = "Disable highlight on escape" })
 vim.keymap.set({ "i" }, "jj", "<Esc>jj", { silent = true, desc = "Escape insert mode going down" })
 vim.keymap.set({ "i" }, "kk", "<Esc>kk", { silent = true, desc = "Escape insert mode going up" })
 vim.keymap.set({ "n" }, "j", "jzz", { silent = true, desc = "Center going down" })

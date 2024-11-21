@@ -5,18 +5,16 @@ return {
 		lazy = false,
 		config = function()
 			local name = {
-				lines = function()
-					return {
-						{ { " _____                       ______          _   ", colorOpts = { fg = "#0000FF" } } },
-						{ { "/  ___|                      | ___ \\        | |  ", colorOpts = { fg = "#2222FF" } } },
-						{ { "\\ `--. _ __   __ _  ___ ___  | |_/ /__  _ __| |_ ", colorOpts = { fg = "#4444FF" } } },
-						{ { " `--. \\ '_ \\ / _` |/ __/ _ \\ |  __/ _ \\| '__| __|", colorOpts = { fg = "#6666FF" } } },
-						{ { "/\\__/ / |_) | (_| | (_|  __/ | | | (_) | |  | |_ ", colorOpts = { fg = "#8888FF" } } },
-						{ { "\\____/| .__/ \\__,_|\\___\\___| \\_|  \\___/|_|   \\__|", colorOpts = { fg = "#AAAAFF" } } },
-						{ { "      | |                                        ", colorOpts = { fg = "#CCCCFF" } } },
-						{ { "      |_|                                        ", colorOpts = { fg = "#EEEEFF" } } },
-					}
-				end,
+				lines = {
+					{ { " _____                       ______          _   ", colorOpts = { fg = "#0000FF" } } },
+					{ { "/  ___|                      | ___ \\        | |  ", colorOpts = { fg = "#2222FF" } } },
+					{ { "\\ `--. _ __   __ _  ___ ___  | |_/ /__  _ __| |_ ", colorOpts = { fg = "#4444FF" } } },
+					{ { " `--. \\ '_ \\ / _` |/ __/ _ \\ |  __/ _ \\| '__| __|", colorOpts = { fg = "#6666FF" } } },
+					{ { "/\\__/ / |_) | (_| | (_|  __/ | | | (_) | |  | |_ ", colorOpts = { fg = "#8888FF" } } },
+					{ { "\\____/| .__/ \\__,_|\\___\\___| \\_|  \\___/|_|   \\__|", colorOpts = { fg = "#AAAAFF" } } },
+					{ { "      | |                                        ", colorOpts = { fg = "#CCCCFF" } } },
+					{ { "      |_|                                        ", colorOpts = { fg = "#EEEEFF" } } },
+				},
 				topBuffer = 1,
 			}
 
