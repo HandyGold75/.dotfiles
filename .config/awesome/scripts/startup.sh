@@ -57,7 +57,7 @@ fi
 
 if ! pgrep -f "macros" ;
 then
-    st macros &
+    hg macros &
 fi
 
 if ! pgrep -f "solaar" ;
