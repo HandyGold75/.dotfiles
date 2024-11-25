@@ -1,10 +1,11 @@
 return {
 	{
 		"CWood-sdf/spaceport.nvim",
+		-- dir = "/home/handygold75/Repos/spaceport.nvim",
 		name = "spaceport",
 		lazy = false,
 		config = function()
-			local name = {
+			local name_blue = {
 				lines = {
 					{ { " _____                       ______          _   ", colorOpts = { fg = "#0000FF" } } },
 					{ { "/  ___|                      | ___ \\        | |  ", colorOpts = { fg = "#2222FF" } } },
@@ -91,8 +92,10 @@ return {
 						}
 						for _, v in ipairs(pinned) do
 							linesToDir[#lines + 1] = i
+							local prefix = " "
+							if v.isDir then prefix = " " end
 							local words = {
-								{ v.prettyDir, colorOpts = { _name = "SpaceportRecentsProject" } },
+								{ prefix .. v.prettyDir, colorOpts = { _name = "SpaceportRecentsProject" } },
 								{ i .. "", colorOpts = { _name = "SpaceportRecentsCount" } },
 							}
 							table.insert(lines, require("spaceport.screen").setWidthWords(words, largestLen))
@@ -148,12 +151,12 @@ return {
 								}
 							end
 						end
-						local dir = v.prettyDir
-						local indexStr = "" .. i
 						linesToDir[#lines + 1] = i
+						local prefix = " "
+						if v.isDir then prefix = " " end
 						local words = {
-							{ dir, colorOpts = { _name = "SpaceportRecentsProject" } },
-							{ indexStr, colorOpts = { _name = "SpaceportRecentsCount" } },
+							{ prefix .. v.prettyDir, colorOpts = { _name = "SpaceportRecentsProject" } },
+							{ i .. "", colorOpts = { _name = "SpaceportRecentsCount" } },
 						}
 						local line = require("spaceport.screen").setWidthWords(words, largestLen)
 						table.insert(lines, line)
@@ -164,7 +167,7 @@ return {
 				remaps = {
 					{
 						key = "p",
-						description = "Select project",
+						description = "Enter",
 						action = function(line, count)
 							if count == 0 then count = linesToDir[line] or 0 end
 							if count ~= 0 then
@@ -184,8 +187,8 @@ return {
 						mode = "n",
 					},
 					{
-						key = "dd",
-						description = "Delete project",
+						key = "DD",
+						description = "Delete",
 						action = function(line, count)
 							if count == 0 then count = linesToDir[line] end
 							if count ~= 0 then
@@ -207,7 +210,7 @@ return {
 					},
 					{
 						key = "t",
-						description = "Toggle project tag",
+						description = "Pin Toggle",
 						action = function(line, count)
 							if count == 0 then count = linesToDir[line] end
 							if count ~= 0 then
@@ -245,38 +248,8 @@ return {
 						mode = "n",
 					},
 					{
-						key = "J",
-						description = "Move pin down",
-						mode = "n",
-						action = function(line, count)
-							line = linesToDir[line]
-							if line == nil then
-								print("Not hovering over a project")
-								return
-							end
-							if count == 0 then count = 1 end
-							local data = require("spaceport.data").getRawData()
-							if line > #pinned then
-								print("Not hovering over a pinned project")
-								return
-							end
-							local upperBound = line + count
-							local lowerBound = line
-							if lowerBound > #pinned then lowerBound = #pinned end
-							for i = upperBound, lowerBound, -1 do
-								pinned[i].pinNumber = pinned[i].pinNumber - 1
-								data[pinned[i].dir].pinNumber = pinned[i].pinNumber
-							end
-							pinned[line].pinNumber = upperBound
-							data[pinned[line].dir].pinNumber = upperBound
-							require("spaceport.data").writeData(data)
-
-							require("spaceport.screen").render()
-						end,
-					},
-					{
 						key = "K",
-						description = "Move pin up",
+						description = "Pin Up",
 						mode = "n",
 						action = function(line, count)
 							line = linesToDir[line]
@@ -305,9 +278,51 @@ return {
 							require("spaceport.screen").render()
 						end,
 					},
+					{
+						key = "J",
+						description = "Pin Down",
+						mode = "n",
+						action = function(line, count)
+							line = linesToDir[line]
+							if line == nil then
+								print("Not hovering over a project")
+								return
+							end
+							if count == 0 then count = 1 end
+							local data = require("spaceport.data").getRawData()
+							if line > #pinned then
+								print("Not hovering over a pinned project")
+								return
+							end
+							local upperBound = line + count
+							local lowerBound = line
+							if lowerBound > #pinned then lowerBound = #pinned end
+							for i = upperBound, lowerBound, -1 do
+								pinned[i].pinNumber = pinned[i].pinNumber - 1
+								data[pinned[i].dir].pinNumber = pinned[i].pinNumber
+							end
+							pinned[line].pinNumber = upperBound
+							data[pinned[line].dir].pinNumber = upperBound
+							require("spaceport.data").writeData(data)
+
+							require("spaceport.screen").render()
+						end,
+					},
 				},
 				title = nil,
 				topBuffer = 0,
+			}
+
+			local _local_remaps = {
+				lines = {},
+				topBuffer = 0,
+				title = nil,
+				remaps = {
+					{ mode = "n", key = "h", description = " Home", action = function() require("spaceport.data").cd({ dir = "~/", isDir = true }) end },
+					{ mode = "n", key = "df", description = " DotFiles", action = function() require("spaceport.data").cd({ dir = "~/.dotfiles/", isDir = true }) end },
+					{ mode = "n", key = "l", description = "󰒲 Lazy", action = ":Lazy<CR>" },
+					{ mode = "n", key = "m", description = " Mason", action = ":Mason<CR>" },
+				},
 			}
 
 			vim.api.nvim_set_hl(0, "SpaceportRemapTitle", {
@@ -321,7 +336,7 @@ return {
 				projectEntry = "NvimTreeOpen",
 				replaceHome = true,
 				lastViewTime = "pastMonth",
-				sections = { "_global_remaps", name, remaps, recents },
+				sections = { name_blue, remaps, recents, _local_remaps },
 				shortcuts = { { "f", "~/.dotfiles/" } },
 			})
 		end,
