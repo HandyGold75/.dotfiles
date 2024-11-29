@@ -43,7 +43,7 @@ return {
 		name = "mason-lspconfig",
 		event = { "BufReadPre", "BufNewFile" },
 		dependencies = { { "neovim/nvim-lspconfig", name = "lspconfig" } },
-		config = function() require("mason-lspconfig").setup({ automatic_installation = true, ensure_installed = {} }) end,
+		opts = { automatic_installation = true, ensure_installed = {} },
 	},
 	{
 		"williamboman/mason.nvim",
@@ -53,9 +53,9 @@ return {
 			":MasonInstall pylint shellcheck htmlhint stylelint quick-lint-js markdownlint jsonlint yamllint",
 			":MasonInstall gdtoolkit",
 		},
-		cmd = "Mason",
+		cmd = { "Mason" },
 		event = { "BufReadPre", "BufNewFile" },
 		dependencies = { { "williamboman/mason-lspconfig.nvim", name = "mason-lspconfig" } },
-		config = function() require("mason").setup({ ui = { border = "rounded" }, pip = { upgrade_pip = true } }) end,
+		opts = { ui = { border = "rounded" }, pip = { upgrade_pip = true } },
 	},
 }

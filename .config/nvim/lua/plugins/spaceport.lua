@@ -26,8 +26,7 @@ return {
 				sections = { { "name", config = { style = "lite", gradient = "blue" } }, "remaps", "recents", _local_remaps },
 			})
 		end,
-		keys = {
-			{ "<leader>sp", ":Spaceport<CR>", { "n" }, desc = "[s]pace[p]ort" },
-		},
+		cmd = { "Spaceport" },
+		keys = { { "<leader>sp", ":Spaceport<CR>", { "n" }, desc = "[s]pace[p]ort" } },
 	},
 }
