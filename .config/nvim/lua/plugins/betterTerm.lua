@@ -3,22 +3,29 @@ return {
 		"CRAG666/betterTerm.nvim",
 		name = "betterTerm",
 		config = function()
-			require("betterTerm").setup({
-				size = 25,
-			})
-
-			local current = 1
-			vim.keymap.set("n", "<leader>tn", function()
-				current = current + 1
-				require("betterTerm").open(current)
-			end)
-
+			require("betterTerm").setup({ size = 10 })
 			vim.keymap.set({ "n", "t" }, "<C-o>", require("betterTerm").open)
 		end,
 		keys = {
-			{ "<C-o>", ":lua require('betterTerm').open()<CR>", { "n", "t" }, desc = "BetterTerm toggle terminal" },
-			{ "<leader>st", ":lua require('betterTerm').select()<CR>", { "n" }, desc = "BetterTerm [s]elect [t]erminal" },
-			{ "<leader>sn", ":lua require('betterTerm').open(1)<CR>", { "n" }, desc = "BetterTerm [s]elect [n]ew terminal" },
+			{ "<C-o>", function() require("betterTerm").open() end, { "n", "t" }, desc = "BetterTerm toggle terminal" },
+		},
+	},
+	{
+		"CRAG666/code_runner.nvim",
+		name = "code_runner",
+		dependencies = { { "CRAG666/betterTerm.nvim", name = "betterTerm" } },
+		config = function()
+			require("code_runner").setup({
+				mode = "better_term",
+				better_term = { clean = true, number = 1 },
+				filetype = {
+					python = "python3 -u $file",
+					go = "go run .$end",
+				},
+			})
+		end,
+		keys = {
+			{ "<leader>r", function() require("betterTerm").send(require("code_runner.commands").get_filetype_command(), 1, { clean = true, interrupt = true }) end, { "n" }, desc = "Code Runner [r]un" },
 		},
 	},
 }

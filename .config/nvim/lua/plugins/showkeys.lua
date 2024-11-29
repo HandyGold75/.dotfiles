@@ -14,7 +14,7 @@ return {
 			showkeys.toggle()
 		end,
 		keys = {
-			{ "<leader>tk", ":lua require('showkeys').toggle()<CR>", { "n" }, desc = "Showkeys [t]oggle [k]eys" },
+			{ "<leader>tk", function() require("showkeys").toggle() end, { "n" }, desc = "Showkeys [t]oggle [k]eys" },
 		},
 	},
 }
