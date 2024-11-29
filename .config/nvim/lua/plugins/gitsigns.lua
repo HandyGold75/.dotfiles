@@ -3,7 +3,7 @@ return {
 		"lewis6991/gitsigns.nvim",
 		name = "gitsigns",
 		event = { "BufReadPre", "BufNewFile" },
-		config = function() require("gitsigns").setup({ current_line_blame = true, current_line_blame_opts = { delay = 100 } }) end,
+		opts = { current_line_blame = true, current_line_blame_opts = { delay = 100 } },
 		keys = {
 			{ "<leader>hp", function() require("gitsigns").preview_hunk() end, { "n" }, desc = "Gitsigns [h]unk [p]review" },
 			{ "<leader>hs", function() require("gitsigns").stage_hunk() end, { "n" }, desc = "Gitsigns [h]unk [s]tage" },
