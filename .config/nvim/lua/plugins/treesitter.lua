@@ -2,6 +2,7 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		name = "nvim-treesitter",
+		build = ":TSInstall all",
 		event = { "BufReadPre", "BufNewFile" },
 		config = function()
 			require("nvim-treesitter.configs").setup({
