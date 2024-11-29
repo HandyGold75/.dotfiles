@@ -1,5 +1,5 @@
 return { {
-	"tpope/vim-commentary",
-	name = "vim-commentary",
+	"mg979/vim-visual-multi",
+	name = "visual-multi",
 	event = { "BufReadPre", "BufNewFile" },
 } }

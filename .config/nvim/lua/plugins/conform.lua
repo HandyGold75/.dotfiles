@@ -16,21 +16,16 @@ return {
 					lua = { "stylua" },
 					go = { "goimports" },
 					python = { "isort", "black" },
-
 					sh = { "beautysh" },
 					bash = { "beautysh" },
-
 					html = { "prettierd", "prettier", stop_after_first = true },
 					css = { "prettierd", "prettier", stop_after_first = true },
 					javascript = { "prettierd", "prettier", stop_after_first = true },
 					typescript = { "prettierd", "prettier", stop_after_first = true },
-
 					gdscript = { "gdformat" },
-
 					markdown = { "prettierd", "prettier", stop_after_first = true },
 					json = { "prettierd", "prettier", stop_after_first = true },
 					jsonc = { "prettierd", "prettier", stop_after_first = true },
-
 					toml = { "taplo" },
 					yaml = { "prettierd", "prettier", stop_after_first = true },
 					xml = { "xmlformat" },
@@ -50,16 +45,12 @@ return {
 				else
 					vim.g.disable_autoformat = true
 				end
-			end, {
-				desc = "Disable autoformat-on-save",
-				bang = true,
-			})
+			end, { desc = "Disable autoformat-on-save", bang = true })
+
 			vim.api.nvim_create_user_command("FormatEnable", function()
 				vim.b.disable_autoformat = false
 				vim.g.disable_autoformat = false
-			end, {
-				desc = "Re-enable autoformat-on-save",
-			})
+			end, { desc = "Re-enable autoformat-on-save" })
 		end,
 	},
 }
