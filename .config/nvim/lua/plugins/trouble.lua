@@ -26,14 +26,13 @@ return {
 				["<2-leftmouse>"] = "jump_close",
 			},
 		},
-		cmd = "Trouble",
+		cmd = { "Trouble" },
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		keys = {
 			{ "[d", vim.diagnostic.goto_prev, { "n" }, desc = "Go to previous [d]iagnostic message" },
 			{ "]d", vim.diagnostic.goto_next, { "n" }, desc = "Go to next [d]iagnostic message" },
 			{ "<leader>de", vim.diagnostic.open_float, { "n" }, desc = "Show [d]iagnostic [e]rror messages" },
 			{ "<leader>dq", vim.diagnostic.setloclist, { "n" }, desc = "Open [d]iagnostic [q]uickfix list" },
-
 			{ "<leader>td", ":Trouble diagnostics toggle<CR>", { "n" }, desc = "Trouble [t]oggle [d]iagnostics" },
 			{ "<leader>tD", ":Trouble diagnostics toggle filter.buf=0<CR>", { "n" }, desc = "Trouble [t]oggle buffer [D]iagnostics" },
 			{ "<leader>ts", ":Trouble symbols toggle focus=true<CR>", { "n" }, desc = "Trouble [t]oggle [s]ymbols" },
