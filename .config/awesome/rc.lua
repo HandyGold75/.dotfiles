@@ -360,7 +360,7 @@ awful.rules.rules = {
 	},
 	{
 		rule_any = { name = { "Microsoft Teams", "Mozilla Thunderbird" } },
-		properties = { screen = function() return screen.count() end, tag = "1" },
+		properties = { screen = function() return screen.count() end, tag = "1", floating = false, ontop = false },
 	},
 	{
 		rule = { name = "Firefox" },
