@@ -2,19 +2,31 @@
 
 [https://wiki.hyprland.org/Useful-Utilities/Must-have/](https://wiki.hyprland.org/Useful-Utilities/Must-have/)
 
-## Must haves
+## Required
 
-Hypr Add-ons
+### Hypr
 
 - hyprpaper
 - hypridle
 - hyprlock
+- xdg-desktop-portal-hyprland
+- hyprpolkitagent (AUR)
+- hyprsysteminfo
 
-Notifications
+### System 
 
 - dunst
+- grim
+- slurp
+- wofi
+- wl-clipboard
+- cliphist
+- waybar
+- network-manager-applet
+- qt5-wayland
+- qt6-wayland
 
-Audio
+### Audio
 
 - pipewire
 - pipewire-audio
@@ -22,52 +34,27 @@ Audio
 - pipewire-jack
 - pipewire-alsa
 
-Desktop Portal
-
-- xdg-desktop-portal-hyprland
-- grim
-- slurp
-- qt5-wayland
-- qt6-wayland
-
-Authentication agent
-
-- polkit-kde-agent
-
-Clipboard
-
-- cliphist
-
-Toolbar
-
-- waybar
-- network-manager-applet
-
-Applications
+### General
 
 - terminator
-- dolphin
-- wofi
-- wireplumber
 - pavucontrol
 
-## Nice to haves
+## Optional
 
-Theming
+### Theming
 
 - qt5ct
 - qt6ct
 - nwg-look
 
-AUR helper
+### Applications
 
 - paru (AUR)
-
-Applications
-
 - nvim
+- thunar
 - btop
 - solaar
 - opentabletdriver
 - discover-overlay (AUR)
 - obs-studio
+- wireplumber
