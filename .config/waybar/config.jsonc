@@ -47,10 +47,9 @@
     ],
   },
   "custom/arch": {
-    // "format": "󰣇",
     "format": "",
     "tooltip": true,
-    "tooltip-format": "",
+    "tooltip-format": "󰣇",
     "on-click": "wofi --show drun",
   },
   "custom/power": {
@@ -78,13 +77,14 @@
     "on-click": "reboot",
   },
 
+  "systemd-failed-units": {
+    "format": "✗ {nr_failed}",
+    "hide-on-ok": true,
+  },
+
   "privacy": {
     "transition-duration": 500,
     "modules": [{ "type": "screenshare" }, { "type": "audio-in" }],
-  },
-
-  "systemd-failed-units": {
-    "format": "✗ {nr_failed}",
   },
 
   "hyprland/workspaces": {
