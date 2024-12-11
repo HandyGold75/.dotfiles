@@ -115,6 +115,15 @@ tooltip {
   border-radius: 12px;
 }
 
+#systemd-failed-units {
+  background: rgba(0, 0, 0, 0);
+  border-radius: 12px;
+}
+
+#systemd-failed-units.degraded {
+  background-color: #eb4d4b;
+}
+
 #workspaces {
   margin: 0 5px;
 }
