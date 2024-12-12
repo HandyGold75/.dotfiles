@@ -13,7 +13,7 @@
 - hyprpolkitagent (AUR)
 - hyprsysteminfo
 
-### System 
+### System
 
 - dunst
 - grim
@@ -46,6 +46,7 @@
 - qt5ct
 - qt6ct
 - nwg-look
+- catppuccin-gtk-theme-frappe (AUR)
 
 ### Applications
 
