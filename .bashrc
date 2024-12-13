@@ -76,7 +76,7 @@ alias gitpl='git pull'
 
 # Prompt
 PS1='[\u@\h ${PWD/$HOME/\~}]\$ '
-PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME}\007"'
+PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME} ${PWD/$HOME/\~}\007"'
 
 # nvm (For node installation)
 export NVM_DIR="$HOME/.nvm"
