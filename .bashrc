@@ -5,16 +5,8 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-function set-title() {
-    if [[ -z "$ORIG" ]]; then
-        ORIG=$PS1
-    fi
-    TITLE="\[\e]2;$*\a\]"
-    PS1=${ORIG}${TITLE}
-}
-
 # Tmux
-if [ -z "$TMUX" ]; then
+if [ -z "$TMUX" ] && command -v tmux >/dev/null 2>&1; then
     if ! tmux has-session -t "Tmux";  then
         clear
         tmux new-session -d -s "Tmux";
@@ -35,10 +27,6 @@ HISTFILESIZE=4000
 shopt -s checkwinsize
 
 # Colors
-case "$TERM" in
-    xterm-color) color_prompt=yes ;;
-esac
-
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     alias ls='ls --color=auto'
