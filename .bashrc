@@ -10,7 +10,6 @@ if [ -z "$TMUX" ] && command -v tmux >/dev/null 2>&1; then
     if ! tmux has-session -t "Tmux";  then
         clear
         tmux new-session -d -s "Tmux";
-        tmux new-window -n "Test"
     fi
     tmux source "./.config/tmux/tmux.conf"
     tmux attach -t "Tmux"
