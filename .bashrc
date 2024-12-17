@@ -8,8 +8,14 @@
 # Tmux
 if [ -z "$TMUX" ] && command -v tmux >/dev/null 2>&1; then
     tmux source "./.config/tmux/tmux.conf"
-    tmux attach -t "Tmux"
-    exit "$?"
+    if ! tmux has-session -t "Tmux";  then
+        tmux new-session -d -s "Tmux";
+        tmux send-keys -t "Tmux" "vi" C-m
+    fi
+    if tmux attach -t "Tmuxx"; then
+        exit "$?"
+    fi
+    printf "\n/\\ Tmux failed to attach /\\n"
 fi
 
 # History file
@@ -27,7 +33,6 @@ if [ -x /usr/bin/dircolors ]; then
     alias ls='ls --color=auto'
     alias dir='dir --color=auto'
     alias vdir='vdir --color=auto'
-
     alias grep='grep --color=auto'
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
