@@ -6,13 +6,13 @@
 [[ $- != *i* ]] && return
 
 # Tmux
-if [ -z "$TMUX" ] && command -v tmux >/dev/null 2>&1; then
+if [ -z "$TMUX" ] && [ ! "$(ps -o comm= $PPID)" = "nvim" ] && command -v tmux >/dev/null 2>&1; then
     tmux source "./.config/tmux/tmux.conf"
     if ! tmux has-session -t "Tmux";  then
         tmux new-session -d -s "Tmux";
         tmux send-keys -t "Tmux" "vi" C-m
     fi
-    if tmux attach -t "Tmuxx"; then
+    if tmux attach -t "Tmux"; then
         exit "$?"
     fi
     printf "\n/\\ Tmux failed to attach /\\n"
