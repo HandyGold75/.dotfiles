@@ -18,10 +18,12 @@ return {
 					},
 				},
 			}))
-			lsp.gopls.setup(coq.lsp_ensure_capabilities({ settings = {
+			lsp.gopls.setup(coq.lsp_ensure_capabilities({ settings = { gopls = {
 				usePlaceholders = true,
 				analyses = { unusedvariable = true },
-			} }))
+				staticcheck = true,
+				gofumpt = true,
+			} } }))
 			lsp.jedi_language_server.setup({})
 			lsp.bashls.setup(coq.lsp_ensure_capabilities({}))
 			lsp.html.setup(coq.lsp_ensure_capabilities({}))
