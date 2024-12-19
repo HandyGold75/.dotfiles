@@ -51,7 +51,7 @@ return {
 		"williamboman/mason.nvim",
 		name = "mason",
 		build = {
-			":MasonInstall stylua goimports isort black beautysh prettierd prettier taplo xmlformatter",
+			":MasonInstall stylua goimports gofumpt isort black beautysh prettierd prettier taplo xmlformatter",
 			":MasonInstall pylint shellcheck htmlhint stylelint quick-lint-js markdownlint jsonlint yamllint",
 			":MasonInstall gdtoolkit",
 		},
