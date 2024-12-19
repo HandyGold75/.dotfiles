@@ -14,7 +14,7 @@ return {
 
 				formatters_by_ft = {
 					lua = { "stylua" },
-					go = { "goimports" },
+					go = { "goimports", "gofumpt" },
 					python = { "isort", "black" },
 					sh = { "beautysh" },
 					bash = { "beautysh" },
