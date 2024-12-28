@@ -24,21 +24,22 @@
 - cliphist
 - waybar
 - network-manager-applet
+- opentabletdriver
 - qt5-wayland
 - qt6-wayland
+- terminator
+- nvim
+- btop
 
 ### Audio
 
+- pavucontrol
 - pipewire
 - pipewire-audio
 - pipewire-pulse
 - pipewire-jack
 - pipewire-alsa
-
-### General
-
-- terminator
-- pavucontrol
+- wireplumber
 
 ## Optional
 
@@ -52,11 +53,12 @@
 ### Applications
 
 - paru (AUR)
-- nvim
 - thunar
-- btop
 - solaar
-- opentabletdriver
+- firefox
+- discord
 - discover-overlay (AUR)
-- obs-studio
-- wireplumber
+- steam
+- mangohud
+- gamescope
+  - `gamescope -W 2560 -H 1440 -r 165 -f -e --expose-wayland --force-grab-cursor --mangoapp -- %command%`
