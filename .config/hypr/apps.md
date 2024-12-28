@@ -6,6 +6,7 @@
 
 ### Hypr
 
+- hyprland
 - hyprpaper
 - hypridle
 - hyprlock
