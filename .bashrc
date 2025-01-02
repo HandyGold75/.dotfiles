@@ -7,6 +7,9 @@
 
 # Tmux
 if [ -z "$TMUX" ] && [ ! "$(ps -o comm= $PPID)" = "nvim" ] && command -v tmux >/dev/null 2>&1; then
+    if [ "$TERM" = "xterm-kitty" ]; then
+	    export TERM="xterm-256color"
+    fi
     tmux source "./.config/tmux/tmux.conf"
     if ! tmux has-session -t "Tmux";  then
         tmux new-session -d -s "Tmux";
@@ -15,7 +18,7 @@ if [ -z "$TMUX" ] && [ ! "$(ps -o comm= $PPID)" = "nvim" ] && command -v tmux >/
     if tmux attach -t "Tmux"; then
         exit "$?"
     fi
-    printf "\n/\\ Tmux failed to attach /\\n"
+    printf "\n/\\ Tmux failed to attach /\\\n"
 fi
 
 # History file
