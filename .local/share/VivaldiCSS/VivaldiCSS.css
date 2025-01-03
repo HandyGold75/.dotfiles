@@ -1,5 +1,5 @@
-/* enable toolkit.legacyUserProfileCustomizations.stylesheets on about:config
- * Linux:		~/.local/share/VivaldiCSS/VivaldiCSS.css
+/* enable Allow CSS modifications on vivaldi:experiments
+ * Linux:		~/.local/share/VivaldiCSS (Manualy expand ~)
  */
 * {
   font-family: "OpenDyslexic" !important;

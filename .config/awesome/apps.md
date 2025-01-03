@@ -15,6 +15,7 @@
 - kitty
 - nvim (source)
 - btop
+- i3lock
 - xautolock
 - xbindkeys
 - arandr
