@@ -1,4 +1,4 @@
-# Required
+# Apps
 
 [https://wiki.hyprland.org/Useful-Utilities/Must-have/](https://wiki.hyprland.org/Useful-Utilities/Must-have/)
 
@@ -27,7 +27,7 @@
 - opentabletdriver
 - qt5-wayland
 - qt6-wayland
-- terminator
+- kitty
 - nvim
 - btop
 
@@ -55,6 +55,7 @@
 - paru (AUR)
 - thunar
 - solaar
+- lf
 - firefox
 - discord
 - discover-overlay (AUR)

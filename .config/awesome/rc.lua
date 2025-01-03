@@ -52,7 +52,7 @@ end
 gears.filesystem.get_themes_dir()
 
 local modkey = "Mod4"
-local terminal = "terminator"
+local terminal = "kitty"
 local editor = os.getenv("EDITOR") or "vi"
 
 awful.layout.layouts = {
