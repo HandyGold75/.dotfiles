@@ -43,12 +43,12 @@ echo "--- running applications ---" >> ~/.xsession-errors
 
 run "start-pulseaudio-x11"
 run "nm-applet"
-run "klipper"
+run "qlipper"
 run "xbindkeys"
 run "teams-for-linux"
 run "thunderbird"
 run "vivaldi"
-run "yakuake"
+# run "yakuake"
 
 if ! pgrep -f "dunst" ;
 then
