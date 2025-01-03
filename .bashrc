@@ -1,6 +1,4 @@
-#
-# ~/.bashrc
-#
+#!/bin/bash
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
@@ -8,7 +6,7 @@
 # Tmux
 if [ -z "$TMUX" ] && [ ! "$(ps -o comm= $PPID)" = "nvim" ] && command -v tmux >/dev/null 2>&1; then
     if [ "$TERM" = "xterm-kitty" ]; then
-	    export TERM="xterm-256color"
+        export TERM="xterm-256color"
     fi
     tmux source "./.config/tmux/tmux.conf"
     if ! tmux has-session -t "Tmux";  then
@@ -57,7 +55,7 @@ export LC_ALL="en_US.utf8"
 # export LC_CTYPE="en_US.utf8"
 
 # Path
-export PATH="$PATH:$HOME/.local/bin:$HOME/.local/bin/nvim-linux64/bin:/usr/local/go/bin:$(go env GOPATH)/bin"
+export PATH="$PATH:$HOME/.local/bin:$PATH:$HOME/go/bin:/usr/local/go/bin"
 
 # Aliases
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
