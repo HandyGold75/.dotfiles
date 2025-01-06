@@ -49,5 +49,7 @@
 - onlyoffice (deb)
 - teamviewer (deb)
 - forticlient vpn (deb)
+- kde-spectacle
 - rclone
 - remmina
+- virt-manager
