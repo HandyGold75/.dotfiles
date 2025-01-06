@@ -47,6 +47,7 @@
 - teams-for-linux (snap)
 - thunderbird
 - onlyoffice (deb)
+- teamviewer (deb)
 - forticlient vpn (deb)
 - rclone
 - remmina
