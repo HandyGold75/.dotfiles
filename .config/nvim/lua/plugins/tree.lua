@@ -10,7 +10,7 @@ return {
 		},
 		cmd = { "NvimTreeOpen" },
 		keys = {
-			{ "<C-_>", ":NvimTreeToggle<CR>", { "n" }, silent = true, desc = "Toggle nvim tree" },
+			{ "<C-/>", ":NvimTreeToggle<CR>", { "n" }, silent = true, desc = "Toggle nvim tree" },
 			{
 				"<leader>j",
 				function()
