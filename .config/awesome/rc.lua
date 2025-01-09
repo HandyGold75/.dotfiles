@@ -170,11 +170,11 @@ awful.screen.connect_for_each_screen(function(s)
 			layout = wibox.layout.fixed.horizontal,
 			spacing = 5,
 			wibox.widget.systray(),
-			volumearc_widget,
+			volumearc_widget(),
 			logout_widget(),
-			performance_widget,
-			storage_bar_widget,
-			battery_widget,
+			performance_widget(),
+			storage_bar_widget(),
+			battery_widget(),
 			calendar_widget(s),
 			s.mylayoutbox,
 		},
@@ -424,29 +424,30 @@ end
 
 math.randomseed(os.time())
 
-local wp_files = (function(directory)
-	local i, t = 0, {}
-	for filename in io.popen('ls -a "' .. directory .. '"'):lines() do
-		if string.match(filename, "%.png$") or string.match(filename, "%.jpg$") then
-			i = i + 1
-			t[i] = directory .. filename
+if beautiful.wallpaper_path then
+	awful.spawn.easy_async('ls -a "' .. beautiful.wallpaper_path .. '"', function(stdout, stderr, reason, exit_code)
+		local i, wp_files = 0, {}
+		for filename in stdout:gmatch("[^\r\n$]+") do
+			if string.match(filename, "%.png$") or string.match(filename, "%.jpg$") then
+				i = i + 1
+				wp_files[i] = beautiful.wallpaper_path .. filename
+			end
 		end
-	end
-	return t
-end)(os.getenv("HOME") .. "/.config/awesome/theme/wallpapers/")
 
-gears.timer({
-	timeout = 30,
-	autostart = true,
-	callback = function()
 		for s = 1, screen.count() do
 			gears.wallpaper.maximized(wp_files[math.random(1, #wp_files)], s, true)
 		end
-	end,
-})
 
-for s = 1, screen.count() do
-	gears.wallpaper.maximized(wp_files[math.random(1, #wp_files)], s, true)
+		gears.timer({
+			timeout = 30,
+			autostart = true,
+			callback = function()
+				for s = 1, screen.count() do
+					gears.wallpaper.maximized(wp_files[math.random(1, #wp_files)], s, true)
+				end
+			end,
+		})
+	end)
 end
 
 --    ___        _            _             _

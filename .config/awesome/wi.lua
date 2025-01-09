@@ -19,11 +19,15 @@ local terminal = "terminator"
 local systemmonitor = terminal .. " -e " .. "btop"
 local audioconfig = "pavucontrol"
 
-local function run(command)
-	local prog = io.popen(command)
-	local result = prog:read("*all")
-	prog:close()
-	return result
+-- local function run_old(command)
+-- 	local prog = io.popen(command)
+-- 	local result = prog:read("*all")
+-- 	prog:close()
+-- 	return result
+-- end
+
+local function run(command, callback)
+	awful.spawn.easy_async_with_shell(command, function(stdout, stderr, reason, exit_code) callback(stdout) end)
 end
 
 --   _   _       _
@@ -33,44 +37,47 @@ end
 --  \ \_/ / (_) | | |_| | | | | | |  __/
 --   \___/ \___/|_|\__,_|_| |_| |_|\___|
 --
--- volumearc_widget
+-- volumearc_widget()
 
-local volumearc = wibox.widget({
-	max_value = 1,
-	thickness = 2,
-	start_angle = 4.71238898, -- 2pi*3/4
-	forced_height = 17,
-	forced_width = 17,
-	bg = "#ffffff11",
-	paddings = 2,
-	widget = wibox.container.arcchart,
-})
-volumearc_widget = wibox.container.mirror(volumearc, { horizontal = true })
+function volumearc_widget()
+	local volumearc = wibox.widget({
+		max_value = 1,
+		thickness = 2,
+		start_angle = 4.71238898, -- 2pi*3/4
+		forced_height = 17,
+		forced_width = 17,
+		bg = "#ffffff11",
+		paddings = 2,
+		widget = wibox.container.arcchart,
+	})
+	volumearc_widget_menu = wibox.container.mirror(volumearc, { horizontal = true })
 
-local update_graphic = function(widget, stdout, _, _, _)
-	widget.value = tonumber(string.format("% 3d", string.match(stdout, "(%d?%d?%d)%%"))) / 100
-	if string.match(stdout, "%[(o%D%D?)%]") == "off" then
-		widget.colors = { beautiful.fg_widget_value_red }
-	else
-		widget.colors = { beautiful.fg_widget_value }
+	local update_graphic = function(widget, stdout, _, _, _)
+		widget.value = tonumber(string.format("% 3d", string.match(stdout, "(%d?%d?%d)%%"))) / 100
+		if string.match(stdout, "%[(o%D%D?)%]") == "off" then
+			widget.colors = { beautiful.fg_widget_value_red }
+		else
+			widget.colors = { beautiful.fg_widget_value }
+		end
 	end
+
+	volumearc:connect_signal("button::press", function(_, _, _, button)
+		if button == 4 then
+			awful.spawn("amixer -D pulse sset Master 1%+", false)
+		elseif button == 5 then
+			awful.spawn("amixer -D pulse sset Master 1%-", false)
+		elseif button == 1 then
+			awful.spawn("amixer -D pulse sset Master toggle", false)
+		elseif button == 3 then
+			awful.spawn(audioconfig, false)
+		end
+
+		spawn.easy_async("amixer -D pulse sget Master", function(stdout, stderr, exitreason, exitcode) update_graphic(volumearc, stdout, stderr, exitreason, exitcode) end)
+	end)
+
+	watch("amixer -D pulse sget Master", 1, update_graphic, volumearc)
+	return volumearc_widget_menu
 end
-
-volumearc:connect_signal("button::press", function(_, _, _, button)
-	if button == 4 then
-		awful.spawn("amixer -D pulse sset Master 1%+", false)
-	elseif button == 5 then
-		awful.spawn("amixer -D pulse sset Master 1%-", false)
-	elseif button == 1 then
-		awful.spawn("amixer -D pulse sset Master toggle", false)
-	elseif button == 3 then
-		awful.spawn(audioconfig, false)
-	end
-
-	spawn.easy_async("amixer -D pulse sget Master", function(stdout, stderr, exitreason, exitcode) update_graphic(volumearc, stdout, stderr, exitreason, exitcode) end)
-end)
-
-watch("amixer -D pulse sget Master", 1, update_graphic, volumearc)
 
 --  ______          __
 --  | ___ \        / _|
@@ -79,47 +86,58 @@ watch("amixer -D pulse sget Master", 1, update_graphic, volumearc)
 --  | | |  __/ |  | || (_) | |  | | | | | | (_| | | | | (_|  __/
 --  \_|  \___|_|  |_| \___/|_|  |_| |_| |_|\__,_|_| |_|\___\___|
 --
--- performance_widget
+-- performance_widget()
 
-local performancegraph_widget = wibox.widget({
-	max_value = 100,
-	color = "#74aeab",
-	background_color = "#00000000",
-	forced_width = 50,
-	step_width = 2,
-	step_spacing = 1,
-	widget = wibox.widget.graph,
-})
-performance_widget = wibox.container.margin(wibox.container.mirror(performancegraph_widget, { horizontal = true }), 0, 0, 0, 5)
-performance_widget:connect_signal("button::press", function(_, _, _, button)
-	if button == 1 then awful.spawn(systemmonitor) end
-end)
+function performance_widget()
+	local performancegraph_widget = wibox.widget({
+		max_value = 100,
+		color = "#74aeab",
+		background_color = "#00000000",
+		forced_width = 50,
+		step_width = 2,
+		step_spacing = 1,
+		widget = wibox.widget.graph,
+	})
+	performance_widget_menu = wibox.container.margin(wibox.container.mirror(performancegraph_widget, { horizontal = true }), 0, 0, 0, 5)
+	performance_widget_menu:connect_signal("button::press", function(_, _, _, button)
+		if button == 1 then awful.spawn(systemmonitor) end
+	end)
 
-local total_prev = 0
-local idle_prev = 0
+	local total_prev = 0
+	local idle_prev = 0
 
-watch("cat /proc/stat | grep '^performance'", 1, function(widget, stdout, stderr, exitreason, exitcode)
-	local user, nice, system, idle, iowait, irq, softirq, steal, guest, guest_nice = stdout:match("(%d+)%s(%d+)%s(%d+)%s(%d+)%s(%d+)%s(%d+)%s(%d+)%s(%d+)%s(%d+)%s(%d+)%s")
-	local total = user + nice + system + idle + iowait + irq + softirq + steal
+	watch("cat /proc/stat | grep '^performance'", 1, function(widget, stdout, stderr, exitreason, exitcode)
+		local user, nice, system, idle, iowait, irq, softirq, steal, guest, guest_nice = stdout:match("(%d+)%s(%d+)%s(%d+)%s(%d+)%s(%d+)%s(%d+)%s(%d+)%s(%d+)%s(%d+)%s(%d+)%s")
+		local total = user + nice + system + idle + iowait + irq + softirq + steal
 
-	local diff_idle = idle - idle_prev
-	local diff_total = total - total_prev
-	local diff_usage = (1000 * (diff_total - diff_idle) / diff_total + 5) / 10
+		local diff_idle = idle - idle_prev
+		local diff_total = total - total_prev
+		local diff_usage = (1000 * (diff_total - diff_idle) / diff_total + 5) / 10
 
-	if diff_usage > 80 then
-		widget:set_color("#ff4136")
-	else
-		widget:set_color("#74aeab")
-	end
+		if diff_usage > 80 then
+			widget:set_color("#ff4136")
+		else
+			widget:set_color("#74aeab")
+		end
 
-	widget:add_value(diff_usage)
+		widget:add_value(diff_usage)
 
-	total_prev = total
-	idle_prev = idle
-end, performancegraph_widget)
+		total_prev = total
+		idle_prev = idle
+	end, performancegraph_widget)
 
-local performancett = awful.tooltip({ timer_function = function() return "Memory: 	" .. run("free | awk '/^Mem/ {printf(\"%.0f\", 100-$7/$2*100)}'") .. "%\nSwap: 	" .. run("free | awk '/^Swap/ {printf(\"%.0f\", $3/$2*100)}'") .. "%" end })
-performancett:add_to_object(performance_widget)
+	local performancett_text = ""
+	local performancett = awful.tooltip({
+		timer_function = function()
+			run("free | awk '/^Mem/ {printf(\"%.0f\", 100-$7/$2*100)}'", function(memory)
+				run("free | awk '/^Swap/ {printf(\"%.0f\", $3/$2*100)}'", function(swap) performancett_text = ("Memory: 	" .. memory:gsub("[\n\r]", "") .. "%\nSwap: 	" .. swap:gsub("[\n\r]", "") .. "%") end)
+			end)
+			return performancett_text
+		end,
+	})
+	performancett:add_to_object(performance_widget_menu)
+	return performance_widget_menu
+end
 
 --  ______       _   _
 --  | ___ \     | | | |
@@ -129,33 +147,49 @@ performancett:add_to_object(performance_widget)
 --  \____/ \__,_|\__|\__\___|_|   \__, |
 --                                 __/ |
 --                                |___/
--- battery_widget
+-- battery_widget()
 
-local function update(widget)
-	local pers = tonumber(run("cat /sys/class/power_supply/BAT0/capacity"))
-	if pers <= 20 then awful.spawn.with_shell("notify-send -a battery 'Houston, we have a problem' 'Battery is dying'") end
+function battery_widget()
+	battery_widget_menu = wibox.widget.imagebox(beautiful.widget_dirbattery .. "/0.svg")
 
-	local cap = (pers / 100) * 12
-	if cap - math.floor(cap) >= 0.5 then
-		cap = math.floor(cap) + 1
-	else
-		cap = math.floor(cap)
+	local batterytt_text = ""
+	local batterytt = awful.tooltip({
+		timer_function = function()
+			run("cat /sys/class/power_supply/BAT0/capacity", function(capacity)
+				run("cat /sys/class/power_supply/BAT0/status", function(status) batterytt_text = capacity:gsub("[\n\r]", "") .. "% (" .. status:gsub("[\n\r]", "") .. ")" end)
+			end)
+			return batterytt_text
+		end,
+	})
+	batterytt:add_to_object(battery_widget_menu)
+
+	local function update(widget)
+		run("cat /sys/class/power_supply/BAT0/capacity", function(capacity)
+			local pers = tonumber(capacity)
+			if pers <= 20 then awful.spawn.with_shell("notify-send -a battery 'Houston, we have a problem' 'Battery is dying'") end
+
+			local cap = (pers / 100) * 12
+			if cap - math.floor(cap) >= 0.5 then
+				cap = math.floor(cap) + 1
+			else
+				cap = math.floor(cap)
+			end
+
+			local suffix = ""
+			run("cat /sys/class/power_supply/BAT0/status", function(status)
+				if status:find("Charging") ~= nil then suffix = "c" end
+				widget:set_image(beautiful.widget_dirbattery .. "/" .. cap .. suffix .. ".svg")
+			end)
+		end)
 	end
 
-	local suffix = ""
-	if run("cat /sys/class/power_supply/BAT0/status"):find("Charging") ~= nil then suffix = "c" end
-	widget:set_image(beautiful.widget_dirbattery .. "/" .. cap .. suffix .. ".svg")
+	local batterytmr = timer({ timeout = 120 })
+	batterytmr:connect_signal("timeout", function() update(battery_widget_menu) end)
+	batterytmr:start()
+	update(battery_widget_menu)
+
+	return battery_widget_menu
 end
-
-battery_widget = wibox.widget.imagebox(beautiful.widget_dirbattery .. "/0.svg")
-
-local batterytt = awful.tooltip({ timer_function = function() return run("cat /sys/class/power_supply/BAT0/capacity"):gsub("[\n\r]", "") .. "% (" .. run("cat /sys/class/power_supply/BAT0/status"):gsub("[\n\r]", "") .. ")" end })
-batterytt:add_to_object(battery_widget)
-
-local batterytmr = timer({ timeout = 60 })
-batterytmr:connect_signal("timeout", function() update(battery_widget) end)
-batterytmr:start()
-update(battery_widget)
 
 --   _____       _                _
 --  /  __ \     | |              | |
@@ -189,159 +223,160 @@ end
 --  \_|   |_|_|\___||___/\__, |___/\__\___|_| |_| |_|
 --                        __/ |
 --                       |___/
--- storage_bar_widget
+-- storage_bar_widget()
 
-local function storage_bar_widget_worker(user_args)
-	local args = user_args or {}
-	local config = {}
+function storage_bar_widget()
+	local function storage_bar_widget_worker(user_args)
+		local args = user_args or {}
+		local config = {}
 
-	config.mounts = { "/" }
-	config.refresh_rate = 300
+		config.mounts = { "/" }
+		config.refresh_rate = 300
 
-	config.widget_width = 40
-	config.widget_bar_color = "#aaaaaa"
-	config.widget_onclick_bg = "#ff0000"
-	config.widget_border_color = "#535d6c"
-	config.widget_background_color = "#222222"
+		config.widget_width = 40
+		config.widget_bar_color = "#aaaaaa"
+		config.widget_onclick_bg = "#ff0000"
+		config.widget_border_color = "#535d6c"
+		config.widget_background_color = "#222222"
 
-	config.popup_bg = "#222222"
-	config.popup_border_width = 1
-	config.popup_border_color = "#535d6c"
-	config.popup_bar_color = "#aaaaaa"
-	config.popup_bar_background_color = "#222222"
-	config.popup_bar_border_color = "#535d6c"
+		config.popup_bg = "#222222"
+		config.popup_border_width = 1
+		config.popup_border_color = "#535d6c"
+		config.popup_bar_color = "#aaaaaa"
+		config.popup_bar_background_color = "#222222"
+		config.popup_bar_border_color = "#535d6c"
 
-	local _config = {}
-	for prop, value in pairs(config) do
-		_config[prop] = args[prop] or beautiful[prop] or value
-	end
-
-	local storagebar_widget = wibox.widget({
-		{
-			id = "progressbar",
-			color = _config.widget_bar_color,
-			max_value = 100,
-			forced_height = 20,
-			forced_width = _config.widget_width,
-			paddings = 2,
-			margins = 4,
-			border_width = 1,
-			border_radius = 2,
-			border_color = _config.widget_border_color,
-			background_color = _config.widget_background_color,
-			widget = wibox.widget.progressbar,
-		},
-		shape = function(cr, width, height) gears.shape.rounded_rect(cr, width, height, 4) end,
-		widget = wibox.container.background,
-		set_value = function(self, new_value) self:get_children_by_id("progressbar")[1].value = new_value end,
-	})
-
-	local disk_rows = {
-		{ widget = wibox.widget.textbox },
-		spacing = 4,
-		layout = wibox.layout.fixed.vertical,
-	}
-
-	local disk_header = wibox.widget({
-		{
-			markup = "<b>Mount</b>",
-			forced_width = 300,
-			align = "left",
-			widget = wibox.widget.textbox,
-		},
-		{
-			markup = "<b>Used</b>",
-			align = "left",
-			widget = wibox.widget.textbox,
-		},
-		layout = wibox.layout.ratio.horizontal,
-	})
-	disk_header:ajust_ratio(1, 0, 0.3, 0.7)
-
-	local popup = awful.popup({
-		bg = _config.popup_bg,
-		ontop = true,
-		visible = false,
-		shape = gears.shape.rounded_rect,
-		border_width = _config.popup_border_width,
-		border_color = _config.popup_border_color,
-		maximum_width = 550,
-		offset = { y = 5 },
-		widget = {},
-	})
-
-	storagebar_widget:buttons(awful.util.table.join(awful.button({}, 1, function()
-		if popup.visible then
-			popup.visible = not popup.visible
-			storagebar_widget:set_bg("#00000000")
-		else
-			storagebar_widget:set_bg(_config.widget_background_color)
-			popup:move_next_to(mouse.current_widget_geometry)
-		end
-	end)))
-
-	local disks = {}
-	watch([[bash -c "df | tail -n +2"]], _config.refresh_rate, function(widget, stdout)
-		for line in stdout:gmatch("[^\r\n$]+") do
-			local filesystem, size, used, avail, perc, mount = line:match("([%p%w]+)%s+([%d%w]+)%s+([%d%w]+)%s+([%d%w]+)%s+([%d]+)%%%s+([%p%w]+)")
-
-			disks[mount] = {}
-			disks[mount].filesystem = filesystem
-			disks[mount].size = size
-			disks[mount].used = used
-			disks[mount].avail = avail
-			disks[mount].perc = perc
-			disks[mount].mount = mount
-
-			if disks[mount].mount == _config.mounts[1] then widget:set_value(tonumber(disks[mount].perc)) end
+		local _config = {}
+		for prop, value in pairs(config) do
+			_config[prop] = args[prop] or beautiful[prop] or value
 		end
 
-		for k, v in ipairs(_config.mounts) do
-			local row = wibox.widget({
-				{
-					text = disks[v].mount,
-					forced_width = 300,
-					widget = wibox.widget.textbox,
-				},
-				{
-					color = _config.popup_bar_color,
-					max_value = 100,
-					value = tonumber(disks[v].perc),
-					forced_height = 20,
-					paddings = 1,
-					margins = 4,
-					border_width = 1,
-					border_color = _config.popup_bar_border_color,
-					background_color = _config.popup_bar_background_color,
-					bar_border_width = 1,
-					bar_border_color = _config.popup_bar_border_color,
-					widget = wibox.widget.progressbar,
-				},
-				{
-					text = math.floor(" " .. disks[v].used / 1024 / 1024) .. "GiB / " .. math.floor(disks[v].size / 1024 / 1024) .. "GiB (" .. math.floor(disks[v].perc) .. "%)",
-					widget = wibox.widget.textbox,
-				},
-				layout = wibox.layout.ratio.horizontal,
-			})
-			row:ajust_ratio(2, 0.3, 0.3, 0.4)
-
-			disk_rows[k] = row
-		end
-		popup:setup({
+		local storagebar_widget = wibox.widget({
 			{
-				disk_header,
-				disk_rows,
-				layout = wibox.layout.fixed.vertical,
+				id = "progressbar",
+				color = _config.widget_bar_color,
+				max_value = 100,
+				forced_height = 20,
+				forced_width = _config.widget_width,
+				paddings = 2,
+				margins = 4,
+				border_width = 1,
+				border_radius = 2,
+				border_color = _config.widget_border_color,
+				background_color = _config.widget_background_color,
+				widget = wibox.widget.progressbar,
 			},
-			margins = 8,
-			widget = wibox.container.margin,
+			shape = function(cr, width, height) gears.shape.rounded_rect(cr, width, height, 4) end,
+			widget = wibox.container.background,
+			set_value = function(self, new_value) self:get_children_by_id("progressbar")[1].value = new_value end,
 		})
-	end, storagebar_widget)
 
-	return storagebar_widget
+		local disk_rows = {
+			{ widget = wibox.widget.textbox },
+			spacing = 4,
+			layout = wibox.layout.fixed.vertical,
+		}
+
+		local disk_header = wibox.widget({
+			{
+				markup = "<b>Mount</b>",
+				forced_width = 300,
+				align = "left",
+				widget = wibox.widget.textbox,
+			},
+			{
+				markup = "<b>Used</b>",
+				align = "left",
+				widget = wibox.widget.textbox,
+			},
+			layout = wibox.layout.ratio.horizontal,
+		})
+		disk_header:ajust_ratio(1, 0, 0.3, 0.7)
+
+		local popup = awful.popup({
+			bg = _config.popup_bg,
+			ontop = true,
+			visible = false,
+			shape = gears.shape.rounded_rect,
+			border_width = _config.popup_border_width,
+			border_color = _config.popup_border_color,
+			maximum_width = 550,
+			offset = { y = 5 },
+			widget = {},
+		})
+
+		storagebar_widget:buttons(awful.util.table.join(awful.button({}, 1, function()
+			if popup.visible then
+				popup.visible = not popup.visible
+				storagebar_widget:set_bg("#00000000")
+			else
+				storagebar_widget:set_bg(_config.widget_background_color)
+				popup:move_next_to(mouse.current_widget_geometry)
+			end
+		end)))
+
+		local disks = {}
+		watch([[bash -c "df | tail -n +2"]], _config.refresh_rate, function(widget, stdout)
+			for line in stdout:gmatch("[^\r\n$]+") do
+				local filesystem, size, used, avail, perc, mount = line:match("([%p%w]+)%s+([%d%w]+)%s+([%d%w]+)%s+([%d%w]+)%s+([%d]+)%%%s+([%p%w]+)")
+
+				disks[mount] = {}
+				disks[mount].filesystem = filesystem
+				disks[mount].size = size
+				disks[mount].used = used
+				disks[mount].avail = avail
+				disks[mount].perc = perc
+				disks[mount].mount = mount
+
+				if disks[mount].mount == _config.mounts[1] then widget:set_value(tonumber(disks[mount].perc)) end
+			end
+
+			for k, v in ipairs(_config.mounts) do
+				local row = wibox.widget({
+					{
+						text = disks[v].mount,
+						forced_width = 300,
+						widget = wibox.widget.textbox,
+					},
+					{
+						color = _config.popup_bar_color,
+						max_value = 100,
+						value = tonumber(disks[v].perc),
+						forced_height = 20,
+						paddings = 1,
+						margins = 4,
+						border_width = 1,
+						border_color = _config.popup_bar_border_color,
+						background_color = _config.popup_bar_background_color,
+						bar_border_width = 1,
+						bar_border_color = _config.popup_bar_border_color,
+						widget = wibox.widget.progressbar,
+					},
+					{
+						text = math.floor(" " .. disks[v].used / 1024 / 1024) .. "GiB / " .. math.floor(disks[v].size / 1024 / 1024) .. "GiB (" .. math.floor(disks[v].perc) .. "%)",
+						widget = wibox.widget.textbox,
+					},
+					layout = wibox.layout.ratio.horizontal,
+				})
+				row:ajust_ratio(2, 0.3, 0.3, 0.4)
+
+				disk_rows[k] = row
+			end
+			popup:setup({
+				{
+					disk_header,
+					disk_rows,
+					layout = wibox.layout.fixed.vertical,
+				},
+				margins = 8,
+				widget = wibox.container.margin,
+			})
+		end, storagebar_widget)
+
+		return storagebar_widget
+	end
+	return storage_bar_widget_worker({ mounts = { "/", "/mnt/OneDrive_DI", "/mnt/OneDrive_IZO" } })
 end
-
-storage_bar_widget = storage_bar_widget_worker({ mounts = { "/", "/mnt/OneDrive_DI", "/mnt/OneDrive_IZO" } })
 
 --   _                             _
 --  | |                           | |
@@ -353,32 +388,31 @@ storage_bar_widget = storage_bar_widget_worker({ mounts = { "/", "/mnt/OneDrive_
 --               |___/
 -- logout_widget()
 
-local logout_menu_widget = wibox.widget({
-	{
-		{
-			image = beautiful.widget_dirlogout .. "/power_w.svg",
-			resize = true,
-			widget = wibox.widget.imagebox,
-		},
-		margins = 4,
-		layout = wibox.container.margin,
-	},
-	shape = function(cr, width, height) gears.shape.rounded_rect(cr, width, height, 4) end,
-	widget = wibox.container.background,
-})
-
-local popup = awful.popup({
-	ontop = true,
-	visible = false,
-	shape = function(cr, width, height) gears.shape.rounded_rect(cr, width, height, 4) end,
-	border_width = 1,
-	border_color = beautiful.bg_focus,
-	maximum_width = 400,
-	offset = { y = 5 },
-	widget = {},
-})
-
 function logout_widget()
+	local logout_menu_widget = wibox.widget({
+		{
+			{
+				image = beautiful.widget_dirlogout .. "/power_w.svg",
+				resize = true,
+				widget = wibox.widget.imagebox,
+			},
+			margins = 4,
+			layout = wibox.container.margin,
+		},
+		shape = function(cr, width, height) gears.shape.rounded_rect(cr, width, height, 4) end,
+		widget = wibox.container.background,
+	})
+
+	local popup = awful.popup({
+		ontop = true,
+		visible = false,
+		shape = function(cr, width, height) gears.shape.rounded_rect(cr, width, height, 4) end,
+		border_width = 1,
+		border_color = beautiful.bg_focus,
+		maximum_width = 400,
+		offset = { y = 5 },
+		widget = {},
+	})
 	local rows = { layout = wibox.layout.fixed.vertical }
 	local menu_items = {
 		{ name = "Log out", icon_name = "log-out.svg", command = function() awesome.quit() end },
