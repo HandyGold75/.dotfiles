@@ -12,6 +12,7 @@ local theme = {}
 
 theme.theme_path = theme_path
 theme.wallpaper = theme_path .. "background.png"
+theme.wallpaper_path = theme_path .. "wallpapers/"
 theme.awesome_icon = theme_path .. "awesome.svg"
 theme.font = "OpenDyslexic 10"
 
