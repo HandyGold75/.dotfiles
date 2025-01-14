@@ -153,8 +153,8 @@
   },
 
   "hyprland/window": {
-    // "format": "{initialTitle}",
-    "format": "",
+    "format": "{initialTitle}",
+    // "format": "",
     "max-length": 64,
     "separate-outputs": true,
     "icon": true,
