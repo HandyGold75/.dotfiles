@@ -1,18 +1,18 @@
 # DO NOT EDIT! This file will be overwritten by nwg-look.
 # Any customization should be done in ~/.gtkrc-2.0.mine instead.
 
-include "/home/wsiz01/.gtkrc-2.0.mine"
-gtk-theme-name="Breeze-Dark"
-gtk-icon-theme-name="breeze"
-gtk-font-name="OpenDyslexic,  10"
-gtk-cursor-theme-name="catppuccin-frappe-dark-cursors"
+include "/home/izo/.gtkrc-2.0.mine"
+gtk-theme-name="Yaru-blue"
+gtk-icon-theme-name="Yaru-dark"
+gtk-font-name="Cantarell 11"
+gtk-cursor-theme-name="catppuccin-macchiato-dark-cursors"
 gtk-cursor-theme-size=24
 gtk-toolbar-style=3
 gtk-toolbar-icon-size=GTK_ICON_SIZE_LARGE_TOOLBAR
 gtk-button-images=0
 gtk-menu-images=0
 gtk-enable-event-sounds=1
-gtk-enable-input-feedback-sounds=0
+gtk-enable-input-feedback-sounds=1
 gtk-xft-antialias=1
 gtk-xft-hinting=1
 gtk-xft-hintstyle="hintslight"
