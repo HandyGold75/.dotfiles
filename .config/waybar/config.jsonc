@@ -225,27 +225,27 @@
   //   },
   // },
 
-  // "backlight": {
-  //   "device": "intel_backlight",
-  //   "format": "{percent}% {icon}",
-  //   "format-icons": ["", "", "", "", "", "", "", "", ""],
-  // },
+  "backlight": {
+    "device": "intel_backlight",
+    "format": "{percent}% {icon}",
+    "format-icons": ["", "", "", "", "", "", "", "", ""],
+  },
 
-  // "battery": {
-  //   "bat": "BAT0",
-  //   "states": {
-  //     "good": 95,
-  //     "warning": 30,
-  //     "critical": 15,
-  //   },
-  //   "format": "{capacity}% {icon}",
-  //   "format-time": "{H}:{M}",
-  //   "format-alt": "{time} {icon}",
-  //   "format-full": "{capacity}% {icon}",
-  //   "format-charging": "{capacity}% ",
-  //   "format-plugged": "{capacity}% ",
-  //   "format-icons": ["", "", "", "", ""],
-  // },
+  "battery": {
+    "bat": "BAT0",
+    "states": {
+      "good": 95,
+      "warning": 30,
+      "critical": 15,
+    },
+    "format": "{capacity}% {icon}",
+    "format-time": "{H}:{M}",
+    "format-alt": "{time} {icon}",
+    "format-full": "{capacity}% {icon}",
+    "format-charging": "{capacity}% ",
+    "format-plugged": "{capacity}% ",
+    "format-icons": ["", "", "", "", ""],
+  },
 
   "group/stats": {
     "orientation": "inherit",
