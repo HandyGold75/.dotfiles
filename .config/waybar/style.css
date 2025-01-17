@@ -47,7 +47,7 @@ tooltip {
 #window,
 #pulseaudio,
 #network,
-#keyboard-state,
+/* #keyboard-state, */
 #backlight,
 #battery,
 #disk,
