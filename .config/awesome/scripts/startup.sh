@@ -13,15 +13,15 @@ headsetcontrol -l 0
 
 setxkbmap -option caps:swapescape
 
-xinput set-prop "Logitech MX Master 3S" "libinput Accel Profile Enabled" 0 1
-sleep 5 && xinput set-prop "Logitech MX Master 3S" "libinput Accel Profile Enabled" 0 1 &
-xinput set-prop "Logitech MX Master 3S" "libinput Accel Speed" -0.30
-sleep 5 && xinput set-prop "Logitech MX Master 3S" "libinput Accel Speed" -0.30 &
+# xinput set-prop "Logitech MX Master 3S" "libinput Accel Profile Enabled" 0 1
+# sleep 5 && xinput set-prop "Logitech MX Master 3S" "libinput Accel Profile Enabled" 0 1 &
+# xinput set-prop "Logitech MX Master 3S" "libinput Accel Speed" -0.30
+# sleep 5 && xinput set-prop "Logitech MX Master 3S" "libinput Accel Speed" -0.30 &
 
-xinput set-prop "MX Master 3S" "libinput Accel Profile Enabled" 0 1
-sleep 5 && xinput set-prop "MX Master 3S" "libinput Accel Profile Enabled" 0 1 &
-xinput set-prop "MX Master 3S" "libinput Accel Speed" -0.30
-sleep 5 && xinput set-prop "MX Master 3S" "libinput Accel Speed" -0.30 &
+# xinput set-prop "MX Master 3S" "libinput Accel Profile Enabled" 0 1
+# sleep 5 && xinput set-prop "MX Master 3S" "libinput Accel Profile Enabled" 0 1 &
+# xinput set-prop "MX Master 3S" "libinput Accel Speed" -0.30
+# sleep 5 && xinput set-prop "MX Master 3S" "libinput Accel Speed" -0.30 &
 
 #    ___        _            _             _
 #   / _ \      | |          | |           | |
@@ -42,6 +42,7 @@ run() {
 run "nm-applet"
 run "qlipper"
 run "xbindkeys"
+run "flameshot"
 run "teams-for-linux"
 run "thunderbird"
 run "vivaldi"

@@ -27,7 +27,7 @@ local audioconfig = "pavucontrol"
 -- end
 
 local function run(command, callback)
-	awful.spawn.easy_async_with_shell(command, function(stdout, stderr, reason, exit_code) callback(stdout) end)
+	awful.spawn.easy_async_with_shell(command, function(stdout, _, _, _) callback(stdout) end)
 end
 
 --   _   _       _
@@ -50,7 +50,7 @@ function volumearc_widget()
 		paddings = 2,
 		widget = wibox.container.arcchart,
 	})
-	volumearc_widget_menu = wibox.container.mirror(volumearc, { horizontal = true })
+	local volumearc_widget_menu = wibox.container.mirror(volumearc, { horizontal = true })
 
 	local update_graphic = function(widget, stdout, _, _, _)
 		widget.value = tonumber(string.format("% 3d", string.match(stdout, "(%d?%d?%d)%%"))) / 100
@@ -98,16 +98,15 @@ function performance_widget()
 		step_spacing = 1,
 		widget = wibox.widget.graph,
 	})
-	performance_widget_menu = wibox.container.margin(wibox.container.mirror(performancegraph_widget, { horizontal = true }), 0, 0, 0, 5)
+	local performance_widget_menu = wibox.container.margin(wibox.container.mirror(performancegraph_widget, { horizontal = true }), 0, 0, 0, 5)
 	performance_widget_menu:connect_signal("button::press", function(_, _, _, button)
 		if button == 1 then awful.spawn(systemmonitor) end
 	end)
 
 	local total_prev = 0
 	local idle_prev = 0
-
-	watch("cat /proc/stat | grep '^performance'", 1, function(widget, stdout, stderr, exitreason, exitcode)
-		local user, nice, system, idle, iowait, irq, softirq, steal, guest, guest_nice = stdout:match("(%d+)%s(%d+)%s(%d+)%s(%d+)%s(%d+)%s(%d+)%s(%d+)%s(%d+)%s(%d+)%s(%d+)%s")
+	watch("cat /proc/stat | grep '^performance'", 1, function(widget, stdout, _, _, _)
+		local user, nice, system, idle, iowait, irq, softirq, steal, _, _ = stdout:match("(%d+)%s(%d+)%s(%d+)%s(%d+)%s(%d+)%s(%d+)%s(%d+)%s(%d+)%s(%d+)%s(%d+)%s")
 		local total = user + nice + system + idle + iowait + irq + softirq + steal
 
 		local diff_idle = idle - idle_prev
@@ -126,7 +125,7 @@ function performance_widget()
 		idle_prev = idle
 	end, performancegraph_widget)
 
-	local performancett_text = ""
+	local performancett_text = "Pending . . ."
 	local performancett = awful.tooltip({
 		timer_function = function()
 			run("free | awk '/^Mem/ {printf(\"%.0f\", 100-$7/$2*100)}'", function(memory)
@@ -150,9 +149,8 @@ end
 -- battery_widget()
 
 function battery_widget()
-	battery_widget_menu = wibox.widget.imagebox(beautiful.widget_dirbattery .. "/0.svg")
-
-	local batterytt_text = ""
+	local battery_widget_menu = wibox.widget.imagebox(beautiful.widget_dirbattery .. "/0.svg")
+	local batterytt_text = "Pending . . ."
 	local batterytt = awful.tooltip({
 		timer_function = function()
 			run("cat /sys/class/power_supply/BAT0/capacity", function(capacity)
@@ -163,30 +161,27 @@ function battery_widget()
 	})
 	batterytt:add_to_object(battery_widget_menu)
 
-	local function update(widget)
-		run("cat /sys/class/power_supply/BAT0/capacity", function(capacity)
-			local pers = tonumber(capacity)
-			if pers <= 20 then awful.spawn.with_shell("notify-send -a battery 'Houston, we have a problem' 'Battery is dying'") end
+	local function update_graphic(widget, stdout, _, _, _)
+		local pers = tonumber(stdout)
+		local cap = (pers / 100) * 12
+		if cap - math.floor(cap) >= 0.5 then
+			cap = math.floor(cap) + 1
+		else
+			cap = math.floor(cap)
+		end
 
-			local cap = (pers / 100) * 12
-			if cap - math.floor(cap) >= 0.5 then
-				cap = math.floor(cap) + 1
-			else
-				cap = math.floor(cap)
-			end
-
+		run("cat /sys/class/power_supply/BAT0/status", function(status)
 			local suffix = ""
-			run("cat /sys/class/power_supply/BAT0/status", function(status)
-				if status:find("Charging") ~= nil then suffix = "c" end
-				widget:set_image(beautiful.widget_dirbattery .. "/" .. cap .. suffix .. ".svg")
-			end)
+			if status:find("Charging") ~= nil then
+				suffix = "c"
+			else
+				if pers <= 20 then awful.spawn.with_shell("notify-send -a battery 'Houston, we have a problem' 'Battery is dying'") end
+			end
+			widget:set_image(beautiful.widget_dirbattery .. "/" .. cap .. suffix .. ".svg")
 		end)
 	end
 
-	local batterytmr = timer({ timeout = 120 })
-	batterytmr:connect_signal("timeout", function() update(battery_widget_menu) end)
-	batterytmr:start()
-	update(battery_widget_menu)
+	watch("cat /sys/class/power_supply/BAT0/capacity", 120, update_graphic, battery_widget_menu)
 
 	return battery_widget_menu
 end
@@ -201,7 +196,7 @@ end
 -- calendar_widget()
 
 function calendar_widget(s)
-	calender = wibox.widget.textclock("%d-%b-%y %k:%M")
+	local calender_menu = wibox.widget.textclock("%d-%b-%y %k:%M")
 	awful.widget.calendar_popup
 		.year({
 			screen = s,
@@ -211,8 +206,8 @@ function calendar_widget(s)
 			style_weekday = { border_width = 1, border_color = beautiful.color_awesome_blue },
 			style_weeknumber = { border_width = 1, border_color = beautiful.color_awesome_blue },
 		})
-		:attach(calender, "tr")
-	return calender
+		:attach(calender_menu, "tr")
+	return calender_menu
 end
 
 --  ______ _ _                     _
