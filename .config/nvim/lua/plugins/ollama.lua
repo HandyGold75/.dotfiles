@@ -7,7 +7,7 @@ return {
 		{ "<leader>oG", ":<c-u>lua require('ollama').prompt('Generate_Code')<cr>", desc = "ollama Generate Code", mode = { "n", "v" } },
 	},
 	opts = {
-		model = "stable-code",
+		model = "mistral",
 		url = "http://127.0.0.1:11434",
 		serve = {
 			on_start = true,
