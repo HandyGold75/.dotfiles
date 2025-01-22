@@ -1,9 +1,8 @@
 return {
 	{
 		"iamcco/markdown-preview.nvim",
-		name = "markdown-preview",
 		build = function()
-			vim.cmd(":Lazy load markdown-preview<CR>")
+			vim.cmd("Lazy load markdown-preview.nvim")
 			vim.fn["mkdp#util#install"]()
 		end,
 		ft = { "markdown" },
