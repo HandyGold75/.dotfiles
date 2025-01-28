@@ -29,3 +29,33 @@
 
 "playerctl previous"
   XF86AudioPrev
+
+"~/.screenlayout/lp.sh"
+  mod4 + KP_0
+
+"~/.screenlayout/h.sh"
+  mod4 + KP_9
+
+"~/.screenlayout/w1.sh"
+  mod4 + KP_1
+
+"~/.screenlayout/w2.sh"
+  mod4 + KP_2
+
+"~/.screenlayout/w3.sh"
+  mod4 + KP_3
+
+"~/.screenlayout/w4.sh"
+  mod4 + KP_4
+
+# "~/.screenlayout/p1.sh"
+#   mod4 + 1
+
+# "~/.screenlayout/p2.sh"
+#   mod4 + 2
+
+# "~/.screenlayout/p3.sh"
+#   mod4 + 3
+
+"~/.screenlayout/p4.sh"
+  mod4 + 4
