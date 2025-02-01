@@ -30,6 +30,9 @@
 "playerctl previous"
   XF86AudioPrev
 
+"headsetcontrol -l0"
+  mod4 + F11
+
 "~/.screenlayout/lp.sh"
   mod4 + KP_0
 
