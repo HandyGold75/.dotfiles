@@ -67,7 +67,7 @@ runBackup "10.69.2.101" "SV01" "" "etc/nginx"
 runBackup "10.69.2.102" "SV02" "[!mnt][!rclone]"
 runBackup "10.69.2.103" "SV03"
 runBackup "10.69.2.104" "SV04" "[!upload]"
-runBackup "10.69.2.105" "SV05" "[!go][!venv][!Programs]"
+runBackup "10.69.2.105" "SV05" "[!go][!venv]"
 runBackup "10.69.2.106" "SV06"
 runBackup "10.69.2.107" "SV07"
 
