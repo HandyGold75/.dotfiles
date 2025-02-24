@@ -20,8 +20,8 @@
     { "type": "uptime", "key": "│ └Uptime  ", "keyColor": "red" },
 
     { "type": "terminal", "key": "│  TERM ", "keyColor": "white" },
-    { "type": "de", "key": "│ ├DE", "keyColor": "white" },
-    { "type": "wm", "key": "│ ├WM  ", "keyColor": "white" },
+    { "type": "de", "key": "│ ├DE      ", "keyColor": "white" },
+    { "type": "wm", "key": "│ ├WM      ", "keyColor": "white" },
     { "type": "lm", "key": "│ ├LM      ", "keyColor": "white" },
     { "type": "theme", "key": "│ ├Theme   ", "keyColor": "white" },
     { "type": "cursor", "key": "│ ├Cursor  ", "keyColor": "white" },
