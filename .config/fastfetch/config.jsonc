@@ -13,7 +13,6 @@
     },
 
     { "type": "os", "key": "│ {icon} OS   ", "keyColor": "red" },
-    { "type": "host", "key": "│ ├Host    ", "keyColor": "red" },
     { "type": "kernel", "key": "│ ├Kernel  ", "keyColor": "red" },
     { "type": "packages", "key": "│ ├Packages", "keyColor": "red" },
     { "type": "shell", "key": "│ ├Shell   ", "keyColor": "red" },
