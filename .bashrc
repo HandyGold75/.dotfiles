@@ -76,6 +76,8 @@ alias gitfp='git fetch && git pull'
 alias gitac='git add . && git commit -m $(date +%d-%b-%y)'
 alias gitps='git push'
 alias gitpl='git pull'
+alias monoup='pactl load-module module-remap-sink sink_name=mono sink_properties='\''device.description="Fallback Mono"'\'' channels=1 channel_map=mono'
+alias monodown='pactl unload-module module-remap-sink'
 
 # Prompt
 PS1='[\u@\h ${PWD/$HOME/\~}]\$ '
@@ -86,6 +88,5 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-# Neofetch
-echo && /usr/bin/neofetch --colors 1 7 7 1 7 7 --color_blocks off
-
+# FastFetch
+fastfetch

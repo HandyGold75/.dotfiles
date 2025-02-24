@@ -1,0 +1,39 @@
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+  "general": { "preRun": "echo" },
+  "display": {
+    // "stat": true,
+    "separator": "  ",
+    "key": { "paddingLeft": 1 },
+  },
+  "modules": [
+    {
+      "type": "title",
+      "color": { "user": "red", "at": "white", "host": "red" },
+    },
+
+    { "type": "os", "key": "│ {icon} OS     ", "keyColor": "red" },
+    { "type": "host", "key": "│ ├Host    ", "keyColor": "red" },
+    { "type": "kernel", "key": "│ ├Kernel  ", "keyColor": "red" },
+    { "type": "packages", "key": "│ ├Packages", "keyColor": "red" },
+    { "type": "shell", "key": "│ ├Shell   ", "keyColor": "red" },
+    { "type": "uptime", "key": "│ └Uptime  ", "keyColor": "red" },
+
+    { "type": "wm", "key": "│  DE/WM  ", "keyColor": "white" },
+    { "type": "terminal", "key": "│ ├Terminal", "keyColor": "white" },
+    { "type": "lm", "key": "│ ├LM      ", "keyColor": "white" },
+    { "type": "theme", "key": "│ ├Theme   ", "keyColor": "white" },
+    { "type": "cursor", "key": "│ ├Cursor  ", "keyColor": "white" },
+    { "type": "icons", "key": "│ └Icons   ", "keyColor": "white" },
+
+    { "type": "host", "key": "│ 󰌢 PC     ", "keyColor": "red" },
+    { "type": "battery", "key": "│ ├Battery ", "keyColor": "red" },
+    { "type": "cpu", "key": "│ ├CPU     ", "keyColor": "red" },
+    { "type": "gpu", "key": "│ ├GPU     ", "keyColor": "red" },
+    { "type": "disk", "key": "│ ├Disk    ", "keyColor": "red" },
+    { "type": "memory", "key": "│ ├RAM     ", "keyColor": "red" },
+    { "type": "swap", "key": "╵ └Swap    ", "keyColor": "red" },
+
+    "break",
+  ],
+}
