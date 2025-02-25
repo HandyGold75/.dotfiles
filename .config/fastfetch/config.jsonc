@@ -33,7 +33,5 @@
     { "type": "disk", "key": "│ ├Disk    ", "keyColor": "red" },
     { "type": "memory", "key": "│ ├RAM     ", "keyColor": "red" },
     { "type": "swap", "key": "╵ └Swap    ", "keyColor": "red" },
-
-    "break",
   ],
 }
