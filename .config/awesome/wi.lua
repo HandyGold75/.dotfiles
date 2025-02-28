@@ -44,38 +44,52 @@ function volumearc_widget()
 		max_value = 1,
 		thickness = 2,
 		start_angle = 4.71238898, -- 2pi*3/4
-		forced_height = 17,
-		forced_width = 17,
+		forced_height = 18,
+		forced_width = 18,
 		bg = "#ffffff11",
 		paddings = 2,
 		widget = wibox.container.arcchart,
 	})
 	local volumearc_widget_menu = wibox.container.mirror(volumearc, { horizontal = true })
 
-	local update_graphic = function(widget, stdout, _, _, _)
-		widget.value = tonumber(string.format("% 3d", string.match(stdout, "(%d?%d?%d)%%"))) / 100
-		if string.match(stdout, "%[(o%D%D?)%]") == "off" then
+	local update_graphic_sink = function(widget, stdout, _, _, _)
+		widget.value = tonumber(string.match(stdout, "Volume: (%d.%d%d)"))
+		if string.match(stdout, "%[(%D?%D?%D%D?%D?)%]") == "MUTED" then
 			widget.colors = { beautiful.fg_widget_value_red }
 		else
 			widget.colors = { beautiful.fg_widget_value }
 		end
 	end
 
-	volumearc:connect_signal("button::press", function(_, _, _, button)
-		if button == 4 then
-			awful.spawn("amixer -D pulse sset Master 1%+", false)
-		elseif button == 5 then
-			awful.spawn("amixer -D pulse sset Master 1%-", false)
-		elseif button == 1 then
-			awful.spawn("amixer -D pulse sset Master toggle", false)
-		elseif button == 3 then
-			awful.spawn(audioconfig, false)
+	local update_graphic_source = function(widget, stdout, _, _, _)
+		if string.match(stdout, "%[(%D?%D?%D%D?%D?)%]") == "MUTED" then
+			widget.bg = beautiful.bg_widget_value_red
+		else
+			widget.bg = beautiful.bg_widget_value
 		end
+	end
 
-		spawn.easy_async("amixer -D pulse sget Master", function(stdout, stderr, exitreason, exitcode) update_graphic(volumearc, stdout, stderr, exitreason, exitcode) end)
+	volumearc:connect_signal("button::press", function(_, _, _, button)
+		if button == 1 then
+			awful.spawn("wpctl set-mute @DEFAULT_SINK@ toggle", false)
+			spawn.easy_async("wpctl get-volume @DEFAULT_SINK@", function(stdout, stderr, exitreason, exitcode) update_graphic_sink(volumearc, stdout, stderr, exitreason, exitcode) end)
+		elseif button == 2 then
+			awful.spawn(audioconfig, false)
+		elseif button == 3 then
+			awful.spawn("wpctl set-mute @DEFAULT_SOURCE@ toggle", false)
+			spawn.easy_async("wpctl get-volume @DEFAULT_SOURCE@", function(stdout, stderr, exitreason, exitcode) update_graphic_source(volumearc, stdout, stderr, exitreason, exitcode) end)
+		elseif button == 4 then
+			awful.spawn("wpctl set-volume @DEFAULT_SINK@ 1%+", false)
+			spawn.easy_async("wpctl get-volume @DEFAULT_SINK@", function(stdout, stderr, exitreason, exitcode) update_graphic_sink(volumearc, stdout, stderr, exitreason, exitcode) end)
+		elseif button == 5 then
+			awful.spawn("wpctl set-volume @DEFAULT_SINK@ 1%-", false)
+			spawn.easy_async("wpctl get-volume @DEFAULT_SINK@", function(stdout, stderr, exitreason, exitcode) update_graphic_sink(volumearc, stdout, stderr, exitreason, exitcode) end)
+		end
 	end)
 
-	watch("amixer -D pulse sget Master", 1, update_graphic, volumearc)
+	watch("wpctl get-volume @DEFAULT_SINK@", 1, update_graphic_sink, volumearc)
+	watch("wpctl get-volume @DEFAULT_SOURCE@", 1, update_graphic_source, volumearc)
+
 	return volumearc_widget_menu
 end
 

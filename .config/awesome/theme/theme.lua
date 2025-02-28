@@ -49,6 +49,8 @@ theme.fg_widget = "#908884"
 theme.fg_center_widget = "#636363"
 theme.fg_end_widget = "#1a1a1a"
 theme.bg_widget = "#2a2a2a"
+theme.bg_widget_value = "#2a2a2a"
+theme.bg_widget_value_red = "#8f2116"
 
 --   _     _     _
 --  | |   (_)   | |
