@@ -112,9 +112,9 @@
       "stopped": "",
     },
     "max-length": 100,
-    "on-click": "/usr/bin/playerctl play-pause",
-    "on-click-middle": "/usr/bin/playerctl previous",
-    "on-click-right": "/usr/bin/playerctl next",
+    "on-click": "playerctl play-pause",
+    "on-scroll-up": "playerctl next",
+    "on-scroll-down": "playerctl previous",
   },
 
   //  ___  ___          _       _             _____            _
@@ -196,10 +196,11 @@
     },
     "tooltip": true,
     "tooltip-format": "{desc}",
-    "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
-    "on-click-right": "pavucontrol",
-    "on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%+",
-    "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%-",
+    "on-click": "wpctl set-mute @DEFAULT_SINK@ toggle",
+    "on-click-middle": "wpctl set-mute @DEFAULT_SOURCE@ 1%+",
+    "on-click-right": "wpctl set-mute @DEFAULT_SOURCE@ 1%+",
+    "on-scroll-up": "wpctl set-volume @DEFAULT_SINK@ 1%+",
+    "on-scroll-down": "wpctl set-volume @DEFAULT_SINK@ 1%-",
   },
 
   "network": {

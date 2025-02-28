@@ -9,17 +9,21 @@
 #
 # https://wiki.archlinux.org/title/Xbindkeys
 
-"pactl set-sink-volume @DEFAULT_SINK@ +1000"
+# Volume
+
+"wpctl set-volume @DEFAULT_SINK@ 1%+"
    XF86AudioRaiseVolume
 
-"pactl set-sink-volume @DEFAULT_SINK@ -1000"
+"wpctl set-volume @DEFAULT_SINK@ 1%-"
    XF86AudioLowerVolume
 
-"pactl set-sink-mute @DEFAULT_SINK@ toggle"
+"wpctl set-mute @DEFAULT_SINK@ toggle"
    XF86AudioMute
 
-"pactl set-source-mute @DEFAULT_SOURCE@ toggle"
+"wpctl set-mute @DEFAULT_SOURCE@ toggle"
    XF86AudioMicMute
+
+# Media
 
 "playerctl play-pause"
   XF86AudioPlay
@@ -30,11 +34,15 @@
 "playerctl previous"
   XF86AudioPrev
 
-"flameshot gui"
-  mod4 + Print
+# Brightness
 
-"headsetcontrol -l0"
-  mod4 + F11
+"brightnessctl set +5%"
+  XF86MonBrightnessUp
+
+"brightnessctl set 5%-"
+  XF86MonBrightnessDown
+
+# Screen Layout
 
 "~/.screenlayout/lp.sh"
   mod4 + KP_0
@@ -65,3 +73,11 @@
 
 "~/.screenlayout/p4.sh"
   mod4 + shift + KP_4
+
+# Etc
+
+"flameshot gui"
+  mod4 + Print
+
+"headsetcontrol -l0"
+  mod4 + F11

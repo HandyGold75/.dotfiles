@@ -76,8 +76,6 @@ alias gitfp='git fetch && git pull'
 alias gitac='git add . && git commit -m $(date +%d-%b-%y)'
 alias gitps='git push'
 alias gitpl='git pull'
-alias monoup='pactl load-module module-remap-sink sink_name=mono sink_properties='\''device.description="Fallback Mono"'\'' channels=1 channel_map=mono'
-alias monodown='pactl unload-module module-remap-sink'
 
 # Prompt
 PS1='[\u@\h ${PWD/$HOME/\~}]\$ '
