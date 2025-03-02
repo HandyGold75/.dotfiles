@@ -15,7 +15,7 @@ require("math")
 --
 --
 
-local terminal = "terminator"
+local terminal = "kitty"
 local systemmonitor = terminal .. " -e " .. "btop"
 local audioconfig = "pavucontrol"
 
