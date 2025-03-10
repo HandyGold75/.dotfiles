@@ -4,7 +4,7 @@
 
 ## Required
 
-### Hypr
+### System
 
 - hyprland
 - hyprpaper
@@ -13,9 +13,6 @@
 - xdg-desktop-portal-hyprland
 - hyprpolkitagent (AUR)
 - hyprsysteminfo
-
-### System
-
 - dunst
 - grim
 - slurp
@@ -54,8 +51,6 @@
 
 - paru (AUR)
 - thunar
-- solaar
-- lf
 - firefox
 - discord
 - discover-overlay (AUR)
