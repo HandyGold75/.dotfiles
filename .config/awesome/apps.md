@@ -2,23 +2,21 @@
 
 ## Required
 
-### AwesomeWM
-
-- awesome
-
 ### System
 
+- awesome
 - dunst
 - qlipper
 - network-manager
 - opentabletdriver (deb)
-- kitty
+- kitty (source)
 - nvim (source)
 - btop
 - i3lock
 - xautolock
 - xbindkeys
 - arandr
+- flameshot
 
 ### Audio
 
@@ -40,16 +38,13 @@
 ### Applications
 
 - thunar
-- solaar
-- lf
 - firefox (deb)
 - vivaldi (deb)
 - teams-for-linux (snap)
-- thunderbird
+- thunderbird (snap)
 - onlyoffice (deb)
 - teamviewer (deb)
 - forticlient vpn (deb)
-- kde-spectacle
 - rclone
 - remmina
 - virt-manager
