@@ -77,25 +77,27 @@ awful.layout.layouts = {
 
 local myawesomemenu = {
 	{ "lock", "xautolock -locknow" },
-	{ "restart", awesome.restart },
 	{ "shutdown", "shutdown now" },
+	{ "reboot", "reboot now" },
 	{ "quit", function() awesome.quit() end },
-	{ "hotkeys", function() hotkeys_popup.show_help(nil, awful.screen.focused()) end },
+	{ "restart", awesome.restart },
 }
 local mysettingsmenu = {
 	{ "awesome", terminal .. " -e " .. "'" .. editor .. " " .. awesome.conffile .. "'" },
 	{ "nmtui", terminal .. " -e 'nmtui'" },
-	{ "solaar", "solaar" },
+	{ "nmgui", "nm-connection-editor" },
 	{ "display", "arandr" },
 	{ "audio", "pavucontrol" },
-	{ "pentablet", terminal .. " -e " .. "'sudo /usr/lib/pentablet/PenTablet.sh'" },
-	{ "manual", terminal .. " -e 'man awesome'" },
 }
-local mymainmenu = awful.menu({ items = {
-	{ "system", myawesomemenu, beautiful.awesome_icon },
-	{ "settings", mysettingsmenu },
-	{ "terminal", terminal },
-} })
+local mymainmenu = awful.menu({
+	items = {
+		{ "system", myawesomemenu, beautiful.awesome_icon },
+		{ "settings", mysettingsmenu },
+		{ "hotkeys", function() hotkeys_popup.show_help(nil, awful.screen.focused()) end },
+		{ "manual", terminal .. " -e 'man awesome'" },
+		{ "terminal", terminal },
+	},
+})
 local mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon, menu = mymainmenu })
 
 menubar.utils.terminal = terminal
@@ -288,24 +290,30 @@ end
 root.keys(globalkeys)
 
 local clientkeys = gears.table.join(
-	awful.key({ modkey }, "f", function(c) c.floating = not c.floating and not (c.maximized or c.fullscreen) end, { description = "toggle floating", group = "client" }),
+	awful.key({ modkey }, "f", function(c)
+		if not c.floating then
+			c.maximized = false
+			c.fullscreen = false
+		end
+		c.floating = not c.floating
+	end, { description = "toggle floating", group = "client" }),
 	awful.key({ modkey }, "o", function(c) c:move_to_screen() end, { description = "move to screen", group = "client" }),
-	awful.key({ modkey }, "t", function(c) c.ontop = not c.ontop and not (c.maximized or c.fullscreen) end, { description = "toggle keep on top", group = "client" }),
 	awful.key({ modkey }, "n", function(c) c.minimized = true end, { description = "minimize", group = "client" }),
 	awful.key({ modkey, "Shift" }, "c", function(c) c:kill() end, { description = "close", group = "client" }),
 	awful.key({ modkey, "Control" }, "Return", function(c) c:swap(awful.client.getmaster()) end, { description = "move to master", group = "client" }),
 	awful.key({ modkey }, "m", function(c)
-		c.maximized = not c.maximized
-		if c.maximized then
-			c.fullscreen = false
+		if not c.maximized then
 			c.floating = false
-			c.ontop = false
+			c.fullscreen = false
 		end
-		c:raise()
+		c.maximized = not c.maximized
 	end, { description = "toggle maximize", group = "client" }),
 	awful.key({ modkey, "Control" }, "m", function(c)
+		if not c.fullscreen then
+			c.floating = false
+			c.maximized = false
+		end
 		c.fullscreen = not c.fullscreen
-		c:raise()
 	end, { description = "toggle fullscreen", group = "client" })
 )
 
@@ -342,25 +350,26 @@ awful.rules.rules = {
 			buttons = clientbuttons,
 			screen = awful.screen.preferred,
 			placement = awful.placement.no_overlap + awful.placement.no_offscreen,
+			fullscreen = false,
+			maximized = false,
+			floating = false,
+			ontop = false,
 		},
 	},
 	{
 		rule_any = {
-			instance = { "DTA", "copyq", "pinentry" },
-			class = { "Arandr", "Blueman-manager", "Gpick", "Kruler", "MessageWin", "Sxiv", "Tor Browser", "Wpa_gui", "veromix", "xtightvncviewer" },
-			name = { "Event Tester" },
-			role = { "AlarmWindow", "ConfigManager", "pop-up" },
+			instance = { "arandr", "blueman-manager", "nm-connection-editor", "pavucontrol", "org.gnome.Characters", "gnome-calculator", "update-manager", "firmware-updater" },
+			type = { "splash", "dialog", "utility" },
 		},
-		properties = { floating = true, ontop = true },
-	},
-	{ rule_any = { type = { "dialog" } }, properties = { titlebars_enabled = true } },
-	{
-		rule = { name = "Vivaldi" },
-		properties = { screen = 1, tag = "1" },
+		properties = { floating = true, ontop = true, placement = awful.placement.centered },
 	},
 	{
 		rule_any = { name = { "Microsoft Teams", "Mozilla Thunderbird" } },
-		properties = { screen = function() return screen.count() end, tag = "1", floating = false, ontop = false },
+		properties = { screen = function() return screen.count() end, tag = "1" },
+	},
+	{
+		rule = { name = "Vivaldi" },
+		properties = { screen = 1, tag = "1" },
 	},
 	{
 		rule = { name = "Firefox" },
@@ -402,7 +411,7 @@ client.connect_signal("request::titlebars", function(c)
 end)
 
 client.connect_signal("mouse::enter", function(c) c:emit_signal("request::activate", "mouse_enter", { raise = false }) end)
-client.connect_signal("property::floating", function(c) c.ontop = c.floating and not (c.maximized or c.fullscreen) end)
+client.connect_signal("property::floating", function(c) c.ontop = c.floating end)
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 
