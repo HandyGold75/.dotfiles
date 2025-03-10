@@ -8,7 +8,6 @@
 - dunst
 - qlipper
 - network-manager
-- opentabletdriver (deb)
 - kitty (source)
 - nvim (source)
 - btop
