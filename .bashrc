@@ -56,9 +56,6 @@ export LANGUAGE="en_US.utf8"
 export LC_ALL="en_US.utf8"
 # export LC_CTYPE="en_US.utf8"
 
-# Path
-export PATH="$PATH:$HOME/.local/bin:$PATH:$HOME/go/bin:/usr/local/go/bin"
-
 # Aliases
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 alias ll='ls -halF'

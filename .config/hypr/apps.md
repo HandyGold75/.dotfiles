@@ -27,6 +27,7 @@
 - kitty
 - nvim
 - btop
+- headsetcontrol (AUR)
 
 ### Audio
 

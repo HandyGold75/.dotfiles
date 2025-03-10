@@ -17,6 +17,7 @@
 - xbindkeys
 - arandr
 - flameshot
+- headsetcontrol (source)
 
 ### Audio
 
@@ -34,6 +35,7 @@
 
 - qt5ct
 - qt6ct
+- nwg-look (source)
 
 ### Applications
 
