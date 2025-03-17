@@ -29,3 +29,6 @@ fi
 if [ -d "$HOME/go/bin" ] ; then
     PATH="$HOME/go/bin:$PATH"
 fi
+if [ -d "$HOME/venv/bin" ] ; then
+    PATH="$HOME/venv/bin:$PATH"
+fi

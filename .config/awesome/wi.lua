@@ -168,15 +168,29 @@ function battery_widget()
 	local batterytt = awful.tooltip({
 		timer_function = function()
 			run("cat /sys/class/power_supply/BAT0/capacity", function(capacity)
-				run("cat /sys/class/power_supply/BAT0/status", function(status) batterytt_text = capacity:gsub("[\n\r]", "") .. "% (" .. status:gsub("[\n\r]", "") .. ")" end)
+				local pers = tonumber(capacity)
+				local cap = (pers / 100) * 12
+				if cap - math.floor(cap) >= 0.5 then
+					cap = math.floor(cap) + 1
+				else
+					cap = math.floor(cap)
+				end
+
+				run("cat /sys/class/power_supply/BAT0/status", function(status)
+					local suffix = ""
+					if status:find("Charging") ~= nil then suffix = "c" end
+					battery_widget_menu:set_image(beautiful.widget_dirbattery .. "/" .. cap .. suffix .. ".svg")
+
+					batterytt_text = capacity:gsub("[\n\r]", "") .. "% (" .. status:gsub("[\n\r]", "") .. ")"
+				end)
 			end)
 			return batterytt_text
 		end,
 	})
 	batterytt:add_to_object(battery_widget_menu)
 
-	local function update_graphic(widget, stdout, _, _, _)
-		local pers = tonumber(stdout)
+	local function update_graphic(widget, capacity, _, _, _)
+		local pers = tonumber(capacity)
 		local cap = (pers / 100) * 12
 		if cap - math.floor(cap) >= 0.5 then
 			cap = math.floor(cap) + 1
