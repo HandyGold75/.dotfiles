@@ -50,14 +50,17 @@ return {
 	{
 		"williamboman/mason.nvim",
 		name = "mason",
-		build = {
-			":MasonInstall stylua goimports gofumpt isort black beautysh prettierd prettier taplo xmlformatter",
-			":MasonInstall pylint shellcheck htmlhint stylelint quick-lint-js markdownlint jsonlint yamllint",
-			":MasonInstall gdtoolkit",
-		},
 		cmd = { "Mason" },
 		event = { "BufReadPre", "BufNewFile" },
 		dependencies = { { "williamboman/mason-lspconfig.nvim", name = "mason-lspconfig" } },
-		opts = { ui = { border = "rounded" }, pip = { upgrade_pip = true } },
+		config = function()
+			require("mason").setup({ ui = { border = "rounded" }, pip = { upgrade_pip = true } })
+
+			vim.api.nvim_create_user_command("MasonInstallAll", function()
+				vim.cmd("MasonInstall stylua goimports gofumpt isort black beautysh prettierd prettier taplo xmlformatter")
+				vim.cmd("MasonInstall golangci-lint pylint shellcheck htmlhint stylelint quick-lint-js markdownlint jsonlint yamllint")
+				vim.cmd("MasonInstall gdtoolkit")
+			end, {})
+		end,
 	},
 }
