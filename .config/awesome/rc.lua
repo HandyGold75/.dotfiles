@@ -358,7 +358,7 @@ awful.rules.rules = {
 	},
 	{
 		rule_any = {
-			instance = { "arandr", "blueman-manager", "nm-connection-editor", "pavucontrol", "org.gnome.Characters", "gnome-calculator", "update-manager", "firmware-updater" },
+			instance = { "arandr", "blueman-manager", "nm-connection-editor", "pavucontrol", "org.gnome.Characters", "gnome-calculator", "update-manager", "firmware-updater", "forticlient", "thunar" },
 			type = { "splash", "dialog", "utility" },
 		},
 		properties = { floating = true, ontop = true, placement = awful.placement.centered },
