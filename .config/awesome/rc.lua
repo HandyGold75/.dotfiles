@@ -54,6 +54,9 @@ gears.filesystem.get_themes_dir()
 local modkey = "Mod4"
 local terminal = "kitty"
 local editor = os.getenv("EDITOR") or "vi"
+local awesomeconfig = terminal .. " sh -c " .. "'" .. editor .. " " .. awesome.conffile .. "'"
+local awesomeman = terminal .. " sh -c " .. "'man awesome'"
+local nmtui = terminal .. " " .. "nmtui"
 
 awful.layout.layouts = {
 	awful.layout.suit.tile,
@@ -83,8 +86,8 @@ local myawesomemenu = {
 	{ "restart", awesome.restart },
 }
 local mysettingsmenu = {
-	{ "awesome", terminal .. " -e " .. "'" .. editor .. " " .. awesome.conffile .. "'" },
-	{ "nmtui", terminal .. " -e 'nmtui'" },
+	{ "awesome", awesomeconfig },
+	{ "nmtui", nmtui },
 	{ "nmgui", "nm-connection-editor" },
 	{ "display", "arandr" },
 	{ "audio", "pavucontrol" },
@@ -94,7 +97,7 @@ local mymainmenu = awful.menu({
 		{ "system", myawesomemenu, beautiful.awesome_icon },
 		{ "settings", mysettingsmenu },
 		{ "hotkeys", function() hotkeys_popup.show_help(nil, awful.screen.focused()) end },
-		{ "manual", terminal .. " -e 'man awesome'" },
+		{ "manual", awesomeman },
 		{ "terminal", terminal },
 	},
 })
