@@ -33,7 +33,7 @@
     separator_color = frame
     idle_threshold = 180
 
-    font = OpenDyslexic 14
+    font = OpenDyslexic Nerd Font 14
     markup = full
     format = "<b>%s</b>\n%b\n<i>%a %p</i>"
     alignment = center
