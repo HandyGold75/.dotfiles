@@ -10,9 +10,9 @@
  */
 
 * {
-  font-family: "OpenDyslexic", "HackNerdFont";
+  font-family: "OpenDyslexicNerdFont", "HackNerdFont";
   font-weight: 900;
-  font-size: 14px;
+  font-size: 100%;
   color: #aaf;
   background: rgba(0, 0, 0, 0);
 }

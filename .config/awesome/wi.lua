@@ -16,7 +16,7 @@ require("math")
 --
 
 local terminal = "kitty"
-local systemmonitor = terminal .. " -e " .. "btop"
+local systemmonitor = terminal .. " " .. "btop"
 local audioconfig = "pavucontrol"
 
 -- local function run_old(command)
