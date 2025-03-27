@@ -57,11 +57,6 @@ then
     hg macros &
 fi
 
-if ! pgrep -f "solaar" ;
-then
-    solaar -w hide &
-fi
-
 if ! pgrep -f "xautolock" ;
 then
     xautolock -time 5 -notify 60 -detectsleep -locker "i3lock -c 000000 -i ~/.config/awesome/theme/lockscreen.png -fet" -notifier "notify-send -u critical -a XAutoLock -t 10000 xautolock 'Locking in 60 seconds'" &
