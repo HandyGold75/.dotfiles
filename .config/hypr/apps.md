@@ -12,10 +12,9 @@
 - hyprlock
 - xdg-desktop-portal-hyprland
 - hyprpolkitagent (AUR)
-- hyprsysteminfo
+- hyprsysteminfo (AUR)
+- hyprshot (AUR)
 - dunst
-- grim
-- slurp
 - wofi
 - wl-clipboard
 - cliphist

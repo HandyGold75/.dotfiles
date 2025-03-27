@@ -7,14 +7,14 @@
 #
 # https://github.com/dunst-project/dunst/blob/master/docs/dunst.5.pod
 
+
 [global]
     follow = mouse
 
-    # geometry = "300x150-1130+25"
     width = (100, 1000)
     # height = (50, 300)
     origin = top-center
-    offset = "0x50"
+    offset = (0, 50)
 
     notification_limit = 10
 
@@ -24,7 +24,7 @@
     progress_bar_max_width = 300
     progress_bar_frame_width = 0
 
-    gap_size = 1
+    gap_size = 10
     padding = 10
     text_icon_padding = 10
 
@@ -45,8 +45,8 @@
     icon_corner_radius = 10
     min_icon_size = 0
     max_icon_size = 100
-    icon_theme = breeze-dark
-    icon_path = "~/.config/dunst/icons/:/usr/share/icons/breeze-dark/status/:/usr/share/icons/breeze-dark/devices/"
+    icon_theme = Yaru-blue-dark
+    icon_path = "~/.config/dunst/icons/:/usr/share/icons/Yaru-blue-dark/"
     enable_recursive_icon_lookup = true
 
     sticky_history = no
@@ -67,20 +67,26 @@
     mouse_right_click = close_current
 
 [urgency_low]
-    background = "#222222"
-    foreground = "#888888"
+    background = "#24273a"
+    foreground = "#cad3f5"
+    frame_color = "#888888"
+    highlight = "#888888"
     timeout = 10
     new_icon = ~/.config/dunst/icons/low.svg
 
 [urgency_normal]
-    background = "#285577"
-    foreground = "#ffffff"
+    background = "#24273a"
+    foreground = "#cad3f5"
+    frame_color = "#77b3fe"
+    highlight = "#77b3fe"
     timeout = 10
     new_icon = ~/.config/dunst/icons/normal.svg
 
 [urgency_critical]
-    background = "#FF0000"
-    foreground = "#ffffff"
+    background = "#24273a"
+    foreground = "#cad3f5"
+    frame_color = "#FF0000"
+    highlight = "#FF0000"
     timeout = 0
     new_icon = ~/.config/dunst/icons/urgent.svg
 
@@ -95,9 +101,9 @@
     appname = "volume"
     set_stack_tag = "volume"
 
-[HyperIdle]
-    appname = "HyperIdle"
-    set_stack_tag = "HyperIdle"
+# [HyperIdle]
+#     appname = "HyperIdle"
+#     set_stack_tag = "HyperIdle"
 
 [XAutoLock]
     appname = "XAutoLock"
