@@ -63,10 +63,6 @@ awful.layout.layouts = {
 	awful.layout.suit.tile.bottom,
 	awful.layout.suit.tile.left,
 	awful.layout.suit.tile.top,
-	awful.layout.suit.fair.horizontal,
-	awful.layout.suit.fair,
-	awful.layout.suit.spiral.dwindle,
-	awful.layout.suit.spiral,
 }
 
 --  ___  ___
@@ -78,27 +74,29 @@ awful.layout.layouts = {
 --
 --
 
-local myawesomemenu = {
-	{ "lock", "xautolock -locknow" },
-	{ "shutdown", "shutdown now" },
-	{ "reboot", "reboot now" },
-	{ "quit", function() awesome.quit() end },
-	{ "restart", awesome.restart },
-}
-local mysettingsmenu = {
-	{ "awesome", awesomeconfig },
-	{ "nmtui", nmtui },
-	{ "nmgui", "nm-connection-editor" },
-	{ "display", "arandr" },
-	{ "audio", "pavucontrol" },
-}
 local mymainmenu = awful.menu({
 	items = {
-		{ "system", myawesomemenu, beautiful.awesome_icon },
-		{ "settings", mysettingsmenu },
-		{ "hotkeys", function() hotkeys_popup.show_help(nil, awful.screen.focused()) end },
-		{ "manual", awesomeman },
-		{ "terminal", terminal },
+		{
+			" Power",
+			{
+				{ " Logout", awesome.quit, beautiful.logout_icon },
+				{ " Lock", "xautolock -locknow", beautiful.lock_icon },
+				{ " Reboot", "reboot now", beautiful.reboot_icon },
+				{ " Suspend", "systemctl suspend", beautiful.suspend_icon },
+				{ " Shutdown", "shutdown now", beautiful.shutdown_icon },
+			},
+			beautiful.power_icon,
+		},
+		{ " settings", {
+			{ " awesome", awesomeconfig },
+			{ " nmtui", nmtui },
+			{ " nmgui", "nm-connection-editor" },
+			{ " display", "arandr" },
+			{ " audio", "pavucontrol" },
+		}, beautiful.awesome_icon },
+		{ " hotkeys", function() hotkeys_popup.show_help(nil, awful.screen.focused()) end },
+		{ " manual", awesomeman },
+		{ " terminal", terminal },
 	},
 })
 local mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon, menu = mymainmenu })
@@ -161,7 +159,7 @@ awful.screen.connect_for_each_screen(function(s)
 		buttons = tasklist_buttons,
 	})
 
-	s.mywibox = awful.wibar({ position = "top", screen = s, height = 25 })
+	s.mywibox = awful.wibar({ position = "top", screen = s, height = beautiful.get_font_height(beautiful.font) })
 	s.mywibox:setup({
 		layout = wibox.layout.align.horizontal,
 		{
@@ -176,7 +174,6 @@ awful.screen.connect_for_each_screen(function(s)
 			spacing = 5,
 			wibox.widget.systray(),
 			volumearc_widget(),
-			logout_widget(),
 			performance_widget(),
 			storage_bar_widget(),
 			battery_widget(),
@@ -392,28 +389,7 @@ awful.rules.rules = {
 client.connect_signal("manage", function(c)
 	if awesome.startup and not c.size_hints.user_position and not c.size_hints.program_position then awful.placement.no_offscreen(c) end
 end)
-
-client.connect_signal("request::titlebars", function(c)
-	local buttons = gears.table.join(
-		awful.button({}, 1, function()
-			c:emit_signal("request::activate", "titlebar", { raise = true })
-			awful.mouse.client.move(c)
-		end),
-		awful.button({}, 3, function()
-			c:emit_signal("request::activate", "titlebar", { raise = true })
-			awful.mouse.client.resize(c)
-		end)
-	)
-
-	awful.titlebar(c, { size = beautiful.titlebar_height }):setup({
-		{ align = "left", widget = mylauncher },
-		{ align = "center", buttons = buttons, widget = awful.titlebar.widget.titlewidget(c) },
-		{ align = "right", widget = awful.titlebar.widget.iconwidget(c) },
-		layout = wibox.layout.align.horizontal,
-	})
-end)
-
-client.connect_signal("mouse::enter", function(c) c:emit_signal("request::activate", "mouse_enter", { raise = false }) end)
+client.connect_signal("mouse::enter", function(c) c:emit_signal("request::activate", "mouse_enter", { raise = true }) end)
 client.connect_signal("property::floating", function(c) c.ontop = c.floating end)
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
