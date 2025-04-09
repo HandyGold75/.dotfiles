@@ -12,7 +12,6 @@
     follow = mouse
 
     width = (100, 1000)
-    # height = (50, 300)
     origin = top-center
     offset = (0, 50)
 
