@@ -1,27 +1,8 @@
 local awful = require("awful")
 local wibox = require("wibox")
 local beautiful = require("beautiful")
-local watch = require("awful.widget.watch")
 local gears = require("gears")
-local spawn = require("awful.spawn")
 require("math")
-
---   _   _
---  | | | |
---  | | | | __ _ _ __ ___
---  | | | |/ _` | '__/ __|
---  \ \_/ / (_| | |  \__ \
---   \___/ \__,_|_|  |___/
---
---
-
-local terminal = "kitty"
-local systemmonitor = terminal .. " " .. "btop"
-local audioconfig = "pavucontrol"
-
-local function run(command, callback)
-	awful.spawn.easy_async_with_shell(command, function(stdout, _, _, _) callback(stdout) end)
-end
 
 --   _   _       _
 --  | | | |     | |
@@ -65,23 +46,23 @@ function volumearc_widget()
 	volumearc:connect_signal("button::press", function(_, _, _, button)
 		if button == 1 then
 			awful.spawn("wpctl set-mute @DEFAULT_SINK@ toggle", false)
-			spawn.easy_async("wpctl get-volume @DEFAULT_SINK@", function(stdout, stderr, exitreason, exitcode) update_graphic_sink(volumearc, stdout, stderr, exitreason, exitcode) end)
+			awful.spawn.easy_async("wpctl get-volume @DEFAULT_SINK@", function(stdout, stderr, exitreason, exitcode) update_graphic_sink(volumearc, stdout, stderr, exitreason, exitcode) end)
 		elseif button == 2 then
 			awful.spawn(audioconfig, false)
 		elseif button == 3 then
 			awful.spawn("wpctl set-mute @DEFAULT_SOURCE@ toggle", false)
-			spawn.easy_async("wpctl get-volume @DEFAULT_SOURCE@", function(stdout, stderr, exitreason, exitcode) update_graphic_source(volumearc, stdout, stderr, exitreason, exitcode) end)
+			awful.spawn.easy_async("wpctl get-volume @DEFAULT_SOURCE@", function(stdout, stderr, exitreason, exitcode) update_graphic_source(volumearc, stdout, stderr, exitreason, exitcode) end)
 		elseif button == 4 then
 			awful.spawn("wpctl set-volume @DEFAULT_SINK@ 1%+", false)
-			spawn.easy_async("wpctl get-volume @DEFAULT_SINK@", function(stdout, stderr, exitreason, exitcode) update_graphic_sink(volumearc, stdout, stderr, exitreason, exitcode) end)
+			awful.spawn.easy_async("wpctl get-volume @DEFAULT_SINK@", function(stdout, stderr, exitreason, exitcode) update_graphic_sink(volumearc, stdout, stderr, exitreason, exitcode) end)
 		elseif button == 5 then
 			awful.spawn("wpctl set-volume @DEFAULT_SINK@ 1%-", false)
-			spawn.easy_async("wpctl get-volume @DEFAULT_SINK@", function(stdout, stderr, exitreason, exitcode) update_graphic_sink(volumearc, stdout, stderr, exitreason, exitcode) end)
+			awful.spawn.easy_async("wpctl get-volume @DEFAULT_SINK@", function(stdout, stderr, exitreason, exitcode) update_graphic_sink(volumearc, stdout, stderr, exitreason, exitcode) end)
 		end
 	end)
 
-	watch("wpctl get-volume @DEFAULT_SINK@", 1, update_graphic_sink, volumearc)
-	watch("wpctl get-volume @DEFAULT_SOURCE@", 1, update_graphic_source, volumearc)
+	awful.widget.watch("wpctl get-volume @DEFAULT_SINK@", 1, update_graphic_sink, volumearc)
+	awful.widget.watch("wpctl get-volume @DEFAULT_SOURCE@", 1, update_graphic_source, volumearc)
 
 	return volumearc_widget_menu
 end
@@ -112,7 +93,7 @@ function performance_widget()
 
 	local total_prev = 0
 	local idle_prev = 0
-	watch("cat /proc/stat | grep '^performance'", 1, function(widget, stdout, _, _, _)
+	awful.widget.watch("cat /proc/stat | grep '^performance'", 1, function(widget, stdout, _, _, _)
 		local user, nice, system, idle, iowait, irq, softirq, steal, _, _ = stdout:match("(%d+)%s(%d+)%s(%d+)%s(%d+)%s(%d+)%s(%d+)%s(%d+)%s(%d+)%s(%d+)%s(%d+)%s")
 		local total = user + nice + system + idle + iowait + irq + softirq + steal
 
@@ -202,7 +183,7 @@ function battery_widget()
 		end)
 	end
 
-	watch("cat /sys/class/power_supply/BAT0/capacity", 120, update_graphic, battery_widget_menu)
+	awful.widget.watch("cat /sys/class/power_supply/BAT0/capacity", 120, update_graphic, battery_widget_menu)
 
 	return battery_widget_menu
 end
@@ -332,7 +313,7 @@ function storage_bar_widget()
 		end)))
 
 		local disks = {}
-		watch([[bash -c "df | tail -n +2"]], _config.refresh_rate, function(widget, stdout)
+		awful.widget.watch([[bash -c "df | tail -n +2"]], _config.refresh_rate, function(widget, stdout)
 			for line in stdout:gmatch("[^\r\n$]+") do
 				local filesystem, size, used, avail, perc, mount = line:match("([%p%w]+)%s+([%d%w]+)%s+([%d%w]+)%s+([%d%w]+)%s+([%d]+)%%%s+([%p%w]+)")
 
