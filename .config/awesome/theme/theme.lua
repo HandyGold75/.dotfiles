@@ -7,6 +7,8 @@
 --
 --
 
+local beautiful = require("beautiful")
+
 local theme_path = os.getenv("HOME") .. "/.config/awesome/theme/"
 local theme = {}
 
@@ -14,7 +16,7 @@ theme.theme_path = theme_path
 theme.wallpaper = theme_path .. "background.png"
 theme.wallpaper_path = theme_path .. "wallpapers/"
 theme.awesome_icon = theme_path .. "awesome.svg"
-theme.font = "OpenDyslexicNerdFont 14"
+theme.font = "OpenDyslexicNerdFont 10"
 
 theme.gap_single_client = false
 theme.useless_gap = 2
@@ -40,6 +42,55 @@ theme.border_width = 0
 theme.border_normal = "#000000"
 theme.border_focus = "#535d6c"
 theme.border_marked = "#91231c"
+
+--   _     _     _
+--  | |   (_)   | |
+--  | |    _ ___| |_ ___
+--  | |   | / __| __/ __|
+--  | |___| \__ \ |_\__ \
+--  \_____/_|___/\__|___/
+--
+--
+
+theme.logout_icon = theme_path .. "menus/power/logout.svg"
+theme.lock_icon = theme_path .. "menus/power/lock.svg"
+theme.reboot_icon = theme_path .. "menus/power/reboot.svg"
+theme.suspend_icon = theme_path .. "menus/power/suspend.svg"
+theme.shutdown_icon = theme_path .. "menus/power/shutdown.svg"
+theme.power_icon = theme_path .. "menus/power/power.svg"
+
+theme.taglist_squares_sel = theme_path .. "menus/linef.svg"
+theme.taglist_squares_unsel = theme_path .. "menus/line.svg"
+
+theme.menu_height = beautiful.get_font_height(theme.font)
+theme.menu_width = 125
+theme.menu_border_color = "#000000"
+theme.menu_border_width = 2
+theme.menu_submenu = "▶"
+
+--   _                             _
+--  | |                           | |
+--  | |     __ _ _   _  ___  _   _| |_
+--  | |    / _` | | | |/ _ \| | | | __|
+--  | |___| (_| | |_| | (_) | |_| | |_
+--  \_____/\__,_|\__, |\___/ \__,_|\__|
+--                __/ |
+--               |___/
+
+theme.layout_tilebottom = theme_path .. "menus/layouts/tile_bottom.svg"
+theme.layout_tileleft = theme_path .. "menus/layouts/tile_left.svg"
+theme.layout_tile = theme_path .. "menus/layouts/tile.svg"
+theme.layout_tiletop = theme_path .. "menus/layouts/tile_top.svg"
+
+--   _    _ _     _            _
+--  | |  | (_)   | |          | |
+--  | |  | |_  __| | __ _  ___| |_ ___
+--  | |/\| | |/ _` |/ _` |/ _ \ __/ __|
+--  \  /\  / | (_| | (_| |  __/ |_\__ \
+--   \/  \/|_|\__,_|\__, |\___|\__|___/
+--                   __/ |
+--                  |___/
+
 theme.border_widget = "#3F3F3F"
 theme.fg_widget_value = "#aaaaaa"
 theme.fg_widget_clock = "#aaaaaa"
@@ -52,84 +103,6 @@ theme.bg_widget = "#2a2a2a"
 theme.bg_widget_value = "#2a2a2a"
 theme.bg_widget_value_red = "#8f2116"
 
---   _     _     _
---  | |   (_)   | |
---  | |    _ ___| |_ ___
---  | |   | / __| __/ __|
---  | |___| \__ \ |_\__ \
---  \_____/_|___/\__|___/
---
---
-
-theme.taglist_squares_sel = theme_path .. "menus/linef.svg"
-theme.taglist_squares_unsel = theme_path .. "menus/line.svg"
-
-theme.menu_submenu_icon = theme_path .. "menus/submenu.svg"
-theme.menu_height = "20"
-theme.menu_width = "100"
-
---   _____ _ _   _      _
---  |_   _(_) | | |    | |
---    | |  _| |_| | ___| |__   __ _ _ __
---    | | | | __| |/ _ \ '_ \ / _` | '__|
---    | | | | |_| |  __/ |_) | (_| | |
---    \_/ |_|\__|_|\___|_.__/ \__,_|_|
---
---
-
-theme.titlebar_height = 30
-theme.titlebar_close_button_normal = theme_path .. "titlebar/close_normal.png"
-theme.titlebar_close_button_focus = theme_path .. "titlebar/close_focus.png"
-
-theme.titlebar_ontop_button_normal_inactive = theme_path .. "titlebar/ontop_normal_inactive.png"
-theme.titlebar_ontop_button_focus_inactive = theme_path .. "titlebar/ontop_focus_inactive.png"
-theme.titlebar_ontop_button_normal_active = theme_path .. "titlebar/ontop_normal_active.png"
-theme.titlebar_ontop_button_focus_active = theme_path .. "titlebar/ontop_focus_active.png"
-
-theme.titlebar_sticky_button_normal_inactive = theme_path .. "titlebar/sticky_normal_inactive.png"
-theme.titlebar_sticky_button_focus_inactive = theme_path .. "titlebar/sticky_focus_inactive.png"
-theme.titlebar_sticky_button_normal_active = theme_path .. "titlebar/sticky_normal_active.png"
-theme.titlebar_sticky_button_focus_active = theme_path .. "titlebar/sticky_focus_active.png"
-
-theme.titlebar_floating_button_normal_inactive = theme_path .. "titlebar/floating_normal_inactive.png"
-theme.titlebar_floating_button_focus_inactive = theme_path .. "titlebar/floating_focus_inactive.png"
-theme.titlebar_floating_button_normal_active = theme_path .. "titlebar/floating_normal_active.png"
-theme.titlebar_floating_button_focus_active = theme_path .. "titlebar/floating_focus_active.png"
-
-theme.titlebar_maximized_button_normal_inactive = theme_path .. "titlebar/maximized_normal_inactive.png"
-theme.titlebar_maximized_button_focus_inactive = theme_path .. "titlebar/maximized_focus_inactive.png"
-theme.titlebar_maximized_button_normal_active = theme_path .. "titlebar/maximized_normal_active.png"
-theme.titlebar_maximized_button_focus_active = theme_path .. "titlebar/maximized_focus_active.png"
-
---   _                             _
---  | |                           | |
---  | |     __ _ _   _  ___  _   _| |_
---  | |    / _` | | | |/ _ \| | | | __|
---  | |___| (_| | |_| | (_) | |_| | |_
---  \_____/\__,_|\__, |\___/ \__,_|\__|
---                __/ |
---               |___/
-
-theme.layout_fairh = theme_path .. "layouts/fairh.svg"
-theme.layout_fairv = theme_path .. "layouts/fairv.svg"
-theme.layout_tilebottom = theme_path .. "layouts/tilebottom.svg"
-theme.layout_tileleft = theme_path .. "layouts/tileleft.svg"
-theme.layout_tile = theme_path .. "layouts/tile.svg"
-theme.layout_tiletop = theme_path .. "layouts/tiletop.svg"
-theme.layout_spiral = theme_path .. "layouts/spiral.svg"
-theme.layout_dwindle = theme_path .. "layouts/dwindle.svg"
-
---   _    _ _     _            _
---  | |  | (_)   | |          | |
---  | |  | |_  __| | __ _  ___| |_ ___
---  | |/\| | |/ _` |/ _` |/ _ \ __/ __|
---  \  /\  / | (_| | (_| |  __/ |_\__ \
---   \/  \/|_|\__,_|\__, |\___|\__|___/
---                   __/ |
---                  |___/
-
 theme.widget_dirbattery = theme_path .. "widgets/battery"
-theme.widget_dirapt = theme_path .. "widgets/apt"
-theme.widget_dirlogout = theme_path .. "widgets/logout"
 
 return theme
