@@ -41,7 +41,7 @@ end
 math.randomseed(os.time())
 
 if beautiful.wallpaper_path then
-	awful.spawn.easy_async('ls -a "' .. beautiful.wallpaper_path .. '"', function(stdout, stderr, reason, exit_code)
+	awful.spawn.easy_async('ls -a "' .. beautiful.wallpaper_path .. '"', function(stdout, _, _, _)
 		local i, wp_files = 0, {}
 		for filename in stdout:gmatch("[^\r\n$]+") do
 			if string.match(filename, "%.png$") or string.match(filename, "%.jpg$") then

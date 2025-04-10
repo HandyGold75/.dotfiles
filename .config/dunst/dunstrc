@@ -11,7 +11,7 @@
 [global]
     follow = mouse
 
-    width = (100, 1000)
+    width = (250, 1000)
     origin = top-center
     offset = (0, 50)
 
@@ -34,7 +34,7 @@
 
     font = OpenDyslexic Nerd Font 14
     markup = full
-    format = "<b>%s</b>\n%b\n<i>%a %p</i>"
+    format = "<b>%s</b>\n%b\n<i>%a %n</i>"
     alignment = center
     vertical_alignment = center
     show_age_threshold = 180
@@ -92,17 +92,20 @@
 [battery]
 	appname = "battery"
 	new_icon = ~/.config/dunst/icons/spaceman.jpg
-	timeout = 30
-	background = "#F06060"
-	foreground = "#EEE9EF"
 
 [volume]
     appname = "volume"
     set_stack_tag = "volume"
+    new_icon = ~/.config/dunst/icons/
+    format = "<b>%s</b>: %n%%"
+    timeout = 1
 
-# [HyperIdle]
-#     appname = "HyperIdle"
-#     set_stack_tag = "HyperIdle"
+[brightness]
+    appname = "brightness"
+    set_stack_tag = "brightness"
+    new_icon = ~/.config/dunst/icons/
+    format = "<b>%s</b>: %n%%"
+    timeout = 1
 
 [XAutoLock]
     appname = "XAutoLock"

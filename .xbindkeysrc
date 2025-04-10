@@ -11,10 +11,10 @@
 
 # Volume
 
-"wpctl set-volume @DEFAULT_SINK@ 1%+"
+"wpctl set-volume @DEFAULT_SINK@ 1%+; notify-send -a volume -h int:value:$(wpctl get-volume @DEFAULT_SINK@ | awk '{ print $2 * 100 }') Volume"
    XF86AudioRaiseVolume
 
-"wpctl set-volume @DEFAULT_SINK@ 1%-"
+"wpctl set-volume @DEFAULT_SINK@ 1%-; notify-send -a volume -h int:value:$(wpctl get-volume @DEFAULT_SINK@ | awk '{ print $2 * 100 }') Volume"
    XF86AudioLowerVolume
 
 "wpctl set-mute @DEFAULT_SINK@ toggle"
@@ -36,10 +36,10 @@
 
 # Brightness
 
-"brightnessctl set +5%"
+"notify-send -a brightness -h int:value:$(brightnessctl -m set +1% | awk -F ',' '{ print $4 }') Brightness"
   XF86MonBrightnessUp
 
-"brightnessctl set 5%-"
+"notify-send -a brightness -h int:value:$(brightnessctl -m set 1%- | awk -F ',' '{ print $4 }') Brightness"
   XF86MonBrightnessDown
 
 # Screen Layout
@@ -62,14 +62,14 @@
 "~/.screenlayout/w4.sh"
   mod4 + KP_4
 
-# "~/.screenlayout/p1.sh"
-#   mod4 + shift + KP_1
+"~/.screenlayout/p1.sh"
+  mod4 + shift + KP_1
 
-# "~/.screenlayout/p2.sh"
-#   mod4 + shift + KP_2
+"~/.screenlayout/p2.sh"
+  mod4 + shift + KP_2
 
-# "~/.screenlayout/p3.sh"
-#   mod4 + shift + KP_3
+"~/.screenlayout/p3.sh"
+  mod4 + shift + KP_3
 
 "~/.screenlayout/p4.sh"
   mod4 + shift + KP_4
@@ -77,7 +77,7 @@
 # Etc
 
 "flameshot gui"
-  mod4 + Print
+  Print
 
 "headsetcontrol -l0"
   mod4 + F11
