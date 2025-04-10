@@ -1,39 +1,22 @@
---   _____                           _
---  |_   _|                         | |
---    | | _ __ ___  _ __   ___  _ __| |_ ___
---    | || '_ ` _ \| '_ \ / _ \| '__| __/ __|
---   _| || | | | | | |_) | (_) | |  | |_\__ \
---   \___/_| |_| |_| .__/ \___/|_|   \__|___/
---                 | |
---                 |_|
+--    ___
+--   / _ \
+--  / /_\ \_      _____  ___  ___  _ __ ___   ___
+--  |  _  \ \ /\ / / _ \/ __|/ _ \| '_ ` _ \ / _ \
+--  | | | |\ V  V /  __/\__ \ (_) | | | | | |  __/
+--  \_| |_/ \_/\_/ \___||___/\___/|_| |_| |_|\___|
+--
+--
 
 pcall(require, "luarocks.loader")
 local awful = require("awful")
 require("awful.autofocus")
 local gears = require("gears")
 local beautiful = require("beautiful")
-local menubar = require("menubar")
+local hotkeys_popup = require("awful.hotkeys_popup")
 package.loaded["naughty.dbus"] = {}
 
---   _____                      _   _                 _ _ _
---  |  ___|                    | | | |               | | (_)
---  | |__ _ __ _ __ ___  _ __  | |_| | __ _ _ __   __| | |_ _ __   __ _
---  |  __| '__| '__/ _ \| '__| |  _  |/ _` | '_ \ / _` | | | '_ \ / _` |
---  | |__| |  | | | (_) | |    | | | | (_| | | | | (_| | | | | | | (_| |
---  \____/_|  |_|  \___/|_|    \_| |_/\__,_|_| |_|\__,_|_|_|_| |_|\__, |
---                                                                 __/ |
---                                                                |___/
-
 if awesome.startup_errors then awful.spawn.with_shell("notify-send -u critical 'Oops, there were errors during startup!' '" .. awesome.startup_errors .. "'") end
-do
-	local in_error = false
-	awesome.connect_signal("debug::error", function(err)
-		if in_error then return end
-		in_error = true
-		awful.spawn.with_shell("notify-send -u critical 'Oops, an error happend!' '" .. tostring(err) .. "'")
-		in_error = false
-	end)
-end
+awesome.connect_signal("debug::error", function(err) awful.spawn.with_shell("notify-send -u critical 'Oops, an error happend!' '" .. tostring(err) .. "'") end)
 
 --   _____ _       _           _
 --  |  __ \ |     | |         | |
@@ -46,25 +29,21 @@ end
 
 beautiful.init(os.getenv("HOME") .. "/.config/awesome/theme/theme.lua")
 
-modkey = "Mod4"
-terminal = "kitty"
-editor = os.getenv("EDITOR") or "vi"
+Modkey = "Mod4"
+Terminal = "kitty"
+Editor = os.getenv("EDITOR") or "vi"
 
-systemmonitor = terminal .. " " .. "btop"
-networkconfig = "nm-connection-editor"
-displayconfig = "arandr"
-audioconfig = "pavucontrol"
+Systemmonitor = Terminal .. " " .. "btop"
+Networkconfig = "nm-connection-editor"
+Displayconfig = "arandr"
+Audioconfig = "pavucontrol"
 
-function run(command, callback)
-	awful.spawn.easy_async_with_shell(command, function(stdout, _, _, _) callback(stdout) end)
-end
-
-mainmenu = awful.menu({
+Mainmenu = awful.menu({
 	items = {
 		{
 			" Power",
 			{
-				{ " Logout", awesome.quit, beautiful.logout_icon },
+				{ " Logout", function() awesome.quit() end, beautiful.logout_icon },
 				{ " Lock", "xautolock -locknow", beautiful.lock_icon },
 				{ " Reboot", "reboot now", beautiful.reboot_icon },
 				{ " Suspend", "systemctl suspend", beautiful.suspend_icon },
@@ -75,16 +54,16 @@ mainmenu = awful.menu({
 		{
 			" Config",
 			{
-				{ " Awesome", terminal .. " sh -c " .. "'" .. editor .. " " .. awesome.conffile .. "'", beautiful.awesome_icon },
-				{ " Network", networkconfig },
-				{ " Display", displayconfig },
-				{ " Audio", audioconfig },
+				{ " Awesome", Terminal .. " sh -c " .. "'" .. Editor .. " " .. awesome.conffile .. "'", beautiful.awesome_icon },
+				{ " Network", Networkconfig },
+				{ " Display", Displayconfig },
+				{ " Audio", Audioconfig },
 			},
 			beautiful.awesome_icon,
 		},
 		{ " hotkeys", function() hotkeys_popup.show_help(nil, awful.screen.focused()) end },
-		{ " manual", terminal .. " sh -c " .. "'man awesome'" },
-		{ " terminal", terminal },
+		{ " manual", Terminal .. " sh -c " .. "'man awesome'" },
+		{ " terminal", Terminal },
 	},
 })
 
@@ -103,14 +82,5 @@ require(".configs.keybinds")
 require(".configs.signals")
 awful.spawn.with_shell(os.getenv("HOME") .. "/.config/awesome/configs/autostart.sh")
 
---   _____            _
---  |  __ \          | |
---  | |  \/ __ _ _ __| |__   __ _  __ _  ___
---  | | __ / _` | '__| '_ \ / _` |/ _` |/ _ \
---  | |_\ \ (_| | |  | |_) | (_| | (_| |  __/
---   \____/\__,_|_|  |_.__/ \__,_|\__, |\___|
---                                 __/ |
---                                |___/
-
-gears.timer({ timeout = 600, autostart = true, callback = function() collectgarbage() end })
+gears.timer({ timeout = 600, autostart = true, callback = collectgarbage })
 collectgarbage()
