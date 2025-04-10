@@ -1,8 +1,21 @@
+--   _____                           _
+--  |_   _|                         | |
+--    | | _ __ ___  _ __   ___  _ __| |_ ___
+--    | || '_ ` _ \| '_ \ / _ \| '__| __/ __|
+--   _| || | | | | | |_) | (_) | |  | |_\__ \
+--   \___/_| |_| |_| .__/ \___/|_|   \__|___/
+--                 | |
+--                 |_|
+
 local awful = require("awful")
 local wibox = require("wibox")
 local beautiful = require("beautiful")
 local gears = require("gears")
 require("math")
+
+local function run(command, callback)
+	awful.spawn.easy_async_with_shell(command, function(stdout, _, _, _) callback(stdout) end)
+end
 
 --   _   _       _
 --  | | | |     | |
@@ -11,60 +24,112 @@ require("math")
 --  \ \_/ / (_) | | |_| | | | | | |  __/
 --   \___/ \___/|_|\__,_|_| |_| |_|\___|
 --
--- volumearc_widget()
+-- Volumearc_widget()
 
-function volumearc_widget()
+function Volumearc_widget()
 	local volumearc = wibox.widget({
+		{
+			image = beautiful.widget_volume,
+			resize = true,
+			widget = wibox.widget.imagebox,
+		},
 		max_value = 1,
 		thickness = 2,
 		start_angle = 4.71238898, -- 2pi*3/4
-		forced_height = 18,
-		forced_width = 18,
-		bg = "#ffffff11",
+		forced_height = beautiful.get_font_height(beautiful.font) - 6,
+		forced_width = beautiful.get_font_height(beautiful.font) - 6,
+		colors = { beautiful.fg_normal },
+		bg = beautiful.fg_minimize,
 		paddings = 2,
 		widget = wibox.container.arcchart,
 	})
-	local volumearc_widget_menu = wibox.container.mirror(volumearc, { horizontal = true })
 
-	local update_graphic_sink = function(widget, stdout, _, _, _)
+	local update_graphic_sink = function(widget, stdout, _, _, _, notify)
 		widget.value = tonumber(string.match(stdout, "Volume: (%d.%d%d)"))
 		if string.match(stdout, "%[(%D?%D?%D%D?%D?)%]") == "MUTED" then
-			widget.colors = { beautiful.fg_widget_value_red }
+			widget.colors = { beautiful.color_red }
 		else
-			widget.colors = { beautiful.fg_widget_value }
+			widget.colors = { beautiful.fg_normal }
 		end
+		if notify then awful.spawn.with_shell("notify-send -a volume -h int:value:" .. tostring(string.match(stdout, "Volume: (%d.%d%d)") * 100) .. " Volume") end
 	end
 
 	local update_graphic_source = function(widget, stdout, _, _, _)
 		if string.match(stdout, "%[(%D?%D?%D%D?%D?)%]") == "MUTED" then
-			widget.bg = beautiful.bg_widget_value_red
+			widget.bg = beautiful.color_darkred
 		else
-			widget.bg = beautiful.bg_widget_value
+			widget.bg = beautiful.fg_minimize
 		end
 	end
 
 	volumearc:connect_signal("button::press", function(_, _, _, button)
-		if button == 1 then
-			awful.spawn("wpctl set-mute @DEFAULT_SINK@ toggle", false)
-			awful.spawn.easy_async("wpctl get-volume @DEFAULT_SINK@", function(stdout, stderr, exitreason, exitcode) update_graphic_sink(volumearc, stdout, stderr, exitreason, exitcode) end)
-		elseif button == 2 then
-			awful.spawn(audioconfig, false)
-		elseif button == 3 then
-			awful.spawn("wpctl set-mute @DEFAULT_SOURCE@ toggle", false)
-			awful.spawn.easy_async("wpctl get-volume @DEFAULT_SOURCE@", function(stdout, stderr, exitreason, exitcode) update_graphic_source(volumearc, stdout, stderr, exitreason, exitcode) end)
+		if button == 5 then
+			awful.spawn("wpctl set-volume @DEFAULT_SINK@ 1%-", false)
+			awful.spawn.easy_async("wpctl get-volume @DEFAULT_SINK@", function(stdout, _, _, _) update_graphic_sink(volumearc, stdout, _, _, _, true) end)
 		elseif button == 4 then
 			awful.spawn("wpctl set-volume @DEFAULT_SINK@ 1%+", false)
-			awful.spawn.easy_async("wpctl get-volume @DEFAULT_SINK@", function(stdout, stderr, exitreason, exitcode) update_graphic_sink(volumearc, stdout, stderr, exitreason, exitcode) end)
-		elseif button == 5 then
-			awful.spawn("wpctl set-volume @DEFAULT_SINK@ 1%-", false)
-			awful.spawn.easy_async("wpctl get-volume @DEFAULT_SINK@", function(stdout, stderr, exitreason, exitcode) update_graphic_sink(volumearc, stdout, stderr, exitreason, exitcode) end)
+			awful.spawn.easy_async("wpctl get-volume @DEFAULT_SINK@", function(stdout, _, _, _) update_graphic_sink(volumearc, stdout, _, _, _, true) end)
+		elseif button == 3 then
+			awful.spawn("wpctl set-mute @DEFAULT_SOURCE@ toggle", false)
+			awful.spawn.easy_async("wpctl get-volume @DEFAULT_SOURCE@", function(stdout, _, _, _) update_graphic_source(volumearc, stdout, _, _, _) end)
+		elseif button == 2 then
+			awful.spawn(Audioconfig, false)
+		elseif button == 1 then
+			awful.spawn("wpctl set-mute @DEFAULT_SINK@ toggle", false)
+			awful.spawn.easy_async("wpctl get-volume @DEFAULT_SINK@", function(stdout, _, _, _) update_graphic_sink(volumearc, stdout, _, _, _) end)
 		end
 	end)
 
 	awful.widget.watch("wpctl get-volume @DEFAULT_SINK@", 1, update_graphic_sink, volumearc)
 	awful.widget.watch("wpctl get-volume @DEFAULT_SOURCE@", 1, update_graphic_source, volumearc)
 
-	return volumearc_widget_menu
+	return volumearc
+end
+
+--  ______      _       _     _
+--  | ___ \    (_)     | |   | |
+--  | |_/ /_ __ _  __ _| |__ | |_ _ __   ___  ___ ___
+--  | ___ \ '__| |/ _` | '_ \| __| '_ \ / _ \/ __/ __|
+--  | |_/ / |  | | (_| | | | | |_| | | |  __/\__ \__ \
+--  \____/|_|  |_|\__, |_| |_|\__|_| |_|\___||___/___/
+--                 __/ |
+--                |___/
+-- Brightnessarc_widget()
+
+function Brightnessarc_widget()
+	local brightnessarc = wibox.widget({
+		{
+			image = beautiful.widget_brightness,
+			resize = true,
+			widget = wibox.widget.imagebox,
+		},
+		max_value = 100,
+		thickness = 2,
+		start_angle = 4.71238898, -- 2pi*3/4
+		forced_height = beautiful.get_font_height(beautiful.font) - 6,
+		forced_width = beautiful.get_font_height(beautiful.font) - 6,
+		colors = { beautiful.fg_normal },
+		bg = beautiful.fg_minimize,
+		paddings = 2,
+		widget = wibox.container.arcchart,
+	})
+
+	local update_graphic = function(widget, stdout, _, _, _, notify)
+		widget.value = tonumber(string.match(stdout, ",(%d?%d?%d)%%,"))
+		if notify then awful.spawn.with_shell("notify-send -a brightness -h int:value:" .. tostring(string.match(stdout, ",(%d?%d?%d)%%,")) .. " Brightness") end
+	end
+
+	brightnessarc:connect_signal("button::press", function(_, _, _, button)
+		if button == 5 then
+			awful.spawn.easy_async("brightnessctl -m set 1%-", function(stdout, _, _, _) update_graphic(brightnessarc, stdout, _, _, _, true) end)
+		elseif button == 4 then
+			awful.spawn.easy_async("brightnessctl -m set +1%", function(stdout, _, _, _) update_graphic(brightnessarc, stdout, _, _, _, true) end)
+		end
+	end)
+
+	awful.widget.watch("brightnessctl -m info", 1, update_graphic, brightnessarc)
+
+	return brightnessarc
 end
 
 --  ______          __
@@ -74,9 +139,9 @@ end
 --  | | |  __/ |  | || (_) | |  | | | | | | (_| | | | | (_|  __/
 --  \_|  \___|_|  |_| \___/|_|  |_| |_| |_|\__,_|_| |_|\___\___|
 --
--- performance_widget()
+-- Performance_widget()
 
-function performance_widget()
+function Performance_widget()
 	local performancegraph_widget = wibox.widget({
 		max_value = 100,
 		color = "#74aeab",
@@ -88,7 +153,7 @@ function performance_widget()
 	})
 	local performance_widget_menu = wibox.container.margin(wibox.container.mirror(performancegraph_widget, { horizontal = true }), 0, 0, 0, 5)
 	performance_widget_menu:connect_signal("button::press", function(_, _, _, button)
-		if button == 1 then awful.spawn(systemmonitor) end
+		if button == 1 then awful.spawn(Systemmonitor) end
 	end)
 
 	local total_prev = 0
@@ -126,92 +191,6 @@ function performance_widget()
 	return performance_widget_menu
 end
 
---  ______       _   _
---  | ___ \     | | | |
---  | |_/ / __ _| |_| |_ ___ _ __ _   _
---  | ___ \/ _` | __| __/ _ \ '__| | | |
---  | |_/ / (_| | |_| ||  __/ |  | |_| |
---  \____/ \__,_|\__|\__\___|_|   \__, |
---                                 __/ |
---                                |___/
--- battery_widget()
-
-function battery_widget()
-	local battery_widget_menu = wibox.widget.imagebox(beautiful.widget_dirbattery .. "/0.svg")
-	local batterytt_text = "Pending . . ."
-	local batterytt = awful.tooltip({
-		timer_function = function()
-			run("cat /sys/class/power_supply/BAT0/capacity", function(capacity)
-				local pers = tonumber(capacity)
-				local cap = (pers / 100) * 12
-				if cap - math.floor(cap) >= 0.5 then
-					cap = math.floor(cap) + 1
-				else
-					cap = math.floor(cap)
-				end
-
-				run("cat /sys/class/power_supply/BAT0/status", function(status)
-					local suffix = ""
-					if status:find("Charging") ~= nil then suffix = "c" end
-					battery_widget_menu:set_image(beautiful.widget_dirbattery .. "/" .. cap .. suffix .. ".svg")
-
-					batterytt_text = capacity:gsub("[\n\r]", "") .. "% (" .. status:gsub("[\n\r]", "") .. ")"
-				end)
-			end)
-			return batterytt_text
-		end,
-	})
-	batterytt:add_to_object(battery_widget_menu)
-
-	local function update_graphic(widget, capacity, _, _, _)
-		local pers = tonumber(capacity)
-		local cap = (pers / 100) * 12
-		if cap - math.floor(cap) >= 0.5 then
-			cap = math.floor(cap) + 1
-		else
-			cap = math.floor(cap)
-		end
-
-		run("cat /sys/class/power_supply/BAT0/status", function(status)
-			local suffix = ""
-			if status:find("Charging") ~= nil then
-				suffix = "c"
-			else
-				if pers <= 20 then awful.spawn.with_shell("notify-send -a battery 'Houston, we have a problem' 'Battery is dying'") end
-			end
-			widget:set_image(beautiful.widget_dirbattery .. "/" .. cap .. suffix .. ".svg")
-		end)
-	end
-
-	awful.widget.watch("cat /sys/class/power_supply/BAT0/capacity", 120, update_graphic, battery_widget_menu)
-
-	return battery_widget_menu
-end
-
---   _____       _                _
---  /  __ \     | |              | |
---  | /  \/ __ _| | ___ _ __   __| | __ _ _ __
---  | |    / _` | |/ _ \ '_ \ / _` |/ _` | '__|
---  | \__/\ (_| | |  __/ | | | (_| | (_| | |
---   \____/\__,_|_|\___|_| |_|\__,_|\__,_|_|
---
--- calendar_widget()
-
-function calendar_widget(s)
-	local calender_menu = wibox.widget.textclock("%d-%b-%y %k:%M")
-	awful.widget.calendar_popup
-		.year({
-			screen = s,
-			spacing = 0,
-			week_numbers = true,
-			style_month = { padding = 8, border_width = 2, border_color = beautiful.color_awesome_blue },
-			style_weekday = { border_width = 1, border_color = beautiful.color_awesome_blue },
-			style_weeknumber = { border_width = 1, border_color = beautiful.color_awesome_blue },
-		})
-		:attach(calender_menu, "tr")
-	return calender_menu
-end
-
 --  ______ _ _                     _
 --  |  ___(_) |                   | |
 --  | |_   _| | ___  ___ _   _ ___| |_ ___ _ __ ___
@@ -220,9 +199,9 @@ end
 --  \_|   |_|_|\___||___/\__, |___/\__\___|_| |_| |_|
 --                        __/ |
 --                       |___/
--- storage_bar_widget()
+-- Storagebar_widget()
 
-function storage_bar_widget()
+function Storagebar_widget()
 	local function storage_bar_widget_worker(user_args)
 		local args = user_args or {}
 		local config = {}
@@ -373,4 +352,90 @@ function storage_bar_widget()
 		return storagebar_widget
 	end
 	return storage_bar_widget_worker({ mounts = { "/", "/mnt/OneDrive_DI", "/mnt/OneDrive_IZO" } })
+end
+
+--  ______       _   _
+--  | ___ \     | | | |
+--  | |_/ / __ _| |_| |_ ___ _ __ _   _
+--  | ___ \/ _` | __| __/ _ \ '__| | | |
+--  | |_/ / (_| | |_| ||  __/ |  | |_| |
+--  \____/ \__,_|\__|\__\___|_|   \__, |
+--                                 __/ |
+--                                |___/
+-- Battery_widget()
+
+function Battery_widget()
+	local battery_widget_menu = wibox.widget.imagebox(beautiful.widget_dirbattery .. "/0.svg")
+	local batterytt_text = "Pending . . ."
+	local batterytt = awful.tooltip({
+		timer_function = function()
+			run("cat /sys/class/power_supply/BAT0/capacity", function(capacity)
+				local pers = tonumber(capacity)
+				local cap = (pers / 100) * 12
+				if cap - math.floor(cap) >= 0.5 then
+					cap = math.floor(cap) + 1
+				else
+					cap = math.floor(cap)
+				end
+
+				run("cat /sys/class/power_supply/BAT0/status", function(status)
+					local suffix = ""
+					if status:find("Charging") ~= nil then suffix = "c" end
+					battery_widget_menu:set_image(beautiful.widget_dirbattery .. "/" .. cap .. suffix .. ".svg")
+
+					batterytt_text = capacity:gsub("[\n\r]", "") .. "% (" .. status:gsub("[\n\r]", "") .. ")"
+				end)
+			end)
+			return batterytt_text
+		end,
+	})
+	batterytt:add_to_object(battery_widget_menu)
+
+	local function update_graphic(widget, capacity, _, _, _)
+		local pers = tonumber(capacity)
+		local cap = (pers / 100) * 12
+		if cap - math.floor(cap) >= 0.5 then
+			cap = math.floor(cap) + 1
+		else
+			cap = math.floor(cap)
+		end
+
+		run("cat /sys/class/power_supply/BAT0/status", function(status)
+			local suffix = ""
+			if status:find("Charging") ~= nil then
+				suffix = "c"
+			else
+				if pers <= 20 then awful.spawn.with_shell("notify-send -u critical -a battery 'Houston, we have a problem' 'Battery is dying'") end
+			end
+			widget:set_image(beautiful.widget_dirbattery .. "/" .. cap .. suffix .. ".svg")
+		end)
+	end
+
+	awful.widget.watch("cat /sys/class/power_supply/BAT0/capacity", 120, update_graphic, battery_widget_menu)
+
+	return battery_widget_menu
+end
+
+--   _____       _                _
+--  /  __ \     | |              | |
+--  | /  \/ __ _| | ___ _ __   __| | __ _ _ __
+--  | |    / _` | |/ _ \ '_ \ / _` |/ _` | '__|
+--  | \__/\ (_| | |  __/ | | | (_| | (_| | |
+--   \____/\__,_|_|\___|_| |_|\__,_|\__,_|_|
+--
+-- Calendar_widget()
+
+function Calendar_widget(s)
+	local calender_menu = wibox.widget.textclock("%d-%b-%y %k:%M")
+	awful.widget.calendar_popup
+		.year({
+			screen = s,
+			spacing = 0,
+			week_numbers = true,
+			style_month = { padding = 8, border_width = 2 },
+			style_weekday = { border_width = 1 },
+			style_weeknumber = { border_width = 1 },
+		})
+		:attach(calender_menu, "tr")
+	return calender_menu
 end
