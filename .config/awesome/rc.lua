@@ -9,7 +9,7 @@
 
 pcall(require, "luarocks.loader")
 local awful = require("awful")
--- require("awful.autofocus")
+require("awful.autofocus")
 local gears = require("gears")
 local beautiful = require("beautiful")
 local hotkeys_popup = require("awful.hotkeys_popup")
@@ -164,17 +164,31 @@ end)
 --               __/ |
 --              |___/
 
+local function focusunderpointer()
+	gears.timer({
+		timeout = 0.01,
+		autostart = true,
+		single_shot = true,
+		callback = function()
+			local n = mouse.object_under_pointer()
+			if n ~= nil and n ~= client.focus then client.focus = n end
+		end,
+	})
+end
+
 local globalkeys = gears.table.join(
 	-- Tags
 	awful.key({ Modkey }, "Escape", awful.tag.history.restore, { description = "go back", group = "tag" }),
 	awful.key({ Modkey }, "Left", function()
 		for s in screen do
 			awful.tag.viewprev(s)
+			focusunderpointer()
 		end
 	end, { description = "view previous", group = "tag" }),
 	awful.key({ Modkey }, "Right", function()
 		for s in screen do
 			awful.tag.viewnext(s)
+			focusunderpointer()
 		end
 	end, { description = "view next", group = "tag" }),
 
@@ -326,8 +340,8 @@ awful.rules.rules = {
 			placement = awful.placement.no_overlap + awful.placement.no_offscreen,
 			fullscreen = false,
 			maximized = false,
-			-- floating = false,
-			-- ontop = false,
+			floating = false,
+			ontop = false,
 		},
 	},
 	{
@@ -364,17 +378,6 @@ client.connect_signal("manage", function(c)
 	if awesome.startup and not c.size_hints.user_position and not c.size_hints.program_position then awful.placement.no_offscreen(c) end
 end)
 client.connect_signal("mouse::enter", function(c) c:emit_signal("request::activate", { raise = false }) end)
-screen.connect_signal("tag::history::update", function()
-	gears.timer({
-		timeout = 0.01,
-		autostart = true,
-		single_shot = true,
-		callback = function()
-			local n = mouse.object_under_pointer()
-			if n ~= nil and n ~= client.focus then client.focus = n end
-		end,
-	})
-end)
 
 client.connect_signal("property::floating", function(c) c.ontop = c.floating end)
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
