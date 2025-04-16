@@ -428,12 +428,36 @@ end
 --
 
 local function run_if_not_running(cmd, pgrep)
+	if pgrep == nil then pgrep = cmd end
 	awful.spawn.easy_async("pgrep -f " .. pgrep, function(stdout, _, _, _)
 		if stdout == "" then awful.spawn(cmd) end
 	end)
 end
 
-awful.spawn.with_shell(os.getenv("HOME") .. "/.config/awesome/autostart.sh")
+run_if_not_running("nm-applet")
+run_if_not_running("qlipper")
+run_if_not_running("xbindkeys")
+run_if_not_running("flameshot")
+run_if_not_running("teams-for-linux")
+run_if_not_running("thunderbird")
+run_if_not_running("vivaldi")
+
+run_if_not_running("dunst --config ~/.config/dunst/dunstrc", "dunst")
+run_if_not_running("hg macros", "macros")
+run_if_not_running('xautolock -time 5 -notify 60 -detectsleep -locker "i3lock -c 000000 -i ~/.config/awesome/theme/lockscreen.png -fet" -notifier "notify-send -a XAutoLock -t 60000 xautolock \'Locking in 60 seconds\'"', "xautolock")
+
+awful.spawn("headsetcontrol -l 0")
+awful.spawn("setxkbmap -option caps:swapescape")
+
+-- awful.spawn('xinput set-prop "Logitech MX Master 3S" "libinput Accel Profile Enabled" 0 1')
+-- awful.spawn('sleep 5 && xinput set-prop "Logitech MX Master 3S" "libinput Accel Profile Enabled" 0 1')
+-- awful.spawn('xinput set-prop "Logitech MX Master 3S" "libinput Accel Speed" -0.30')
+-- awful.spawn('sleep 5 && xinput set-prop "Logitech MX Master 3S" "libinput Accel Speed" -0.30')
+
+-- awful.spawn('xinput set-prop "MX Master 3S" "libinput Accel Profile Enabled" 0 1')
+-- awful.spawn('sleep 5 && xinput set-prop "MX Master 3S" "libinput Accel Profile Enabled" 0 1')
+-- awful.spawn('xinput set-prop "MX Master 3S" "libinput Accel Speed" -0.30')
+-- awful.spawn('sleep 5 && xinput set-prop "MX Master 3S" "libinput Accel Speed" -0.30')
 
 --   _____ _                  _   _
 --  /  __ \ |                | | | |
