@@ -11,7 +11,7 @@ local beautiful = require("beautiful")
 local xres = beautiful.xresources.get_current_theme()
 local theme = {}
 
-theme.font = "OpenDyslexicNerdFont 10"
+theme.font = "OpenDyslexicNerdFont 12"
 
 theme.maximized_honor_padding = true
 theme.maximized_hide_border = true
@@ -24,7 +24,7 @@ theme.snap_border_width = 0
 theme.systray_icon_spacing = 2
 
 theme.menu_height = beautiful.get_font_height(theme.font)
-theme.menu_width = 110
+theme.menu_width = 125
 theme.menu_border_width = 2
 
 --   _____       _
