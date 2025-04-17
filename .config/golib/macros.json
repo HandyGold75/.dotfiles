@@ -1,0 +1,31 @@
+{
+  "Mainkey": 65299,
+  "Map": {
+    "1": ["enter", "Best regards,", "enter", "enter", "enter", "Ian Zoontjens"],
+    "2": [
+      "enter",
+      "Met vriendelijke groet,",
+      "enter",
+      "enter",
+      "enter",
+      "Ian Zoontjens"
+    ],
+    "3": ["Ian.Zoontjens@DualInventive.com"],
+    "4": [
+      "Hi,",
+      "enter",
+      "enter",
+      "We have received your ticket, we will start working on this as soon as we can.",
+      "enter",
+      "enter",
+      "Best regards,",
+      "enter",
+      "enter",
+      "enter",
+      "Ian Zoontjens"
+    ]
+  },
+  "RotForwards": "0",
+  "RotBackwards": "9",
+  "RotMap": ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+}

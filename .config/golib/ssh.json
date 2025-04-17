@@ -1,0 +1,182 @@
+{
+  "1": {
+    "User": "handygold75",
+    "Host": "10.69.2.101",
+    "Port": 17522
+  },
+  "2": {
+    "User": "handygold75",
+    "Host": "10.69.2.102",
+    "Port": 17522
+  },
+  "3": {
+    "User": "handygold75",
+    "Host": "10.69.2.103",
+    "Port": 17522
+  },
+  "4": {
+    "User": "handygold75",
+    "Host": "10.69.2.104",
+    "Port": 17522
+  },
+  "5": {
+    "User": "handygold75",
+    "Host": "10.69.2.105",
+    "Port": 17522
+  },
+  "6": {
+    "User": "handygold75",
+    "Host": "10.69.2.106",
+    "Port": 17522
+  },
+  "7": {
+    "User": "handygold75",
+    "Host": "10.69.2.107",
+    "Port": 17522
+  },
+  "8": {
+    "User": "handygold75",
+    "Host": "10.69.2.108",
+    "Port": 17522
+  },
+  "9": {
+    "User": "handygold75",
+    "Host": "10.69.2.109",
+    "Port": 17522
+  },
+  "SV01": {
+    "User": "handygold75",
+    "Host": "10.69.2.101",
+    "Port": 17522
+  },
+  "SV02": {
+    "User": "handygold75",
+    "Host": "10.69.2.102",
+    "Port": 17522
+  },
+  "SV03": {
+    "User": "handygold75",
+    "Host": "10.69.2.103",
+    "Port": 17522
+  },
+  "SV04": {
+    "User": "handygold75",
+    "Host": "10.69.2.104",
+    "Port": 17522
+  },
+  "SV05": {
+    "User": "handygold75",
+    "Host": "10.69.2.105",
+    "Port": 17522
+  },
+  "SV06": {
+    "User": "handygold75",
+    "Host": "10.69.2.106",
+    "Port": 17522
+  },
+  "SV07": {
+    "User": "handygold75",
+    "Host": "10.69.2.107",
+    "Port": 17522
+  },
+  "SV08": {
+    "User": "handygold75",
+    "Host": "10.69.2.108",
+    "Port": 17522
+  },
+  "SV09": {
+    "User": "handygold75",
+    "Host": "10.69.2.109",
+    "Port": 17522
+  },
+  "G1": {
+    "User": "handygold75",
+    "Host": "10.69.2.151",
+    "Port": 17522
+  },
+  "G2": {
+    "User": "handygold75",
+    "Host": "10.69.2.152",
+    "Port": 17522
+  },
+  "G3": {
+    "User": "handygold75",
+    "Host": "10.69.2.153",
+    "Port": 17522
+  },
+  "G4": {
+    "User": "handygold75",
+    "Host": "10.69.2.154",
+    "Port": 17522
+  },
+  "G5": {
+    "User": "handygold75",
+    "Host": "10.69.2.155",
+    "Port": 17522
+  },
+  "G6": {
+    "User": "handygold75",
+    "Host": "10.69.2.156",
+    "Port": 17522
+  },
+  "G7": {
+    "User": "handygold75",
+    "Host": "10.69.2.157",
+    "Port": 17522
+  },
+  "G8": {
+    "User": "handygold75",
+    "Host": "10.69.2.158",
+    "Port": 17522
+  },
+  "G9": {
+    "User": "handygold75",
+    "Host": "10.69.2.159",
+    "Port": 17522
+  },
+  "GM01": {
+    "User": "handygold75",
+    "Host": "10.69.2.151",
+    "Port": 17522
+  },
+  "GM02": {
+    "User": "handygold75",
+    "Host": "10.69.2.152",
+    "Port": 17522
+  },
+  "GM03": {
+    "User": "handygold75",
+    "Host": "10.69.2.153",
+    "Port": 17522
+  },
+  "GM04": {
+    "User": "handygold75",
+    "Host": "10.69.2.154",
+    "Port": 17522
+  },
+  "GM05": {
+    "User": "handygold75",
+    "Host": "10.69.2.155",
+    "Port": 17522
+  },
+  "GM06": {
+    "User": "handygold75",
+    "Host": "10.69.2.156",
+    "Port": 17522
+  },
+  "GM07": {
+    "User": "handygold75",
+    "Host": "10.69.2.157",
+    "Port": 17522
+  },
+  "GM08": {
+    "User": "handygold75",
+    "Host": "10.69.2.158",
+    "Port": 17522
+  },
+  "GM09": {
+    "User": "handygold75",
+    "Host": "10.69.2.159",
+    "Port": 17522
+  }
+}
