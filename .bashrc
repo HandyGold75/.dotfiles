@@ -56,6 +56,24 @@ export LANGUAGE="en_US.utf8"
 export LC_ALL="en_US.utf8"
 # export LC_CTYPE="en_US.utf8"
 
+# Path
+if [ -d "$HOME/bin" ] ; then
+    PATH="$HOME/bin:$PATH"
+fi
+if [ -d "$HOME/.local/bin" ] ; then
+    PATH="$HOME/.local/bin:$PATH"
+fi
+
+if [ -d "/usr/local/go/bin" ] ; then
+    PATH="/usr/local/go/bin:$PATH"
+fi
+if [ -d "$HOME/go/bin" ] ; then
+    PATH="$HOME/go/bin:$PATH"
+fi
+if [ -d "$HOME/venv/bin" ] ; then
+    PATH="$HOME/venv/bin:$PATH"
+fi
+
 # Aliases
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 alias ll='ls -halF'
