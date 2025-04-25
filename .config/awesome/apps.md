@@ -8,15 +8,15 @@
 - dunst
 - qlipper
 - network-manager
-- kitty (source)
-- nvim (source)
-- btop
+- kitty (GIT)
+- nvim (GIT)
 - i3lock
 - xautolock
 - xbindkeys
 - arandr
 - flameshot
-- headsetcontrol (source)
+- btop
+- headsetcontrol (GIT)
 
 ### Audio
 
@@ -34,7 +34,7 @@
 
 - qt5ct
 - qt6ct
-- nwg-look (source)
+- nwg-look (GIT)
 
 ### Applications
 

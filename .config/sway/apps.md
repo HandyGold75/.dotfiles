@@ -1,0 +1,51 @@
+# Apps
+
+## Required
+
+### System
+
+- sway
+- dunst
+
+- wofi
+- wl-clipboard
+- cliphist
+
+- network-manager-applet
+- kitty (GIT)
+- nvim (GIT)
+- flameshot??
+- btop
+- headsetcontrol (GIT)
+
+### Audio
+
+- pavucontrol
+- pipewire
+- pipewire-audio
+- pipewire-pulse
+- pipewire-jack
+- pipewire-alsa
+- wireplumber
+
+## Optional
+
+### Theming
+
+- qt5ct
+- qt6ct
+- nwg-look (GIT)
+
+### Applications
+
+- thunar
+- firefox (deb)
+- vivaldi (deb)
+- teams-for-linux (snap)
+- thunderbird (snap)
+- onlyoffice (deb)
+- teamviewer (deb)
+- forticlient vpn (deb)
+- rclone
+- remmina
+- virt-manager
