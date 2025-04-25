@@ -312,9 +312,7 @@ local clientbuttons = gears.table.join(
 )
 
 menubar.utils.terminal = Terminal
-
 root.buttons(gears.table.join(awful.button({}, 3, function() Mainmenu:toggle() end), awful.button({}, 4, awful.tag.viewnext), awful.button({}, 5, awful.tag.viewprev)))
-
 root.keys(globalkeys)
 
 --  ______      _
@@ -468,5 +466,6 @@ awful.spawn("setxkbmap -option caps:swapescape")
 --                                 | |
 --                                 |_|
 
+focusunderpointer()
 gears.timer({ timeout = 600, autostart = true, callback = collectgarbage })
 collectgarbage()
