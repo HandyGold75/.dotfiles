@@ -4,17 +4,17 @@
 
 ### System
 
-- awesome
+- sway
 - dunst
-- qlipper
-- network-manager
+
+- wofi
+- wl-clipboard
+- cliphist
+
+- network-manager-applet
 - kitty (GIT)
 - nvim (GIT)
-- i3lock
-- xautolock
-- xbindkeys
-- arandr
-- flameshot
+- flameshot??
 - btop
 - headsetcontrol (GIT)
 
