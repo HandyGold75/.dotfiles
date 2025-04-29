@@ -56,7 +56,7 @@ export LANGUAGE="en_US.utf8"
 export LC_ALL="en_US.utf8"
 # export LC_CTYPE="en_US.utf8"
 
-# Path
+# Path (Arch)
 if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
