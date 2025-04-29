@@ -342,6 +342,8 @@ awful.rules.rules = {
 			ontop = false,
 		},
 	},
+	-- $ xprop WM_CLASS | awk -F '"' '{print $2}' # instance
+	-- $ xprop WM_CLASS | awk -F '"' '{print $4}' # class
 	{
 		rule_any = {
 			instance = { "arandr", "blueman-manager", "nm-connection-editor", "pavucontrol", "org.gnome.Characters", "gnome-calculator", "update-manager", "firmware-updater", "forticlient", "thunar" },
@@ -350,15 +352,21 @@ awful.rules.rules = {
 		properties = { floating = true, ontop = true, placement = awful.placement.centered },
 	},
 	{
-		rule_any = { name = { "Microsoft Teams", "Mozilla Thunderbird" } },
+		rule_any = { instance = { "teams-for-linux" }, class = { "thunderbird-esr" } },
 		properties = { screen = function() return screen.count() end, tag = "1" },
 	},
 	{
-		rule = { name = "Vivaldi" },
-		properties = { screen = 1, tag = "1" },
+		rule = { instance = "vivaldi-stable" },
+		properties = {
+			screen = 1,
+			tag = function()
+				if screen.count() == 1 then return "2" end
+				return "1"
+			end,
+		},
 	},
 	{
-		rule = { name = "Firefox" },
+		rule = { class = "firefox" },
 		properties = { screen = function() return screen.count() end, tag = "2" },
 	},
 }
