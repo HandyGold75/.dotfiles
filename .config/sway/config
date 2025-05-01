@@ -49,10 +49,7 @@ gaps outer 2
 smart_gaps on
 smart_borders no_gaps
 
-# swaymsg -t get_outputs
 output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
-# output * disable bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
-# output <NAME> enable mode 1920x1080@60Hz position 1920,0
 
 input "type:keyboard" {
 	repeat_delay 500
