@@ -10,6 +10,8 @@
 - wofi
 - wl-clipboard
 - cliphist
+- kanshi
+- swaylock
 
 - network-manager-applet
 - kitty (GIT)
