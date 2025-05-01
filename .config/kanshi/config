@@ -1,0 +1,44 @@
+profile Home{
+	output HDMI-1 enable mode 2560x1440 position 1920,0
+	output DP-1-1 enable mode 1920x1080 position 0,446
+	exec notify-send -u low -a Kanshi 'Applying profile' 'Home'
+}
+
+profile Laptop{
+	output "AU Optronics 0xA68B Unknown" enable mode 1920x1080 position 0,0
+	exec notify-send -u low -a Kanshi 'Applying profile' 'Laptop'
+}
+
+profile Platform_4{
+	output "AU Optronics 0xA68B Unknown" enable mode 1920x1080 position 0,1080
+	output HDMI-1 enable mode 1920x1080 position 0,0
+	exec notify-send -u low -a Kanshi 'Applying profile' 'Platform 4'
+}
+
+profile Workplace_1{
+	output "AU Optronics 0xA68B Unknown" enable mode 1920x1080 position 5120,135
+	output "AOC Q2790 HBDNBHA000377" enable mode 2560x1440 position 2560,0
+	output "AOC Q2790 HBDP2HA000031" enable mode 2560x1440 position 0,0
+	exec notify-send -u low -a Kanshi 'Applying profile' 'Workplace 1'
+}
+
+profile Workplace_2{
+	output "AU Optronics 0xA68B Unknown" enable mode 1920x1080 position 0,360
+	output DP-1-1 enable mode 2560x1440 position 1920,0
+	output DP-1-2 enable mode 2560x1440 position 4480,0
+	exec notify-send -u low -a Kanshi 'Applying profile' 'Workplace 2'
+}
+
+profile Workplace_3{
+	output "AU Optronics 0xA68B Unknown" enable mode 1920x1080 position 4480,608
+	output DP-1-1 enable mode 1920x1080 position 2560,180
+	output DP-1-2 enable mode 2560x1440 position 0,0
+	exec notify-send -u low -a Kanshi 'Applying profile' 'Workplace 3'
+}
+
+profile Workplace_4{
+	output "AU Optronics 0xA68B Unknown" enable mode 1920x1080 position 0,955
+	output DP-1-1 enable mode 2560x1440 position 4480,0
+	output DP-1-2 enable mode 2560x1440 position 1920,0
+	exec notify-send -u low -a Kanshi 'Applying profile' 'Workplace 4'
+}
