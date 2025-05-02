@@ -36,11 +36,26 @@
 @define-color mantle #1e2030;
 @define-color crust #181926;
 
-* {
+#waybar {
   font-family: "OpenDyslexicNerdFont", "HackNerdFont";
   font-size: 14;
   color: @text;
-  background: @base;
+  background: @crust;
+}
+
+.modules-left {
+  color: @text;
+  background: @surface0;
+}
+
+.modules-center {
+  color: @text;
+  background: @crust;
+}
+
+.modules-right {
+  color: @text;
+  background: @surface0;
 }
 
 tooltip {
@@ -78,9 +93,6 @@ tooltip {
 #disk,
 #memory,
 #tray {
-  padding: 0 10px;
-  border-left: 2px solid @lavender;
-  border-right: 2px solid @lavender;
 }
 
 #custom-arch:hover,
@@ -123,32 +135,28 @@ tooltip {
  *                                                               
  */
 
-#powers * {
-  margin: 0 -2px;
+#powers {
+  background: @blue;
+  color: @crust;
+}
+
+#powers * > * > * {
+  padding: 0 10px;
 }
 
 #powers #custom-arch {
-  border-radius: 12px;
-  margin: 0 5px;
-}
-
-#powers #custom-power {
-  border-radius: 12px 0 0 12px;
-  margin-left: 5px;
-}
-
-#powers #custom-reboot {
-  border-radius: 0 12px 12px 0;
-  margin: 0 5px;
+  padding: 0 10px;
 }
 
 #privacy-item {
-  border-radius: 12px;
+  background: @blue;
+  color: @crust;
 }
 
 #systemd-failed-units {
-  background: rgba(0, 0, 0, 0);
-  border-radius: 12px;
+  background: @blue;
+  color: @crust;
+  padding: 0 10px;
 }
 
 #systemd-failed-units.degraded {
@@ -156,13 +164,19 @@ tooltip {
   color: @crust;
 }
 
+#custom-triangle-left-blue {
+  min-width: 18px;
+  background-color: @surface0;
+  background-image: url("./images/triangle-left-blue.svg");
+  background-size: cover;
+  background-position: left;
+  background-repeat: no-repeat;
+}
+
 #workspaces {
-  margin: 0 5px;
 }
 
 #workspaces button {
-  margin: 0 2px;
-  border-radius: 12px;
 }
 
 #workspaces button.urgent {
@@ -171,8 +185,15 @@ tooltip {
 }
 
 #mpris {
-  border-radius: 12px;
-  margin-right: 5px;
+}
+
+#custom-triangle-left-surface0 {
+  min-width: 18px;
+  background-color: @crust;
+  background-image: url("./images/triangle-left-surface0.svg");
+  background-size: cover;
+  background-position: left;
+  background-repeat: no-repeat;
 }
 
 /***
@@ -187,11 +208,12 @@ tooltip {
  */
 
 #clock {
-  border-radius: 12px 0 0 12px;
+}
+
+#window {
 }
 
 #user {
-  border-radius: 0 12px 12px 0;
 }
 
 /***
@@ -205,8 +227,16 @@ tooltip {
  *                                                    |___/           
  */
 
+#custom-triangle-right-surface0 {
+  min-width: 18px;
+  background-color: @crust;
+  background-image: url("./images/triangle-right-surface0.svg");
+  background-size: cover;
+  background-position: right;
+  background-repeat: no-repeat;
+}
+
 #pulseaudio {
-  border-radius: 12px 0 0 12px;
 }
 
 #pulseaudio.muted {
@@ -219,15 +249,12 @@ tooltip {
 }
 
 #network {
-  border-radius: 0 12px 12px 0;
 }
 
 #backlight {
-  border-radius: 12px 0 0 12px;
 }
 
 #battery {
-  border-radius: 0 12px 12px 0;
 }
 
 #battery.critical {
@@ -247,26 +274,40 @@ tooltip {
   color: @text;
   animation-name: blink;
   animation-duration: 1s;
-  animation-timing-function: steps(100);
+  animation-timing-function: steps(21);
   animation-iteration-count: infinite;
   animation-direction: alternate;
 }
 
 #stats {
-  border-radius: 12px;
 }
 
 #stats #cpu {
-  border-radius: 0 12px 12px 0;
+}
+
+#custom-triangle-right-blue {
+  min-width: 18px;
+  background-color: @surface0;
+  background-image: url("./images/triangle-right-blue.svg");
+  background-size: cover;
+  background-position: right;
+  background-repeat: no-repeat;
+}
+
+#tray {
+  background: @blue;
+  color: @crust;
+}
+
+#tray menu {
+  color: @text;
+  background: @base;
+  padding: 0;
 }
 
 #tray * {
   border-radius: 12px;
   border: 0;
-}
-
-#tray menu {
-  padding: 0;
 }
 
 #tray > .passive {
