@@ -12,6 +12,7 @@
 - cliphist
 - kanshi
 - swaylock
+- waybar (GIT)
 
 - network-manager-applet
 - kitty (GIT)
