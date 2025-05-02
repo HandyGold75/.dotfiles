@@ -9,17 +9,42 @@
  *                                       
  */
 
+@define-color rosewater #f4dbd6;
+@define-color flamingo #f0c6c6;
+@define-color pink #f5bde6;
+@define-color mauve #c6a0f6;
+@define-color red #ed8796;
+@define-color maroon #ee99a0;
+@define-color peach #f5a97f;
+@define-color yellow #eed49f;
+@define-color green #a6da95;
+@define-color teal #8bd5ca;
+@define-color sky #91d7e3;
+@define-color sapphire #7dc4e4;
+@define-color blue #8aadf4;
+@define-color lavender #b7bdf8;
+@define-color text #cad3f5;
+@define-color subtext1 #b8c0e0;
+@define-color subtext0 #a5adcb;
+@define-color overlay2 #939ab7;
+@define-color overlay1 #8087a2;
+@define-color overlay0 #6e738d;
+@define-color surface2 #5b6078;
+@define-color surface1 #494d64;
+@define-color surface0 #363a4f;
+@define-color base #24273a;
+@define-color mantle #1e2030;
+@define-color crust #181926;
+
 * {
   font-family: "OpenDyslexicNerdFont", "HackNerdFont";
-  font-weight: 900;
-  font-size: 100%;
-  color: #aaf;
-  background: rgba(0, 0, 0, 0);
+  font-size: 14;
+  color: @text;
+  background: @base;
 }
 
 tooltip {
   border-radius: 12px;
-  background: #1e1e2e;
 }
 
 /***
@@ -49,13 +74,13 @@ tooltip {
 #network,
 #backlight,
 #battery,
-#disk,
 #cpu,
+#disk,
 #memory,
 #tray {
-  background: rgba(50, 50, 50, 0.8);
   padding: 0 10px;
-  border: 0;
+  border-left: 2px solid @lavender;
+  border-right: 2px solid @lavender;
 }
 
 #custom-arch:hover,
@@ -66,23 +91,25 @@ tooltip {
 #privacy-item:hover,
 #systemd-failed-units,
 #workspaces button:hover,
+#workspaces button:hover *,
 #mpris:hover,
 #clock:hover,
 #window:hover,
+#window:hover *,
 #user:hover,
+#user:hover *,
 #pulseaudio:hover,
 #network:hover,
 #backlight:hover,
 #battery:hover,
-#tray menu > *:hover {
-  background: rgba(90, 90, 90, 1);
-  color: #f7e163;
-}
-
-#workspaces button:hover *,
-#window:hover *,
-#user:hover * {
-  color: #f7e163;
+#cpu:hover,
+#disks:hover *,
+#memorys:hover *,
+#tray * :hover,
+#tray * :hover > *:not(menu),
+#tray * :hover > * > *:not(menu) {
+  background: @mauve;
+  color: @crust;
 }
 
 /***
@@ -96,17 +123,23 @@ tooltip {
  *                                                               
  */
 
-#custom-arch {
-  border-radius: 12px;
+#powers * {
+  margin: 0 -2px;
 }
 
-#custom-power {
+#powers #custom-arch {
+  border-radius: 12px;
+  margin: 0 5px;
+}
+
+#powers #custom-power {
   border-radius: 12px 0 0 12px;
   margin-left: 5px;
 }
 
-#custom-reboot {
+#powers #custom-reboot {
   border-radius: 0 12px 12px 0;
+  margin: 0 5px;
 }
 
 #privacy-item {
@@ -119,7 +152,8 @@ tooltip {
 }
 
 #systemd-failed-units.degraded {
-  background-color: #eb4d4b;
+  background-color: @red;
+  color: @crust;
 }
 
 #workspaces {
@@ -132,7 +166,8 @@ tooltip {
 }
 
 #workspaces button.urgent {
-  background-color: #eb4d4b;
+  background-color: @red;
+  color: @crust;
 }
 
 #mpris {
@@ -175,11 +210,12 @@ tooltip {
 }
 
 #pulseaudio.muted {
-  color: #eb4d4b;
+  color: @red;
 }
 
 #network.disconnected {
-  color: #eb4d4b;
+  background-color: @red;
+  color: @crust;
 }
 
 #network {
@@ -195,73 +231,48 @@ tooltip {
 }
 
 #battery.critical {
-  color: white;
-  background: #f7768e;
+  background-color: @red;
+  color: @crust;
 }
 
 @keyframes blink {
   to {
-    background-color: #ffffff;
-    color: #000000;
+    background-color: @red;
+    color: @crust;
   }
 }
 
 #battery.critical:not(.charging) {
-  background-color: #f53c3c;
-  color: #ffffff;
+  background-color: @base;
+  color: @text;
   animation-name: blink;
-  animation-duration: 0.5s;
-  animation-timing-function: steps(12);
+  animation-duration: 1s;
+  animation-timing-function: steps(100);
   animation-iteration-count: infinite;
   animation-direction: alternate;
 }
 
 #stats {
-  background: rgba(50, 50, 50, 0.8);
   border-radius: 12px;
 }
 
-#stats:hover {
-  background: rgba(90, 90, 90, 1);
+#stats #cpu {
+  border-radius: 0 12px 12px 0;
 }
 
-#cpu:hover,
-#disks:hover *,
-#memorys:hover * {
-  color: #f7e163;
-}
-
-#cpu,
-#disk,
-#memory {
-  background: rgba(0, 0, 0, 0);
-}
-
-#stats:hover #cpu,
-#memorys {
-  border-left: 2px solid rgba(0, 0, 0, 1);
-}
-
-#tray {
+#tray * {
   border-radius: 12px;
+  border: 0;
 }
 
 #tray menu {
-  border-radius: 12px;
-  background: rgba(50, 50, 50, 0.8);
   padding: 0;
 }
 
-#tray menu > * {
-  border-radius: 12px;
-}
-
 #tray > .passive {
-  border-radius: 12px;
-  color: #aaa;
+  color: @text;
 }
 
 #tray > .needs-attention {
-  border-radius: 12px;
-  color: #eb4d4b;
+  color: @red;
 }

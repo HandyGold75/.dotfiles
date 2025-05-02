@@ -163,7 +163,6 @@ bindsym $mod+F11 exec headsetcontrol -l0
 #                                       __/ |
 #                                      |___/
 
-
 set $rosewater #f4dbd6
 set $flamingo #f0c6c6
 set $pink #f5bde6
