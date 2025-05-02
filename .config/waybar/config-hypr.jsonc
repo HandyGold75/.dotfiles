@@ -14,7 +14,6 @@
     "pulseaudio",
     "network",
 
-    "keyboard-state",
     "backlight",
     "battery",
 
@@ -32,7 +31,7 @@
   //
 
   "group/powers": {
-    "orientation": "inherit",
+    "orientation": "horizontal",
     "drawer": {
       "transition-duration": 500,
       "children-class": "group-powers",
@@ -213,7 +212,7 @@
     "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
     "tooltip-format-ethernet": "{ipaddr}/{cidr} ",
     "tooltip-format-disconnected": "{ifname} (No IP) ",
-    "on-click": "kitty sh -c 'ip a; read -sn 1'",
+    "on-click": "kitty bash -c 'ip a; read -sn 1'",
   },
 
   "backlight": {
@@ -239,7 +238,7 @@
   },
 
   "group/stats": {
-    "orientation": "inherit",
+    "orientation": "horizontal",
     "modules": ["cpu", "group/disks", "group/memorys"],
     "drawer": {
       "transition-duration": 500,
@@ -265,7 +264,7 @@
   },
 
   "group/memorys": {
-    "orientation": "inherit",
+    "orientation": "horizontal",
     "modules": ["memory", "memory#swap"],
     "drawer": {
       "transition-duration": 500,
@@ -286,11 +285,12 @@
     "tooltip-format": "{swapUsed:0.1f}G/{swapTotal:0.1f}G ",
   },
   "group/disks": {
-    "orientation": "inherit",
+    "orientation": "horizontal",
     "modules": [
       "disk",
       "disk#sharepoint",
-      "disk#onedrive",
+      "disk#onedrivedi",
+      "disk#onedriveizo",
       "disk#hdd1",
       "disk#nvme1",
     ],
@@ -324,7 +324,15 @@
     "tooltip": true,
     "tooltip-format": "{used}/{total} {path}",
   },
-  "disk#onedrive": {
+  "disk#onedrivedi": {
+    "interval": 30,
+    "format": "{percentage_used}% ",
+    "path": "/mnt/OneDrive_DI/",
+    "on-click": "kitty btop",
+    "tooltip": true,
+    "tooltip-format": "{used}/{total} {path}",
+  },
+  "disk#onedriveizo": {
     "interval": 30,
     "format": "{percentage_used}% ",
     "path": "/mnt/OneDrive_IZO/",
