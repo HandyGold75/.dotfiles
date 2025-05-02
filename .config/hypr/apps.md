@@ -13,7 +13,9 @@
 - xdg-desktop-portal-hyprland
 - hyprpolkitagent (AUR)
 - hyprsysteminfo (AUR)
-- hyprshot (AUR)
+- grim
+- slurp
+- satty
 - dunst
 - wofi
 - wl-clipboard

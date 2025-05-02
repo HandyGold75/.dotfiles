@@ -14,9 +14,7 @@ set $fileManager thunar
 set $menu wofi
 set $lock swaylock -c 000000 -i ~/.config/sway/lockscreen.png -fet --font "OpenDyslexicNerdFont" --indicator-radius 64
 set $clipboard cliphist list | wofi --dmenu | cliphist decode | wl-copy
-# set $screenshot_clipboard hyprshot --mode region --freeze --clipboard-only
-# set $screenshot hyprshot --mode region --freeze
-set $screenshot flameshot gui
+set $screenshot grim -g "$(slurp -d -c '#FF0000FF' -b '#00000066')" -t ppm - | satty -c ~/.config/satty/config.toml --output-filename ~/Pictures/screenshot_%d-%b-%y_%T.png -f -
 set $sysinfo $terminal bash -c 'fastfetch; read -sn 1'
 
 #   _____                           _
@@ -84,8 +82,6 @@ bindsym $mod+I exec $sysinfo
 bindsym $mod+P exec dmenu_path | $menu | xargs swaymsg exec --
 bindgesture swipe:3:up exec dmenu_path | $menu | xargs swaymsg exec --
 bindsym $mod+V exec $clipboard
-bindsym Print exec $screenshot_clipboard
-bindgesture pinch:2:inward exec $screenshot_clipboard
 bindsym Shift+Print exec $screenshot
 bindgesture pinch:2:outward exec $screenshot
 bindsym $mod+B exec pkill waybar || waybar -c ~/.config/waybar/config-sway.jsonc -s ~/.config/waybar/style-sway.css
