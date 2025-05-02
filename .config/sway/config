@@ -34,9 +34,9 @@ workspace_layout default
 force_display_urgency_hint 1000
 popup_during_fullscreen smart
 
-mouse_warping output
+mouse_warping container
 workspace_auto_back_and_forth yes
-focus_follows_mouse always
+focus_follows_mouse yes
 focus_on_window_activation urgent
 focus_wrapping yes
 
@@ -88,6 +88,7 @@ bindsym Print exec $screenshot_clipboard
 bindgesture pinch:2:inward exec $screenshot_clipboard
 bindsym Shift+Print exec $screenshot
 bindgesture pinch:2:outward exec $screenshot
+bindsym $mod+B exec pkill waybar || waybar -c ~/.config/waybar/config-sway.jsonc -s ~/.config/waybar/style-sway.css
 
 bindsym $mod+Shift+C kill
 bindgesture swipe:3:down kill
@@ -106,6 +107,9 @@ bindsym $mod+L focus right
 
 bindsym $mod+Shift+F focus mode_toggle
 bindsym $mod+T split toggle
+
+bindsym $mod+O  move output right
+bindsym $mod+Shift+O  move output left
 
 bindsym $mod+Shift+H move left
 bindsym $mod+Shift+J move down
@@ -196,43 +200,47 @@ client.placeholder       $overlay0 $base $text  $overlay0  $overlay0
 client.background        $base
 
 bar {
-	id 0
-	font pango:OpenDyslexicNerdFont 12
-	icon_theme Yaru-blue-dark
-	height 0
-	mode dock
-	modifier $mod
-	pango_markup enabled
-	position top
-	wrap_scroll no
-
-	separator_symbol |
-	status_command while date +'%T %d-%b-%y'; do sleep 1; done
-	status_edge_padding 3
-	status_padding 1
-
-	strip_workspace_name no
-	strip_workspace_numbers no
-	workspace_buttons yes
-	workspace_min_width 0
-	tray_padding 2
-
-	colors {
-		background         $base
-		statusline         $text
-		separator          $text
-		focused_background $base
-		focused_statusline $text
-		focused_separator  $base
-
-		# target           border bg        text
-		focused_workspace  $base  $mauve    $crust
-		active_workspace   $base  $surface2 $text
-		inactive_workspace $base  $base     $text
-		urgent_workspace   $base  $red      $crust
-		binding_mode       $base  $red      $crust
-	}
+	swaybar_command waybar -c ~/.config/waybar/config-sway.jsonc -s ~/.config/waybar/style-sway.css
 }
+
+# bar {
+# 	id 0
+# 	font pango:OpenDyslexicNerdFont 12
+# 	icon_theme Yaru-blue-dark
+# 	height 0
+# 	mode dock
+# 	modifier $mod
+# 	pango_markup enabled
+# 	position top
+# 	wrap_scroll no
+
+# 	separator_symbol |
+# 	status_command while date +'%T %d-%b-%y'; do sleep 1; done
+# 	status_edge_padding 3
+# 	status_padding 1
+
+# 	strip_workspace_name no
+# 	strip_workspace_numbers no
+# 	workspace_buttons yes
+# 	workspace_min_width 0
+# 	tray_padding 2
+
+# 	colors {
+# 		background         $base
+# 		statusline         $text
+# 		separator          $text
+# 		focused_background $base
+# 		focused_statusline $text
+# 		focused_separator  $base
+
+# 		# target           border bg        text
+# 		focused_workspace  $base  $mauve    $crust
+# 		active_workspace   $base  $surface2 $text
+# 		inactive_workspace $base  $base     $text
+# 		urgent_workspace   $base  $red      $crust
+# 		binding_mode       $base  $red      $crust
+# 	}
+# }
 
 #    ___        _            _             _
 #   / _ \      | |          | |           | |
@@ -252,7 +260,7 @@ exec swayidle -w \
     timeout 300 'swaylock -c 000000 -i ~/.config/awesome/theme/lockscreen.png -fet' \
     timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
     before-sleep 'swaylock -c 000000 -i ~/.config/awesome/theme/lockscreen.png -fet'
-exec kanshi
+exec_always kanshi
 exec wl-paste --watch cliphist store
 exec nm-applet
 exec teams-for-linux

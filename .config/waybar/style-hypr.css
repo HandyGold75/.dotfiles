@@ -47,7 +47,6 @@ tooltip {
 #window,
 #pulseaudio,
 #network,
-/* #keyboard-state, */
 #backlight,
 #battery,
 #disk,
@@ -73,7 +72,6 @@ tooltip {
 #user:hover,
 #pulseaudio:hover,
 #network:hover,
-#keyboard-state:hover,
 #backlight:hover,
 #battery:hover,
 #tray menu > *:hover {
@@ -129,7 +127,7 @@ tooltip {
 }
 
 #workspaces button {
-  background: rgba(0, 0, 0, 0);
+  margin: 0 2px;
   border-radius: 12px;
 }
 
@@ -188,20 +186,12 @@ tooltip {
   border-radius: 0 12px 12px 0;
 }
 
-#keyboard-state {
-  border-radius: 0 12px 12px 0;
-}
-
-#keyboard-state > label {
-  padding: 0 5px;
-}
-
-#keyboard-state > label.locked {
-  background: rgba(0, 0, 0, 0.2);
+#backlight {
+  border-radius: 12px 0 0 12px;
 }
 
 #battery {
-  border-radius: 12px 0 0 12px;
+  border-radius: 0 12px 12px 0;
 }
 
 #battery.critical {
