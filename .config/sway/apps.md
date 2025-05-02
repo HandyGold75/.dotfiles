@@ -13,11 +13,12 @@
 - kanshi
 - swaylock
 - waybar (GIT)
-
+- grim
+- slurp
+- satty
 - network-manager-applet
 - kitty (GIT)
 - nvim (GIT)
-- flameshot??
 - btop
 - headsetcontrol (GIT)
 
