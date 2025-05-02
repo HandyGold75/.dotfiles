@@ -34,7 +34,6 @@
     "orientation": "horizontal",
     "drawer": {
       "transition-duration": 500,
-      "children-class": "group-powers",
       "transition-left-to-right": true,
     },
     "modules": [
@@ -242,7 +241,6 @@
     "modules": ["cpu", "group/disks", "group/memorys"],
     "drawer": {
       "transition-duration": 500,
-      "children-class": "group-stats",
       "transition-left-to-right": false,
     },
   },
@@ -268,7 +266,6 @@
     "modules": ["memory", "memory#swap"],
     "drawer": {
       "transition-duration": 500,
-      "children-class": "group-memorys",
       "transition-left-to-right": false,
     },
   },
@@ -296,7 +293,6 @@
     ],
     "drawer": {
       "transition-duration": 500,
-      "children-class": "group-disks",
       "transition-left-to-right": false,
     },
   },
