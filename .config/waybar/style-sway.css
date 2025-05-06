@@ -74,10 +74,11 @@ tooltip {
  */
 
 #custom-arch,
-#custom-power,
-#custom-quit,
 #custom-lock,
+#custom-suspend,
+#custom-logout,
 #custom-reboot,
+#custom-power,
 #privacy-item,
 #systemd-failed-units,
 #workspaces button,
@@ -96,14 +97,14 @@ tooltip {
 }
 
 #custom-arch:hover,
-#custom-power:hover,
-#custom-quit:hover,
 #custom-lock:hover,
+#custom-suspend:hover,
+#custom-logout:hover,
 #custom-reboot:hover,
+#custom-power:hover,
 #privacy-item:hover,
 #systemd-failed-units,
 #workspaces button:hover,
-#workspaces button:hover *,
 #mpris:hover,
 #clock:hover,
 #window:hover,
@@ -120,6 +121,7 @@ tooltip {
 #tray * :hover,
 #tray * :hover > *:not(menu),
 #tray * :hover > * > *:not(menu) {
+  transition: all 0.5s;
   background: @mauve;
   color: @crust;
 }
@@ -173,10 +175,8 @@ tooltip {
   background-repeat: no-repeat;
 }
 
-#workspaces {
-}
-
 #workspaces button {
+  margin: -5px;
 }
 
 #workspaces button.urgent {
@@ -251,6 +251,11 @@ tooltip {
 #network {
 }
 
+#temperature.critical {
+  background-color: @red;
+  color: @crust;
+}
+
 #backlight {
 }
 
@@ -279,12 +284,6 @@ tooltip {
   animation-direction: alternate;
 }
 
-#stats {
-}
-
-#stats #cpu {
-}
-
 #custom-triangle-right-blue {
   min-width: 18px;
   background-color: @surface0;
@@ -292,6 +291,14 @@ tooltip {
   background-size: cover;
   background-position: right;
   background-repeat: no-repeat;
+}
+
+#stats {
+  background: @blue;
+  color: @crust;
+}
+
+#stats #cpu {
 }
 
 #tray {

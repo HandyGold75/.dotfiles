@@ -34,10 +34,11 @@ tooltip {
  */
 
 #custom-arch,
-#custom-power,
-#custom-quit,
 #custom-lock,
+#custom-suspend,
+#custom-logout,
 #custom-reboot,
+#custom-power,
 #privacy-item,
 #systemd-failed-units,
 #workspaces button,
@@ -59,10 +60,11 @@ tooltip {
 }
 
 #custom-arch:hover,
-#custom-power:hover,
-#custom-quit:hover,
 #custom-lock:hover,
+#custom-suspend:hover,
+#custom-logout:hover,
 #custom-reboot:hover,
+#custom-power:hover,
 #privacy-item:hover,
 #systemd-failed-units,
 #workspaces button:hover,
@@ -100,12 +102,12 @@ tooltip {
   border-radius: 12px;
 }
 
-#custom-power {
+#custom-lock {
   border-radius: 12px 0 0 12px;
   margin-left: 5px;
 }
 
-#custom-reboot {
+#custom-power {
   border-radius: 0 12px 12px 0;
 }
 
@@ -240,6 +242,10 @@ tooltip {
 #stats:hover #cpu,
 #memorys {
   border-left: 2px solid rgba(0, 0, 0, 1);
+}
+
+#temperature.critical {
+  color: #eb4d4b;
 }
 
 #tray {

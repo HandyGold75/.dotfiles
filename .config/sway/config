@@ -88,7 +88,7 @@ bindsym $mod+B exec pkill waybar || waybar -c ~/.config/waybar/config-sway.jsonc
 
 bindsym $mod+Shift+C kill
 bindgesture swipe:3:down kill
-bindsym $mod+Shift+R reload
+bindsym $mod+Ctrl+R reload
 bindsym $mod+F4 exit
 bindsym $mod+F floating toggle
 bindsym $mod+M fullscreen toggle
@@ -145,6 +145,28 @@ bindsym $mod+Shift+8 move workspace number 8
 bindsym $mod+Shift+9 move workspace number 9
 bindsym $mod+Shift+0 move workspace number 0
 bindsym $mod+Shift+Space move scratchpad
+
+bindsym $mod+KP_1 workspace number 1
+bindsym $mod+KP_2 workspace number 2
+bindsym $mod+KP_3 workspace number 3
+bindsym $mod+KP_4 workspace number 4
+bindsym $mod+KP_5 workspace number 5
+bindsym $mod+KP_6 workspace number 6
+bindsym $mod+KP_7 workspace number 7
+bindsym $mod+KP_8 workspace number 8
+bindsym $mod+KP_9 workspace number 9
+bindsym $mod+KP_0 workspace number 0
+
+bindsym $mod+Shift+KP_1 move workspace number 1
+bindsym $mod+Shift+KP_2 move workspace number 2
+bindsym $mod+Shift+KP_3 move workspace number 3
+bindsym $mod+Shift+KP_4 move workspace number 4
+bindsym $mod+Shift+KP_5 move workspace number 5
+bindsym $mod+Shift+KP_6 move workspace number 6
+bindsym $mod+Shift+KP_7 move workspace number 7
+bindsym $mod+Shift+KP_8 move workspace number 8
+bindsym $mod+Shift+KP_9 move workspace number 9
+bindsym $mod+Shift+KP_0 move workspace number 0
 
 bindsym XF86AudioRaiseVolume exec "wpctl set-volume @DEFAULT_SINK@ 1%+; notify-send -a volume -h int:value:$(wpctl get-volume @DEFAULT_SINK@ | awk '{ print $2 * 100 }') Volume"
 bindsym XF86AudioLowerVolume exec "wpctl set-volume @DEFAULT_SINK@ 1%-; notify-send -a volume -h int:value:$(wpctl get-volume @DEFAULT_SINK@ | awk '{ print $2 * 100 }') Volume"
@@ -205,7 +227,7 @@ client.placeholder       $overlay0 $base $text  $overlay0  $overlay0
 client.background        $base
 
 bar {
-	swaybar_command waybar -c ~/.config/waybar/config-sway.jsonc -s ~/.config/waybar/style-sway.css
+	swaybar_command ""
 }
 
 # bar {
@@ -261,16 +283,17 @@ bar {
 exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
 exec hash dbus-update-activation-environment 2>/dev/null && dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
 
+exec waybar
 exec swayidle -w \
     timeout 300 'swaylock -c 000000 -i ~/.config/awesome/theme/lockscreen.png -fet' \
     timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
     before-sleep 'swaylock -c 000000 -i ~/.config/awesome/theme/lockscreen.png -fet'
-exec_always kanshi
+exec kanshi
 exec wl-paste --watch cliphist store
 exec nm-applet
 exec teams-for-linux
 exec thunderbird
 exec vivaldi
-exec dunst --config ~/.config/dunst/dunstrc
+# exec dunst --config ~/.config/dunst/dunstrc
 exec hg macros
 exec headsetcontrol -l 0

@@ -38,10 +38,11 @@
     },
     "modules": [
       "custom/arch",
-      "custom/power",
-      "custom/quit",
       "custom/lock",
+      "custom/suspend",
+      "custom/logout",
       "custom/reboot",
+      "custom/power",
     ],
   },
   "custom/arch": {
@@ -50,29 +51,35 @@
     "tooltip-format": "󰣇",
     "on-click": "wofi --show drun",
   },
-  "custom/power": {
-    "format": "",
-    "tooltip": true,
-    "tooltip-format": "power",
-    "on-click": "shutdown now",
-  },
-  "custom/quit": {
-    "format": "",
-    "tooltip": true,
-    "tooltip-format": "quit",
-    "on-click": "hyprctl dispatch exit",
-  },
   "custom/lock": {
     "format": "󰍁",
     "tooltip": true,
     "tooltip-format": "lock",
     "on-click": "pidof hyprlock || hyprlock",
   },
+  "custom/suspend": {
+    "format": "󰤄",
+    "tooltip": true,
+    "tooltip-format": "suspend",
+    "on-click": "systemctl suspend",
+  },
+  "custom/logout": {
+    "format": "",
+    "tooltip": true,
+    "tooltip-format": "logout",
+    "on-click": "hyprctl dispatch exit",
+  },
   "custom/reboot": {
     "format": "",
     "tooltip": true,
     "tooltip-format": "reboot",
-    "on-click": "reboot",
+    "on-click": "reboot now",
+  },
+  "custom/power": {
+    "format": "",
+    "tooltip": true,
+    "tooltip-format": "power",
+    "on-click": "shutdown now",
   },
 
   "systemd-failed-units": {
@@ -238,7 +245,7 @@
 
   "group/stats": {
     "orientation": "horizontal",
-    "modules": ["cpu", "group/disks", "group/memorys"],
+    "modules": ["cpu", "group/disks", "group/memorys", "temperature"],
     "drawer": {
       "transition-duration": 500,
       "transition-left-to-right": false,
@@ -261,26 +268,6 @@
     "on-click": "kitty btop",
   },
 
-  "group/memorys": {
-    "orientation": "horizontal",
-    "modules": ["memory", "memory#swap"],
-    "drawer": {
-      "transition-duration": 500,
-      "transition-left-to-right": false,
-    },
-  },
-  "memory": {
-    "format": "{percentage}% ",
-    "on-click": "kitty btop",
-    "tooltip": true,
-    "tooltip-format": "{used:0.1f}G/{total:0.1f}G",
-  },
-  "memory#swap": {
-    "format": "{swapPercentage}% ",
-    "on-click": "kitty btop",
-    "tooltip": true,
-    "tooltip-format": "{swapUsed:0.1f}G/{swapTotal:0.1f}G ",
-  },
   "group/disks": {
     "orientation": "horizontal",
     "modules": [
@@ -343,6 +330,33 @@
     "on-click": "kitty btop",
     "tooltip": true,
     "tooltip-format": "{used}/{total} {path}",
+  },
+
+  "group/memorys": {
+    "orientation": "horizontal",
+    "modules": ["memory", "memory#swap"],
+    "drawer": {
+      "transition-duration": 500,
+      "transition-left-to-right": false,
+    },
+  },
+  "memory": {
+    "format": "{percentage}% ",
+    "on-click": "kitty btop",
+    "tooltip": true,
+    "tooltip-format": "{used:0.1f}G/{total:0.1f}G",
+  },
+  "memory#swap": {
+    "format": "{swapPercentage}% ",
+    "on-click": "kitty btop",
+    "tooltip": true,
+    "tooltip-format": "{swapUsed:0.1f}G/{swapTotal:0.1f}G ",
+  },
+
+  "temperature": {
+    "critical-threshold": 80,
+    "format-critical": "{temperatureC}°C ",
+    "format": "{temperatureC}°C ",
   },
 
   "tray": {
