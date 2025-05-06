@@ -16,10 +16,11 @@
     "custom/triangle-right-surface0",
     "pulseaudio",
     "network",
+    // "bluetooth",
     "backlight",
     "battery",
-    "group/stats",
     "custom/triangle-right-blue",
+    "group/stats",
     "tray",
   ],
 
@@ -40,10 +41,11 @@
     },
     "modules": [
       "custom/arch",
-      "custom/power",
-      "custom/quit",
       "custom/lock",
+      "custom/suspend",
+      "custom/logout",
       "custom/reboot",
+      "custom/power",
     ],
   },
   "custom/arch": {
@@ -52,29 +54,35 @@
     "tooltip-format": "󰣇",
     "on-click": "wofi --show drun",
   },
-  "custom/power": {
-    "format": "",
-    "tooltip": true,
-    "tooltip-format": "power",
-    "on-click": "shutdown now",
-  },
-  "custom/quit": {
-    "format": "",
-    "tooltip": true,
-    "tooltip-format": "quit",
-    "on-click": "hyprctl dispatch exit",
-  },
   "custom/lock": {
     "format": "󰍁",
     "tooltip": true,
     "tooltip-format": "lock",
-    "on-click": "pidof hyprlock || hyprlock",
+    "on-click": "swaylock -c 000000 -i ~/.config/sway/lockscreen.png -fet --font \"OpenDyslexicNerdFont\" --indicator-radius 64",
+  },
+  "custom/suspend": {
+    "format": "󰤄",
+    "tooltip": true,
+    "tooltip-format": "suspend",
+    "on-click": "systemctl suspend",
+  },
+  "custom/logout": {
+    "format": "",
+    "tooltip": true,
+    "tooltip-format": "logout",
+    "on-click": "swaymsg exit",
   },
   "custom/reboot": {
     "format": "",
     "tooltip": true,
     "tooltip-format": "reboot",
-    "on-click": "reboot",
+    "on-click": "reboot now",
+  },
+  "custom/power": {
+    "format": "",
+    "tooltip": true,
+    "tooltip-format": "power",
+    "on-click": "shutdown now",
   },
 
   "privacy": {
@@ -93,17 +101,15 @@
     "format": "{icon} {name}",
     "format-icons": {
       "default": "",
-      "active": "",
-      "special": "",
+      "focused": "",
+      "persistant": "",
       "urgent": "",
     },
-    "show-special": false,
     "sort-by": "id",
-
     "disable-scroll": false,
     "warp-on-scroll": false,
-    "on-scroll-up": "hyprctl dispatch workspace e+1",
-    "on-scroll-down": "hyprctl dispatch workspace e-1",
+    "on-scroll-up": "swaymsg workspace next",
+    "on-scroll-down": "swaymsg workspace prev",
   },
 
   "mpris": {
@@ -244,9 +250,11 @@
     "format-icons": ["", "", "", "", ""],
   },
 
+  "custom/triangle-right-blue": { "format": " " },
+
   "group/stats": {
     "orientation": "horizontal",
-    "modules": ["cpu", "group/disks", "group/memorys"],
+    "modules": ["cpu", "group/disks", "group/memorys", "temperature"],
     "drawer": {
       "transition-duration": 500,
       "transition-left-to-right": false,
@@ -269,26 +277,6 @@
     "on-click": "kitty btop",
   },
 
-  "group/memorys": {
-    "orientation": "horizontal",
-    "modules": ["memory", "memory#swap"],
-    "drawer": {
-      "transition-duration": 500,
-      "transition-left-to-right": false,
-    },
-  },
-  "memory": {
-    "format": "{percentage}% ",
-    "on-click": "kitty btop",
-    "tooltip": true,
-    "tooltip-format": "{used:0.1f}G/{total:0.1f}G",
-  },
-  "memory#swap": {
-    "format": "{swapPercentage}% ",
-    "on-click": "kitty btop",
-    "tooltip": true,
-    "tooltip-format": "{swapUsed:0.1f}G/{swapTotal:0.1f}G ",
-  },
   "group/disks": {
     "orientation": "horizontal",
     "modules": [
@@ -353,7 +341,32 @@
     "tooltip-format": "{used}/{total} {path}",
   },
 
-  "custom/triangle-right-blue": { "format": " " },
+  "group/memorys": {
+    "orientation": "horizontal",
+    "modules": ["memory", "memory#swap"],
+    "drawer": {
+      "transition-duration": 500,
+      "transition-left-to-right": false,
+    },
+  },
+  "memory": {
+    "format": "{percentage}% ",
+    "on-click": "kitty btop",
+    "tooltip": true,
+    "tooltip-format": "{used:0.1f}G/{total:0.1f}G",
+  },
+  "memory#swap": {
+    "format": "{swapPercentage}% ",
+    "on-click": "kitty btop",
+    "tooltip": true,
+    "tooltip-format": "{swapUsed:0.1f}G/{swapTotal:0.1f}G ",
+  },
+
+  "temperature": {
+    "critical-threshold": 80,
+    "format-critical": "{temperatureC}°C ",
+    "format": "{temperatureC}°C ",
+  },
 
   "tray": {
     "show-passive-items": true,
