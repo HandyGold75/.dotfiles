@@ -1,22 +1,24 @@
 {
   "layer": "bottom",
   "height": 28,
-  "spacing": 4,
+  "spacing": 0,
   "modules-left": [
     "group/powers",
     "privacy",
     "systemd-failed-units",
-    "hyprland/workspaces",
+    "custom/triangle-left-blue",
+    "sway/workspaces",
     "mpris",
+    "custom/triangle-left-surface0",
   ],
-  "modules-center": ["clock", "hyprland/window", "user"],
+  "modules-center": ["clock", "sway/window", "user"],
   "modules-right": [
+    "custom/triangle-right-surface0",
     "pulseaudio",
     "network",
-
     "backlight",
     "battery",
-
+    "custom/triangle-right-blue",
     "group/stats",
     "tray",
   ],
@@ -55,7 +57,7 @@
     "format": "󰍁",
     "tooltip": true,
     "tooltip-format": "lock",
-    "on-click": "pidof hyprlock || hyprlock",
+    "on-click": "swaylock -c 000000 -i ~/.config/sway/lockscreen.png -fet --font \"OpenDyslexicNerdFont\" --indicator-radius 64",
   },
   "custom/suspend": {
     "format": "󰤄",
@@ -67,7 +69,7 @@
     "format": "",
     "tooltip": true,
     "tooltip-format": "logout",
-    "on-click": "hyprctl dispatch exit",
+    "on-click": "swaymsg exit",
   },
   "custom/reboot": {
     "format": "",
@@ -82,31 +84,32 @@
     "on-click": "shutdown now",
   },
 
-  "systemd-failed-units": {
-    "format": "✗ {nr_failed}",
-    "hide-on-ok": true,
-  },
-
   "privacy": {
     "transition-duration": 500,
     "modules": [{ "type": "screenshare" }, { "type": "audio-in" }],
   },
 
-  "hyprland/workspaces": {
-    "format": "{icon} {id}",
+  "systemd-failed-units": {
+    "format": "Failed systemd units: {nr_failed} ✗",
+    "hide-on-ok": true,
+  },
+
+  "custom/triangle-left-blue": { "format": " " },
+
+  "sway/workspaces": {
+    "format": "{icon} {name}",
     "format-icons": {
       "default": "",
-      "active": "",
-      "special": "",
+      "focused": "",
+      "persistant": "",
       "urgent": "",
     },
     "show-special": false,
     "sort-by": "id",
-
     "disable-scroll": false,
     "warp-on-scroll": false,
-    "on-scroll-up": "hyprctl dispatch workspace e+1",
-    "on-scroll-down": "hyprctl dispatch workspace e-1",
+    "on-scroll-up": "swaymsg workspace next",
+    "on-scroll-down": "swaymsg workspace prev",
   },
 
   "mpris": {
@@ -121,6 +124,8 @@
     "on-scroll-up": "playerctl next",
     "on-scroll-down": "playerctl previous",
   },
+
+  "custom/triangle-left-surface0": { "format": " " },
 
   //  ___  ___          _       _             _____            _
   //  |  \/  |         | |     | |           /  __ \          | |
@@ -157,7 +162,7 @@
     },
   },
 
-  "hyprland/window": {
+  "sway/window": {
     // "format": "{initialTitle}",
     "format": "",
     "max-length": 64,
@@ -182,6 +187,8 @@
   //  \_|  |_/\___/ \__,_|\__,_|_|\___||___/ \_| \_|_|\__, |_| |_|\__|
   //                                                   __/ |
   //                                                  |___/
+
+  "custom/triangle-right-surface0": { "format": " " },
 
   "pulseaudio": {
     "format": "{volume}% {icon} {format_source}",
@@ -243,9 +250,11 @@
     "format-icons": ["", "", "", "", ""],
   },
 
+  "custom/triangle-right-blue": { "format": " " },
+
   "group/stats": {
     "orientation": "horizontal",
-    "modules": ["cpu", "group/disks", "group/memorys", "temperature"],
+    "modules": ["cpu", "group/disks", "group/memorys"],
     "drawer": {
       "transition-duration": 500,
       "transition-left-to-right": false,
@@ -254,7 +263,7 @@
 
   "cpu": {
     "interval": 3,
-    "format": "{icon0}{icon1}{icon2}{icon3}{icon4}{icon5}{icon6}{icon7}{icon8}{icon9}{icon10}{icon11} {usage}% ",
+    "format": "{icon0}{icon1}{icon2}{icon3}{icon4}{icon5}{icon6}{icon7} {usage}% ",
     "format-icons": [
       "<span color='#69ff94'>▁</span>",
       "<span color='#2aa9ff'>▂</span>",
@@ -268,6 +277,26 @@
     "on-click": "kitty btop",
   },
 
+  "group/memorys": {
+    "orientation": "horizontal",
+    "modules": ["memory", "memory#swap"],
+    "drawer": {
+      "transition-duration": 500,
+      "transition-left-to-right": false,
+    },
+  },
+  "memory": {
+    "format": "{percentage}% ",
+    "on-click": "kitty btop",
+    "tooltip": true,
+    "tooltip-format": "{used:0.1f}G/{total:0.1f}G",
+  },
+  "memory#swap": {
+    "format": "{swapPercentage}% ",
+    "on-click": "kitty btop",
+    "tooltip": true,
+    "tooltip-format": "{swapUsed:0.1f}G/{swapTotal:0.1f}G ",
+  },
   "group/disks": {
     "orientation": "horizontal",
     "modules": [
@@ -330,33 +359,6 @@
     "on-click": "kitty btop",
     "tooltip": true,
     "tooltip-format": "{used}/{total} {path}",
-  },
-
-  "group/memorys": {
-    "orientation": "horizontal",
-    "modules": ["memory", "memory#swap"],
-    "drawer": {
-      "transition-duration": 500,
-      "transition-left-to-right": false,
-    },
-  },
-  "memory": {
-    "format": "{percentage}% ",
-    "on-click": "kitty btop",
-    "tooltip": true,
-    "tooltip-format": "{used:0.1f}G/{total:0.1f}G",
-  },
-  "memory#swap": {
-    "format": "{swapPercentage}% ",
-    "on-click": "kitty btop",
-    "tooltip": true,
-    "tooltip-format": "{swapUsed:0.1f}G/{swapTotal:0.1f}G ",
-  },
-
-  "temperature": {
-    "critical-threshold": 80,
-    "format-critical": "{temperatureC}°C ",
-    "format": "{temperatureC}°C ",
   },
 
   "tray": {
