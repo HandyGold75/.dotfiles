@@ -22,6 +22,7 @@
 - cliphist
 - waybar
 - network-manager-applet
+- blueman
 - opentabletdriver
 - qt5-wayland
 - qt6-wayland

@@ -17,6 +17,7 @@
 - slurp
 - satty
 - network-manager-applet
+- blueman
 - kitty (GIT)
 - nvim (GIT)
 - btop
