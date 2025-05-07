@@ -294,14 +294,7 @@
 
   "group/disks": {
     "orientation": "horizontal",
-    "modules": [
-      "disk",
-      "disk#sharepoint",
-      "disk#onedrivedi",
-      "disk#onedriveizo",
-      "disk#hdd1",
-      "disk#nvme1",
-    ],
+    "modules": ["disk", "disk#onedriveizo", "disk#onedrivedi"],
     "drawer": {
       "transition-duration": 500,
       "transition-left-to-right": false,
@@ -311,22 +304,6 @@
     "interval": 30,
     "format": "{percentage_used}% ",
     "path": "/",
-    "on-click": "kitty btop",
-    "tooltip": true,
-    "tooltip-format": "{used}/{total} {path}",
-  },
-  "disk#nvme1": {
-    "interval": 30,
-    "format": "{percentage_used}% ",
-    "path": "/mnt/nvme1",
-    "on-click": "kitty btop",
-    "tooltip": true,
-    "tooltip-format": "{used}/{total} {path}",
-  },
-  "disk#hdd1": {
-    "interval": 30,
-    "format": "{percentage_used}% ",
-    "path": "/mnt/hdd1",
     "on-click": "kitty btop",
     "tooltip": true,
     "tooltip-format": "{used}/{total} {path}",
@@ -343,14 +320,6 @@
     "interval": 30,
     "format": "{percentage_used}% ",
     "path": "/mnt/OneDrive_IZO/",
-    "on-click": "kitty btop",
-    "tooltip": true,
-    "tooltip-format": "{used}/{total} {path}",
-  },
-  "disk#sharepoint": {
-    "interval": 30,
-    "format": "{percentage_used}% ",
-    "path": "/mnt/SharePoint_Storage/",
     "on-click": "kitty btop",
     "tooltip": true,
     "tooltip-format": "{used}/{total} {path}",

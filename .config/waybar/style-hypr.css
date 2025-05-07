@@ -48,8 +48,6 @@ tooltip {
 #window,
 #pulseaudio,
 #network,
-#backlight,
-#battery,
 #disk,
 #cpu,
 #memory,
@@ -74,8 +72,6 @@ tooltip {
 #user:hover,
 #pulseaudio:hover,
 #network:hover,
-#backlight:hover,
-#battery:hover,
 #tray menu > *:hover {
   background: rgba(90, 90, 90, 1);
   color: #f7e163;
@@ -186,48 +182,6 @@ tooltip {
 
 #network {
   border-radius: 0 12px 12px 0;
-}
-
-#backlight {
-  border-radius: 12px 0 0 12px;
-}
-
-#battery {
-  border-radius: 0 12px 12px 0;
-}
-
-#battery.full {
-  color: #00ff00;
-}
-
-#battery.charging {
-  color: #ffff00;
-}
-
-#battery.plugged {
-  color: #ffff00;
-}
-
-#battery.warning {
-  color: white;
-  background: #f7768e;
-}
-
-@keyframes blink {
-  to {
-    background-color: #ffffff;
-    color: #000000;
-  }
-}
-
-#battery.critical:not(.charging) {
-  background-color: #f53c3c;
-  color: #ffffff;
-  animation-name: blink;
-  animation-duration: 0.5s;
-  animation-timing-function: steps(12);
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
 }
 
 #stats {
