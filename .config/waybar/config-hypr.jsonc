@@ -209,7 +209,7 @@
 
   "group/stats": {
     "orientation": "horizontal",
-    "modules": ["cpu", "group/disks", "group/memorys", "temperature"],
+    "modules": ["cpu", "group/disks", "group/memorys"],
     "drawer": {
       "transition-duration": 500,
       "transition-left-to-right": false,
@@ -315,12 +315,6 @@
     "on-click": "kitty btop",
     "tooltip": true,
     "tooltip-format": "{swapUsed:0.1f}G/{swapTotal:0.1f}G ",
-  },
-
-  "temperature": {
-    "critical-threshold": 80,
-    "format-critical": "{temperatureC}°C ",
-    "format": "{temperatureC}°C ",
   },
 
   "network": {
