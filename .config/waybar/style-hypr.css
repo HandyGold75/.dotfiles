@@ -196,7 +196,19 @@ tooltip {
   border-radius: 0 12px 12px 0;
 }
 
-#battery.critical {
+#battery.full {
+  color: #00ff00;
+}
+
+#battery.charging {
+  color: #ffff00;
+}
+
+#battery.plugged {
+  color: #ffff00;
+}
+
+#battery.warning {
   color: white;
   background: #f7768e;
 }

@@ -448,7 +448,6 @@ run_if_not_running("teams-for-linux")
 run_if_not_running("thunderbird")
 run_if_not_running("vivaldi")
 
--- run_if_not_running("dunst --config ~/.config/dunst/dunstrc", "dunst")
 run_if_not_running("hg macros", "macros")
 run_if_not_running('xautolock -time 5 -notify 60 -detectsleep -locker "i3lock -c 000000 -i ~/.config/awesome/theme/lockscreen.png -fet" -notifier "notify-send -a XAutoLock -t 60000 xautolock \'Locking in 60 seconds\'"', "xautolock")
 
