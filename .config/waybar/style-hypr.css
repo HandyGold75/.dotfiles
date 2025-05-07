@@ -210,10 +210,6 @@ tooltip {
   border-left: 2px solid rgba(0, 0, 0, 1);
 }
 
-#temperature.critical {
-  color: #eb4d4b;
-}
-
 #tray {
   border-radius: 12px;
 }
