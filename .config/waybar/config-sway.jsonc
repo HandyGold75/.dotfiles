@@ -11,14 +11,13 @@
     "mpris",
     "custom/triangle-left-surface0",
   ],
-  "modules-center": ["clock", "sway/window", "user"],
+  "modules-center": ["sway/window"],
   "modules-right": [
     "custom/triangle-right-surface0",
     "pulseaudio",
-    "network",
-    // "bluetooth",
     "backlight",
     "battery",
+    "clock",
     "custom/triangle-right-blue",
     "group/stats",
     "tray",
@@ -40,6 +39,7 @@
       "transition-left-to-right": true,
     },
     "modules": [
+      "user",
       "custom/arch",
       "custom/lock",
       "custom/suspend",
@@ -47,6 +47,13 @@
       "custom/reboot",
       "custom/power",
     ],
+  },
+  "user": {
+    "format": " {user} {work_H}:{work_M} ",
+    "height": 16,
+    "width": 16,
+    "icon": true,
+    "open-on-click": false,
   },
   "custom/arch": {
     "format": "",
@@ -136,6 +143,97 @@
   //
   //
 
+  "sway/window": {
+    "format": "{title}",
+    "max-length": 32,
+    "separate-outputs": true,
+    "icon": true,
+    "icon-size": 16,
+  },
+
+  //  ___  ___          _       _            ______ _       _     _
+  //  |  \/  |         | |     | |           | ___ (_)     | |   | |
+  //  | .  . | ___   __| |_   _| | ___  ___  | |_/ /_  __ _| |__ | |_
+  //  | |\/| |/ _ \ / _` | | | | |/ _ \/ __| |    /| |/ _` | '_ \| __|
+  //  | |  | | (_) | (_| | |_| | |  __/\__ \ | |\ \| | (_| | | | | |_
+  //  \_|  |_/\___/ \__,_|\__,_|_|\___||___/ \_| \_|_|\__, |_| |_|\__|
+  //                                                   __/ |
+  //                                                  |___/
+
+  "custom/triangle-right-surface0": { "format": " " },
+
+  "pulseaudio": {
+    "format": "{volume}% {icon} {format_source}",
+    "format-bluetooth": "{volume}% {icon} {format_source}",
+    "format-muted": "󰝟 {icon} {format_source}",
+    "format-bluetooth-muted": "󰝟 {icon} {format_source}",
+    "format-source": "",
+    "format-source-muted": "",
+    "format-icons": {
+      "default": ["", "", ""],
+      "default-muted": "",
+      "speaker": "󰓃",
+      "speaker-muted": "󰓄",
+      "hdmi": "󰈁",
+      "hdmi-muted": "󰈂",
+      "headset": "󰋋",
+      "headset-muted": "󰟎",
+      "portable": "",
+      "portable-muted": "",
+      "car": "󰄋",
+      "car-muted": "󰸜",
+      "hifi": "󰤽",
+      "hifi-muted": "󱆶",
+      "phone": "󰘂",
+      "phone-muted": "󱉹",
+    },
+    "tooltip": true,
+    "tooltip-format": "{desc}",
+    "on-click": "wpctl set-mute @DEFAULT_SINK@ toggle",
+    "on-click-middle": "pavucontrol",
+    "on-click-right": "wpctl set-mute @DEFAULT_SOURCE@ toggle",
+    "on-scroll-up": "wpctl set-volume @DEFAULT_SINK@ 1%+; notify-send -a volume -h int:value:$(wpctl get-volume @DEFAULT_SINK@ | awk '{ print $2 * 100 }') Volume",
+    "on-scroll-down": "wpctl set-volume @DEFAULT_SINK@ 1%-; notify-send -a volume -h int:value:$(wpctl get-volume @DEFAULT_SINK@ | awk '{ print $2 * 100 }') Volume",
+  },
+
+  "backlight": {
+    "device": "intel_backlight",
+    "format": "{icon}",
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+    ],
+    "on-scroll-up": "notify-send -a brightness -h int:value:$(brightnessctl -m set +1% | awk -F ',' '{ print $4 }') Brightness",
+    "on-scroll-down": "notify-send -a brightness -h int:value:$(brightnessctl -m set 1%- | awk -F ',' '{ print $4 }') Brightness",
+  },
+
+  "battery": {
+    "states": {
+      "warning": 30,
+      "critical": 15,
+    },
+    "format": "{capacity}% {icon}",
+    "format-full": "{icon}",
+    "format-charging": "{capacity}% ",
+    "format-plugged": "{capacity}% ",
+    "format-time": "{H}:{M}",
+    "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+    "tooltip": true,
+    "tooltip-format": "Time:   {timeTo}\nDraw:   {power}w\nCycles: {cycles}\nHealth: {health}%",
+  },
+
   "clock": {
     "format": "{:%d-%b-%y %H:%M} ",
     "tooltip": true,
@@ -162,105 +260,22 @@
     },
   },
 
-  "sway/window": {
-    // "format": "{initialTitle}",
-    "format": "",
-    "max-length": 64,
-    "separate-outputs": true,
-    "icon": true,
-    "icon-size": 16,
-  },
-
-  "user": {
-    "format": " {user} {work_H}:{work_M} ",
-    "height": 16,
-    "width": 16,
-    "icon": true,
-    "open-on-click": false,
-  },
-
-  //  ___  ___          _       _            ______ _       _     _
-  //  |  \/  |         | |     | |           | ___ (_)     | |   | |
-  //  | .  . | ___   __| |_   _| | ___  ___  | |_/ /_  __ _| |__ | |_
-  //  | |\/| |/ _ \ / _` | | | | |/ _ \/ __| |    /| |/ _` | '_ \| __|
-  //  | |  | | (_) | (_| | |_| | |  __/\__ \ | |\ \| | (_| | | | | |_
-  //  \_|  |_/\___/ \__,_|\__,_|_|\___||___/ \_| \_|_|\__, |_| |_|\__|
-  //                                                   __/ |
-  //                                                  |___/
-
-  "custom/triangle-right-surface0": { "format": " " },
-
-  "pulseaudio": {
-    "format": "{volume}% {icon} {format_source}",
-    "format-bluetooth": "{volume}% {icon} {format_source}",
-    "format-muted": "󰝟 {icon} {format_source}",
-    "format-bluetooth-muted": "󰝟 {icon} {format_source}",
-    "format-source": "",
-    "format-source-muted": "",
-    "format-icons": {
-      "default": ["", "", ""],
-      "headphone": "",
-      "hands-free": "",
-      "headset": "",
-      "phone": "",
-      "portable": "",
-      "car": "",
-    },
-    "tooltip": true,
-    "tooltip-format": "{desc}",
-    "on-click": "wpctl set-mute @DEFAULT_SINK@ toggle",
-    "on-click-middle": "pavucontrol",
-    "on-click-right": "wpctl set-mute @DEFAULT_SOURCE@",
-    "on-scroll-up": "wpctl set-volume @DEFAULT_SINK@ 1%+",
-    "on-scroll-down": "wpctl set-volume @DEFAULT_SINK@ 1%-",
-  },
-
-  "network": {
-    "format": "{bandwidthUpBytes}  {bandwidthDownBytes}  ",
-    "format-wifi": "{bandwidthUpBytes}  {bandwidthDownBytes}  ",
-    "format-ethernet": "{bandwidthUpBytes}  {bandwidthDownBytes}  ",
-    "format-linked": "{bandwidthUpBytes}  {bandwidthDownBytes}  ",
-    "format-disconnected": "{bandwidthUpBytes}  {bandwidthDownBytes}  ⚠",
-    "tooltip-format": "{ifname} via {gwaddr} ",
-    "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
-    "tooltip-format-ethernet": "{ipaddr}/{cidr} ",
-    "tooltip-format-disconnected": "{ifname} (No IP) ",
-    "on-click": "kitty bash -c 'ip a; read -sn 1'",
-  },
-
-  "backlight": {
-    "device": "intel_backlight",
-    "format": "{percent}% {icon}",
-    "format-icons": ["", "", "", "", "", "", "", "", ""],
-  },
-
-  "battery": {
-    "bat": "BAT0",
-    "states": {
-      "good": 95,
-      "warning": 30,
-      "critical": 15,
-    },
-    "format": "{capacity}% {icon}",
-    "format-time": "{H}:{M}",
-    "format-alt": "{time} {icon}",
-    "format-full": "{capacity}% {icon}",
-    "format-charging": "{capacity}% ",
-    "format-plugged": "{capacity}% ",
-    "format-icons": ["", "", "", "", ""],
-  },
-
   "custom/triangle-right-blue": { "format": " " },
 
   "group/stats": {
     "orientation": "horizontal",
-    "modules": ["cpu", "group/disks", "group/memorys", "temperature"],
+    "modules": [
+      "cpu",
+      "group/disks",
+      "group/memorys",
+      "temperature",
+      "network",
+    ],
     "drawer": {
       "transition-duration": 500,
       "transition-left-to-right": false,
     },
   },
-
   "cpu": {
     "interval": 3,
     "format": "{icon0}{icon1}{icon2}{icon3}{icon4}{icon5}{icon6}{icon7} {usage}% ",
@@ -366,6 +381,19 @@
     "critical-threshold": 80,
     "format-critical": "{temperatureC}°C ",
     "format": "{temperatureC}°C ",
+  },
+
+  "network": {
+    "format": "{bandwidthUpBytes}  {bandwidthDownBytes}  ",
+    "format-wifi": "{bandwidthUpBytes}  {bandwidthDownBytes}  ",
+    "format-ethernet": "{bandwidthUpBytes}  {bandwidthDownBytes}  ",
+    "format-linked": "{bandwidthUpBytes}  {bandwidthDownBytes}  ",
+    "format-disconnected": "{bandwidthUpBytes}  {bandwidthDownBytes}  ⚠",
+    "tooltip-format": "{ifname} via {gwaddr} ",
+    "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
+    "tooltip-format-ethernet": "{ipaddr}/{cidr} ",
+    "tooltip-format-disconnected": "{ifname} (No IP) ",
+    "on-click": "kitty bash -c 'ip a; read -sn 1'",
   },
 
   "tray": {

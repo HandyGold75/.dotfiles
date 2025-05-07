@@ -38,7 +38,7 @@
 
 #waybar {
   font-family: "OpenDyslexicNerdFont", "HackNerdFont";
-  font-size: 14;
+  font-size: 14px;
   color: @text;
   background: @crust;
 }
@@ -87,6 +87,7 @@ tooltip {
 #user,
 #window,
 #pulseaudio,
+#temperature,
 #network,
 #backlight,
 #battery,
@@ -108,10 +109,9 @@ tooltip {
 #mpris:hover,
 #clock:hover,
 #window:hover,
-#window:hover *,
 #user:hover,
-#user:hover *,
 #pulseaudio:hover,
+#temperature:hover,
 #network:hover,
 #backlight:hover,
 #battery:hover,
@@ -137,33 +137,27 @@ tooltip {
  *                                                               
  */
 
-#powers {
-  background: @blue;
-  color: @crust;
-}
-
-#powers * > * > * {
+#powers * > * > *,
+#powers #user,
+#systemd-failed-units {
   padding: 0 10px;
 }
 
-#powers #custom-arch {
-  padding: 0 10px;
-}
-
-#privacy-item {
-  background: @blue;
-  color: @crust;
-}
-
+#powers,
+#privacy-item,
 #systemd-failed-units {
   background: @blue;
   color: @crust;
-  padding: 0 10px;
 }
 
-#systemd-failed-units.degraded {
+#systemd-failed-units.degraded,
+#workspaces button.urgent {
   background-color: @red;
   color: @crust;
+}
+
+#powers #user * {
+  padding: 0;
 }
 
 #custom-triangle-left-blue {
@@ -176,12 +170,7 @@ tooltip {
 }
 
 #workspaces button {
-  margin: -5px;
-}
-
-#workspaces button.urgent {
-  background-color: @red;
-  color: @crust;
+  margin: -10px 0;
 }
 
 #mpris {
@@ -207,13 +196,7 @@ tooltip {
  *                                                                          
  */
 
-#clock {
-}
-
 #window {
-}
-
-#user {
 }
 
 /***
@@ -227,6 +210,39 @@ tooltip {
  *                                                    |___/           
  */
 
+#pulseaudio,
+#backlight,
+#battery,
+#clock,
+#cpu,
+#temperature,
+#disks * > *,
+#memorys * > *,
+#temperature,
+#network,
+#tray {
+  padding: 0 10px;
+}
+
+#stats,
+#tray {
+  background: @blue;
+  color: @crust;
+}
+
+#temperature.critical,
+#battery.warning,
+#network.disconnected {
+  background-color: @red;
+  color: @crust;
+}
+
+#pulseaudio.muted,
+#pulseaudio.source-muted,
+#tray > .needs-attention {
+  color: @red;
+}
+
 #custom-triangle-right-surface0 {
   min-width: 18px;
   background-color: @crust;
@@ -236,35 +252,13 @@ tooltip {
   background-repeat: no-repeat;
 }
 
-#pulseaudio {
+#battery.full {
+  color: @green;
 }
 
-#pulseaudio.muted {
-  color: @red;
-}
-
-#network.disconnected {
-  background-color: @red;
-  color: @crust;
-}
-
-#network {
-}
-
-#temperature.critical {
-  background-color: @red;
-  color: @crust;
-}
-
-#backlight {
-}
-
-#battery {
-}
-
-#battery.critical {
-  background-color: @red;
-  color: @crust;
+#battery.charging,
+#battery.plugged {
+  color: @yellow;
 }
 
 @keyframes blink {
@@ -293,19 +287,6 @@ tooltip {
   background-repeat: no-repeat;
 }
 
-#stats {
-  background: @blue;
-  color: @crust;
-}
-
-#stats #cpu {
-}
-
-#tray {
-  background: @blue;
-  color: @crust;
-}
-
 #tray menu {
   color: @text;
   background: @base;
@@ -315,12 +296,4 @@ tooltip {
 #tray * {
   border-radius: 12px;
   border: 0;
-}
-
-#tray > .passive {
-  color: @text;
-}
-
-#tray > .needs-attention {
-  color: @red;
 }

@@ -283,7 +283,7 @@ bar {
 exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
 exec hash dbus-update-activation-environment 2>/dev/null && dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
 
-exec waybar
+exec waybar -c ~/.config/waybar/config-sway.jsonc -s ~/.config/waybar/style-sway.css
 exec swayidle -w \
     timeout 300 'swaylock -c 000000 -i ~/.config/awesome/theme/lockscreen.png -fet' \
     timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
@@ -291,9 +291,9 @@ exec swayidle -w \
 exec kanshi
 exec wl-paste --watch cliphist store
 exec nm-applet
+exec blueman-applet
 exec teams-for-linux
 exec thunderbird
 exec vivaldi
-# exec dunst --config ~/.config/dunst/dunstrc
 exec hg macros
 exec headsetcontrol -l 0
