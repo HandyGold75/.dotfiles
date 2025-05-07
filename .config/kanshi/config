@@ -1,43 +1,51 @@
-profile Home{
+profile Home_1 {
+	output "Sony SONY TV 0x01010101" disable
+	output "Valve Corporation Index HMD 0x09A67893" disable
+	output "Microstep MSI MAG272QP CA8A019390334" enable mode 2560x1440 position 0,0
+	output "Ancor Communications Inc VX248 FCLMQS058388" enable mode 1920x1080 position -1920,350
+	exec notify-send -u low -a Kanshi 'Applying profile' 'Home 1'
+}
+
+profile Home_2 {
 	output "AU Optronics 0xA68B Unknown" disable
 	output "Microstep MSI MAG272QP CA8A019390334" enable mode 2560x1440 position 1920,0
 	output "Ancor Communications Inc VX248 FCLMQS058388" enable mode 1920x1080 position 0,446
-	exec notify-send -u low -a Kanshi 'Applying profile' 'Home'
+	exec notify-send -u low -a Kanshi 'Applying profile' 'Home 2'
 }
 
-profile Laptop{
+profile Laptop {
 	output "AU Optronics 0xA68B Unknown" enable mode 1920x1080 position 0,0
 	exec notify-send -u low -a Kanshi 'Applying profile' 'Laptop'
 }
 
-profile Platform_4{
+profile Platform_4 {
 	output "AU Optronics 0xA68B Unknown" enable mode 1920x1080 position 0,1080
 	output HDMI-1 enable mode 1920x1080 position 0,0
 	exec notify-send -u low -a Kanshi 'Applying profile' 'Platform 4'
 }
 
-profile Workplace_1{
+profile Workplace_1 {
 	output "AU Optronics 0xA68B Unknown" enable mode 1920x1080 position 5120,135
 	output "AOC Q2790 HBDNBHA000377" enable mode 2560x1440 position 2560,0
 	output "AOC Q2790 HBDP2HA000031" enable mode 2560x1440 position 0,0
 	exec notify-send -u low -a Kanshi 'Applying profile' 'Workplace 1'
 }
 
-profile Workplace_2{
+profile Workplace_2 {
 	output "AU Optronics 0xA68B Unknown" enable mode 1920x1080 position 0,360
 	output DP-1-1 enable mode 2560x1440 position 1920,0
 	output DP-1-2 enable mode 2560x1440 position 4480,0
 	exec notify-send -u low -a Kanshi 'Applying profile' 'Workplace 2'
 }
 
-profile Workplace_3{
+profile Workplace_3 {
 	output "AU Optronics 0xA68B Unknown" enable mode 1920x1080 position 4480,608
 	output DP-1-1 enable mode 1920x1080 position 2560,180
 	output DP-1-2 enable mode 2560x1440 position 0,0
 	exec notify-send -u low -a Kanshi 'Applying profile' 'Workplace 3'
 }
 
-profile Workplace_4{
+profile Workplace_4 {
 	output "AU Optronics 0xA68B Unknown" enable mode 1920x1080 position 0,955
 	output DP-1-1 enable mode 2560x1440 position 4480,0
 	output DP-1-2 enable mode 2560x1440 position 1920,0
