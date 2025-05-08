@@ -15,7 +15,7 @@
 - waybar (GIT)
 - grim
 - slurp
-- satty
+- satty (GIT)
 - network-manager-applet
 - blueman
 - kitty (GIT)
