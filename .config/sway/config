@@ -91,31 +91,47 @@ bindgesture swipe:3:down kill
 bindsym $mod+Ctrl+R reload
 bindsym $mod+F4 exit
 bindsym $mod+F floating toggle
+bindsym $mod+Shift+F focus mode_toggle
 bindsym $mod+M fullscreen toggle
 bindsym $mod+Shift+M fullscreen toggle global
+bindsym $mod+T split toggle
+
+bindsym $mod+F11 exec headsetcontrol -l0
+
+bindsym XF86AudioRaiseVolume exec "wpctl set-volume @DEFAULT_SINK@ 1%+; notify-send -a volume -h int:value:$(wpctl get-volume @DEFAULT_SINK@ | awk '{ print $2 * 100 }') Volume"
+bindsym XF86AudioLowerVolume exec "wpctl set-volume @DEFAULT_SINK@ 1%-; notify-send -a volume -h int:value:$(wpctl get-volume @DEFAULT_SINK@ | awk '{ print $2 * 100 }') Volume"
+bindsym XF86AudioMute exec "wpctl set-mute @DEFAULT_SINK@ toggle"
+bindsym XF86AudioMicMute exec "wpctl set-mute @DEFAULT_SOURCE@ toggle"
+
+bindsym XF86AudioPlay exec "playerctl play-pause"
+bindsym XF86AudioNext exec "playerctl next"
+bindsym XF86AudioPrev exec "playerctl previous"
+
+bindsym XF86MonBrightnessUp exec "notify-send -a brightness -h int:value:$(brightnessctl -m set +1% | awk -F ',' '{ print $4 }') Brightness"
+bindsym XF86MonBrightnessDown exec "notify-send -a brightness -h int:value:$(brightnessctl -m set 1%- | awk -F ',' '{ print $4 }') Brightness"
+
 
 floating_modifier $mod normal
 
-bindsym $mod+H focus left
-bindsym $mod+J focus down
-bindsym $mod+K focus up
-bindsym $mod+L focus right
+bindsym $mod+U focus urgent
 
-bindsym $mod+Shift+F focus mode_toggle
-bindsym $mod+T split toggle
+bindsym $mod+O move output right; focus output right
+bindsym $mod+Shift+O move output left; focus output left
 
-bindsym $mod+O  move output right
-bindsym $mod+Shift+O  move output left
+bindsym $mod+H resize shrink width 5ppt
+bindsym $mod+J focus left
+bindsym $mod+K focus right
+bindsym $mod+L resize grow width 5ppt
 
-bindsym $mod+Shift+H move left
-bindsym $mod+Shift+J move down
-bindsym $mod+Shift+K move up
-bindsym $mod+Shift+L move right
+bindsym $mod+Shift+H move down
+bindsym $mod+Shift+J move left
+bindsym $mod+Shift+K move right
+bindsym $mod+Shift+L move up
 
-bindsym $mod+Ctrl+H focus output left
-bindsym $mod+Ctrl+J focus output down
-bindsym $mod+Ctrl+K focus output up
-bindsym $mod+Ctrl+L focus output right
+bindsym $mod+Ctrl+H focus output down
+bindsym $mod+Ctrl+J focus output left
+bindsym $mod+Ctrl+K focus output right
+bindsym $mod+Ctrl+L focus output up
 
 bindsym $mod+Minus resize shrink width 5ppt
 bindsym $mod+Equal resize grow width 5ppt
@@ -168,19 +184,7 @@ bindsym $mod+Shift+KP_8 move workspace number 8
 bindsym $mod+Shift+KP_9 move workspace number 9
 bindsym $mod+Shift+KP_0 move workspace number 0
 
-bindsym XF86AudioRaiseVolume exec "wpctl set-volume @DEFAULT_SINK@ 1%+; notify-send -a volume -h int:value:$(wpctl get-volume @DEFAULT_SINK@ | awk '{ print $2 * 100 }') Volume"
-bindsym XF86AudioLowerVolume exec "wpctl set-volume @DEFAULT_SINK@ 1%-; notify-send -a volume -h int:value:$(wpctl get-volume @DEFAULT_SINK@ | awk '{ print $2 * 100 }') Volume"
-bindsym XF86AudioMute exec "wpctl set-mute @DEFAULT_SINK@ toggle"
-bindsym XF86AudioMicMute exec "wpctl set-mute @DEFAULT_SOURCE@ toggle"
 
-bindsym XF86AudioPlay exec "playerctl play-pause"
-bindsym XF86AudioNext exec "playerctl next"
-bindsym XF86AudioPrev exec "playerctl previous"
-
-bindsym XF86MonBrightnessUp exec "notify-send -a brightness -h int:value:$(brightnessctl -m set +1% | awk -F ',' '{ print $4 }') Brightness"
-bindsym XF86MonBrightnessDown exec "notify-send -a brightness -h int:value:$(brightnessctl -m set 1%- | awk -F ',' '{ print $4 }') Brightness"
-
-bindsym $mod+F11 exec headsetcontrol -l0
 
 #   _____ _                    _
 #  |_   _| |                  (_)
