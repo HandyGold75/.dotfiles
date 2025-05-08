@@ -224,6 +224,7 @@
       "warning": 30,
       "critical": 15,
     },
+    "full-at": 98,
     "format": "{capacity}% {icon}",
     "format-full": "{icon}",
     "format-charging": "{capacity}% ",
