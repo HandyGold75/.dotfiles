@@ -82,7 +82,7 @@ bindsym $mod+I exec $sysinfo
 bindsym $mod+P exec dmenu_path | $menu | xargs swaymsg exec --
 bindgesture swipe:3:up exec dmenu_path | $menu | xargs swaymsg exec --
 bindsym $mod+V exec $clipboard
-bindsym Shift+Print exec $screenshot
+bindsym Print exec $screenshot
 bindgesture pinch:2:outward exec $screenshot
 bindsym $mod+B exec pkill waybar || waybar -c ~/.config/waybar/config-sway.jsonc -s ~/.config/waybar/style-sway.css
 
@@ -288,7 +288,7 @@ exec swayidle -w \
     timeout 300 'swaylock -c 000000 -i ~/.config/awesome/theme/lockscreen.png -fet' \
     timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
     before-sleep 'swaylock -c 000000 -i ~/.config/awesome/theme/lockscreen.png -fet'
-exec kanshi
+exec_always killall kanshi; kanshi
 exec wl-paste --watch cliphist store
 exec nm-applet
 exec blueman-applet
