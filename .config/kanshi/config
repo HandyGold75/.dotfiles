@@ -20,7 +20,7 @@ profile Laptop {
 
 profile Platform_3 {
 	output "AU Optronics 0xA68B Unknown" enable mode 1920x1080 position 0,1080
-	output :wG Electronics LG TV 0x01010101" enable mode 1920x1080 position 0,0
+	output "LG Electronics LG TV 0x01010101" enable mode 1920x1080 position 0,0
 	exec notify-send -u low -a Kanshi 'Applying profile' 'Platform 4'
 }
 
