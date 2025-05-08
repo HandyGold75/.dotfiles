@@ -113,7 +113,7 @@ bindsym XF86MonBrightnessDown exec "notify-send -a brightness -h int:value:$(bri
 
 floating_modifier $mod normal
 
-bindsym $mod+U focus urgent
+bindsym $mod+U [urgent="newest"] focus
 
 bindsym $mod+O move output right; focus output right
 bindsym $mod+Shift+O move output left; focus output left
