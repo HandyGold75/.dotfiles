@@ -252,12 +252,12 @@ tooltip {
   background-repeat: no-repeat;
 }
 
-#battery.full {
+#battery.full,
+#battery.plugged {
   color: @green;
 }
 
-#battery.charging,
-#battery.plugged {
+#battery.charging {
   color: @yellow;
 }
 
