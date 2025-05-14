@@ -171,7 +171,8 @@ tooltip {
 }
 
 #taskbar button {
-  padding: 0 10px;
+  padding: 0 8px;
+  margin: 0 2px;
 }
 
 #taskbar button.active {
