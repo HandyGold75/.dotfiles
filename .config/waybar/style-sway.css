@@ -73,30 +73,6 @@ tooltip {
  *                                          
  */
 
-#custom-arch,
-#custom-lock,
-#custom-suspend,
-#custom-logout,
-#custom-reboot,
-#custom-power,
-#privacy-item,
-#systemd-failed-units,
-#workspaces button,
-#mpris,
-#clock,
-#user,
-#window,
-#pulseaudio,
-#temperature,
-#network,
-#backlight,
-#battery,
-#cpu,
-#disk,
-#memory,
-#tray {
-}
-
 #custom-arch:hover,
 #custom-lock:hover,
 #custom-suspend:hover,
@@ -109,6 +85,8 @@ tooltip {
 #mpris:hover,
 #clock:hover,
 #window:hover,
+#taskbar button:hover,
+#taskbar button.active:hover,
 #user:hover,
 #pulseaudio:hover,
 #temperature:hover,
@@ -152,7 +130,7 @@ tooltip {
 
 #systemd-failed-units.degraded,
 #workspaces button.urgent {
-  background-color: @red;
+  background: @red;
   color: @crust;
 }
 
@@ -161,28 +139,21 @@ tooltip {
 }
 
 #custom-triangle-left-blue {
-  min-width: 18px;
-  background-color: @surface0;
-  background-image: url("./images/triangle-left-blue.svg");
-  background-size: cover;
-  background-position: left;
-  background-repeat: no-repeat;
+  font-size: 105%;
+  color: @blue;
 }
 
 #workspaces button {
-  margin: -10px 0;
+  padding: 0 10px;
 }
 
 #mpris {
 }
 
 #custom-triangle-left-surface0 {
-  min-width: 18px;
-  background-color: @crust;
-  background-image: url("./images/triangle-left-surface0.svg");
-  background-size: cover;
-  background-position: left;
-  background-repeat: no-repeat;
+  font-size: 105%;
+  background: @crust;
+  color: @surface0;
 }
 
 /***
@@ -197,6 +168,14 @@ tooltip {
  */
 
 #window {
+}
+
+#taskbar button {
+  padding: 0 10px;
+}
+
+#taskbar button.active {
+  background: @surface0;
 }
 
 /***
@@ -233,7 +212,7 @@ tooltip {
 #temperature.critical,
 #battery.warning,
 #network.disconnected {
-  background-color: @red;
+  background: @red;
   color: @crust;
 }
 
@@ -244,12 +223,9 @@ tooltip {
 }
 
 #custom-triangle-right-surface0 {
-  min-width: 18px;
-  background-color: @crust;
-  background-image: url("./images/triangle-right-surface0.svg");
-  background-size: cover;
-  background-position: right;
-  background-repeat: no-repeat;
+  font-size: 105%;
+  background: @crust;
+  color: @surface0;
 }
 
 #battery.full,
@@ -263,13 +239,13 @@ tooltip {
 
 @keyframes blink {
   to {
-    background-color: @red;
+    background: @red;
     color: @crust;
   }
 }
 
 #battery.critical:not(.charging) {
-  background-color: @base;
+  background: @base;
   color: @text;
   animation-name: blink;
   animation-duration: 1s;
@@ -279,12 +255,8 @@ tooltip {
 }
 
 #custom-triangle-right-blue {
-  min-width: 18px;
-  background-color: @surface0;
-  background-image: url("./images/triangle-right-blue.svg");
-  background-size: cover;
-  background-position: right;
-  background-repeat: no-repeat;
+  font-size: 105%;
+  color: @blue;
 }
 
 #tray menu {
