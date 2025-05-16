@@ -18,10 +18,22 @@ profile Laptop {
 	exec notify-send -u low -a Kanshi 'Applying profile' 'Laptop'
 }
 
+profile Platform_1 {
+	output "AU Optronics 0xA68B Unknown" enable mode 1920x1080 position 0,1080
+	output HDMI-1 enable mode 1920x1080 position 0,0
+	exec notify-send -u low -a Kanshi 'Applying profile' 'Platform 1'
+}
+
+profile Platform_2 {
+	output "AU Optronics 0xA68B Unknown" enable mode 1920x1080 position 0,1080
+	output HDMI-1 enable mode 1920x1080 position 0,0
+	exec notify-send -u low -a Kanshi 'Applying profile' 'Platform 2'
+}
+
 profile Platform_3 {
 	output "AU Optronics 0xA68B Unknown" enable mode 1920x1080 position 0,1080
 	output "LG Electronics LG TV 0x01010101" enable mode 1920x1080 position 0,0
-	exec notify-send -u low -a Kanshi 'Applying profile' 'Platform 4'
+	exec notify-send -u low -a Kanshi 'Applying profile' 'Platform 3'
 }
 
 profile Platform_4 {
@@ -55,5 +67,11 @@ profile Workplace_4 {
 	output "AU Optronics 0xA68B Unknown" enable mode 1920x1080 position 0,955
 	output "AOC Q2790 GQML1HA016139" enable mode 2560x1440 position 4480,0
 	output "AOC Q27V5C 18DP9HA011426" enable mode 2560x1440 position 1920,0
+	exec notify-send -u low -a Kanshi 'Applying profile' 'Workplace 4'
+}
+
+profile MrOrange_1 {
+	output "AU Optronics 0xA68B Unknown" enable mode 1920x1080 position 760,1440
+	output "Philips Consumer Electronics Company PHL 346E2C UK02321054994" enable mode 3440x1440 position 0,0
 	exec notify-send -u low -a Kanshi 'Applying profile' 'Workplace 4'
 }
