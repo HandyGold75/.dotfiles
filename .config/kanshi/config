@@ -8,9 +8,9 @@ profile Home_1 {
 
 profile Home_2 {
 	output "AU Optronics 0xA68B Unknown" disable
-	output "Microstep MSI MAG272QP CA8A019390334" enable mode 2560x1440 position 1920,0
-	output "Ancor Communications Inc VX248 FCLMQS058388" disable
-	# output "Ancor Communications Inc VX248 FCLMQS058388" enable mode 1920x1080 position 0,446
+	output "Microstep MSI MAG272QP CA8A019390334" enable mode 2560x1440@120Hz position 1920,0
+	# output "Ancor Communications Inc VX248 FCLMQS058388" disable
+	output "Ancor Communications Inc VX248 FCLMQS058388" enable mode 1920x1080 position 0,446
 	exec notify-send -u low -a Kanshi 'Applying profile' 'Home 2'
 }
 
