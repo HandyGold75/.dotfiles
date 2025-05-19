@@ -139,7 +139,7 @@ tooltip {
 }
 
 #custom-triangle-left-blue {
-  font-size: 105%;
+  font-size: 110%;
   color: @blue;
 }
 
@@ -151,7 +151,7 @@ tooltip {
 }
 
 #custom-triangle-left-surface0 {
-  font-size: 105%;
+  font-size: 110%;
   background: @crust;
   color: @surface0;
 }
@@ -224,7 +224,7 @@ tooltip {
 }
 
 #custom-triangle-right-surface0 {
-  font-size: 105%;
+  font-size: 110%;
   background: @crust;
   color: @surface0;
 }
@@ -256,7 +256,7 @@ tooltip {
 }
 
 #custom-triangle-right-blue {
-  font-size: 105%;
+  font-size: 110%;
   color: @blue;
 }
 
