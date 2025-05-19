@@ -1,5 +1,5 @@
 #!/bin/bash
- 
+
 backupDir="/mnt/OneDrive_IZO/Backup/Servers"
 tmpDir="$HOME/backup_sv"
 runBackupDir(){
@@ -71,10 +71,9 @@ runBackup "10.69.2.103" "SV03" &
 runBackup "10.69.2.104" "SV04" "[!upload]" &
 runBackup "10.69.2.105" "SV05" "[!go][!venv]" &
 runBackup "10.69.2.106" "SV06" &
-runBackup "10.69.2.107" "SV07" &
 
 for job in $(jobs -p); do
-	wait "$job" || (echo ps "$job"; exit)
+    wait "$job" || (echo ps "$job"; exit)
 done
 
 runBackup "10.69.2.151" "GM01" "" "disk1" &
