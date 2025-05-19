@@ -234,6 +234,8 @@
       "",
       "",
     ],
+    "tooltip": true,
+    "tooltip-format": "{percent}%",
     "on-scroll-up": "notify-send -a brightness -h int:value:$(brightnessctl -m set +1% | awk -F ',' '{ print $4 }') Brightness",
     "on-scroll-down": "notify-send -a brightness -h int:value:$(brightnessctl -m set 1%- | awk -F ',' '{ print $4 }') Brightness",
   },
