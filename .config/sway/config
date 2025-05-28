@@ -184,6 +184,17 @@ bindsym $mod+Shift+KP_8 move workspace number 8
 bindsym $mod+Shift+KP_9 move workspace number 9
 bindsym $mod+Shift+KP_0 move workspace number 0
 
+bindsym $mod+Shift+KP_End move workspace number 1
+bindsym $mod+Shift+KP_Down move workspace number 2
+bindsym $mod+Shift+KP_Next move workspace number 3
+bindsym $mod+Shift+KP_Left move workspace number 4
+bindsym $mod+Shift+KP_Begin move workspace number 5
+bindsym $mod+Shift+KP_Right move workspace number 6
+bindsym $mod+Shift+KP_Home move workspace number 7
+bindsym $mod+Shift+KP_Up move workspace number 8
+bindsym $mod+Shift+KP_Prior move workspace number 9
+bindsym $mod+Shift+KP_Insert move workspace number 0
+
 #   _____ _                    _
 #  |_   _| |                  (_)
 #    | | | |__   ___ _ __ ___  _ _ __   __ _
