@@ -83,7 +83,7 @@ bindsym $mod+P exec dmenu_path | $menu | xargs swaymsg exec --
 bindgesture swipe:3:up exec dmenu_path | $menu | xargs swaymsg exec --
 bindsym $mod+V exec $clipboard
 bindsym Print exec $screenshot
-bindgesture pinch:2:outward exec $screenshot
+# bindgesture pinch:2:outward exec $screenshot
 bindsym $mod+B exec pkill waybar || waybar -c ~/.config/waybar/config-sway.jsonc -s ~/.config/waybar/style-sway.css
 
 bindsym $mod+Shift+C kill
