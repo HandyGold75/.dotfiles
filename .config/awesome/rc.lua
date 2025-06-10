@@ -454,6 +454,8 @@ run_if_not_running('xautolock -time 5 -notify 60 -detectsleep -locker "i3lock -c
 awful.spawn("headsetcontrol -l 0")
 awful.spawn("setxkbmap -option caps:swapescape")
 
+awful.spawn("pactl load-module module-remap-sink sink_name=mono sink_properties='device.description=\"FallbackMono\"' channels=1 channel_map=mono")
+
 -- awful.spawn('xinput set-prop "Logitech MX Master 3S" "libinput Accel Profile Enabled" 0 1')
 -- awful.spawn('sleep 5 && xinput set-prop "Logitech MX Master 3S" "libinput Accel Profile Enabled" 0 1')
 -- awful.spawn('xinput set-prop "Logitech MX Master 3S" "libinput Accel Speed" -0.30')
