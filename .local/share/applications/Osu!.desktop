@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=Osu!
+Exec=/home/wsiz01/Programs/osu.AppImage
+Icon=/home/wsiz01/.icons/applications/osu.png
+Type=Application
+Categories=Game
