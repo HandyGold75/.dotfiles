@@ -11,7 +11,7 @@
 - hypridle
 - hyprlock
 - xdg-desktop-portal-hyprland
-- hyprpolkitagent (AUR)
+- hyprpolkitagent
 - hyprsysteminfo (AUR)
 - grim
 - slurp
