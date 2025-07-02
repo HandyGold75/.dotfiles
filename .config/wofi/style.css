@@ -27,5 +27,13 @@
 
 #inner-box {
   border-radius: 25px;
-  padding: 0px 15px 15px 15px;
+  padding: 0px 10px 0px 10px;
+}
+
+#entry > expander #img {
+  padding: 0px 10px 0px 10px;
+}
+
+#entry > :not(expander) #img {
+  padding: 0px 10px 0px 25px;
 }

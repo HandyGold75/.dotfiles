@@ -5,7 +5,7 @@
 ### System
 
 - sway
-- xdg-desktop-portal-wlr ??
+- xdg-desktop-portal-wlr
 - hyprpolkitagent
 - dunst
 - wofi
@@ -38,7 +38,6 @@
 
 ### Theming
 
-- qt5ct
 - qt6ct
 - nwg-look (GIT)
 
