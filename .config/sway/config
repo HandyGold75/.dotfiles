@@ -12,7 +12,7 @@ set $mod Mod4
 set $terminal kitty
 set $fileManager thunar
 set $menu wofi
-set $lock swaylock -c 000000 -i ~/.config/sway/lockscreen.png -fet --font "OpenDyslexicNerdFont" --indicator-radius 64
+set $lock swaylock -c 000000 -i ~/.config/sway/wallpapers/lock.png -fe --font "OpenDyslexicNerdFont" --indicator-radius 64
 set $clipboard cliphist list | wofi --dmenu | cliphist decode | wl-copy
 set $screenshot grim -g "$(slurp -d -c '#FF0000FF' -b '#00000066')" -t ppm - | satty -c ~/.config/satty/config.toml --output-filename ~/Pictures/screenshot_%d-%b-%y_%T.png -f -
 set $sysinfo $terminal bash -c 'fastfetch; read -sn 1'
@@ -47,7 +47,7 @@ gaps outer 2
 smart_gaps on
 smart_borders no_gaps
 
-output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+output * bg ~/.config/sway/wallpapers/default.png fill
 
 input "type:keyboard" {
 	repeat_delay 500
@@ -299,9 +299,9 @@ exec thunderbird
 exec vivaldi
 exec waybar -c ~/.config/waybar/config-sway.jsonc -s ~/.config/waybar/style-sway.css
 exec swayidle -w \
-    timeout 300 'swaylock -c 000000 -i ~/.config/awesome/theme/lockscreen.png -fet' \
+    timeout 300 'swaylock -c 000000 -i ~/.config/awesome/theme/lock.png -fet' \
     timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-    before-sleep 'swaylock -c 000000 -i ~/.config/awesome/theme/lockscreen.png -fet'
+    before-sleep 'swaylock -c 000000 -i ~/.config/awesome/theme/lock.png -fet'
 exec wl-paste --watch cliphist store
 exec nm-applet
 exec blueman-applet
