@@ -12,7 +12,7 @@ set $mod Mod4
 set $terminal kitty
 set $fileManager thunar
 set $menu wofi
-set $lock swaylock -c 000000 -i ~/.config/sway/wallpapers/lock.png -fe --font "OpenDyslexicNerdFont" --indicator-radius 64
+set $lock swaylock -C ~/.config/sway/swaylock
 set $clipboard cliphist list | wofi --dmenu | cliphist decode | wl-copy
 set $screenshot grim -g "$(slurp -d -c '#FF0000FF' -b '#00000066')" -t ppm - | satty -c ~/.config/satty/config.toml --output-filename ~/Pictures/screenshot_%d-%b-%y_%T.png -f -
 set $sysinfo $terminal bash -c 'fastfetch; read -sn 1'
@@ -299,9 +299,9 @@ exec thunderbird
 exec vivaldi
 exec waybar -c ~/.config/waybar/config-sway.jsonc -s ~/.config/waybar/style-sway.css
 exec swayidle -w \
-    timeout 300 'swaylock -c 000000 -i ~/.config/awesome/theme/lock.png -fet' \
+    timeout 300 'swaylock -C ~/.config/sway/swaylock' \
     timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-    before-sleep 'swaylock -c 000000 -i ~/.config/awesome/theme/lock.png -fet'
+    before-sleep 'swaylock -C ~/.config/sway/swaylock'
 exec wl-paste --watch cliphist store
 exec nm-applet
 exec blueman-applet
