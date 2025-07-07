@@ -65,7 +65,7 @@
     "format": "󰍁",
     "tooltip": true,
     "tooltip-format": "lock",
-    "on-click": "swaylock -c 000000 -i ~/.config/sway/lockscreen.png -fet --font \"OpenDyslexicNerdFont\" --indicator-radius 64",
+    "on-click": "swaylock -C ~/.config/sway/swaylock",
   },
   "custom/suspend": {
     "format": "󰤄",
