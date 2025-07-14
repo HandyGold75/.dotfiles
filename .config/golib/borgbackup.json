@@ -8,17 +8,6 @@
         "/home/handygold75/rclone/OneDrive_IZO/Repos/*/.git",
         "/home/handygold75/rclone/OneDrive_IZO/System"
       ]
-    },
-    {
-      "Name": "GooglePhotos_IZO",
-      "Psw": "<REDACTED>",
-      "Sources": [
-        "/home/handygold75/rclone/GooglePhotos_IZO/album",
-        "/home/handygold75/rclone/GooglePhotos_IZO/feature",
-        "/home/handygold75/rclone/GooglePhotos_IZO/shared-album",
-        "/home/handygold75/rclone/GooglePhotos_IZO/media/by-month"
-      ],
-      "Excludes": []
     }
   ],
   "Schedule": {
