@@ -4,10 +4,7 @@
       "Name": "OneDrive_IZO",
       "Psw": "<REDACTED>",
       "Sources": ["/home/handygold75/rclone/OneDrive_IZO"],
-      "Excludes": [
-        "/home/handygold75/rclone/OneDrive_IZO/Repos/*/.git",
-        "/home/handygold75/rclone/OneDrive_IZO/System"
-      ]
+      "Excludes": []
     }
   ],
   "Schedule": {
