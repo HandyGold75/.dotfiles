@@ -37,7 +37,7 @@
 @define-color crust #181926;
 
 #waybar {
-  font-family: "OpenDyslexicNerdFont", "HackNerdFont";
+  font-family: "OpenDyslexicNerdFont", "HackNerdFontMono";
   font-size: 14px;
   color: @text;
   background: @crust;
