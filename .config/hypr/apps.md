@@ -47,7 +47,7 @@
 
 - qt6ct
 - nwg-look
-- catppuccin-gtk-theme-frappe (AUR)
+- catppuccin-gtk-theme-macchiato (AUR)
 
 ### Applications
 

@@ -163,8 +163,10 @@
     "on-click": "activate",
     "on-click-right": "close",
     "rewrite": {
+      " kitty": " KiTTY",
       " Firefox Web Browser": " Firefox",
       " Thunderbird Mail": " Thunderbird",
+      " Thunar File Manager": " Thunar",
       " Teams for Linux": " Teams",
       " Virtual Machine Manager": " VMM",
       " Remmina Remote Desktop Client": " Remmina",

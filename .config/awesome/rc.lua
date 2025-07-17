@@ -39,6 +39,8 @@ Systemmonitor = Terminal .. " " .. "btop"
 Networkconfig = "nm-connection-editor"
 Displayconfig = "arandr"
 Audioconfig = "pavucontrol"
+Screenshot = "flameshot gui"
+Filemanger = "thunar"
 
 Mainmenu = awful.menu({
 	items = {
@@ -224,7 +226,6 @@ local globalkeys = gears.table.join(
 	awful.key({ Modkey }, "w", function() Mainmenu:show() end, { description = "show main menu", group = "awesome" }),
 	awful.key({ Modkey, "Control" }, "r", awesome.restart, { description = "reload awesome", group = "awesome" }),
 	awful.key({ Modkey }, "f4", awesome.quit, { description = "quit awesome", group = "awesome" }),
-	awful.key({ Modkey }, "Return", function() awful.spawn(Terminal) end, { description = "open a terminal", group = "launcher" }),
 
 	-- Launcher
 	awful.key({ Modkey }, "p", function()
@@ -240,10 +241,51 @@ local globalkeys = gears.table.join(
 			history_path = awful.util.get_cache_dir() .. "/history_eval",
 		})
 	end, { description = "lua execute prompt", group = "launcher" }),
-	awful.key({ Modkey }, ";", function() awful.spawn.with_shell("xautolock -locknow") end, { description = "lock", group = "launcher" })
+	awful.key({ Modkey }, ";", function() awful.spawn.with_shell("xautolock -locknow") end, { description = "lock", group = "launcher" }),
+
+	-- Media
+	awful.key(
+		{},
+		"XF86AudioRaiseVolume",
+		function() awful.spawn.with_shell("wpctl set-volume @DEFAULT_SINK@ 1%+; notify-send -a volume -h int:value:$(wpctl get-volume @DEFAULT_SINK@ | awk '{ print $2 * 100 }') Volume") end,
+		{ description = "volume raise", group = "media" }
+	),
+	awful.key(
+		{},
+		"XF86AudioLowerVolume",
+		function() awful.spawn.with_shell("wpctl set-volume @DEFAULT_SINK@ 1%-; notify-send -a volume -h int:value:$(wpctl get-volume @DEFAULT_SINK@ | awk '{ print $2 * 100 }') Volume") end,
+		{ description = "volume lower", group = "media" }
+	),
+	awful.key({}, "XF86AudioMute", function() awful.spawn.with_shell("wpctl set-mute @DEFAULT_SINK@ toggle") end, { description = "mute sink", group = "media" }),
+	awful.key({}, "XF86AudioMicMute", function() awful.spawn.with_shell("wpctl set-mute @DEFAULT_SOURCE@ toggle") end, { description = "mute source", group = "media" }),
+
+	awful.key({}, "XF86AudioPlay", function() awful.spawn.with_shell("playerctl play-pause") end, { description = "player toggle", group = "media" }),
+	awful.key({}, "XF86AudioNext", function() awful.spawn.with_shell("playerctl next") end, { description = "player next", group = "media" }),
+	awful.key({}, "XF86AudioPrev", function() awful.spawn.with_shell("playerctl previous") end, { description = "player previous", group = "media" }),
+
+	awful.key({}, "XF86MonBrightnessUp", function() awful.spawn.with_shell("notify-send -a brightness -h int:value:$(brightnessctl -m set +1% | awk -F ',' '{ print $4 }') Brightness") end, { description = "brightness down", group = "media" }),
+	awful.key({}, "XF86MonBrightnessDown", function() awful.spawn.with_shell("notify-send -a brightness -h int:value:$(brightnessctl -m set 1%- | awk -F ',' '{ print $4 }') Brightness") end, { description = "brightness up", group = "media" }),
+
+	-- xrandr
+	awful.key({ Modkey }, "KP_0", function() awful.spawn.with_shell("~/.config/awesome/xrandr/lp.sh") end, { description = "xrander config lp", group = "xrandr" }),
+	awful.key({ Modkey }, "KP_9", function() awful.spawn.with_shell("~/.config/awesome/xrandr/h.sh") end, { description = "xrander config h", group = "xrandr" }),
+	awful.key({ Modkey }, "KP_1", function() awful.spawn.with_shell("~/.config/awesome/xrandr/w1.sh") end, { description = "xrander config w1", group = "xrandr" }),
+	awful.key({ Modkey }, "KP_2", function() awful.spawn.with_shell("~/.config/awesome/xrandr/w2.sh") end, { description = "xrander config w2", group = "xrandr" }),
+	awful.key({ Modkey }, "KP_3", function() awful.spawn.with_shell("~/.config/awesome/xrandr/w3.sh") end, { description = "xrander config w3", group = "xrandr" }),
+	awful.key({ Modkey }, "KP_4", function() awful.spawn.with_shell("~/.config/awesome/xrandr/w4.sh") end, { description = "xrander config w4", group = "xrandr" }),
+	awful.key({ Modkey, "Shift" }, "KP_1", function() awful.spawn.with_shell("~/.config/awesome/xrandr/p1.sh") end, { description = "xrander config p1", group = "xrandr" }),
+	awful.key({ Modkey, "Shift" }, "KP_2", function() awful.spawn.with_shell("~/.config/awesome/xrandr/p2.sh") end, { description = "xrander config p2", group = "xrandr" }),
+	awful.key({ Modkey, "Shift" }, "KP_3", function() awful.spawn.with_shell("~/.config/awesome/xrandr/p3.sh") end, { description = "xrander config p3", group = "xrandr" }),
+	awful.key({ Modkey, "Shift" }, "KP_4", function() awful.spawn.with_shell("~/.config/awesome/xrandr/p4.sh") end, { description = "xrander config p4", group = "xrandr" }),
+
+	-- Applications
+	awful.key({ Modkey }, "Return", function() awful.spawn(Terminal) end, { description = "open " .. Terminal, group = "applications" }),
+	awful.key({ Modkey }, "F11", function() awful.spawn.with_shell("headsetcontrol -l0") end, { description = "headsetcontrol lights off", group = "applications" }),
+	awful.key({ Modkey }, "d", function() awful.spawn(Filemanger) end, { description = "open " .. Filemanger, group = "applications" }),
+	awful.key({}, "Print", function() awful.spawn(Screenshot) end, { description = "screenshot with " .. Screenshot, group = "applications" })
 )
 
-for i = 1, 9 do
+for i = 1, 5 do
 	globalkeys = gears.table.join(
 		globalkeys,
 		awful.key({ Modkey }, "#" .. i + 9, function()
@@ -442,7 +484,6 @@ end
 
 run_if_not_running("nm-applet")
 run_if_not_running("qlipper")
-run_if_not_running("xbindkeys")
 run_if_not_running("flameshot")
 run_if_not_running("teams-for-linux")
 run_if_not_running("thunderbird")
