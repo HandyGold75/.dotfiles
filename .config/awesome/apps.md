@@ -12,7 +12,6 @@
 - nvim (GIT)
 - i3lock
 - xautolock
-- xbindkeys
 - arandr
 - flameshot
 - btop
@@ -32,7 +31,6 @@
 
 ### Theming
 
-- qt5ct
 - qt6ct
 - nwg-look (GIT)
 
