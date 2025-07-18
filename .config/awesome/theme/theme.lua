@@ -103,7 +103,7 @@ theme.color_darkred = "#8f2116"
 
 theme.theme_path = os.getenv("HOME") .. "/.config/awesome/theme/"
 
-theme.wallpaper = theme.theme_path .. "background.png"
+theme.wallpaper = theme.theme_path .. "wallpaper.png"
 theme.awesome_icon = theme.theme_path .. "awesome.svg"
 
 theme.layout_tilebottom = theme.theme_path .. "menus/layouts/tile_bottom.svg"

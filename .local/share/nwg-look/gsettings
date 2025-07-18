@@ -2,7 +2,7 @@
 gtk-theme=catppuccin-macchiato-blue-standard+default
 icon-theme=Yaru-blue-dark
 font-name=OpenDyslexic Nerd Font 10
-cursor-theme=catppuccin-frappe-dark-cursors
+cursor-theme=catppuccin-macchiato-dark-cursors
 cursor-size=24
 toolbar-style=both-horiz
 toolbar-icons-size=large
