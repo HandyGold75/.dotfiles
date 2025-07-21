@@ -46,7 +46,6 @@
 - thunar
 - firefox (deb)
 - vivaldi (deb)
-- teams-for-linux (snap)
 - thunderbird (snap)
 - onlyoffice (deb)
 - teamviewer (deb)
