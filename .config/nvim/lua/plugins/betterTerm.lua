@@ -14,7 +14,7 @@ return {
 		dependencies = { { "CRAG666/betterTerm.nvim", name = "betterTerm" } },
 		opts = {
 			mode = "better_term",
-			better_term = { clean = true, number = 1 },
+			better_term = { clean = true, number = 0 },
 			filetype = {
 				python = "python3 -u $file",
 				go = "go run .$end",
