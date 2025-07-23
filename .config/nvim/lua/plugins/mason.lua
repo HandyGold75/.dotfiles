@@ -3,7 +3,6 @@ return {
 		"neovim/nvim-lspconfig",
 		name = "lspconfig",
 		dependencies = { { "ms-jpq/coq_nvim", name = "coq" } },
-		event = { "BufReadPre", "BufNewFile" },
 		config = function()
 			local lsp = require("lspconfig")
 			local coq = require("coq")
@@ -41,26 +40,24 @@ return {
 		end,
 	},
 	{
-		"williamboman/mason-lspconfig.nvim",
-		name = "mason-lspconfig",
-		event = { "BufReadPre", "BufNewFile" },
-		dependencies = { { "neovim/nvim-lspconfig", name = "lspconfig" } },
-		opts = { automatic_installation = true, ensure_installed = {} },
-	},
-	{
-		"williamboman/mason.nvim",
+		"mason-org/mason.nvim",
 		name = "mason",
 		cmd = { "Mason" },
 		event = { "BufReadPre", "BufNewFile" },
-		dependencies = { { "williamboman/mason-lspconfig.nvim", name = "mason-lspconfig" } },
+		dependencies = { { "neovim/nvim-lspconfig", name = "lspconfig" } },
 		config = function()
 			require("mason").setup({ ui = { border = "rounded" }, pip = { upgrade_pip = true } })
-
 			vim.api.nvim_create_user_command("MasonInstallAll", function()
+				vim.cmd("MasonInstall lua-language-server gopls jedi-language-server bash-language-server html-lsp css-lsp typescript-language-server gdtoolkit marksman ltex-ls json-lsp taplo yaml-language-server lemminx")
 				vim.cmd("MasonInstall stylua goimports gofumpt isort black beautysh prettierd prettier taplo xmlformatter")
 				vim.cmd("MasonInstall golangci-lint pylint shellcheck htmlhint stylelint quick-lint-js markdownlint jsonlint yamllint")
-				vim.cmd("MasonInstall gdtoolkit")
 			end, {})
 		end,
+	},
+	{
+		"mason-org/mason-lspconfig.nvim",
+		name = "mason-lspconfig",
+		dependencies = { { "mason-org/mason.nvim", name = "mason" }, { "neovim/nvim-lspconfig", name = "lspconfig" } },
+		opts = { automatic_installation = true, automatic_enable = false, ensure_installed = {} },
 	},
 }
