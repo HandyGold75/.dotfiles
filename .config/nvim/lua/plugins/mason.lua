@@ -50,6 +50,7 @@ return {
 		"mason-org/mason.nvim",
 		name = "mason",
 		cmd = { "Mason" },
+		event = { "BufReadPre", "BufNewFile" },
 		dependencies = { { "neovim/nvim-lspconfig", name = "lspconfig" } },
 		config = function()
 			require("mason").setup({ ui = { border = "rounded" }, pip = { upgrade_pip = true } })
@@ -64,6 +65,7 @@ return {
 		"mason-org/mason-lspconfig.nvim",
 		name = "mason-lspconfig",
 		cmd = { "Mason" },
+		event = { "BufReadPre", "BufNewFile" },
 		dependencies = { { "mason-org/mason.nvim", name = "mason" }, { "neovim/nvim-lspconfig", name = "lspconfig" } },
 		opts = { automatic_installation = true, automatic_enable = false, ensure_installed = {} },
 	},
