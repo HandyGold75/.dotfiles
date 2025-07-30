@@ -2,6 +2,8 @@ return {
 	{
 		"neovim/nvim-lspconfig",
 		name = "lspconfig",
+		cmd = { "LspInfo", "LspStart", "LspStop", "LspRestart" },
+		event = { "BufReadPre", "BufNewFile" },
 		dependencies = { { "ms-jpq/coq_nvim", name = "coq" } },
 		config = function()
 			local lsp = require("lspconfig")
@@ -37,13 +39,17 @@ return {
 			lsp.taplo.setup(coq.lsp_ensure_capabilities({}))
 			lsp.yamlls.setup(coq.lsp_ensure_capabilities({}))
 			lsp.lemminx.setup(coq.lsp_ensure_capabilities({}))
+
+			vim.keymap.set({ "n" }, "<leader>li", ":LspInfo<CR>", { noremap = true, desc = "[l]sp [i]nfo" })
+			vim.keymap.set({ "n" }, "<leader>ls", ":LspStart<CR>", { noremap = true, desc = "[l]sp [s]tart" })
+			vim.keymap.set({ "n" }, "<leader>lS", ":LspStop<CR>", { noremap = true, desc = "[l]sp [S]top" })
+			vim.keymap.set({ "n" }, "<leader>lr", ":LspRestart<CR>", { noremap = true, desc = "[l]sp [r]estart" })
 		end,
 	},
 	{
 		"mason-org/mason.nvim",
 		name = "mason",
 		cmd = { "Mason" },
-		event = { "BufReadPre", "BufNewFile" },
 		dependencies = { { "neovim/nvim-lspconfig", name = "lspconfig" } },
 		config = function()
 			require("mason").setup({ ui = { border = "rounded" }, pip = { upgrade_pip = true } })
@@ -57,6 +63,7 @@ return {
 	{
 		"mason-org/mason-lspconfig.nvim",
 		name = "mason-lspconfig",
+		cmd = { "Mason" },
 		dependencies = { { "mason-org/mason.nvim", name = "mason" }, { "neovim/nvim-lspconfig", name = "lspconfig" } },
 		opts = { automatic_installation = true, automatic_enable = false, ensure_installed = {} },
 	},
