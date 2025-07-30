@@ -263,8 +263,8 @@ local globalkeys = gears.table.join(
 	awful.key({}, "XF86AudioNext", function() awful.spawn.with_shell("playerctl next") end, { description = "player next", group = "media" }),
 	awful.key({}, "XF86AudioPrev", function() awful.spawn.with_shell("playerctl previous") end, { description = "player previous", group = "media" }),
 
-	awful.key({}, "XF86MonBrightnessUp", function() awful.spawn.with_shell("notify-send -a brightness -h int:value:$(brightnessctl -m set +1% | awk -F ',' '{ print $4 }') Brightness") end, { description = "brightness down", group = "media" }),
-	awful.key({}, "XF86MonBrightnessDown", function() awful.spawn.with_shell("notify-send -a brightness -h int:value:$(brightnessctl -m set 1%- | awk -F ',' '{ print $4 }') Brightness") end, { description = "brightness up", group = "media" }),
+	awful.key({}, "XF86MonBrightnessUp", function() awful.spawn.with_shell("notify-send -a brightness -h int:value:$(brightnessctl -n 1 -m set +1% | awk -F ',' '{ print $4 }') Brightness") end, { description = "brightness down", group = "media" }),
+	awful.key({}, "XF86MonBrightnessDown", function() awful.spawn.with_shell("notify-send -a brightness -h int:value:$(brightnessctl -n 1 -m set 1%- | awk -F ',' '{ print $4 }') Brightness") end, { description = "brightness up", group = "media" }),
 
 	-- xrandr
 	awful.key({ Modkey }, "KP_0", function() awful.spawn.with_shell("~/.config/awesome/xrandr/lp.sh") end, { description = "xrander config lp", group = "xrandr" }),
@@ -494,8 +494,8 @@ run_if_not_running('xautolock -time 5 -notify 60 -detectsleep -locker "i3lock -c
 
 awful.spawn("headsetcontrol -l 0")
 awful.spawn("setxkbmap -option caps:swapescape")
-
 awful.spawn("pactl load-module module-remap-sink sink_name=mono sink_properties='device.description=\"FallbackMono\"' channels=1 channel_map=mono")
+awful.spawn("brightnessctl -n 1 -m set 100%")
 
 -- awful.spawn('xinput set-prop "Logitech MX Master 3S" "libinput Accel Profile Enabled" 0 1')
 -- awful.spawn('sleep 5 && xinput set-prop "Logitech MX Master 3S" "libinput Accel Profile Enabled" 0 1')
