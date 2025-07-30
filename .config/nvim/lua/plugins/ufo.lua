@@ -3,6 +3,7 @@ return {
 		"kevinhwang91/nvim-ufo",
 		name = "ufo",
 		dependencies = { "kevinhwang91/promise-async", { "neovim/nvim-lspconfig", name = "lspconfig" } },
+		opts = { fold_virt_text_handler = handler },
 		config = function()
 			vim.opt.foldcolumn = "0"
 			vim.opt.foldlevel = 99
@@ -40,11 +41,12 @@ return {
 				return newVirtText
 			end
 
-			require("ufo").setup({ fold_virt_text_handler = handler })
+			-- require("ufo").setup()
 		end,
 		keys = {
 			{ "za", "za", { "n" }, remap = false, silent = true, desc = "Ufo toggle current fold" },
-			{ "zR", function() require("ufo").openAllFolds() end, { "n" }, silent = true, desc = "Ufo open all folds" },
+			{ "z9", vim.opt.foldlevel=99, { "n" }, silent = true, desc = "Ufo reset fold level" },
+			{ "zR", function() requirr("ufo").openAllFolds() end, { "n" }, silent = true, desc = "Ufo open all folds" },
 			{ "zM", function() require("ufo").closeAllFolds() end, { "n" }, silent = true, desc = "Ufo close all folds" },
 			{ "zr", function() require("ufo").openFoldsExceptKinds() end, { "n" }, silent = true, desc = "Ufo open all folds" },
 			{ "zm", function() require("ufo").closeFoldsWith() end, { "n" }, silent = true, desc = "Ufo close all folds ([int]zm for specific fold level)" },
