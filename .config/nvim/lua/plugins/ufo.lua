@@ -41,11 +41,11 @@ return {
 				return newVirtText
 			end
 
-			-- require("ufo").setup()
+			require("ufo").setup({ fold_virt_text_handler = handler })
 		end,
 		keys = {
 			{ "za", "za", { "n" }, remap = false, silent = true, desc = "Ufo toggle current fold" },
-			{ "z9", vim.opt.foldlevel=99, { "n" }, silent = true, desc = "Ufo reset fold level" },
+			{ "z9", function() vim.opt.foldlevel = 99 end, { "n" }, silent = true, desc = "Ufo reset fold level" },
 			{ "zR", function() requirr("ufo").openAllFolds() end, { "n" }, silent = true, desc = "Ufo open all folds" },
 			{ "zM", function() require("ufo").closeAllFolds() end, { "n" }, silent = true, desc = "Ufo close all folds" },
 			{ "zr", function() require("ufo").openFoldsExceptKinds() end, { "n" }, silent = true, desc = "Ufo open all folds" },
