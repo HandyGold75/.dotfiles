@@ -3,10 +3,14 @@ return {
 		"CRAG666/betterTerm.nvim",
 		name = "betterTerm",
 		config = function()
-			require("betterTerm").setup({ size = 15 })
+			require("betterTerm").setup({ size = 10 })
 			vim.keymap.set({ "n", "t" }, "<C-o>", require("betterTerm").open)
+			vim.keymap.set({ "n", "t" }, "<leader>o", require("betterTerm").select)
 		end,
-		keys = { { "<C-o>", function() require("betterTerm").open() end, { "n", "t" }, desc = "BetterTerm toggle terminal" } },
+		keys = {
+			{ "<C-o>", function() require("betterTerm").open() end, { "n", "t" }, desc = "BetterTerm toggle terminal" },
+			{ "<leader>o", function() require("betterTerm").select() end, { "n", "t" }, desc = "BetterTerm select terminal" },
+		},
 	},
 	{
 		"CRAG666/code_runner.nvim",
@@ -14,7 +18,7 @@ return {
 		dependencies = { { "CRAG666/betterTerm.nvim", name = "betterTerm" } },
 		opts = {
 			mode = "better_term",
-			better_term = { clean = true, number = 0 },
+			better_term = { clean = true, number = 1 },
 			filetype = {
 				python = "python3 -u $file",
 				go = "go run .$end",
