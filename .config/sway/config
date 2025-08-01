@@ -107,8 +107,8 @@ bindsym XF86AudioPlay exec "playerctl play-pause"
 bindsym XF86AudioNext exec "playerctl next"
 bindsym XF86AudioPrev exec "playerctl previous"
 
-bindsym XF86MonBrightnessUp exec "notify-send -a brightness -h int:value:$(brightnessctl -n 1 -m set +1% | awk -F ',' '{ print $4 }') Brightness"
-bindsym XF86MonBrightnessDown exec "notify-send -a brightness -h int:value:$(brightnessctl -n 1 -m set 1%- | awk -F ',' '{ print $4 }') Brightness"
+bindsym XF86MonBrightnessUp exec "notify-send -a brightness -h int:value:$(brightnessctl -m set +1% -n 1 | awk -F ',' '{ print $4 }') Brightness"
+bindsym XF86MonBrightnessDown exec "notify-send -a brightness -h int:value:$(brightnessctl -m set 1%- -n 1 | awk -F ',' '{ print $4 }') Brightness"
 
 floating_modifier $mod normal
 
@@ -273,5 +273,5 @@ exec headsetcontrol -l 0
 exec systemctl --user start hyprpolkitagent
 exec pactl load-module module-remap-sink sink_name=mono sink_properties='device.description="FallbackMono"' channels=1 channel_map=mono
 
-exec brightnessctl -n 1 -m set 100%
+exec brightnessctl -m set 100% -n 1
 exec_always killall kanshi; kanshi
