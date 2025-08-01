@@ -121,9 +121,9 @@ function Brightnessarc_widget()
 
 	brightnessarc:connect_signal("button::press", function(_, _, _, button)
 		if button == 5 then
-			awful.spawn.easy_async("brightnessctl -m -n 1 set 1%-", function(stdout, _, _, _) update_graphic(brightnessarc, stdout, _, _, _, true) end)
+			awful.spawn.easy_async("brightnessctl -m set 1%- -n 1", function(stdout, _, _, _) update_graphic(brightnessarc, stdout, _, _, _, true) end)
 		elseif button == 4 then
-			awful.spawn.easy_async("brightnessctl -m -n 1 set +1%", function(stdout, _, _, _) update_graphic(brightnessarc, stdout, _, _, _, true) end)
+			awful.spawn.easy_async("brightnessctl -m set +1% -n 1", function(stdout, _, _, _) update_graphic(brightnessarc, stdout, _, _, _, true) end)
 		end
 	end)
 
