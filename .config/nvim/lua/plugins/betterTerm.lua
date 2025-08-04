@@ -4,13 +4,13 @@ return {
 		name = "betterTerm",
 		config = function()
 			require("betterTerm").setup({ size = 15 })
-			vim.keymap.set({ "n", "t" }, "<C-o>", require("betterTerm").open)
+			vim.keymap.set({ "n", "t" }, "<C-->", require("betterTerm").open)
 			vim.keymap.set({ "t" }, "<leader>o", require("betterTerm").select)
 			vim.keymap.set({ "t" }, "<leader>q", "<ESC><C-\\><C-n>:bd!<CR>")
 		end,
 		keys = {
-			{ "<C-o>", function() require("betterTerm").open() end, { "n", "t" }, desc = "BetterTerm toggle terminal" },
-			{ "<leader>o", function() require("betterTerm").select() end, { "t" }, desc = "BetterTerm select terminal" },
+			{ "<C-->", function() require("betterTerm").open() end, { "n", "t" }, desc = "BetterTerm toggle terminal" },
+			{ "<leader>-", function() require("betterTerm").select() end, { "t" }, desc = "BetterTerm select terminal" },
 			{ "<leader>q", "<ESC><C-\\><C-n>:bd!<CR>", { "t" }, desc = "BetterTerm quit terminal" },
 		},
 	},
