@@ -64,7 +64,7 @@
     "format": "",
     "tooltip": true,
     "tooltip-format": "reboot",
-    "on-click": "reboot now",
+    "on-click": "reboot",
   },
   "custom/power": {
     "format": "",
