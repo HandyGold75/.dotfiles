@@ -66,7 +66,7 @@ profile Workplace_3 {
 
 profile Workplace_4 {
 	output "AU Optronics 0xA68B Unknown" enable mode 1920x1080 position 0,955
-	output "AOC Q2790 GQML1HA016139" enable mode 2560x1440 position 4480,0
+	output "AOC Q2790 HBDL5HA000180" enable mode 2560x1440 position 4480,0
 	output "AOC Q27V5C 18DP9HA011426" enable mode 2560x1440 position 1920,0
 	exec notify-send -u low -a Kanshi 'Applying profile' 'Workplace 4'
 }
