@@ -2,8 +2,7 @@ return {
 	{
 		"neovim/nvim-lspconfig",
 		name = "lspconfig",
-		cmd = { "LspInfo", "LspStart", "LspStop", "LspRestart" },
-		event = { "BufReadPre", "BufNewFile" },
+		lazy = true,
 		dependencies = { { "ms-jpq/coq_nvim", name = "coq" } },
 		config = function()
 			local lsp = require("lspconfig")
@@ -49,8 +48,7 @@ return {
 	{
 		"mason-org/mason.nvim",
 		name = "mason",
-		cmd = { "Mason" },
-		event = { "BufReadPre", "BufNewFile" },
+		lazy = true,
 		dependencies = { { "neovim/nvim-lspconfig", name = "lspconfig" } },
 		config = function()
 			require("mason").setup({ ui = { border = "rounded" }, pip = { upgrade_pip = true } })
@@ -64,7 +62,7 @@ return {
 	{
 		"mason-org/mason-lspconfig.nvim",
 		name = "mason-lspconfig",
-		cmd = { "Mason" },
+		cmd = { "Mason", "LspInfo", "LspStart", "LspStop", "LspRestart" },
 		event = { "BufReadPre", "BufNewFile" },
 		dependencies = { { "mason-org/mason.nvim", name = "mason" }, { "neovim/nvim-lspconfig", name = "lspconfig" } },
 		opts = { automatic_installation = true, automatic_enable = false, ensure_installed = {} },
