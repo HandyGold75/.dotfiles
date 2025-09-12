@@ -74,5 +74,11 @@ profile Workplace_4 {
 profile MrOrange_1 {
 	output "AU Optronics 0xA68B Unknown" enable mode 1920x1080 position 760,1440
 	output "Philips Consumer Electronics Company PHL 346E2C UK02321054994" enable mode 3440x1440 position 0,0
-	exec notify-send -u low -a Kanshi 'Applying profile' 'Workplace 4'
+	exec notify-send -u low -a Kanshi 'Applying profile' 'MrOrange 1'
+}
+
+profile MrOrange_2 {
+	output "AU Optronics 0xA68B Unknown" enable mode 1920x1080 position 320,1080
+	output "LG Electronics LG ULTRAWIDE 0x00064D82" enable mode 2560x1080 position 0,0
+	exec notify-send -u low -a Kanshi 'Applying profile' 'MrOrange 2'
 }
