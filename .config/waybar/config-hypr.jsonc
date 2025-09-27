@@ -236,7 +236,6 @@
     "orientation": "horizontal",
     "modules": [
       "disk",
-      "disk#googlephotos",
       "disk#sharepoint",
       "disk#onedriveizo",
       "disk#hdd1",
@@ -283,14 +282,6 @@
     "interval": 30,
     "format": "{percentage_used}% ",
     "path": "/mnt/SharePoint_Storage/",
-    "on-click": "kitty btop",
-    "tooltip": true,
-    "tooltip-format": "{used}/{total} {path}",
-  },
-  "disk#googlephotos": {
-    "interval": 30,
-    "format": "{percentage_used}% ",
-    "path": "/mnt/GooglePhotos_IAMZ/",
     "on-click": "kitty btop",
     "tooltip": true,
     "tooltip-format": "{used}/{total} {path}",
