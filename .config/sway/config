@@ -267,8 +267,7 @@ exec swayidle -w \
 exec wl-paste --watch cliphist store
 exec nm-applet
 exec blueman-applet
-# https://github.com/go-vgo/robotgo/issues/304
-exec (Xvfb :99 -screen 0 1024x768x24 &) && export DISPLAY=:99 && hg macros
+exec hg macros
 exec headsetcontrol -l 0
 exec pactl load-module module-remap-sink sink_name=mono sink_properties='device.description="FallbackMono"' channels=1 channel_map=mono
 
