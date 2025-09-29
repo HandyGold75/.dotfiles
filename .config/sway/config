@@ -257,7 +257,6 @@ exec hash dbus-update-activation-environment 2>/dev/null && dbus-update-activati
 
  # Teams via Vivaldi
 exec vivaldi --profile-directory=Default --app-id=cifhbcnohmdccbgoicgdjpfamggdegmo
-
 exec thunderbird
 exec vivaldi
 exec waybar -c ~/.config/waybar/config-sway.jsonc -s ~/.config/waybar/style-sway.css
@@ -268,12 +267,11 @@ exec swayidle -w \
 exec wl-paste --watch cliphist store
 exec nm-applet
 exec blueman-applet
-exec hg macros
+# https://github.com/go-vgo/robotgo/issues/304
+exec (Xvfb :99 -screen 0 1024x768x24 &) && export DISPLAY=:99 && hg macros
 exec headsetcontrol -l 0
 exec pactl load-module module-remap-sink sink_name=mono sink_properties='device.description="FallbackMono"' channels=1 channel_map=mono
 
-# https://github.com/go-vgo/robotgo/issues/304
-exec (Xvfb :99 -screen 0 1024x768x24 &) && export DISPLAY=:99
 
 exec brightnessctl -m set 100% -n 1
 exec_always killall kanshi; kanshi
