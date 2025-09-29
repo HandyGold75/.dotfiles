@@ -6,7 +6,6 @@
 
 - sway
 - xdg-desktop-portal-wlr
-- hyprpolkitagent
 - dunst
 - wofi
 - wl-clipboard
