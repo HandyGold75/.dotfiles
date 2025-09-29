@@ -270,7 +270,6 @@ exec nm-applet
 exec blueman-applet
 exec hg macros
 exec headsetcontrol -l 0
-exec systemctl --user start hyprpolkitagent
 exec pactl load-module module-remap-sink sink_name=mono sink_properties='device.description="FallbackMono"' channels=1 channel_map=mono
 
 # https://github.com/go-vgo/robotgo/issues/304
