@@ -257,7 +257,9 @@ exec hash dbus-update-activation-environment 2>/dev/null && dbus-update-activati
 
  # Teams via Vivaldi
 exec /opt/vivaldi/vivaldi "--profile-directory=Profile 4" --app-id=cifhbcnohmdccbgoicgdjpfamggdegmo
-exec thunderbird
+ # Outlook via Vivaldi
+exec /opt/vivaldi/vivaldi "--profile-directory=Profile 4" --app-id=faolnafnngnfdaknnbpnkhgohbobgegn %U
+# exec thunderbird
 exec vivaldi
 exec waybar -c ~/.config/waybar/config-sway.jsonc -s ~/.config/waybar/style-sway.css
 exec swayidle -w \
