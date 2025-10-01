@@ -12,16 +12,17 @@
 - cliphist
 - kanshi
 - swaylock
-- waybar (GIT)
+- waybar (git)
 - grim
 - slurp
-- satty (GIT)
+- satty (git)
 - network-manager-applet
 - blueman
-- kitty (GIT)
-- nvim (GIT)
+- kitty (git)
+- nvim (git)
 - btop
-- headsetcontrol (GIT)
+- headsetcontrol (git)
+- fastfetch (deb)
 
 ### Audio
 
@@ -38,7 +39,7 @@
 ### Theming
 
 - qt6ct
-- nwg-look (GIT)
+- nwg-look (git)
 
 ### Applications
 
@@ -46,9 +47,10 @@
 - firefox (deb)
 - vivaldi (deb)
 - thunderbird (snap)
-- onlyoffice (deb)
+- libreoffice
 - teamviewer (deb)
 - forticlient vpn (deb)
 - rclone
 - remmina
 - virt-manager
+- mpv
