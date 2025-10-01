@@ -21,6 +21,7 @@
 - kitty (git)
 - nvim (git)
 - btop
+- brightnessctl
 - headsetcontrol (git)
 - fastfetch (deb)
 
