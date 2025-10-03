@@ -258,9 +258,9 @@ exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CU
 exec hash dbus-update-activation-environment 2>/dev/null && dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP
 
  # Teams via Vivaldi
-exec /opt/vivaldi/vivaldi "--profile-directory=Profile 4" --app-id=cifhbcnohmdccbgoicgdjpfamggdegmo
+exec /opt/vivaldi/vivaldi "--profile-directory=Profile 7" --app-id=cifhbcnohmdccbgoicgdjpfamggdegmo
  # Outlook via Vivaldi
-exec /opt/vivaldi/vivaldi "--profile-directory=Profile 4" --app-id=faolnafnngnfdaknnbpnkhgohbobgegn %U
+exec /opt/vivaldi/vivaldi "--profile-directory=Profile 7" --app-id=faolnafnngnfdaknnbpnkhgohbobgegn %U
 # exec thunderbird
 exec vivaldi
 exec waybar -c ~/.config/waybar/config-sway.jsonc -s ~/.config/waybar/style-sway.css
@@ -275,4 +275,3 @@ exec pactl load-module module-remap-sink sink_name=mono sink_properties='device.
 exec_always killall kanshi; kanshi
 
 exec headsetcontrol -l 0
-exec brightnessctl -m set 100% -n 1
