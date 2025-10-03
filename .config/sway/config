@@ -108,8 +108,8 @@ bindsym XF86AudioPlay exec "playerctl play-pause"
 bindsym XF86AudioNext exec "playerctl next"
 bindsym XF86AudioPrev exec "playerctl previous"
 
-bindsym XF86MonBrightnessUp exec "notify-send -a brightness -h int:value:$(brightnessctl -m set +1% -n 1 | awk -F ',' '{ print $4 }') Brightness"
-bindsym XF86MonBrightnessDown exec "notify-send -a brightness -h int:value:$(brightnessctl -m set 1%- -n 1 | awk -F ',' '{ print $4 }') Brightness"
+bindsym XF86MonBrightnessUp exec "notify-send -a brightness -h int:value:$(brightnessctl -m set +5% -n 1 | awk -F ',' '{ print $4 }') Brightness"
+bindsym XF86MonBrightnessDown exec "notify-send -a brightness -h int:value:$(brightnessctl -m set 5%- -n 1 | awk -F ',' '{ print $4 }') Brightness"
 bindsym XF86Calculator exec $calculator
 
 floating_modifier $mod normal
@@ -258,11 +258,11 @@ exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CU
 exec hash dbus-update-activation-environment 2>/dev/null && dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP
 
  # Teams via Vivaldi
-exec /opt/vivaldi/vivaldi "--profile-directory=Profile 7" --app-id=cifhbcnohmdccbgoicgdjpfamggdegmo
+exec /opt/vivaldi/vivaldi "--profile-directory=Profile 7" --app-id=cifhbcnohmdccbgoicgdjpfamggdegmo --password-store=gnome-libsecret
  # Outlook via Vivaldi
-exec /opt/vivaldi/vivaldi "--profile-directory=Profile 7" --app-id=faolnafnngnfdaknnbpnkhgohbobgegn %U
+exec /opt/vivaldi/vivaldi "--profile-directory=Profile 7" --app-id=faolnafnngnfdaknnbpnkhgohbobgegn %U --password-store=gnome-libsecret
 # exec thunderbird
-exec vivaldi
+exec vivaldi --password-store=gnome-libsecret
 exec waybar -c ~/.config/waybar/config-sway.jsonc -s ~/.config/waybar/style-sway.css
 exec swayidle -w \
     timeout 300 'swaylock -C ~/.config/sway/swaylock' \
