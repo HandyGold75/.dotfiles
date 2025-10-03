@@ -263,8 +263,8 @@ local globalkeys = gears.table.join(
 	awful.key({}, "XF86AudioNext", function() awful.spawn.with_shell("playerctl next") end, { description = "player next", group = "media" }),
 	awful.key({}, "XF86AudioPrev", function() awful.spawn.with_shell("playerctl previous") end, { description = "player previous", group = "media" }),
 
-	awful.key({}, "XF86MonBrightnessUp", function() awful.spawn.with_shell("notify-send -a brightness -h int:value:$(brightnessctl -m set +1 -n 1% | awk -F ',' '{ print $4 }') Brightness") end, { description = "brightness down", group = "media" }),
-	awful.key({}, "XF86MonBrightnessDown", function() awful.spawn.with_shell("notify-send -a brightness -h int:value:$(brightnessctl -m set 1%- -n 1 | awk -F ',' '{ print $4 }') Brightness") end, { description = "brightness up", group = "media" }),
+	awful.key({}, "XF86MonBrightnessUp", function() awful.spawn.with_shell("notify-send -a brightness -h int:value:$(brightnessctl -m set +5 -n 1% | awk -F ',' '{ print $4 }') Brightness") end, { description = "brightness down", group = "media" }),
+	awful.key({}, "XF86MonBrightnessDown", function() awful.spawn.with_shell("notify-send -a brightness -h int:value:$(brightnessctl -m set 5%- -n 1 | awk -F ',' '{ print $4 }') Brightness") end, { description = "brightness up", group = "media" }),
 
 	-- xrandr
 	awful.key({ Modkey }, "KP_0", function() awful.spawn.with_shell("~/.config/awesome/xrandr/lp.sh") end, { description = "xrander config lp", group = "xrandr" }),
