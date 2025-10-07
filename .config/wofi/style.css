@@ -15,10 +15,12 @@
 
 #outer-box {
   border-radius: 25px;
+  border: 1px solid;
 }
 
 #input {
   border-radius: 25px;
+  min-height: 50px;
 }
 
 #scroll {
