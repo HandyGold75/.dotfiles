@@ -80,8 +80,8 @@ bindsym $mod+Semicolon exec $lock
 bindsym $mod+Return exec $terminal
 bindsym $mod+D exec $fileManager
 bindsym $mod+I exec $sysinfo
-bindsym $mod+P exec dmenu_path | $menu | xargs swaymsg exec --
-bindgesture swipe:3:up exec dmenu_path | $menu | xargs swaymsg exec --
+bindsym $mod+P exec $menu
+bindgesture swipe:3:up exec  $menu
 bindsym $mod+V exec $clipboard
 bindsym Print exec $screenshot
 # bindgesture pinch:2:outward exec $screenshot
