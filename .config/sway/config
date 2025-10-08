@@ -86,10 +86,10 @@ bindsym $mod+V exec $clipboard
 bindsym Print exec $screenshot
 # bindgesture pinch:2:outward exec $screenshot
 bindsym $mod+B exec pkill waybar || waybar -c ~/.config/waybar/config-sway.jsonc -s ~/.config/waybar/style-sway.css
-bindsym $mod+K exec pkill kanshi || kanshi
 
 bindsym $mod+Shift+C kill
 bindgesture swipe:3:down kill
+bindsym $mod+R exec "killall kanshi; kanshi"
 bindsym $mod+Ctrl+R reload
 bindsym $mod+F4 exit
 bindsym $mod+F floating toggle
