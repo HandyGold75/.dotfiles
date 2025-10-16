@@ -97,6 +97,10 @@ bindsym $mod+Shift+F focus mode_toggle
 bindsym $mod+M fullscreen toggle
 bindsym $mod+Shift+M fullscreen toggle global
 bindsym $mod+T split toggle
+bindsym $mod+Up exec "playerctl play-pause"
+bindsym $mod+Down exec "playerctl play-pause"
+bindsym $mod+Left exec "playerctl previous"
+bindsym $mod+Right exec "playerctl next"
 
 bindsym $mod+F11 exec headsetcontrol -l0
 

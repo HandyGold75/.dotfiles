@@ -9,6 +9,7 @@
 - dunst
 - wofi
 - wl-clipboard
+- playerctl
 - cliphist
 - kanshi
 - swaylock
