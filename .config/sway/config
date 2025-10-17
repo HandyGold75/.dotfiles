@@ -67,6 +67,24 @@ input "type:tablet_tool" {
 	tool_mode * absolute
 }
 
+for_window [app_id = "firmware-updater"] floating enable
+for_window [app_id = "org.kde.polkit-kde-authentication-agent-1"] floating enable
+for_window [title = "Virtual Machine Manager"] floating enable, resize set width 500px height 500px
+for_window [app_id = "org.remmina.Remmina"] floating enable
+for_window [app_id = "software-properties-gtk"] floating enable
+for_window [app_id = "org.gnome.Calculator"] floating enable
+for_window [app_id = "pavucontrol"] floating enable
+for_window [app_id = "nm-connection-editor"] floating enable
+for_window [app_id = "qt6ct"] floating enable
+for_window [app_id = "nwg-look"] floating enable
+for_window [class = "Intune-portal"] floating enable
+for_window [class = "Microsoft"] floating enable
+for_window [class = "TeamViewer"] floating enable, resize set width 750px height 500px
+for_window [app_id = "gnome-language-selector"] floating enable
+for_window [title = "Bulk Rename - Rename Multiple Files"] floating enable
+for_window [app_id = "mpv"] floating enable
+for_window [app_id = "blueman-manager"] floating enable, resize set width 500px height 500px
+
 #   _   __           _     _           _
 #  | | / /          | |   (_)         | |
 #  | |/ /  ___ _   _| |__  _ _ __   __| |___
