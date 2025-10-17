@@ -13,6 +13,7 @@
 - cliphist
 - kanshi
 - swaylock
+- swayidle
 - waybar (git)
 - grim
 - slurp
