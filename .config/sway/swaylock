@@ -1,6 +1,5 @@
 color=181926
 image=~/.config/sway/wallpapers/lock.png
-ignore-empty-password
 daemonize
 font=OpenDyslexicNerdFont
 
