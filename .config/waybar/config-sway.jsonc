@@ -94,6 +94,7 @@
 
   "privacy": {
     "transition-duration": 500,
+    "icon-spacing": 0,
     "modules": [{ "type": "screenshare" }, { "type": "audio-in" }],
   },
 

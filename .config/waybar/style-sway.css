@@ -79,7 +79,7 @@ tooltip {
 #custom-logout:hover,
 #custom-reboot:hover,
 #custom-power:hover,
-#privacy-item:hover,
+#privacy:hover,
 #systemd-failed-units,
 #workspaces button:hover,
 #mpris:hover,
@@ -118,11 +118,11 @@ tooltip {
 #powers * > * > *,
 #powers #user,
 #systemd-failed-units {
-  padding: 0 10px;
+  padding: 0 8px;
 }
 
 #powers,
-#privacy-item,
+#privacy,
 #systemd-failed-units {
   background: @blue;
   color: @crust;
@@ -132,6 +132,10 @@ tooltip {
 #workspaces button.urgent {
   background: @red;
   color: @crust;
+}
+
+#privacy-item {
+  padding: 0px 4px;
 }
 
 #powers #user * {
@@ -144,7 +148,7 @@ tooltip {
 }
 
 #workspaces button {
-  padding: 0 10px;
+  padding: 0 8px;
 }
 
 #mpris {
@@ -201,7 +205,7 @@ tooltip {
 #temperature,
 #network,
 #tray {
-  padding: 0 10px;
+  padding: 0 8px;
 }
 
 #stats,
