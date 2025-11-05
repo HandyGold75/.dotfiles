@@ -297,6 +297,6 @@ exec nm-applet
 exec blueman-applet
 exec hg macros
 exec /usr/lib/x86_64-linux-gnu/libexec/polkit-kde-authentication-agent-1
-exec pactl load-module module-remap-sink sink_name=mono sink_properties='device.description="FallbackMono"' channels=1 channel_map=mono
+# exec pactl load-module module-remap-sink sink_name=mono sink_properties='device.description="FallbackMono"' channels=1 channel_map=mono
 
 exec headsetcontrol -l 0
