@@ -281,9 +281,9 @@ exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CU
 exec hash dbus-update-activation-environment 2>/dev/null && dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP
 
  # Teams via Vivaldi
-exec /opt/vivaldi/vivaldi "--profile-directory=Profile 7" --app-id=cifhbcnohmdccbgoicgdjpfamggdegmo --password-store=gnome-libsecret
+exec /opt/vivaldi/vivaldi "--profile-directory=Profile 7" --app-id=cifhbcnohmdccbgoicgdjpfamggdegmo
  # Outlook via Vivaldi
-exec /opt/vivaldi/vivaldi "--profile-directory=Profile 7" --app-id=faolnafnngnfdaknnbpnkhgohbobgegn %U --password-store=gnome-libsecret
+exec /opt/vivaldi/vivaldi "--profile-directory=Profile 7" --app-id=faolnafnngnfdaknnbpnkhgohbobgegn %U
 # exec thunderbird
 exec vivaldi --password-store=gnome-libsecret
 exec waybar -c ~/.config/waybar/config-sway.jsonc -s ~/.config/waybar/style-sway.css
