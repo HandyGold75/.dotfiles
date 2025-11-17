@@ -14,7 +14,7 @@ set $fileManager thunar
 set $menu wofi
 set $lock swaylock -C ~/.config/sway/swaylock
 set $clipboard cliphist list | wofi --dmenu | cliphist decode | wl-copy
-set $screenshot grim -g "$(slurp -d -c '#FF0000FF' -b '#00000066')" -t ppm - | satty -c ~/.config/satty/config.toml --output-filename ~/Pictures/screenshot_%d-%b-%y_%T.png -f -
+set $screenshot grim -g "$(slurp -d -c '#FF0000FF' -b '#00000066')" -t ppm - | satty -c ~/.config/satty/config.toml --output-filename ~/Pictures/screenshot_%d-%b-%y_%H%M%S.png -f -
 set $sysinfo $terminal bash -c 'fastfetch; read -sn 1'
 set $calculator gnome-calculator
 
@@ -285,7 +285,7 @@ exec /opt/vivaldi/vivaldi "--profile-directory=Profile 7" --app-id=cifhbcnohmdcc
  # Outlook via Vivaldi
 exec /opt/vivaldi/vivaldi "--profile-directory=Profile 7" --app-id=faolnafnngnfdaknnbpnkhgohbobgegn %U
 # exec thunderbird
-exec vivaldi --password-store=gnome-libsecret
+exec vivaldi
 exec waybar -c ~/.config/waybar/config-sway.jsonc -s ~/.config/waybar/style-sway.css
 exec swayidle -w \
     timeout 300 'swaylock -C ~/.config/sway/swaylock' \
