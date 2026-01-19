@@ -85,6 +85,11 @@ alias shutdown='shutdown now'
 alias clr='clear && fastfetch && echo'
 alias wgup='sudo wg-quick up MROLT027'
 alias wgdown='sudo wg-quick down MROLT027'
+
+alias isup='sudo swanctl --terminate --ike mro ; sudo swanctl -q && sudo swanctl --initiate --ike mro'
+alias isdown='sudo swanctl --terminate --ike mro'
+alias isls='sudo swanctl --list-sas'
+
 alias vi='nvim'
 alias vim='nvim'
 alias gitfs='git fetch && git status'

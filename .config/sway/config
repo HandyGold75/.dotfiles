@@ -9,6 +9,7 @@
 # https://github.com/swaywm/sway/wiki
 
 set $mod Mod4
+set $copilot Mod4+Shift+XF86TouchpadOff
 set $terminal kitty
 set $fileManager thunar
 set $menu wofi
@@ -95,32 +96,53 @@ for_window [app_id = "blueman-manager"] floating enable, resize set width 500px 
 #              |___/
 
 bindsym $mod+Semicolon exec $lock
+bindsym $copilot+Semicolon exec $lock
 bindsym $mod+Return exec $terminal
+bindsym $copilot+Return exec $terminal
 bindsym $mod+D exec $fileManager
+bindsym $copilot+D exec $fileManager
 bindsym $mod+I exec $sysinfo
+bindsym $copilot+I exec $sysinfo
 bindsym $mod+P exec $menu
+bindsym $copilot+P exec $menu
 bindgesture swipe:3:up exec  $menu
 bindsym $mod+V exec $clipboard
+bindsym $copilot+V exec $clipboard
 bindsym Print exec $screenshot
 # bindgesture pinch:2:outward exec $screenshot
 bindsym $mod+B exec pkill waybar || waybar -c ~/.config/waybar/config-sway.jsonc -s ~/.config/waybar/style-sway.css
+bindsym $copilot+B exec pkill waybar || waybar -c ~/.config/waybar/config-sway.jsonc -s ~/.config/waybar/style-sway.css
 
 bindsym $mod+Shift+C kill
+bindsym $copilot+Shift+C kill
 bindgesture swipe:3:down kill
 bindsym $mod+R exec "killall kanshi; kanshi"
+bindsym $copilot+R exec "killall kanshi; kanshi"
 bindsym $mod+Ctrl+R reload
+bindsym $copilot+Ctrl+R reload
 bindsym $mod+F4 exit
+bindsym $copilot+F4 exit
 bindsym $mod+F floating toggle
+bindsym $copilot+F floating toggle
 bindsym $mod+Shift+F focus mode_toggle
+# bindsym $copilot+Shift+F focus mode_toggle
 bindsym $mod+M fullscreen toggle
+bindsym $copilot+M fullscreen toggle
 bindsym $mod+Shift+M fullscreen toggle global
+# bindsym $copilot+Shift+M fullscreen toggle global
 bindsym $mod+T split toggle
+bindsym $copilot+T split toggle
 bindsym $mod+Up exec "playerctl play-pause"
+bindsym $copilot+Up exec "playerctl play-pause"
 bindsym $mod+Down exec "playerctl play-pause"
+bindsym $copilot+Down exec "playerctl play-pause"
 bindsym $mod+Left exec "playerctl previous"
+bindsym $copilot+Left exec "playerctl previous"
 bindsym $mod+Right exec "playerctl next"
+bindsym $copilot+Right exec "playerctl next"
 
 bindsym $mod+F11 exec headsetcontrol -l0
+bindsym $copilot+F11 exec headsetcontrol -l0
 
 bindsym XF86AudioRaiseVolume exec "wpctl set-volume @DEFAULT_SINK@ 1%+; notify-send -a volume -h int:value:$(wpctl get-volume @DEFAULT_SINK@ | awk '{ print $2 * 100 }') Volume"
 bindsym XF86AudioLowerVolume exec "wpctl set-volume @DEFAULT_SINK@ 1%-; notify-send -a volume -h int:value:$(wpctl get-volume @DEFAULT_SINK@ | awk '{ print $2 * 100 }') Volume"
@@ -138,32 +160,53 @@ bindsym XF86Calculator exec $calculator
 floating_modifier $mod normal
 
 bindsym $mod+U [urgent="newest"] focus
+bindsym $copilot+U [urgent="newest"] focus
 
 bindsym $mod+O move container output right; focus output right
+bindsym $copilot+O move container output right; focus output right
 bindsym $mod+Shift+O move container output left; focus output left
+# bindsym $copilot+Shift+O move container output left; focus output left
 
 bindsym $mod+Space scratchpad show
+bindsym $copilot+Space scratchpad show
 bindsym $mod+Shift+Space move scratchpad
+# bindsym $copilot+Shift+Space move scratchpad
 
 bindsym $mod+H resize shrink width 5ppt
+bindsym $copilot+H resize shrink width 5ppt
 bindsym $mod+J focus left
+bindsym $copilot+J focus left
 bindsym $mod+K focus right
+bindsym $copilot+K focus right
 bindsym $mod+L resize grow width 5ppt
+bindsym $copilot+L resize grow width 5ppt
 
 bindsym $mod+Shift+H move down
+# bindsym $copilot+Shift+H move down
 bindsym $mod+Shift+J move left
+# bindsym $copilot+Shift+J move left
 bindsym $mod+Shift+K move right
+# bindsym $copilot+Shift+K move right
 bindsym $mod+Shift+L move up
+# bindsym $copilot+Shift+L move up
 
 bindsym $mod+Ctrl+H move workspace output left
+bindsym $copilot+Ctrl+H move workspace output left
 bindsym $mod+Ctrl+J focus output left
+bindsym $copilot+Ctrl+J focus output left
 bindsym $mod+Ctrl+K focus output right
+bindsym $copilot+Ctrl+K focus output right
 bindsym $mod+Ctrl+L move workspace output right
+bindsym $copilot+Ctrl+L move workspace output right
 
 bindsym $mod+Minus resize shrink width 5ppt
+bindsym $copilot+Minus resize shrink width 5ppt
 bindsym $mod+Equal resize grow width 5ppt
-bindsym $mod+Shift+Minus resize shrink height 5ppt
+bindsym $copilot+Equal resize grow width 5ppt
+# bindsym $mod+Shift+Minus resize shrink height 5ppt
+bindsym $copilot+Shift+Minus resize shrink height 5ppt
 bindsym $mod+Shift+Equal resize grow height 5ppt
+# bindsym $copilot+Shift+Equal resize grow height 5ppt
 
 bindsym $mod+1 workspace number 1
 bindsym $mod+2 workspace number 2
