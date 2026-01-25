@@ -11,7 +11,7 @@
 - hypridle
 - hyprlock
 - xdg-desktop-portal-hyprland
-- hyprpolkitagent
+- polkit-kde-agent
 - hyprsysteminfo (AUR)
 - grim
 - slurp
