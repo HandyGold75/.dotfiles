@@ -48,7 +48,6 @@
 
 - thunar
 - firefox (deb)
-- vivaldi (deb)
 - thunderbird (snap)
 - libreoffice
 - teamviewer (deb)

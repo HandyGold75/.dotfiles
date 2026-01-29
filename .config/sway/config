@@ -394,12 +394,12 @@ bar {
 exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP
 exec hash dbus-update-activation-environment 2>/dev/null && dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP
 
- # Teams via Vivaldi
-exec /opt/vivaldi/vivaldi "--profile-directory=Profile 7" --app-id=cifhbcnohmdccbgoicgdjpfamggdegmo
- # Outlook via Vivaldi
-exec /opt/vivaldi/vivaldi "--profile-directory=Profile 7" --app-id=faolnafnngnfdaknnbpnkhgohbobgegn %U
-# exec thunderbird
-exec vivaldi
+
+ # Teams via FireFoxPWA
+exec /usr/bin/firefoxpwa site launch 01KG4DBA1YA7YEC2Q9BBEM94G7 --protocol %u
+ # Outlook via FireFoxPWA
+exec /usr/bin/firefoxpwa site launch 01KG4DMFEGVJFH7G872AFGGD19 --protocol %u
+exec firefox
 exec waybar -c ~/.config/waybar/config-sway.jsonc -s ~/.config/waybar/style-sway.css
 exec swayidle -w \
     timeout 300 'swaylock -C ~/.config/sway/swaylock' \
