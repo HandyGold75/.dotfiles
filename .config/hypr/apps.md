@@ -12,7 +12,6 @@
 - hyprlock
 - xdg-desktop-portal-hyprland
 - polkit-kde-agent
-- hyprsysteminfo (AUR)
 - grim
 - slurp
 - satty
