@@ -400,7 +400,7 @@ exec /usr/bin/firefoxpwa site launch 01KG4DBA1YA7YEC2Q9BBEM94G7 --protocol
  # Outlook via FireFoxPWA
 exec /usr/bin/firefoxpwa site launch 01KG4DMFEGVJFH7G872AFGGD19 --protocol
  # TOP Desk via FireFoxPWA
-exec /usr/bin/firefoxpwa site launch 01KGHK3BT4QMFC5ED3GANDKW4A --protocol
+exec /usr/bin/firefoxpwa site launch 01KGHMB59H0CW8S39MTGGPM9N0 --protocol
 exec firefox
 exec waybar -c ~/.config/waybar/config-sway.jsonc -s ~/.config/waybar/style-sway.css
 exec swayidle -w \
