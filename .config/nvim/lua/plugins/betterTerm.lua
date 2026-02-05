@@ -3,15 +3,15 @@ return {
 		"CRAG666/betterTerm.nvim",
 		name = "betterTerm",
 		config = function()
-			require("betterTerm").setup({ size = 15 })
-			vim.keymap.set({ "n", "t" }, "<C-o>", require("betterTerm").open)
-			vim.keymap.set({ "t" }, "<leader>o", require("betterTerm").select)
-			vim.keymap.set({ "t" }, "<leader>q", "<ESC><C-\\><C-n>:bd!<CR>")
+			require("betterTerm").setup({ size = 15, new_tab_mapping = "<C-t>", jump_tab_mapping = "<C-k$tab>" })
+			vim.keymap.set({ "n", "t" }, "<C-o>", require("betterTerm").toggle_termwindow, { noremap = true, desc = "BetterTerm toggle terminal window" })
+			vim.keymap.set({ "t" }, "<C-=>", function() require("betterTerm").cycle(1) end, { noremap = true, desc = "BetterTerm next terminal tab" })
+			vim.keymap.set({ "t" }, "<C-->", function() require("betterTerm").cycle(-1) end, { noremap = true, desc = "BetterTerm previous terminal tab" })
 		end,
 		keys = {
-			{ "<C-o>", function() require("betterTerm").open() end, { "n", "t" }, desc = "BetterTerm toggle terminal" },
-			{ "<leader>-", function() require("betterTerm").select() end, { "t" }, desc = "BetterTerm select terminal" },
-			{ "<leader>q", "<ESC><C-\\><C-n>:bd!<CR>", { "t" }, desc = "BetterTerm quit terminal" },
+			{ "<C-o>", function() require("betterTerm").toggle_termwindow() end, { "n", "t" }, desc = "BetterTerm toggle terminal window" },
+			{ "<C-=>", function() require("betterTerm").cycle(1) end, { "t" }, desc = "BetterTerm next terminal tab" },
+			{ "<C-->", function() require("betterTerm").cycle(-1) end, { "t" }, desc = "BetterTerm previous terminal tab" },
 		},
 	},
 	{

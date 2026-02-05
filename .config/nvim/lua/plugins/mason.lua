@@ -38,11 +38,6 @@ return {
 			lsp.taplo.setup(coq.lsp_ensure_capabilities({}))
 			lsp.yamlls.setup(coq.lsp_ensure_capabilities({}))
 			lsp.lemminx.setup(coq.lsp_ensure_capabilities({}))
-
-			vim.keymap.set({ "n" }, "<leader>li", ":LspInfo<CR>", { noremap = true, desc = "[l]sp [i]nfo" })
-			vim.keymap.set({ "n" }, "<leader>ls", ":LspStart<CR>", { noremap = true, desc = "[l]sp [s]tart" })
-			vim.keymap.set({ "n" }, "<leader>lS", ":LspStop<CR>", { noremap = true, desc = "[l]sp [S]top" })
-			vim.keymap.set({ "n" }, "<leader>lr", ":LspRestart<CR>", { noremap = true, desc = "[l]sp [r]estart" })
 		end,
 	},
 	{
@@ -66,5 +61,11 @@ return {
 		event = { "BufReadPre", "BufNewFile" },
 		dependencies = { { "mason-org/mason.nvim", name = "mason" }, { "neovim/nvim-lspconfig", name = "lspconfig" } },
 		opts = { automatic_installation = true, automatic_enable = false, ensure_installed = {} },
+		keys = {
+			{ "<leader>li", ":LspInfo<CR>", { "n" }, desc = "[l]sp [i]nfo" },
+			{ "<leader>ls", ":LspStart<CR>", { "n" }, desc = "[l]sp [s]tart" },
+			{ "<leader>lS", ":LspStop<CR>", { "n" }, desc = "[l]sp [S]top" },
+			{ "<leader>lr", ":LspRestart<CR>", { "n" }, desc = "[l]sp [r]estart" },
+		},
 	},
 }

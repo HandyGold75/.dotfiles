@@ -28,20 +28,22 @@ vim.opt.spell = false
 vim.opt.spelllang = "en_us"
 
 -- keybinds
-vim.keymap.set({ "n" }, "<C-s>", ":wa<CR>", { desc = "Save all buffers" })
-vim.keymap.set({ "n" }, "<leader>tw", ":set wrap!<CR>", { desc = "Warp [t]oggle [w]rap" })
-vim.keymap.set({ "n" }, "<C-k>", "ddkP", { silent = true, desc = "Swap line with above" })
-vim.keymap.set({ "n" }, "<C-j>", "ddp", { silent = true, desc = "Swap line with below" })
+vim.keymap.set({ "n" }, "<C-s>", ":wa<CR>", { noremap = true, desc = "Save all buffers" })
+vim.keymap.set({ "n" }, "<leader>tw", ":set wrap!<CR>", { noremap = true, desc = "Warp [t]oggle [w]rap" })
+vim.keymap.set({ "n" }, "<C-k>", "ddkP", { silent = true, noremap = true, desc = "Swap line with above" })
+vim.keymap.set({ "n" }, "<C-j>", "ddp", { silent = true, noremap = true, desc = "Swap line with below" })
 
-vim.keymap.set({ "n" }, "<C-c>", ":%y+<CR>", { desc = "Yank buffer to clipboard" })
-vim.keymap.set({ "v" }, "<C-c>", '"+y', { desc = "Yank selection to clipboard" })
-vim.keymap.set({ "v" }, "<C-x>", '"+d', { desc = "Cut selection to clipboard" })
+vim.keymap.set({ "n", "i", "v", "t" }, "<C-q>", "<ESC><C-\\><C-n>:wa<CR>:bd!<CR>", { noremap = true, desc = "Save and all buffers then close current buffer" })
 
-vim.keymap.set({ "i", "c" }, "<Esc>", "<Esc>:nohlsearch<CR>", { silent = true, desc = "Disable highlight on escape" })
-vim.keymap.set({ "i" }, "jj", "<Esc>jj", { silent = true, desc = "Escape insert mode going down" })
-vim.keymap.set({ "i" }, "kk", "<Esc>kk", { silent = true, desc = "Escape insert mode going up" })
-vim.keymap.set({ "n" }, "j", "jzz", { silent = true, desc = "Center going down" })
-vim.keymap.set({ "n" }, "k", "kzz", { silent = true, desc = "Center going up" })
+vim.keymap.set({ "n" }, "<C-c>", ":%y+<CR>", { noremap = true, desc = "Yank buffer to clipboard" })
+vim.keymap.set({ "v" }, "<C-c>", '"+y', { noremap = true, desc = "Yank selection to clipboard" })
+vim.keymap.set({ "v" }, "<C-x>", '"+d', { noremap = true, desc = "Cut selection to clipboard" })
+
+vim.keymap.set({ "i", "c" }, "<Esc>", "<Esc>:nohlsearch<CR>", { silent = true, noremap = true, desc = "Disable highlight on escape" })
+vim.keymap.set({ "i" }, "jj", "<Esc>jj", { silent = true, noremap = true, desc = "Escape insert mode going down" })
+vim.keymap.set({ "i" }, "kk", "<Esc>kk", { silent = true, noremap = true, desc = "Escape insert mode going up" })
+vim.keymap.set({ "n" }, "j", "jzz", { silent = true, noremap = true, desc = "Center going down" })
+vim.keymap.set({ "n" }, "k", "kzz", { silent = true, noremap = true, desc = "Center going up" })
 
 -- autocmds
 
