@@ -23,7 +23,7 @@ return {
 				projectEntry = "NvimTreeOpen",
 				replaceHome = true,
 				lastViewTime = "pastMonth",
-				sections = { { "name", config = { style = "lite", gradient = "blue" } }, "remaps", "recents", _local_remaps },
+				sections = { { "name", config = { style = "lite", gradient = "blue" } }, "remaps", _local_remaps, "recents", "hacker_news" },
 			})
 		end,
 		cmd = { "Spaceport" },
