@@ -59,21 +59,29 @@ export LC_ALL="en_US.UTF-8"
 if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
+
 if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
+fi
+
+if [ -d "/opt/nvim-linux-x86_64/bin" ] ; then
+    PATH="/opt/nvim-linux-x86_64/bin:$PATH"
 fi
 
 if [ -d "/usr/local/go/bin" ] ; then
     PATH="/usr/local/go/bin:$PATH"
 fi
+
 if [ -d "$HOME/go/bin" ] ; then
     PATH="$HOME/go/bin:$PATH"
 fi
-if [ -d "$HOME/.venv/bin" ] ; then
-    PATH="$HOME/.venv/bin:$PATH"
+
+if [ -d "$HOME/.cargo/bin" ] ; then
+    PATH="$HOME/.cargo/bin:$PATH"
 fi
-if [ -d "/opt/nvim-linux-x86_64/bin" ] ; then
-    PATH="/opt/nvim-linux-x86_64/bin:$PATH"
+
+if [ -d "$HOME/venv/bin" ] ; then
+    PATH="$HOME/venv/bin:$PATH"
 fi
 
 # Aliases

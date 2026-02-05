@@ -5,39 +5,67 @@ return {
 		lazy = true,
 		dependencies = { { "ms-jpq/coq_nvim", name = "coq" } },
 		config = function()
-			local lsp = require("lspconfig")
 			local coq = require("coq")
 
-			lsp.lua_ls.setup(coq.lsp_ensure_capabilities({
-				settings = {
-					Lua = {
-						completion = { callSnippet = "Both", displayContext = 5, keywordSnippet = "Both" },
-						diagnostics = { globals = { "vim" }, workspaceDelay = 1000 },
-						format = { enable = false },
-						telemetry = { enable = true },
+			vim.lsp.config("lua_ls", {
+				coq.lsp_ensure_capabilities({
+					settings = {
+						Lua = {
+							completion = { callSnippet = "Both", displayContext = 5, keywordSnippet = "Both" },
+							diagnostics = { globals = { "vim" }, workspaceDelay = 1000 },
+							format = { enable = false },
+							telemetry = { enable = true },
+						},
 					},
-				},
-			}))
-			lsp.gopls.setup(coq.lsp_ensure_capabilities({ settings = { gopls = {
+				}),
+			})
+			vim.lsp.enable("lua_ls")
+
+			vim.lsp.config("gopls", { coq.lsp_ensure_capabilities({ settings = { gopls = {
 				usePlaceholders = true,
 				analyses = { unusedvariable = true },
 				staticcheck = true,
 				gofumpt = true,
-			} } }))
-			lsp.jedi_language_server.setup({})
-			lsp.bashls.setup(coq.lsp_ensure_capabilities({}))
-			lsp.html.setup(coq.lsp_ensure_capabilities({}))
-			lsp.cssls.setup(coq.lsp_ensure_capabilities({}))
-			lsp.ts_ls.setup(coq.lsp_ensure_capabilities({}))
-			lsp.gdscript.setup(coq.lsp_ensure_capabilities({}))
-			lsp.marksman.setup(coq.lsp_ensure_capabilities({}))
-			lsp.ltex.setup(coq.lsp_ensure_capabilities({ settings = {
+			} } }) })
+			vim.lsp.enable("gopls")
+
+			vim.lsp.config("jedi_language_server", { {} })
+			vim.lsp.enable("jedi_language_server")
+
+			vim.lsp.config("bashls", { coq.lsp_ensure_capabilities({}) })
+			vim.lsp.enable("bashls")
+
+			vim.lsp.config("html", { coq.lsp_ensure_capabilities({}) })
+			vim.lsp.enable("html")
+
+			vim.lsp.config("cssls", { coq.lsp_ensure_capabilities({}) })
+			vim.lsp.enable("cssls")
+
+			vim.lsp.config("ts_ls", { coq.lsp_ensure_capabilities({}) })
+			vim.lsp.enable("ts_ls")
+
+			vim.lsp.config("gdscript", { coq.lsp_ensure_capabilities({}) })
+			vim.lsp.enable("gdscript")
+
+			vim.lsp.config("marksman", { coq.lsp_ensure_capabilities({}) })
+			vim.lsp.enable("marksman")
+
+			vim.lsp.config("ltex", { coq.lsp_ensure_capabilities({ settings = {
 				ltex = { language = "en-US" },
-			} }))
-			lsp.jsonls.setup(coq.lsp_ensure_capabilities({}))
-			lsp.taplo.setup(coq.lsp_ensure_capabilities({}))
-			lsp.yamlls.setup(coq.lsp_ensure_capabilities({}))
-			lsp.lemminx.setup(coq.lsp_ensure_capabilities({}))
+			} }) })
+			vim.lsp.enable("ltex")
+
+			vim.lsp.config("jsonls", { coq.lsp_ensure_capabilities({}) })
+			vim.lsp.enable("jsonls")
+
+			vim.lsp.config("taplo", { coq.lsp_ensure_capabilities({}) })
+			vim.lsp.enable("taplo")
+
+			vim.lsp.config("yamlls", { coq.lsp_ensure_capabilities({}) })
+			vim.lsp.enable("yamlls")
+
+			vim.lsp.config("lemminx", { coq.lsp_ensure_capabilities({}) })
+			vim.lsp.enable("lemminx")
 		end,
 	},
 	{
