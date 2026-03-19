@@ -19,6 +19,7 @@
 - wofi
 - wl-clipboard
 - cliphist
+- trash-cli
 - waybar
 - network-manager-applet
 - blueman
