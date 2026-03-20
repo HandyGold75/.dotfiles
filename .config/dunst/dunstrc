@@ -114,4 +114,4 @@
 [system-upgrade]
        appname = "OpenClaw"
        summary = "System Upgrade Reminder"
-       script = ~/.config/dunst/copy-upgrade.sh
+       script = ~/.config/dunst/scripts/copy-upgrade.sh
