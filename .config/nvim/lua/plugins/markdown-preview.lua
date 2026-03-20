@@ -11,7 +11,7 @@ return {
 			vim.g.mkdp_auto_start = 1
 			vim.g.mkdp_auto_close = 0
 			vim.g.mkdp_combine_preview = 1
-			vim.g.updatetime = 100
+			vim.g.updatetime = 25
 			vim.g.mkdp_filetypes = { "markdown", "text" }
 			vim.g.mkdp_open_to_the_world = 1
 			vim.g.mkdp_open_ip = "127.0.0.1"
