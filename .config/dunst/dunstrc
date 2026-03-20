@@ -53,7 +53,7 @@
 
     dmenu = /usr/bin/dmenu -p dunst:
     browser = /usr/bin/firefox
-    always_run_script = true
+    always_run_script = false
     title = Dunst
     class = Dunst
     corner_radius = 10
@@ -110,3 +110,8 @@
 [XAutoLock]
     appname = "XAutoLock"
     set_stack_tag = "XAutoLock"
+
+[system-upgrade]
+       appname = "OpenClaw"
+       summary = "System Upgrade Reminder"
+       script = ~/.config/dunst/copy-upgrade.sh
