@@ -43,3 +43,7 @@ fi
 if [ -d "$HOME/venv/bin" ] ; then
     PATH="$HOME/venv/bin:$PATH"
 fi
+
+if [ -d "$HOME/.opencode/bin" ] ; then
+    PATH="$HOME/.opencode/bin:$PATH"
+fi

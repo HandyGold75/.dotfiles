@@ -84,6 +84,10 @@ if [ -d "$HOME/venv/bin" ] ; then
     PATH="$HOME/venv/bin:$PATH"
 fi
 
+if [ -d "$HOME/.opencode/bin" ] ; then
+    PATH="$HOME/.opencode/bin:$PATH"
+fi
+
 # Aliases
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 alias ll='ls -halF'
