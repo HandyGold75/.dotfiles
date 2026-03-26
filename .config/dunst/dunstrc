@@ -53,7 +53,7 @@
 
     dmenu = /usr/bin/dmenu -p dunst:
     browser = /usr/bin/firefox
-    always_run_script = false
+    always_run_script = true
     title = Dunst
     class = Dunst
     corner_radius = 10
@@ -90,8 +90,8 @@
     new_icon = ~/.config/dunst/icons/urgent.svg
 
 [battery]
-	appname = "battery"
-	new_icon = ~/.config/dunst/icons/spaceman.jpg
+    appname = "battery"
+    new_icon = ~/.config/dunst/icons/spaceman.jpg
 
 [volume]
     appname = "volume"
@@ -113,5 +113,5 @@
 
 [system-upgrade]
        appname = "OpenClaw"
-       summary = "System Upgrade Reminder"
+       summary = "*System Upgrade*"
        script = ~/.config/dunst/scripts/copy-upgrade.sh

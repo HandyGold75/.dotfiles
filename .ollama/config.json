@@ -1,0 +1,14 @@
+{
+  "integrations": {
+    "openclaw": {
+      "models": [
+        "kimi-k2.5:cloud"
+      ]
+    },
+    "opencode": {
+      "models": [
+        "kimi-k2.5:cloud"
+      ]
+    }
+  }
+}
