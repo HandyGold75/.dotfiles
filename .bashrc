@@ -21,6 +21,9 @@ if [ -z "$TMUX" ] && [ ! "$(ps -o comm= $PPID)" = "nvim" ] && command -v tmux >/
     printf "\n/\\ Tmux failed to attach /\\\n"
 fi
 
+# FastFetch
+fastfetch && echo
+
 # History file
 HISTCONTROL=ignoreboth
 shopt -s histappend
@@ -109,15 +112,16 @@ alias gitfp='git fetch && git pull'
 alias gitac='git add . && git commit -m $(date +%d-%b-%y)'
 alias gitps='git push'
 alias gitpl='git pull'
+alias oc='ollama launch openclaw --model=kimi-k2.5:cloud --yes'
 
 # Prompt
-PS1='[\u@\h ${PWD/$HOME/\~}]\$ '
+PS1='\r[\u@\h ${PWD/$HOME/\~}]\$ '
 PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME} ${PWD/$HOME/\~}\007"'
 
 # nvm (For node installation)
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
-# FastFetch
-fastfetch && echo
+# OpenClaw Completion
+source "/home/izo/.openclaw/completions/openclaw.bash"
