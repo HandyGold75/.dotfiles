@@ -124,4 +124,4 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
 # OpenClaw Completion
-source "/home/izo/.openclaw/completions/openclaw.bash"
+source "$HOME/.openclaw/completions/openclaw.bash"
