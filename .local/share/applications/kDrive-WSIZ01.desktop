@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=kDrive
+Exec=/home/izo/Programs/kDrive.AppImage
+Icon=/home/izo/.icons/applications/kDrive.png
+Type=Application
+Categories=System
