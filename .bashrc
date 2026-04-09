@@ -89,6 +89,7 @@ fi
 
 if [ -d "$HOME/.opencode/bin" ] ; then
     PATH="$HOME/.opencode/bin:$PATH"
+    source "$HOME/.openclaw/completions/openclaw.bash"
 fi
 
 # Aliases
@@ -122,6 +123,3 @@ PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME} ${PWD/$HOME/\~}\007"'
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
-
-# OpenClaw Completion
-source "$HOME/.openclaw/completions/openclaw.bash"
