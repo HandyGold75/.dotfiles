@@ -1,5 +1,11 @@
 {
   "integrations": {
+    "hermes": {
+      "models": [
+        "kimi-k2.5:cloud"
+      ],
+      "onboarded": true
+    },
     "openclaw": {
       "models": [
         "kimi-k2.5:cloud"
