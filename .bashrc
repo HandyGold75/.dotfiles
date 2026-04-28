@@ -116,7 +116,7 @@ alias gitpl='git pull'
 alias oc='ollama launch openclaw --model=kimi-k2.5:cloud --yes'
 
 # Prompt
-PS1='\r[\u@\h ${PWD/$HOME/\~}]\$ '
+PS1='[\u@\h ${PWD/$HOME/\~}]\$ '
 PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME} ${PWD/$HOME/\~}\007"'
 
 # nvm (For node installation)

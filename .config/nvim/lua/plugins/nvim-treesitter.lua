@@ -7,7 +7,7 @@ return {
 				parser_install_dir = vim.fn.stdpath("data") .. "/lazy/nvim-treesitter",
 				-- ensure_installed = "all",
 				auto_install = false,
-				highlight = { enable = true, additional_vim_regex_highlighting = false, disable = { "gomod" } },
+				highlight = { enable = true, additional_vim_regex_highlighting = false, disable = { "gomod", "markdown" } },
 				indent = { enable = true },
 			})
 
