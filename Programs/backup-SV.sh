@@ -1,6 +1,6 @@
 #!/bin/bash
 
-backupDir="/mnt/OneDrive_IZO/Backup/Servers"
+backupDir="/mnt/kDrive_IZO/Backup/Servers"
 tmpDir="$HOME/backup_sv"
 runBackupDir(){
     if [ -z "$1" ] || [ -z "$2" ]; then

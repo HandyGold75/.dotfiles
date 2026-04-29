@@ -87,11 +87,6 @@ if [ -d "$HOME/venv/bin" ] ; then
     PATH="$HOME/venv/bin:$PATH"
 fi
 
-if [ -d "$HOME/.opencode/bin" ] ; then
-    PATH="$HOME/.opencode/bin:$PATH"
-    source "$HOME/.openclaw/completions/openclaw.bash"
-fi
-
 # Aliases
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 alias ll='ls -halF'
@@ -113,7 +108,6 @@ alias gitfp='git fetch && git pull'
 alias gitac='git add . && git commit -m $(date +%d-%b-%y)'
 alias gitps='git push'
 alias gitpl='git pull'
-alias oc='ollama launch openclaw --model=kimi-k2.5:cloud --yes'
 
 # Prompt
 PS1='[\u@\h ${PWD/$HOME/\~}]\$ '
