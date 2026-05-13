@@ -110,8 +110,8 @@ bindsym $mod+V exec $clipboard
 bindsym $copilot+V exec $clipboard
 bindsym Print exec $screenshot
 # bindgesture pinch:2:outward exec $screenshot
-bindsym $mod+B exec pkill waybar || waybar -c ~/.config/waybar/config-sway.jsonc -s ~/.config/waybar/style-sway.css
-bindsym $copilot+B exec pkill waybar || waybar -c ~/.config/waybar/config-sway.jsonc -s ~/.config/waybar/style-sway.css
+bindsym $mod+B exec pkill waybar || waybar -c ~/.config/waybar/config.jsonc -s ~/.config/waybar/style.css
+bindsym $copilot+B exec pkill waybar || waybar -c ~/.config/waybar/config.jsonc -s ~/.config/waybar/style.css
 
 bindsym $mod+Shift+C kill
 bindsym $copilot+Shift+C kill
@@ -402,7 +402,7 @@ exec /usr/bin/firefoxpwa site launch 01KG4DMFEGVJFH7G872AFGGD19 --protocol
  # TOP Desk via FireFoxPWA
 exec /usr/bin/firefoxpwa site launch 01KGHMB59H0CW8S39MTGGPM9N0 --protocol
 exec firefox
-exec waybar -c ~/.config/waybar/config-sway.jsonc -s ~/.config/waybar/style-sway.css
+exec waybar -c ~/.config/waybar/config.jsonc -s ~/.config/waybar/style.css
 exec swayidle -w \
     timeout 300 'swaylock -C ~/.config/sway/swaylock' \
     timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
