@@ -9,7 +9,9 @@ if [ "$TERM" = "xterm-kitty" ]; then
 fi
 
 # FastFetch
-fastfetch && echo
+if [ "$(hostname)" != "SV05" ]; then
+    ( (fastfetch && echo) &)
+fi
 
 # History file
 HISTCONTROL=ignoreboth
@@ -76,6 +78,7 @@ PS1='[\u@\h ${PWD/$HOME/\~}]\$ '
 PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME} ${PWD/$HOME/\~}\007"'
 
 # SV05
-if [ "$(hostname)" = "SV05" ]; then
+if [ "$(hostname)" = "SV05" ] && [ ! "$(ps -o comm= $PPID)" = "nvim" ]; then
     nvim
+    exit
 fi
