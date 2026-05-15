@@ -395,6 +395,7 @@ exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CU
 exec hash dbus-update-activation-environment 2>/dev/null && dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP
 exec gsettings set org.gnome.desktop.interface cursor-theme 'catppuccin-macchiato-dark-cursors'
 exec headsetcontrol -l 0
+exec cliphist wipe
 # exec pactl load-module module-remap-sink sink_name=mono sink_properties='device.description="FallbackMono"' channels=1 channel_map=mono
 
 exec waybar -c ~/.config/waybar/config.jsonc -s ~/.config/waybar/style.css
