@@ -19,17 +19,16 @@
 - wofi
 - wl-clipboard
 - cliphist
-- trash-cli
 - waybar
 - network-manager-applet
 - blueman
 - opentabletdriver
-- qt5-wayland
 - qt6-wayland
 - kitty
 - nvim
 - btop
 - headsetcontrol (AUR)
+- fastfetch (deb)
 
 ### Audio
 
@@ -56,6 +55,7 @@
 - firefox
 - discord
 - discover-overlay (AUR)
+- trash-cli
 - steam
 - mangohud
 - gamescope

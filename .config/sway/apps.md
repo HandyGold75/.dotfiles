@@ -1,30 +1,33 @@
-# Apps
+#a Apps
 
 ## Required
 
 ### System
 
 - sway
+- swaylock
+- swayidle
 - xdg-desktop-portal-wlr
+- polkit-kde-agent
 - dunst
 - wofi
 - wl-clipboard
 - playerctl
 - cliphist
 - kanshi
-- swaylock
-- swayidle
-- waybar (git)
+- waybar (Ubuntu: git)
 - grim
 - slurp
-- satty (git)
+- satty (Ubuntu: git)
 - network-manager-applet
+- opentabletdriver
+- qt6-wayland
 - blueman
-- kitty (git)
-- nvim (git)
+- kitty (Ubuntu: git)
+- nvim (Ubuntu: git)
 - btop
 - brightnessctl
-- headsetcontrol (git)
+- headsetcontrol (Ubuntu: git)
 - fastfetch (deb)
 
 ### Audio
@@ -42,12 +45,14 @@
 ### Theming
 
 - qt6ct
-- nwg-look (git)
+- nwg-look (Ubuntu: git)
+- catppuccin-gtk-theme-macchiato (Arch: AUR; Ubuntu: Script)
 
 ### Applications
 
+- paru (Arch: AUR; Ubuntu: None)
 - thunar
-- firefox (deb)
+- firefox (Ubuntu: deb)
 - thunderbird (snap)
 - libreoffice
 - teamviewer (deb)
@@ -56,3 +61,10 @@
 - remmina
 - virt-manager
 - mpv
+- trash-cli
+- discord
+- discover-overlay (Arch: AUR)
+- steam
+- mangohud
+- gamescope
+  - `gamescope -W 2560 -H 1440 -r 165 -f -e --expose-wayland --force-grab-cursor --mangoapp -- %command%`
