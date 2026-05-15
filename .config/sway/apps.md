@@ -28,7 +28,7 @@
 - btop
 - brightnessctl
 - headsetcontrol (Ubuntu: git)
-- fastfetch (deb)
+- fastfetch (Ubuntu: deb)
 
 ### Audio
 
@@ -53,7 +53,6 @@
 - paru (Arch: AUR; Ubuntu: None)
 - thunar
 - firefox (Ubuntu: deb)
-- thunderbird (snap)
 - libreoffice
 - teamviewer (deb)
 - forticlient vpn (deb)
