@@ -1,17 +1,10 @@
-profile Home_1 {
-	output "Sony SONY TV 0x01010101" disable
-	output "Valve Corporation Index HMD 0x09A67893" disable
+profile Home {
 	output "Microstep MSI MAG272QP CA8A019390334" enable mode 2560x1440 position 0,0
 	output "Ancor Communications Inc VX248 FCLMQS058388" enable mode 1920x1080 position -1920,350
-	exec notify-send -u low -a Kanshi 'Applying profile' 'Home 1'
-}
-
-profile Home_2 {
-	output "LG Display 0x07A2 Unknown" disable
-	output "Microstep MSI MAG272QP CA8A019390334" enable mode 2560x1440 position 1920,0
-	# output "Ancor Communications Inc VX248 FCLMQS058388" disable
-	output "Ancor Communications Inc VX248 FCLMQS058388" enable mode 1920x1080 position 0,446
-	exec notify-send -u low -a Kanshi 'Applying profile' 'Home 2'
+	output "Sony SONY TV 0x01010101" enable mode 1920x1080 position 2560,0
+	# output "Sony SONY TV 0x01010101" disable
+	output "Valve Corporation Index HMD 0x09A67893" disable
+	exec notify-send -u low -a Kanshi 'Applying profile' 'Home'
 }
 
 profile Laptop {
@@ -19,73 +12,73 @@ profile Laptop {
 	exec notify-send -u low -a Kanshi 'Applying profile' 'Laptop'
 }
 
-profile MrOrange_1 {
+profile MRO_1 {
 	output "LG Display 0x07A2 Unknown" enable mode 1920x1200 position 760,1440
 	output "Philips Consumer Electronics Company PHL 346E2C UK02321054994" enable mode 3440x1440 position 0,0
-	exec notify-send -u low -a Kanshi 'Applying profile' 'MrOrange 1'
+	exec notify-send -u low -a Kanshi 'Applying profile' 'MRO 1'
 }
 
-profile MrOrange_2 {
+profile MRO_2 {
 	output "LG Display 0x07A2 Unknown" enable mode 1920x1200 position 320,1200
 	output "LG Electronics LG ULTRAWIDE 0x00064D82" enable mode 2560x1080 position 0,0
-	exec notify-send -u low -a Kanshi 'Applying profile' 'MrOrange 2'
+	exec notify-send -u low -a Kanshi 'Applying profile' 'MRO 2'
 }
 
-profile DI_Platform_1 {
+profile DI_P_1 {
 	output "LG Display 0x07A2 Unknown" enable mode 1920x1200 position 0,1200
 	output HDMI-1 enable mode 1920x1080 position 0,0
-	exec notify-send -u low -a Kanshi 'Applying profile' 'DI Platform 1'
+	exec notify-send -u low -a Kanshi 'Applying profile' 'DI P 1'
 }
 
-profile DI_Platform_2 {
+profile DI_P_2 {
 	output "LG Display 0x07A2 Unknown" enable mode 1920x1200 position 0,1200
 	output HDMI-1 enable mode 1920x1080 position 0,0
-	exec notify-send -u low -a Kanshi 'Applying profile' 'DI Platform 2'
+	exec notify-send -u low -a Kanshi 'Applying profile' 'DI P 2'
 }
 
-profile DI_Platform_3 {
+profile DI_P_3 {
 	output "LG Display 0x07A2 Unknown" enable mode 1920x1200 position 0,1200
 	output "LG Electronics LG TV 0x01010101" enable mode 1920x1080 position 0,0
-	exec notify-send -u low -a Kanshi 'Applying profile' 'DI Platform 3'
+	exec notify-send -u low -a Kanshi 'Applying profile' 'DI P 3'
 }
 
-profile DI_Platform_4 {
+profile DI_P_4 {
 	output "LG Display 0x07A2 Unknown" enable mode 1920x1200 position 0,1200
 	output HDMI-1 enable mode 1920x1080 position 0,0
-	exec notify-send -u low -a Kanshi 'Applying profile' 'DI Platform 4'
+	exec notify-send -u low -a Kanshi 'Applying profile' 'DI P 4'
 }
 
-profile DI_Workplace_1 {
+profile DI_W_1 {
 	output "LG Display 0x07A2 Unknown" enable mode 1920x1200 position 5120,135
 	output "AOC Q2790 HBDNBHA000377" enable mode 2560x1440 position 2560,0
 	output "AOC Q2790 HBDP2HA000031" enable mode 2560x1440 position 0,0
-	exec notify-send -u low -a Kanshi 'Applying profile' 'DI Workplace 1'
+	exec notify-send -u low -a Kanshi 'Applying profile' 'DI W 1'
 }
 
-profile DI_Workplace_2 {
+profile DI_W_2 {
 	output "LG Display 0x07A2 Unknown" enable mode 1920x1200 position 0,360
 	output DP-1-1 enable mode 2560x1440 position 1920,0
 	output DP-1-2 enable mode 2560x1440 position 4480,0
-	exec notify-send -u low -a Kanshi 'Applying profile' 'DI Workplace 2'
+	exec notify-send -u low -a Kanshi 'Applying profile' 'DI W 2'
 }
 
-profile DI_Workplace_3 {
+profile DI_W_3 {
 	output "LG Display 0x07A2 Unknown" enable mode 1920x1200 position 4480,608
 	output DP-1-1 enable mode 1920x1080 position 2560,180
 	output DP-1-2 enable mode 2560x1440 position 0,0
-	exec notify-send -u low -a Kanshi 'Applying profile' 'DI Workplace 3'
+	exec notify-send -u low -a Kanshi 'Applying profile' 'DI W 3'
 }
 
-profile DI_Workplace_4 {
+profile DI_W_4 {
 	output "LG Display 0x07A2 Unknown" enable mode 1920x1200 position 0,955
 	output "AOC Q2790 HBDL5HA000180" enable mode 2560x1440 position 4480,0
 	output "AOC Q27V5C 18DP9HA011426" enable mode 2560x1440 position 1920,0
-	exec notify-send -u low -a Kanshi 'Applying profile' 'DI Workplace 4'
+	exec notify-send -u low -a Kanshi 'Applying profile' 'DI W 4'
 }
 
-profile CV_Workplace_1 {
+profile CV_W_1 {
 	output "LG Display 0x07A2 Unknown" enable mode 1920x1200 position 1920,1200
 	output "Dell Inc. DELL U2412M 0FFXD46G782L" enable mode 1920x1200 position 1920,0
 	output "Dell Inc. DELL U2412M YPPY06AD0EES" enable mode 1920x1200 position 0,0
-	exec notify-send -u low -a Kanshi 'Applying profile' 'CV Workplace 1'
+	exec notify-send -u low -a Kanshi 'Applying profile' 'CV W 1'
 }

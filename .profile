@@ -14,3 +14,6 @@ if [ -n "$BASH_VERSION" ]; then
         . "$HOME/.bashrc"
     fi
 fi
+
+export XCURSOR_THEME="catppuccin-macchiato-dark-cursors"
+export XCURSOR_SIZE="24"

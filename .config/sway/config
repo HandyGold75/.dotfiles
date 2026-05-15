@@ -95,23 +95,25 @@ for_window [app_id = "blueman-manager"] floating enable, resize set width 500px 
 #               __/ |
 #              |___/
 
-bindsym $mod+Semicolon exec $lock
-bindsym $copilot+Semicolon exec $lock
 bindsym $mod+Return exec $terminal
 bindsym $copilot+Return exec $terminal
 bindsym $mod+D exec $fileManager
 bindsym $copilot+D exec $fileManager
-bindsym $mod+I exec $sysinfo
-bindsym $copilot+I exec $sysinfo
 bindsym $mod+P exec $menu
 bindsym $copilot+P exec $menu
 bindgesture swipe:3:up exec  $menu
+bindsym $mod+Semicolon exec $lock
+bindsym $copilot+Semicolon exec $lock
 bindsym $mod+V exec $clipboard
 bindsym $copilot+V exec $clipboard
 bindsym Print exec $screenshot
-# bindgesture pinch:2:outward exec $screenshot
+bindgesture pinch:2:outward exec $screenshot
+bindsym $mod+I exec $sysinfo
+bindsym $copilot+I exec $sysinfo
 bindsym $mod+B exec pkill waybar || waybar -c ~/.config/waybar/config.jsonc -s ~/.config/waybar/style.css
 bindsym $copilot+B exec pkill waybar || waybar -c ~/.config/waybar/config.jsonc -s ~/.config/waybar/style.css
+bindsym $mod+F11 exec headsetcontrol -l0
+bindsym $copilot+F11 exec headsetcontrol -l0
 
 bindsym $mod+Shift+C kill
 bindsym $copilot+Shift+C kill
@@ -141,9 +143,6 @@ bindsym $copilot+Left exec "playerctl previous"
 bindsym $mod+Right exec "playerctl next"
 bindsym $copilot+Right exec "playerctl next"
 
-bindsym $mod+F11 exec headsetcontrol -l0
-bindsym $copilot+F11 exec headsetcontrol -l0
-
 bindsym XF86AudioRaiseVolume exec "wpctl set-volume @DEFAULT_SINK@ 1%+; notify-send -a volume -h int:value:$(wpctl get-volume @DEFAULT_SINK@ | awk '{ print $2 * 100 }') Volume"
 bindsym XF86AudioLowerVolume exec "wpctl set-volume @DEFAULT_SINK@ 1%-; notify-send -a volume -h int:value:$(wpctl get-volume @DEFAULT_SINK@ | awk '{ print $2 * 100 }') Volume"
 bindsym XF86AudioMute exec "wpctl set-mute @DEFAULT_SINK@ toggle"
@@ -155,6 +154,7 @@ bindsym XF86AudioPrev exec "playerctl previous"
 
 bindsym XF86MonBrightnessUp exec "notify-send -a brightness -h int:value:$(brightnessctl -m set +5% -n 1 | awk -F ',' '{ print $4 }') Brightness"
 bindsym XF86MonBrightnessDown exec "notify-send -a brightness -h int:value:$(brightnessctl -m set 5%- -n 1 | awk -F ',' '{ print $4 }') Brightness"
+
 bindsym XF86Calculator exec $calculator
 
 floating_modifier $mod normal
@@ -393,7 +393,23 @@ bar {
 
 exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP
 exec hash dbus-update-activation-environment 2>/dev/null && dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP
+exec gsettings set org.gnome.desktop.interface cursor-theme 'catppuccin-macchiato-dark-cursors'
+exec headsetcontrol -l 0
+# exec pactl load-module module-remap-sink sink_name=mono sink_properties='device.description="FallbackMono"' channels=1 channel_map=mono
 
+exec waybar -c ~/.config/waybar/config.jsonc -s ~/.config/waybar/style.css
+exec swayidle -w \
+    timeout 300 'swaylock -C ~/.config/sway/swaylock' \
+    timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+    before-sleep 'swaylock -C ~/.config/sway/swaylock'
+
+exec kanshi
+exec wl-paste --watch cliphist store
+exec nm-applet
+exec blueman-applet
+exec otd-daemon
+exec /usr/lib/x86_64-linux-gnu/libexec/polkit-kde-authentication-agent-1
+exec pidof Macros.bin || hg macros
 
  # Teams via FireFoxPWA
 exec /usr/bin/firefoxpwa site launch 01KG4DBA1YA7YEC2Q9BBEM94G7 --protocol
@@ -401,18 +417,8 @@ exec /usr/bin/firefoxpwa site launch 01KG4DBA1YA7YEC2Q9BBEM94G7 --protocol
 exec /usr/bin/firefoxpwa site launch 01KG4DMFEGVJFH7G872AFGGD19 --protocol
  # TOP Desk via FireFoxPWA
 exec /usr/bin/firefoxpwa site launch 01KGHMB59H0CW8S39MTGGPM9N0 --protocol
-exec firefox
-exec waybar -c ~/.config/waybar/config.jsonc -s ~/.config/waybar/style.css
-exec swayidle -w \
-    timeout 300 'swaylock -C ~/.config/sway/swaylock' \
-    timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-    before-sleep 'swaylock -C ~/.config/sway/swaylock'
-exec kanshi
-exec wl-paste --watch cliphist store
-exec nm-applet
-exec blueman-applet
-exec pidof Macros.bin || hg macros
-exec /usr/lib/x86_64-linux-gnu/libexec/polkit-kde-authentication-agent-1
-# exec pactl load-module module-remap-sink sink_name=mono sink_properties='device.description="FallbackMono"' channels=1 channel_map=mono
 
-exec headsetcontrol -l 0
+exec steam
+exec discord
+exec discover-overlay
+exec firefox
