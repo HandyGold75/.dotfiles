@@ -106,12 +106,3 @@
     new_icon = ~/.config/dunst/icons/
     format = "<b>%s</b>: %n%%"
     timeout = 1
-
-[XAutoLock]
-    appname = "XAutoLock"
-    set_stack_tag = "XAutoLock"
-
-[system-upgrade]
-       appname = "OpenClaw"
-       summary = "*System Upgrade*"
-       script = ~/.config/dunst/scripts/copy-upgrade.sh
