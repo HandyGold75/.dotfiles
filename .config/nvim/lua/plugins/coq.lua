@@ -6,14 +6,6 @@ return {
 		dependencies = { "ms-jpq/coq.artifacts", "ms-jpq/coq.thirdparty" },
 		build = ":COQdeps",
 		event = { "BufReadPre", "BufNewFile" },
-	},
-	{
-		"ms-jpq/coq_nvim",
-		name = "coq",
-		branch = "coq",
-		dependencies = { "ms-jpq/coq.thirdparty" },
-		build = ":COQdeps",
-		event = { "BufReadPre", "BufNewFile" },
 		config = function()
 			require("coq_3p").setup({
 				{ src = "builtin/css" },

@@ -414,6 +414,8 @@ exec pidof Macros.bin || hg macros
 
  # Teams via FireFoxPWA
 exec /usr/bin/firefoxpwa site launch 01KG4DBA1YA7YEC2Q9BBEM94G7 --protocol
+ # Teams via ChromePWA
+exec /opt/google/chrome/google-chrome --profile-directory=Default --app-id=ompifgpmddkgmclendfeacglnodjjndh %U --password-store=basic
  # Outlook via FireFoxPWA
 exec /usr/bin/firefoxpwa site launch 01KG4DMFEGVJFH7G872AFGGD19 --protocol
  # TOP Desk via FireFoxPWA
