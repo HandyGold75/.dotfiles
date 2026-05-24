@@ -1,4 +1,4 @@
-#a Apps
+# Apps
 
 ## Required
 
@@ -29,6 +29,7 @@
 - brightnessctl
 - headsetcontrol (Ubuntu: git)
 - fastfetch (Ubuntu: deb)
+- inetutils (Arch only)
 
 ### Audio
 
@@ -50,16 +51,17 @@
 
 ### Applications
 
-- paru (Arch: AUR; Ubuntu: None)
+- paru (Arch only: AUR)
 - thunar
 - firefox (Ubuntu: deb)
 - libreoffice
-- teamviewer (deb)
-- forticlient vpn (deb)
+- teamviewer (Ubuntu: deb)
+- forticlient vpn (Ubuntu: deb)
 - rclone
 - remmina
 - virt-manager
 - mpv
+- timeshift
 - trash-cli
 - discord
 - discover-overlay (Arch: AUR)
@@ -67,3 +69,9 @@
 - mangohud
 - gamescope
   - `gamescope -W 2560 -H 1440 -r 165 -f -e --expose-wayland --force-grab-cursor --mangoapp -- %command%`
+- kdenlive
+- krita
+- spotify (Ubuntu: deb)
+- blender
+- protontricks (Arch: ?)
+- winetricks (Arch: ?)
