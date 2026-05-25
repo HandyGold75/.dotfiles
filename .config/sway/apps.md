@@ -30,6 +30,8 @@
 - headsetcontrol (Ubuntu: git)
 - fastfetch (Ubuntu: deb)
 - inetutils (Arch only)
+- sddm (Arch only)
+  - Dependecies: qt6-svg qt6-declarative qt5-quickcontrols2
 
 ### Audio
 
