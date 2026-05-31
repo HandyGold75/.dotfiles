@@ -20,14 +20,14 @@
 - slurp
 - satty (Ubuntu: git)
 - network-manager-applet
-- opentabletdriver
+- opentabletdriver (Arch: AUR; Ubuntu: deb)
 - qt6-wayland
 - blueman
 - kitty (Ubuntu: git)
 - nvim (Ubuntu: git)
 - btop
 - brightnessctl
-- headsetcontrol (Ubuntu: git)
+- headsetcontrol (Arch: AUR; Ubuntu: git)
 - fastfetch (Ubuntu: deb)
 - inetutils (Arch only)
 - sddm (Arch only)
@@ -73,7 +73,7 @@
   - `gamescope -W 2560 -H 1440 -r 165 -f -e --expose-wayland --force-grab-cursor --mangoapp -- %command%`
 - kdenlive
 - krita
-- spotify (Ubuntu: deb)
+- spotify-launcher (Ubuntu: deb)
 - blender
-- protontricks (Arch: ?)
-- winetricks (Arch: ?)
+- protontricks
+- winetricks
