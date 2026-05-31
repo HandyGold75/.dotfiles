@@ -2,7 +2,6 @@ profile Home {
 	output "Microstep MSI MAG272QP CA8A019390334" enable mode 2560x1440 position 0,0
 	output "Ancor Communications Inc VX248 FCLMQS058388" enable mode 1920x1080 position -1920,350
 	output "Sony SONY TV 0x01010101" enable mode 1920x1080 position 2560,0
-	# output "Sony SONY TV 0x01010101" disable
 	output "Valve Corporation Index HMD 0x09A67893" disable
 	exec notify-send -u low -a Kanshi 'Applying profile' 'Home'
 }
