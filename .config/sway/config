@@ -40,8 +40,8 @@ focus_follows_mouse yes
 focus_on_window_activation urgent
 focus_wrapping yes
 
-titlebar_border_thickness 0
-titlebar_padding 0
+titlebar_border_thickness 1
+titlebar_padding 1
 font pango:OpenDyslexicNerdFont 0.001
 
 gaps inner 2
@@ -412,8 +412,6 @@ exec otd-daemon
 exec /usr/lib/x86_64-linux-gnu/libexec/polkit-kde-authentication-agent-1
 exec pidof Macros.bin || hg macros
 
- # Teams via FireFoxPWA
-exec /usr/bin/firefoxpwa site launch 01KG4DBA1YA7YEC2Q9BBEM94G7 --protocol
  # Teams via ChromePWA
 exec /opt/google/chrome/google-chrome --profile-directory=Default --app-id=ompifgpmddkgmclendfeacglnodjjndh %U --password-store=basic
  # Outlook via FireFoxPWA
