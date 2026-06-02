@@ -90,10 +90,11 @@ return {
 		dependencies = { { "mason-org/mason.nvim", name = "mason" }, { "neovim/nvim-lspconfig", name = "lspconfig" } },
 		opts = { automatic_installation = true, automatic_enable = false, ensure_installed = {} },
 		keys = {
-			{ "<leader>li", ":LspInfo<CR>", { "n" }, desc = "[l]sp [i]nfo" },
-			{ "<leader>ls", ":LspStart<CR>", { "n" }, desc = "[l]sp [s]tart" },
-			{ "<leader>lS", ":LspStop<CR>", { "n" }, desc = "[l]sp [S]top" },
-			{ "<leader>lr", ":LspRestart<CR>", { "n" }, desc = "[l]sp [r]estart" },
+			{ "<leader>li", ":checkhealth vim.lsp<CR>", { "n" }, desc = "[l]sp [i]nfo" },
+			{ "<leader>le", ":lsp enable<CR>", { "n" }, desc = "[l]sp [e]nable" },
+			{ "<leader>ld", ":lsp disable<CR>", { "n" }, desc = "[l]sp [d]isable" },
+			{ "<leader>lr", ":lsp restart<CR>", { "n" }, desc = "[l]sp [r]estart" },
+			{ "<leader>ls", ":lsp stop<CR>", { "n" }, desc = "[l]sp [s]top" },
 		},
 	},
 }
