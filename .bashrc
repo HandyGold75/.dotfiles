@@ -78,8 +78,8 @@ alias gitpl='git pull'
 PS1='[\u@\h ${PWD/$HOME/\~}]\$ '
 PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME} ${PWD/$HOME/\~}\007"'
 
-# SV05
-if [ "$(hostname)" = "SV05" ] && [ ! "$(ps -o comm= $PPID)" = "nvim" ]; then
+# Dev
+if [ "$(hostname)" = "Dev" ] && [ ! "$(ps -o comm= $PPID)" = "nvim" ]; then
     nvim
     exit
 fi
