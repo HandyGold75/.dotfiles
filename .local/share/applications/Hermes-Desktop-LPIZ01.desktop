@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=Hermes Desktop
+Exec=/home/lpiz01/.local/bin/hermes desktop
+Icon=/home/lpiz01/.hermes/hermes-agent/website/static/img/logo.png
+Type=Application
+Categories=System

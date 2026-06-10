@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=Hermes Desktop
+Exec=/home/izo/.local/bin/hermes desktop
+Icon=/home/izo/.hermes/hermes-agent/website/static/img/logo.png
+Type=Application
+Categories=System
