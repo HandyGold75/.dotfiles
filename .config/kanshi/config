@@ -18,14 +18,14 @@ profile MRO_1 {
 }
 
 profile MRO_2 {
-	output "LG Display 0x07A2 Unknown" enable mode 1920x1200 position 320,1200
-	output "LG Electronics LG ULTRAWIDE 0x00064D82" enable mode 2560x1080 position 0,0
+	output "LG Display 0x07A2 Unknown" enable mode 1920x1200 position 760,1440
+	output "Philips Consumer Electronics Company PHL 346B1C 0x00001E1C" enable mode 3440x1440 position 0,0
 	exec notify-send -u low -a Kanshi 'Applying profile' 'MRO 2'
 }
 
 profile MRO_3 {
 	output "LG Display 0x07A2 Unknown" enable mode 1920x1200 position 320,1200
-	output "Philips Consumer Electronics Company PHL 346B1C 0x00001E1C" enable mode 3440x1440 position 0,0
+	output "LG Electronics LG ULTRAWIDE 0x00064D82" enable mode 2560x1080 position 0,0
 	exec notify-send -u low -a Kanshi 'Applying profile' 'MRO 3'
 }
 
