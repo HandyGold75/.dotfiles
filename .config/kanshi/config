@@ -23,6 +23,12 @@ profile MRO_2 {
 	exec notify-send -u low -a Kanshi 'Applying profile' 'MRO 2'
 }
 
+profile MRO_3 {
+	output "LG Display 0x07A2 Unknown" enable mode 1920x1200 position 320,1200
+	output "Philips Consumer Electronics Company PHL 346B1C 0x00001E1C" enable mode 3440x1440 position 0,0
+	exec notify-send -u low -a Kanshi 'Applying profile' 'MRO 3'
+}
+
 profile DI_P_1 {
 	output "LG Display 0x07A2 Unknown" enable mode 1920x1200 position 0,1200
 	output HDMI-1 enable mode 1920x1080 position 0,0
