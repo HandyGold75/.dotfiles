@@ -398,7 +398,7 @@ exec headsetcontrol -l 0
 exec cliphist wipe
 # exec pactl load-module module-remap-sink sink_name=mono sink_properties='device.description="FallbackMono"' channels=1 channel_map=mono
 
-exec "wpctl set-volume @DEFAULT_SINK@ $(VOL=$(wpctl get-volume @DEFAULT_SINK@ | awk '{ print $2 * 100 }'); echo $((VOL<80 ? VOL : 80)))%; notify-send -a volume -h int:value:$(wpctl get-volume @DEFAULT_SINK@ | awk '{ print $2 * 100 }') Volume"
+exec "wpctl set-volume @DEFAULT_SINK@ $(VOL=$(wpctl get-volume @DEFAULT_SINK@ | awk '{ print $2 * 100 }'); echo $((VOL<75 ? VOL : 75)))%; notify-send -a volume -h int:value:$(wpctl get-volume @DEFAULT_SINK@ | awk '{ print $2 * 100 }') Volume"
 
 exec waybar -c ~/.config/waybar/config.jsonc -s ~/.config/waybar/style.css
 exec swayidle -w \
