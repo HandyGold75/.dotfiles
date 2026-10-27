@@ -17,3 +17,6 @@ fi
 
 export XCURSOR_THEME="catppuccin-macchiato-dark-cursors"
 export XCURSOR_SIZE="24"
+
+# Hermes Agent — ensure ~/.local/bin is on PATH
+export PATH="$HOME/.local/bin:$PATH"
