@@ -1,19 +1,4 @@
 {
-  "3": {
-    "User": "handygold75",
-    "Host": "10.69.2.103",
-    "Port": 17522
-  },
-  "4": {
-    "User": "handygold75",
-    "Host": "10.69.2.104",
-    "Port": 17522
-  },
-  "5": {
-    "User": "handygold75",
-    "Host": "10.69.2.105",
-    "Port": 17522
-  },
   "Nginx": {
     "User": "root",
     "Host": "nginx.pve",
