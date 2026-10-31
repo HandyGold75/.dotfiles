@@ -421,3 +421,6 @@ exec /opt/google/chrome/google-chrome --profile-directory=Default --app-id=ompif
 exec /usr/bin/firefoxpwa site launch 01KG4DMFEGVJFH7G872AFGGD19 --protocol
  # TOP Desk via FireFoxPWA
 exec /usr/bin/firefoxpwa site launch 01KGHMB59H0CW8S39MTGGPM9N0 --protocol
+
+exec steam
+exec firefox
