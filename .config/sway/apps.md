@@ -7,6 +7,7 @@
 - sway
 - swaylock
 - swayidle
+- swaybg
 - xdg-desktop-portal-wlr
 - polkit-kde-agent
 - dunst
@@ -53,7 +54,7 @@
 
 ### Applications
 
-- paru (Arch only: AUR)
+- paru (Arch only: Web)
 - thunar
 - firefox (Ubuntu: deb)
 - libreoffice
@@ -67,7 +68,7 @@
 - trash-cli
 - discord
 - discover-overlay (Arch: AUR)
-- steam
+- steam (Web)
 - mangohud
 - gamescope
   - `gamescope -W 2560 -H 1440 -r 165 -f -e --expose-wayland --force-grab-cursor --mangoapp -- %command%`

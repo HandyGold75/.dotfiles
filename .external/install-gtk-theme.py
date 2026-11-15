@@ -2,6 +2,8 @@
 
 # curl -LsSO "https://raw.githubusercontent.com/catppuccin/gtk/v1.0.3/install.py"
 
+# python3 ./install-gtk-theme.py macchiato blue
+
 import argparse
 import io
 import logging
@@ -43,14 +45,14 @@ def parse_args():
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "flavor",
-        type=str,
+        # type=str,
         choices=["mocha", "frappe", "macchiato", "latte"],
         help="Flavor of the theme to apply.",
     )
 
     parser.add_argument(
         "accent",
-        type=str,
+        # type=str,
         default="mauve",
         choices=[
             "rosewater",
@@ -73,7 +75,7 @@ def parse_args():
 
     parser.add_argument(
         "--from-artifact",
-        type=Path,
+        # type=Path,
         dest="from_artifact",
         help="Install from an artifact instead of a mainline release, pass the artifact path (e.g 7bff2448a81e36bf3b0e03bfbd649bebe6973ec7-artifacts.zip)",
     )
@@ -81,7 +83,7 @@ def parse_args():
     parser.add_argument(
         "--dest",
         "-d",
-        type=str,
+        # type=str,
         dest="dest",
         help="Destination of the files.",
     )
@@ -89,7 +91,7 @@ def parse_args():
     parser.add_argument(
         "--link",
         help="Whether to add symlinks for libadwaita",
-        type=bool,
+        # type=bool,
         default=False,
         action=argparse.BooleanOptionalAction,
     )
