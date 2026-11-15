@@ -9,8 +9,8 @@ if [ "$TERM" = "xterm-kitty" ]; then
 fi
 
 # FastFetch
-if [ "$(hostname)" != "SV05" ] && [ ! "$(ps -o comm= $PPID)" = "nvim" ]; then
-    ( (fastfetch && echo) &)
+if [ "$(hostname)" != "Dev" ] && [ ! "$(ps -o comm= $PPID)" = "nvim" ]; then
+    fastfetch && echo
 fi
 
 # History file
